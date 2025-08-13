@@ -1,0 +1,303 @@
+# CustomizeFishing 設定ファイル
+
+# プラグインの有効/無効
+enabled: true
+
+# デバッグモード（詳細なログ出力）
+debug: true
+
+# 天気による幸運ボーナス
+# 各天気時に追加される幸運値
+weather_luck:
+  clear: 0.0      # 晴れ: ボーナスなし
+  rain: 0.5       # 雨: +0.5幸運
+  thunder: 1.0    # 雷雨: +1.0幸運
+
+# タイミングシステム設定
+# 浮きが沈んでからの反応時間によるボーナス
+timing_system:
+  enabled: true                   # タイミングシステムの有効/無効
+  base_luck_bonus: 1.5           # ベースの幸運ボーナス
+  
+  # タイミングティア設定（ミリ秒とボーナス倍率）
+  tiers:
+    critical_perfect:
+      max_time_ms: 16.67          # 16.67ms以内
+      bonus_multiplier: 1.2       # 120% (PERFECTより20%高い)
+      message: "&d&l✨ CRITICAL PERFECT! ✨"  # ピンク色
+    perfect:
+      max_time_ms: 50.0           # 50ms以内
+      bonus_multiplier: 1.0       # 100%
+      message: "&6&l★ PERFECT! ★"        # ゴールド色
+    great:
+      max_time_ms: 300            # 300ms以内
+      bonus_multiplier: 0.8       # 80%
+      message: "&a&l◆ GREAT! ◆"          # 緑色
+    good:
+      max_time_ms: 750            # 750ms以内
+      bonus_multiplier: 0.5       # 50%
+      message: "&b&l○ GOOD! ○"           # 水色
+
+# 釣りカテゴリと条件設定
+# priority: 数値が小さいほど優先度が高い（先にチェックされる）
+# quality: 運の値に応じてchanceを補正する値（負の値も可）
+# 補正されたchance = floor(chance + (quality × luck))
+categories:
+  dolphins_grace:
+    enabled: true
+    priority: 1
+    quality: 0
+    conditions:
+      require_open_water: true        # 開水域が必要
+      require_dolphins_grace: true    # イルカの好意エフェクトが必要
+      weather:
+        - "clear"                     # 晴れ天候限定
+    chance: 100.0
+    
+  god:
+    enabled: true
+    priority: 2
+    quality: 5
+    conditions:
+      require_open_water: true        # 開水域が必要
+      min_luck_of_the_sea: 7         # 宝釣りレベル7以上
+      min_luck_effect: 2             # 幸運エフェクトレベル2以上
+      weather:
+        - "rain"                      # 雨または雷雨限定
+        - "thunder"
+    chance: 0.05
+    
+  legendary:
+    enabled: true
+    priority: 3
+    quality: 4
+    conditions:
+      require_open_water: true        # 開水域が必要
+      min_luck_of_the_sea: 6         # 宝釣りレベル6以上
+      min_luck_effect: 2             # 幸運エフェクトレベル2以上
+      weather:
+        - "clear"                     # 全天候対応
+        - "rain"
+        - "thunder"
+    chance: 0.75
+    
+  epic:
+    enabled: true
+    priority: 4
+    quality: 3
+    conditions:
+      require_open_water: true        # 開水域が必要
+      min_luck_of_the_sea: 4         # 宝釣りレベル4以上
+      min_luck_effect: 1             # 幸運エフェクトレベル1以上
+      weather:
+        - "clear"                     # 全天候対応
+        - "rain"
+        - "thunder"
+    chance: 3.0
+    
+  rare:
+    enabled: true
+    priority: 5
+    quality: 2
+    conditions:
+      require_open_water: true        # 開水域が必要
+      min_luck_of_the_sea: 3         # 宝釣りレベル3以上
+      min_luck_effect: 1             # 幸運エフェクトレベル1以上
+      weather:
+        - "clear"                     # 全天候対応
+        - "rain"
+        - "thunder"
+    chance: 10.0
+    
+  common:
+    enabled: true
+    priority: 6
+    quality: -1
+    conditions:
+      require_open_water: false       # 開水域不要
+      min_luck_of_the_sea: 0         # エンチャント不要
+      min_luck_effect: 0             # エフェクト不要
+      weather:
+        - "clear"                     # 全天候対応
+        - "rain"
+        - "thunder"
+    chance: 15
+    
+  fish:
+    enabled: true
+    priority: 7
+    quality: -2
+    conditions:
+      require_open_water: false       # 開水域不要
+      min_luck_of_the_sea: 0         # エンチャント不要
+      min_luck_effect: 0             # エフェクト不要
+      weather:
+        - "clear"                     # 全天候対応
+        - "rain"
+        - "thunder"
+    chance: 40
+    
+  junk:
+    enabled: true
+    priority: 8
+    quality: -3
+    conditions:
+      require_open_water: false       # 開水域不要
+      min_luck_of_the_sea: 0         # エンチャント不要
+      min_luck_effect: 0             # エフェクト不要
+      weather:
+        - "clear"                     # 全天候対応
+        - "rain"
+        - "thunder"
+    chance: 100
+
+
+# ルートテーブル設定
+loot_tables:
+  # ルートテーブルの名前空間
+  namespace: "customize_fishing"
+  # ルートテーブルのパス
+  path: "gameplay/fishing"
+  
+# エフェクト設定
+effects:
+  # パーティクルエフェクト設定
+  particles:
+    enabled: true                         # パーティクル効果の有効/無効
+    god:
+      primary: "DRAGON_BREATH"            # メインパーティクル
+      secondary: "END_ROD"                # サブパーティクル
+      primary_count: 50                   # メインパーティクル数
+      secondary_count: 30                 # サブパーティクル数
+      spread: 2.0                         # パーティクル拡散範囲
+    legendary:
+      primary: "TOTEM"
+      secondary: "ENCHANTMENT_TABLE"
+      primary_count: 40
+      secondary_count: 25
+      spread: 1.8
+    epic:
+      primary: "VILLAGER_HAPPY"
+      secondary: "CRIT_MAGIC"
+      primary_count: 30
+      secondary_count: 20
+      spread: 1.5
+    rare:
+      primary: "SPELL_WITCH"
+      secondary: "FIREWORKS_SPARK"
+      primary_count: 25
+      secondary_count: 15
+      spread: 1.2
+    dolphins_grace:
+      primary: "DOLPHIN"
+      secondary: "WATER_BUBBLE"
+      primary_count: 35
+      secondary_count: 20
+      spread: 2.0
+  
+  # ポーションエフェクト設定
+  potion_effects:
+    enabled: true                         # ポーション効果の有効/無効
+    god:
+      effect: "GLOWING"                   # エフェクトタイプ
+      duration: 100                       # 持続時間（tick）
+      amplifier: 0                        # 効果の強さ（0=レベル1）
+    legendary:
+      effect: "HERO_OF_THE_VILLAGE"
+      duration: 60
+      amplifier: 0
+
+  # 花火エフェクト設定
+  fireworks:
+    enabled: true                         # 花火効果の有効/無効
+    god:
+      colors: ["PURPLE", "WHITE"]         # 花火の色
+      fade_colors: ["GREEN", "LIME"]              # フェード色
+      type: "STAR"                        # 花火タイプ（BALL, BALL_LARGE, STAR, CREEPER, BURST）
+      flicker: true                       # 点滅効果
+      trail: true                         # 軌跡効果
+      power: 3                            # 花火の高度（1-3）
+    legendary:
+      colors: ["YELLOW", "ORANGE"]
+      fade_colors: ["WHITE"]
+      type: "BALL_LARGE"
+      flicker: true
+      trail: false
+      power: 2
+    dolphins_grace:
+      colors: ["AQUA", "BLUE"]
+      fade_colors: ["WHITE"]
+      type: "BALL"
+      flicker: true
+      trail: false
+      power: 1
+  
+  # サウンドエフェクト設定
+  sounds:
+    enabled: true                         # サウンド効果の有効/無効
+    god:
+      sound: "ENTITY_ENDER_DRAGON_GROWL"  # サウンド名
+      volume: 0.8                         # 音量（0.0-2.0）
+      pitch: 0.5                          # ピッチ（0.5-2.0）
+    legendary:
+      sound: "ENTITY_PLAYER_LEVELUP"
+      volume: 1.0
+      pitch: 1.2
+    epic:
+      sound: "UI_TOAST_CHALLENGE_COMPLETE"
+      volume: 1.0
+      pitch: 1.5
+    rare:
+      sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+      volume: 1.0
+      pitch: 2.0
+    dolphins_grace:
+      sound: "ENTITY_DOLPHIN_PLAY"
+      volume: 1.2
+      pitch: 1.3
+  
+  # 全体通知設定 - どのカテゴリを全プレイヤーに通知するか
+  broadcast_categories:
+    god: true                             # 神レベル → 全体通知する
+    legendary: true                       # 伝説 → 全体通知する
+    epic: true                            # エピック → 全体通知する
+    rare: false                           # レア → 個人のみ
+    dolphins_grace: false                  # イルカの好意 → 個人のみ
+    common: false                         # 一般 → 個人のみ
+    fish: false                           # 魚 → 個人のみ
+    junk: false                           # ガラクタ → 個人のみ
+  
+  # 全体通知メッセージ設定（他のプレイヤーに表示）
+  announcements:
+    god: "&5&l✦ &f%player% &d&lが神レベルアイテムを釣り上げました！ &5&l✦"
+    legendary: "&6&l★ &f%player% &e&lが伝説アイテムを釣り上げました！ &6&l★"
+    epic: "&b&l◆ &f%player% &b&lがエピックアイテムを釣り上げました！ &b&l◆"
+    rare: "&a&l♦ &f%player% &a&lがレアアイテムを釣り上げました！ &a&l♦"
+    dolphins_grace: "&b&l🐬 &f%player% &b&lがイルカの恵みを受けました！ &b&l🐬"
+    common: "&7%player%がアイテムを釣り上げました"
+    fish: "&7%player%が魚を釣り上げました"
+    junk: "&7%player%がガラクタを釣り上げました"
+  
+  # アクションバーメッセージ設定（釣った本人に表示）
+  action_bar_messages:
+    god: "&5&l✦ 神レベルアイテムを釣り上げました！ &5&l✦"
+    legendary: "&6&l★ 伝説アイテムを釣り上げました！ &6&l★"
+    epic: "&b&l◆ エピックアイテムを釣り上げました！ &b&l◆"
+    rare: "&a&l♦ レアアイテムを釣り上げました！ &a&l♦"
+    dolphins_grace: "&b&l🐬 イルカが恵んでくれました！ &b&l🐬"
+    common: "&fアイテムを釣り上げました"
+    fish: "&f魚を釣り上げました"
+    junk: "&fガラクタを釣り上げました"
+    critical_perfect: "&d&l✨ CRITICAL PERFECT! ✨"
+    perfect: "&6&l★ PERFECT! ★"
+    great: "&a&l◆ GREAT! ◆"
+    good: "&b&l○ GOOD! ○"
+
+# メッセージ設定
+messages:
+  reload_success: "&aCustomizeFishing設定をリロードしました！"
+  reload_error: "&c設定リロードエラー: %error%"
+  no_permission: "&cこのコマンドを使用する権限がありません！"
+  debug_conditions: "&7 プレイヤー %player% - 宝釣り:%luck_sea% 幸運:%luck% 開水域:%open_water% 天候:%weather% イルカ:%dolphins%"
+  debug_category: "&7 選択されたカテゴリ: %category%"
+  debug_item_replace: "&7 %original_item% を %new_item% に置換 ルートテーブル: %loot_table%"
