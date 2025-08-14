@@ -9,7 +9,7 @@ commands:
   customizefishing:
     description: Main command for CustomizeFishing plugin
     usage: /<command> [reload|debugrod|help]
-    aliases: [cf, cfish]
+    aliases: [ cf, cfish ]
     permission: customizefishing.use
 
 permissions:

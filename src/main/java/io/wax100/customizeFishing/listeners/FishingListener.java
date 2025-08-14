@@ -1,20 +1,20 @@
 package io.wax100.customizeFishing.listeners;
 
 import io.wax100.customizeFishing.CustomizeFishing;
-import io.wax100.customizeFishing.effects.CatchEffects;
 import io.wax100.customizeFishing.debug.DebugFishingRod;
+import io.wax100.customizeFishing.debug.DebugLogger;
+import io.wax100.customizeFishing.effects.CatchEffects;
 import io.wax100.customizeFishing.fishing.FishingConditionChecker;
 import io.wax100.customizeFishing.fishing.PlayerHeadProcessor;
 import io.wax100.customizeFishing.luck.LuckCalculator;
 import io.wax100.customizeFishing.luck.LuckResult;
 import io.wax100.customizeFishing.timing.TimingResult;
-import io.wax100.customizeFishing.debug.DebugLogger;
-import io.wax100.customizeFishing.utils.MessageDisplay;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,7 +26,13 @@ import org.bukkit.loot.LootContext;
 import org.bukkit.loot.LootTable;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class FishingListener implements Listener {
@@ -41,6 +47,20 @@ public class FishingListener implements Listener {
         this.plugin = plugin;
         this.catchEffects = new CatchEffects(plugin);
         this.debugLogger = new DebugLogger(plugin);
+    }
+
+    private static String getProbabilityText(LuckResult luckResult, double baseChance, double quality) {
+        double totalLuck = luckResult.getTotalLuck();
+        double adjustedChance = Math.floor(baseChance + (quality * totalLuck));
+
+        // 確率情報を日本語でフォーマット
+        String probabilityText;
+        if (adjustedChance > 0) {
+            probabilityText = "&7確率: &e" + String.format("%.2f%%", adjustedChance) + " &7(ボーナス: &f" + String.format("%.2f%%", baseChance) + "&7)";
+        } else {
+            probabilityText = "&7確率: &e" + String.format("%.4f%%", baseChance);
+        }
+        return probabilityText;
     }
 
     @EventHandler(priority = EventPriority.HIGH)
@@ -66,60 +86,49 @@ public class FishingListener implements Listener {
         }
 
         Location hookLocation = event.getHook().getLocation();
-        
-        // コンジットパワーチェック
-        boolean hasConduitPower = player.hasPotionEffect(PotionEffectType.CONDUIT_POWER);
-        
-        // コンジットパワーがある場合、両方の結果を同時に処理
-        if (hasConduitPower && plugin.getConfig().getBoolean("conduit_power.double_fishing", true)) {
+
+        // ダブルフィッシング条件をチェック
+        boolean canDoubleFish = checkDoubleFishingConditions(player);
+
+        // ダブルフィッシングが有効な場合、両方の結果を同時に処理
+        if (canDoubleFish && plugin.getConfig().getBoolean("double_fishing.enabled", true)) {
+            // タイミング判定（1回だけ行う）
+            TimingResult timingResult = checkTiming(player);
+
             // 両方の結果を保存するための準備
-            FishingResult firstResult = processFishingWithResult(player, itemEntity, hookLocation, false);
-            
+            FishingResult firstResult = processFishing(player, itemEntity, hookLocation, false, timingResult);
+
             // 新しいアイテムエンティティを作成
             ItemStack bonusItem = new ItemStack(Material.COD); // デフォルトアイテム
             Item bonusEntity = player.getWorld().dropItem(hookLocation, bonusItem);
             bonusEntity.setPickupDelay(Integer.MAX_VALUE); // 自動拾いを無効化
-            
-            FishingResult secondResult = processFishingWithResult(player, bonusEntity, hookLocation, true);
-            
-            // 両方の結果を同時に表示
-            displayConduitPowerResults(player, firstResult, secondResult);
-            
+
+            FishingResult secondResult = processFishing(player, bonusEntity, hookLocation, true, timingResult);
+
+            // 両方の結果を同時に表示（ダブルフィッシング）
+            displayDoubleFishingResults(player, firstResult, secondResult);
+
             // ボーナスアイテムをプレイヤーの位置に移動
             bonusEntity.teleport(player.getLocation());
             bonusEntity.setPickupDelay(0); // 拾えるように戻す
         } else {
-            // 通常の1回の処理
-            processFishing(player, itemEntity, hookLocation, false);
+            // 通常の1回の処理（タイミング判定込み）
+            TimingResult timingResult = checkTiming(player);
+            FishingResult result = processFishing(player, itemEntity, hookLocation, false, timingResult);
+
+            // レア度別演出を実行
+            catchEffects.playCatchEffects(player, result.category(), result.probabilityInfo());
+
+            // デバッグ終了ログ
+            debugLogger.logFishingEnd();
         }
-    }
-    
-    /**
-     * 釣り処理のメイン部分
-     */
-    private void processFishing(Player player, Item itemEntity, Location hookLocation, boolean isConduitBonus) {
-        FishingResult result = processFishingCore(player, itemEntity, hookLocation, isConduitBonus);
-        
-        // 確率情報を計算
-        String probabilityInfo = result.probabilityInfo();
-        
-        // コンジットパワーのメッセージを追加
-        if (!isConduitBonus && player.hasPotionEffect(PotionEffectType.CONDUIT_POWER) && 
-            plugin.getConfig().getBoolean("conduit_power.double_fishing", true)) {
-            probabilityInfo = (probabilityInfo.isEmpty() ? "" : probabilityInfo + " ") + "&b&l⚡ コンジットパワー x2 ⚡";
-        }
-        
-        // レア度別演出を実行
-        catchEffects.playCatchEffects(player, result.category(), probabilityInfo);
-        
-        // デバッグ終了ログ
-        debugLogger.logFishingEnd();
     }
 
     /**
      * カテゴリを設定ファイルから決定するメソッド
-     * @param openWater 開水域かどうか
-     * @param weather 天気
+     *
+     * @param openWater     開水域かどうか
+     * @param weather       天気
      * @param dolphinsGrace イルカの好意エフェクトがあるか
      * @return 選択されたカテゴリ
      */
@@ -133,7 +142,7 @@ public class FishingListener implements Listener {
 
         for (String categoryName : categoriesSection.getKeys(false)) {
             ConfigurationSection categorySection = categoriesSection.getConfigurationSection(categoryName);
-            
+
             if (!checkCategoryConditions(categorySection, luckResult, openWater, weather, dolphinsGrace)) {
                 continue;
             }
@@ -158,12 +167,12 @@ public class FishingListener implements Listener {
         for (CategoryData category : categories) {
             // Minecraft方式: floor(chance + (quality × luck)) での補正
             double adjustedChance = Math.floor(category.chance() + (category.quality() * totalLuck));
-            
+
             // 補正後のchanceが0以下の場合はスキップ
             if (adjustedChance <= 0) {
                 debugLogger.logCategoryDetails(
-                    category.name() + " (SKIPPED)", category.priority(), category.quality(),
-                    category.chance(), adjustedChance, totalLuck
+                        category.name() + " (SKIPPED)", category.priority(), category.quality(),
+                        category.chance(), adjustedChance, totalLuck
                 );
                 continue;
             }
@@ -172,8 +181,8 @@ public class FishingListener implements Listener {
             totalWeight += adjustedChance;
 
             debugLogger.logCategoryDetails(
-                category.name(), category.priority(), category.quality(), 
-                category.chance(), adjustedChance, totalLuck
+                    category.name(), category.priority(), category.quality(),
+                    category.chance(), adjustedChance, totalLuck
             );
         }
 
@@ -198,7 +207,6 @@ public class FishingListener implements Listener {
         return "common";
     }
 
-
     private String getItemDisplayName(ItemStack item) {
         if (item == null) return "null";
         String displayName = item.getType().name().toLowerCase().replace("_", " ");
@@ -207,7 +215,7 @@ public class FishingListener implements Listener {
         }
         return displayName + " x" + item.getAmount();
     }
-    
+
     /**
      * カテゴリの条件をチェックし、条件を満たすかを返す
      */
@@ -236,7 +244,7 @@ public class FishingListener implements Listener {
         if (luckResult.luckOfTheSeaLevel() < minLuckOfTheSea) {
             return false;
         }
-        
+
         // 宝釣り最大レベルチェック
         if (conditionsSection.contains("max_luck_of_the_sea")) {
             int maxLuckOfTheSea = conditionsSection.getInt("max_luck_of_the_sea");
@@ -250,7 +258,7 @@ public class FishingListener implements Listener {
         if (luckResult.luckPotionLevel() < minLuckEffect) {
             return false;
         }
-        
+
         // 幸運エフェクト最大レベルチェック
         if (conditionsSection.contains("max_luck_effect")) {
             int maxLuckEffect = conditionsSection.getInt("max_luck_effect");
@@ -281,7 +289,7 @@ public class FishingListener implements Listener {
         }
         return count;
     }
-    
+
     /**
      * 確率情報を計算してフォーマットした文字列を返す
      */
@@ -290,37 +298,37 @@ public class FishingListener implements Listener {
         if (categoriesSection == null) {
             return "";
         }
-        
+
         ConfigurationSection categorySection = categoriesSection.getConfigurationSection(selectedCategory);
         if (categorySection == null) {
             return "";
         }
-        
+
         double baseChance = categorySection.getDouble("chance", 0.0);
         double quality = categorySection.getDouble("quality", 0.0);
         String probabilityText = getProbabilityText(luckResult, baseChance, quality);
 
         // ボーナス要因を表示
         StringBuilder bonusText = new StringBuilder();
-        
+
         // 宝釣りエンチャント
         if (luckResult.luckOfTheSeaLevel() > 0) {
             double luckOfTheSeaBonus = Math.min(10, luckResult.luckOfTheSeaLevel()) * 0.08;
             bonusText.append(" &a宝釣り+").append(String.format("%.2f%%", luckOfTheSeaBonus));
         }
-        
+
         // 幸運ポーション
         if (luckResult.luckPotionLevel() > 0) {
             double luckPotionBonus = Math.min(10, luckResult.luckPotionLevel()) * 0.05;
             bonusText.append(" &b幸運+").append(String.format("%.2f%%", luckPotionBonus));
         }
-        
+
         // 装備幸運
         if (luckResult.equipmentLuck() > 0) {
             double equipmentBonus = Math.min(6, luckResult.equipmentLuck()) * 0.1;
             bonusText.append(" &d装備+").append(String.format("%.2f%%", equipmentBonus));
         }
-        
+
         // 天気ボーナス
         if (luckResult.weatherLuck() > 0) {
             String weatherName = switch (weather) {
@@ -330,7 +338,7 @@ public class FishingListener implements Listener {
             };
             bonusText.append(" &9").append(weatherName).append("+").append(String.format("%.2f%%", luckResult.weatherLuck()));
         }
-        
+
         // タイミングボーナス
         if (timingResult != null && timingResult.hasTiming() && luckResult.timingLuck() > 0) {
             String timingName = switch (timingResult.tier().name().toLowerCase()) {
@@ -342,26 +350,13 @@ public class FishingListener implements Listener {
             };
             bonusText.append(" &6").append(timingName).append("+").append(String.format("%.2f%%", luckResult.timingLuck()));
         }
-        
-        return probabilityText + bonusText.toString();
-    }
 
-    private static String getProbabilityText(LuckResult luckResult, double baseChance, double quality) {
-        double totalLuck = luckResult.getTotalLuck();
-        double adjustedChance = Math.floor(baseChance + (quality * totalLuck));
-
-        // 確率情報を日本語でフォーマット
-        String probabilityText;
-       if (adjustedChance > 0) {
-            probabilityText = "&7確率: &e" + String.format("%.2f%%", adjustedChance) + " &7(基本: &f" + String.format("%.2f%%", baseChance) + "&7)";
-        } else {
-            probabilityText = "&7確率: &e" + String.format("%.4f%%", baseChance);
-        }
-        return probabilityText;
+        return probabilityText + bonusText;
     }
 
     /**
      * タイミングをチェック
+     *
      * @param player プレイヤー
      * @return タイミング結果
      */
@@ -371,7 +366,7 @@ public class FishingListener implements Listener {
             return TimingResult.miss();
         }
         long reactionTime = System.currentTimeMillis() - biteTime;
-        
+
         // LuckCalculatorでタイミング結果を計算
         LuckCalculator luckCalc = new LuckCalculator(plugin);
         return luckCalc.calculateTimingResult(reactionTime);
@@ -379,41 +374,31 @@ public class FishingListener implements Listener {
 
     /**
      * Twilight Forest の rainy_cloud ブロックが釣り針の上空32ブロック以内にあるかチェック
+     *
      * @param hookLocation 釣り針の位置
      * @return rainy_cloudが見つかった場合はtrue
      */
     private boolean checkForTwilightRainyClouds(Location hookLocation) {
-            // ウキの真上のみをチェック（Y軸+1〜+32ブロック）
-            for (int y = 1; y <= 32; y++) {
-                Location checkLocation = hookLocation.clone().add(0, y, 0);
-                Block block = checkLocation.getBlock();
-                
-                // Twilight Forest の rainy_cloud ブロックかチェック
-                Material blockType = block.getType();
-                String blockKey = blockType.getKey().toString();
-                
-                if ("twilightforest:rainy_cloud".equals(blockKey)) {
-                    return true;
-                }
+        // ウキの真上のみをチェック（Y軸+1〜+32ブロック）
+        for (int y = 1; y <= 32; y++) {
+            Location checkLocation = hookLocation.clone().add(0, y, 0);
+            Block block = checkLocation.getBlock();
+
+            // Twilight Forest の rainy_cloud ブロックかチェック
+            Material blockType = block.getType();
+            String blockKey = blockType.getKey().toString();
+
+            if ("twilightforest:rainy_cloud".equals(blockKey)) {
+                return true;
             }
+        }
         return false;
     }
 
-    private record CategoryData(String name, int priority, double quality, double chance) {
-    }
-    
     /**
-     * 釣り結果を保存するレコード
+     * 釣り処理を実行し、結果を返す
      */
-    public record FishingResult(String category, String probabilityInfo, ItemStack item) {
-    }
-    
-    /**
-     * 釣り処理のコア部分（共通処理）
-     */
-    private FishingResult processFishingCore(Player player, Item itemEntity, Location hookLocation, boolean isConduitBonus) {
-        // タイミング判定とメッセージ表示
-        TimingResult timingResult = checkTiming(player);
+    private FishingResult processFishing(Player player, Item itemEntity, Location hookLocation, boolean isDoubleFishingBonus, TimingResult timingResult) {
 
         boolean isOpenWater = FishingConditionChecker.isOpenWater(hookLocation);
         String weather = "clear";
@@ -422,21 +407,21 @@ public class FishingListener implements Listener {
         } else if (hookLocation.getWorld().hasStorm()) {
             weather = "rain";
         }
-        
+
         // Twilight Forest rainy_cloud の検出（ウキの上空32ブロック以内）
         if (checkForTwilightRainyClouds(hookLocation)) {
             weather = "rain";
         }
 
         boolean hasDolphinsGrace = player.hasPotionEffect(PotionEffectType.DOLPHINS_GRACE);
-        
+
         // LuckCalculatorで全ての幸運値を計算
         LuckCalculator luckCalc = new LuckCalculator(plugin);
         LuckResult luckResult = luckCalc.calculateTotalLuck(player, weather, timingResult);
-        
+
         // デバッグ情報の出力
-        if (isConduitBonus) {
-            debugLogger.logInfo("=== CONDUIT POWER: BONUS FISHING PROCESS ===");
+        if (isDoubleFishingBonus) {
+            debugLogger.logInfo("=== DOUBLE FISHING: BONUS FISHING PROCESS ===");
         }
         debugLogger.logFishingStart(player, isOpenWater, weather, hasDolphinsGrace, null);
         debugLogger.logTimingResult(timingResult.reactionTimeMs(), timingResult);
@@ -455,7 +440,7 @@ public class FishingListener implements Listener {
         } else {
             category = determineCategoryFromConfig(luckResult, isOpenWater, weather, hasDolphinsGrace);
         }
-        
+
         // カテゴリ選択結果をログ出力
         int eligibleCount = getEligibleCategoryCount(luckResult, isOpenWater, weather, hasDolphinsGrace);
         debugLogger.logCategorySelection(category, eligibleCount);
@@ -486,9 +471,9 @@ public class FishingListener implements Listener {
                 itemEntity.setItemStack(selectedItem);
 
                 debugLogger.logItemReplacement(
-                    getItemDisplayName(originalItem), 
-                    getItemDisplayName(selectedItem), 
-                    lootTableKey.toString()
+                        getItemDisplayName(originalItem),
+                        getItemDisplayName(selectedItem),
+                        lootTableKey.toString()
                 );
             }
         } else {
@@ -498,34 +483,46 @@ public class FishingListener implements Listener {
 
         // 確率情報を計算
         String probabilityInfo = calculateProbabilityInfo(category, luckResult, weather, timingResult);
-        
+
         // デバッグ: タイミング情報をログ出力
         if (timingResult.hasTiming()) {
-            debugLogger.logInfo(String.format(" Timing Bonus Debug: tier=%s, luckBonus=%.2f", 
-                timingResult.tier().name(), timingResult.luckBonus()));
+            debugLogger.logInfo(String.format(" Timing Bonus Debug: tier=%s, luckBonus=%.2f",
+                    timingResult.tier().name(), timingResult.luckBonus()));
         }
-        
+
         return new FishingResult(category, probabilityInfo, selectedItem);
     }
-    
+
     /**
-     * 釣り処理を実行し、結果を返す
+     * ダブルフィッシング時の両方の結果を同時に表示
      */
-    private FishingResult processFishingWithResult(Player player, Item itemEntity, Location hookLocation, boolean isConduitBonus) {
-        return processFishingCore(player, itemEntity, hookLocation, isConduitBonus);
-    }
-    
-    /**
-     * コンジットパワー時の両方の結果を同時に表示
-     */
-    private void displayConduitPowerResults(Player player, FishingResult first, FishingResult second) {
+    private void displayDoubleFishingResults(Player player, FishingResult first, FishingResult second) {
         // エフェクトは両方のカテゴリで最もレアな方を使用
         String primaryCategory = getHigherPriorityCategory(first.category(), second.category());
-        
+
         // カスタムメッセージ表示とエフェクト実行
-        catchEffects.playConduitPowerEffects(player, primaryCategory, first, second);
+        catchEffects.playDoubleFishingEffects(player, primaryCategory, first, second);
     }
-    
+
+    /**
+     * ダブルフィッシング条件をチェック
+     *
+     * @return 宝釣りLv10以上かつコンジットパワーLv2以上の場合true
+     */
+    private boolean checkDoubleFishingConditions(Player player) {
+        // コンジットパワーのレベルをチェック
+        boolean hasConduitPower = player.hasPotionEffect(PotionEffectType.CONDUIT_POWER);
+        int conduitLevel = hasConduitPower ?
+                Objects.requireNonNull(player.getPotionEffect(PotionEffectType.CONDUIT_POWER)).getAmplifier() + 1 : 0;
+
+        // 宝釣りエンチャントレベルを取得
+        ItemStack fishingRod = player.getInventory().getItemInMainHand();
+        int luckOfSeaLevel = fishingRod.getEnchantmentLevel(Enchantment.LUCK);
+
+        // 両方の条件を満たしているかチェック
+        return luckOfSeaLevel >= 10 && conduitLevel >= 2;
+    }
+
     /**
      * より優先度の高いカテゴリを返す
      */
@@ -534,11 +531,20 @@ public class FishingListener implements Listener {
         if (categoriesSection == null) {
             return cat1;
         }
-        
+
         int priority1 = categoriesSection.getInt(cat1 + ".priority", 999);
         int priority2 = categoriesSection.getInt(cat2 + ".priority", 999);
-        
+
         return priority1 <= priority2 ? cat1 : cat2;
     }
-        
+
+    private record CategoryData(String name, int priority, double quality, double chance) {
+    }
+
+    /**
+     * 釣り結果を保存するレコード
+     */
+    public record FishingResult(String category, String probabilityInfo, ItemStack item) {
+    }
+
 }

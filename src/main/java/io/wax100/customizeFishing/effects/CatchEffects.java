@@ -2,52 +2,59 @@ package io.wax100.customizeFishing.effects;
 
 import io.wax100.customizeFishing.CustomizeFishing;
 import io.wax100.customizeFishing.listeners.FishingListener;
-import io.wax100.customizeFishing.utils.MessageDisplay;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
+import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class CatchEffects {
-    
+
     private final CustomizeFishing plugin;
 
     public CatchEffects(CustomizeFishing plugin) {
         this.plugin = plugin;
     }
-    
+
     /**
      * 確率情報を中央から広がるアニメーションで表示
+     *
+     * @return アニメーション完了までの総tick数
      */
-    private void animateProbabilityInfo(Player player, String fullText, long initialDelay) {
+    private long animateProbabilityInfo(Player player, String fullText, long initialDelay) {
         String cleanText = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', fullText));
         int textLength = cleanText.length();
         int center = textLength / 2;
-        
+
         // アニメーションのステップ数
         int steps = Math.min(15, center); // 最大15ステップ
-        
+
         for (int i = 0; i <= steps; i++) {
             final int step = i;
             long delay = initialDelay + (i * 2L); // 各ステップ2tick間隔
-            
+
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
                 String displayText = buildAnimatedText(fullText, cleanText, center, step, steps);
                 player.spigot().sendMessage(net.md_5.bungee.api.ChatMessageType.ACTION_BAR,
-                    new net.md_5.bungee.api.chat.TextComponent(ChatColor.translateAlternateColorCodes('&', displayText)));
+                        new net.md_5.bungee.api.chat.TextComponent(ChatColor.translateAlternateColorCodes('&', displayText)));
             }, delay);
         }
+
+        // アニメーション完了までの総tick数を返す
+        return initialDelay + (steps * 2L);
     }
-    
+
     /**
      * アニメーションの各ステップで表示するテキストを構築
      */
@@ -55,28 +62,28 @@ public class CatchEffects {
         if (step == maxSteps) {
             return fullText; // 最後のステップでは完全なテキストを表示
         }
-        
+
         // 中央からの距離を計算
         float progress = (float) step / maxSteps;
         int revealRadius = (int) (center * progress);
-        
+
         // 表示範囲を計算
         int startIndex = Math.max(0, center - revealRadius);
         int endIndex = Math.min(cleanText.length(), center + revealRadius);
-        
+
         // 部分的に表示するテキストを構築
         StringBuilder result = new StringBuilder();
-        
+
         // 左側の空白
         result.append(" ".repeat(startIndex));
-        
+
         // 中央部分のテキスト（フェードイン効果付き）
         if (endIndex > startIndex) {
             String visiblePart = fullText.substring(
-                getOriginalIndex(fullText, startIndex),
-                getOriginalIndex(fullText, endIndex)
+                    getOriginalIndex(fullText, startIndex),
+                    getOriginalIndex(fullText, endIndex)
             );
-            
+
             // エッジ部分にフェード効果を追加
             if (step < maxSteps - 1) {
                 result.append("&7").append(visiblePart).append("&f");
@@ -84,13 +91,13 @@ public class CatchEffects {
                 result.append(visiblePart);
             }
         }
-        
+
         // 右側の空白
         result.append(" ".repeat(Math.max(0, cleanText.length() - endIndex)));
-        
+
         return result.toString();
     }
-    
+
     /**
      * 色コードを含む文字列での実際のインデックスを取得
      */
@@ -99,13 +106,13 @@ public class CatchEffects {
         if (cleanIndex >= stripped.length()) {
             return coloredText.length();
         }
-        
+
         int currentCleanPos = 0;
         for (int i = 0; i < coloredText.length(); i++) {
             if (currentCleanPos == cleanIndex) {
                 return i;
             }
-            
+
             // 色コードをスキップ
             if (i < coloredText.length() - 1 && coloredText.charAt(i) == '&') {
                 i++; // 色コードの次の文字もスキップ
@@ -113,21 +120,21 @@ public class CatchEffects {
                 currentCleanPos++;
             }
         }
-        
+
         return coloredText.length();
     }
 
     public void playCatchEffects(Player player, String category, String probabilityInfo) {
         // アクションバー表示
         displayActionBarMessage(player, category, probabilityInfo);
-        
+
         // エフェクト実行
         executeEffects(player, category);
-        
+
         // 全体通知
         sendBroadcastAnnouncement(player, category);
     }
-    
+
     /**
      * アクションバーメッセージを表示（通常の釣り用）
      */
@@ -135,13 +142,13 @@ public class CatchEffects {
         // カテゴリメッセージを取得・表示
         String categoryMessage = getCategoryMessage(player, category);
         sendActionBarMessage(player, categoryMessage);
-        
+
         // 確率情報をアニメーション表示
         if (probabilityInfo != null && !probabilityInfo.isEmpty()) {
             animateProbabilityInfo(player, probabilityInfo, 30L);
         }
     }
-    
+
     /**
      * カテゴリメッセージを取得
      */
@@ -151,15 +158,15 @@ public class CatchEffects {
         String message = plugin.getConfig().getString(actionBarKey, defaultMessage);
         return ChatColor.translateAlternateColorCodes('&', message.replace("%player%", player.getName()));
     }
-    
+
     /**
      * アクションバーにメッセージを送信
      */
     private void sendActionBarMessage(Player player, String message) {
         player.spigot().sendMessage(net.md_5.bungee.api.ChatMessageType.ACTION_BAR,
-            new net.md_5.bungee.api.chat.TextComponent(ChatColor.translateAlternateColorCodes('&', message)));
+                new net.md_5.bungee.api.chat.TextComponent(ChatColor.translateAlternateColorCodes('&', message)));
     }
-    
+
     /**
      * 全エフェクトを実行
      */
@@ -169,19 +176,19 @@ public class CatchEffects {
         launchFirework(player, category);
         playSound(player, category);
     }
-    
+
     private void playParticleEffects(Player player, String category) {
         if (!plugin.getConfig().getBoolean("effects.particles.enabled", true)) {
             return;
         }
-        
+
         ConfigurationSection particleSection = plugin.getConfig().getConfigurationSection("effects.particles." + category);
         if (particleSection == null) {
             return;
         }
-        
+
         Location loc = player.getLocation();
-        
+
         // Primary particle
         String primaryName = particleSection.getString("primary");
         if (primaryName != null) {
@@ -194,7 +201,7 @@ public class CatchEffects {
                 plugin.getLogger().warning("Invalid particle type: " + primaryName);
             }
         }
-        
+
         // Secondary particle
         String secondaryName = particleSection.getString("secondary");
         if (secondaryName != null) {
@@ -208,17 +215,17 @@ public class CatchEffects {
             }
         }
     }
-    
+
     private void playPotionEffects(Player player, String category) {
         if (!plugin.getConfig().getBoolean("effects.potion_effects.enabled", true)) {
             return;
         }
-        
+
         ConfigurationSection potionSection = plugin.getConfig().getConfigurationSection("effects.potion_effects." + category);
         if (potionSection == null) {
             return;
         }
-        
+
         String effectName = potionSection.getString("effect");
         if (effectName != null) {
             try {
@@ -233,56 +240,56 @@ public class CatchEffects {
             }
         }
     }
-    
+
     private void spawnParticles(Location location, Particle particle, int count, double spread) {
         Objects.requireNonNull(location.getWorld()).spawnParticle(particle,
-            location.add(0, 1, 0), 
-            count, 
-            spread, spread, spread, 
-            0.1
+                location.add(0, 1, 0),
+                count,
+                spread, spread, spread,
+                0.1
         );
     }
-    
+
     private void launchFirework(Player player, String category) {
         if (!plugin.getConfig().getBoolean("effects.fireworks.enabled", true)) {
             return;
         }
-        
+
         ConfigurationSection fireworkSection = plugin.getConfig().getConfigurationSection("effects.fireworks." + category);
         if (fireworkSection == null) {
             return;
         }
-        
+
         Location loc = player.getLocation().add(0, 1, 0);
         Firework firework = Objects.requireNonNull(loc.getWorld()).spawn(loc, Firework.class);
         FireworkMeta meta = firework.getFireworkMeta();
-        
+
         FireworkEffect.Builder builder = FireworkEffect.builder();
-        
+
         // Colors
         List<String> colorNames = fireworkSection.getStringList("colors");
         if (!colorNames.isEmpty()) {
             Color[] colors = colorNames.stream()
-                .map(this::parseColor)
-                .filter(Objects::nonNull)
-                .toArray(Color[]::new);
+                    .map(this::parseColor)
+                    .filter(Objects::nonNull)
+                    .toArray(Color[]::new);
             if (colors.length > 0) {
                 builder.withColor(colors);
             }
         }
-        
+
         // Fade colors
         List<String> fadeColorNames = fireworkSection.getStringList("fade_colors");
         if (!fadeColorNames.isEmpty()) {
             Color[] fadeColors = fadeColorNames.stream()
-                .map(this::parseColor)
-                .filter(Objects::nonNull)
-                .toArray(Color[]::new);
+                    .map(this::parseColor)
+                    .filter(Objects::nonNull)
+                    .toArray(Color[]::new);
             if (fadeColors.length > 0) {
                 builder.withFade(fadeColors);
             }
         }
-        
+
         // Type
         String typeName = fireworkSection.getString("type", "BALL");
         try {
@@ -291,7 +298,7 @@ public class CatchEffects {
         } catch (IllegalArgumentException e) {
             builder.with(FireworkEffect.Type.BALL);
         }
-        
+
         // Flicker and trail
         if (fireworkSection.getBoolean("flicker", false)) {
             builder.withFlicker();
@@ -299,12 +306,12 @@ public class CatchEffects {
         if (fireworkSection.getBoolean("trail", false)) {
             builder.withTrail();
         }
-        
+
         meta.addEffect(builder.build());
         meta.setPower(fireworkSection.getInt("power", 1));
         firework.setFireworkMeta(meta);
     }
-    
+
     private Color parseColor(String colorName) {
         try {
             return switch (colorName.toUpperCase()) {
@@ -331,17 +338,17 @@ public class CatchEffects {
             return null;
         }
     }
-    
+
     private void playSound(Player player, String category) {
         if (!plugin.getConfig().getBoolean("effects.sounds.enabled", true)) {
             return;
         }
-        
+
         ConfigurationSection soundSection = plugin.getConfig().getConfigurationSection("effects.sounds." + category);
         if (soundSection == null) {
             return;
         }
-        
+
         String soundName = soundSection.getString("sound");
         if (soundName != null) {
             try {
@@ -354,57 +361,58 @@ public class CatchEffects {
             }
         }
     }
-    
+
     private boolean shouldBroadcastCategory(String category) {
         String broadcastKey = "effects.broadcast_categories." + category.toLowerCase();
         return plugin.getConfig().getBoolean(broadcastKey, false);
     }
-    
+
     /**
-     * コンジットパワー用の特別なエフェクト表示
+     * ダブルフィッシング用の特別なエフェクト表示
      */
-    public void playConduitPowerEffects(Player player, String primaryCategory, FishingListener.FishingResult firstResult, FishingListener.FishingResult secondResult) {
+    public void playDoubleFishingEffects(Player player, String primaryCategory, FishingListener.FishingResult firstResult, FishingListener.FishingResult secondResult) {
         // FishingResultから直接データを取得
         String firstCategory = firstResult.category();
         String secondCategory = secondResult.category();
         String firstProb = firstResult.probabilityInfo();
         String secondProb = secondResult.probabilityInfo();
-        
+
         // アクションバー表示
-        displayConduitPowerProbability(player, firstCategory, firstProb, secondCategory, secondProb);
-        
+        displayDoubleFishingProbability(player, firstCategory, firstProb, secondCategory, secondProb);
+
         // エフェクト実行
         executeEffects(player, primaryCategory);
-        
+
         // 全体通知（各カテゴリ個別に）
         sendBroadcastAnnouncement(player, firstCategory);
         sendBroadcastAnnouncement(player, secondCategory);
     }
-    
+
     /**
-     * コンジットパワー用の確率表示（アクションバー専用）
+     * ダブルフィッシング用の確率表示（アクションバー専用）
      */
-    private void displayConduitPowerProbability(Player player, String firstCategory, String firstProb, String secondCategory, String secondProb) {
-        // カテゴリメッセージを表示
-        String categoryMessage = String.format("&b&l⚡ &e1回目: &6&l%s &7| &e2回目: &6&l%s &b&l⚡",
-            firstCategory.toUpperCase(), secondCategory.toUpperCase());
+    private void displayDoubleFishingProbability(Player player, String firstCategory, String firstProb, String secondCategory, String secondProb) {
+        // カテゴリメッセージを表示（ダブルフィッシング）
+        String categoryMessage = String.format("&b&l✨ &6&l%s &7| &6&l%s &b&l✨",
+                firstCategory.toUpperCase(), secondCategory.toUpperCase());
         sendActionBarMessage(player, categoryMessage);
-        
-        // 1回目の確率情報を表示（1.5秒後）
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            String firstProbMessage = String.format("&e【1回目】 &6%s &7%s", 
-                firstCategory.toUpperCase(), firstProb != null ? firstProb : "");
-            sendActionBarMessage(player, firstProbMessage);
-        }, 30L);
-        
-        // 2回目の確率情報を表示（3秒後）
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            String secondProbMessage = String.format("&e【2回目】 &6%s &7%s", 
-                secondCategory.toUpperCase(), secondProb != null ? secondProb : "");
-            sendActionBarMessage(player, secondProbMessage);
-        }, 60L);
+
+        // 確率情報を2回に分けてアニメーション表示
+        long firstAnimationDelay = 30L;
+        long firstAnimationDuration = 0L;
+
+        if (firstProb != null && !firstProb.isEmpty()) {
+            firstAnimationDuration = animateProbabilityInfo(player, "&7" + firstProb, firstAnimationDelay);
+        }
+
+        if (secondProb != null && !secondProb.isEmpty()) {
+            // 1つ目のアニメーション完了後に少し間を空けて2つ目を表示
+            long secondAnimationDelay = firstAnimationDuration + 10L; // 10tick（0.5秒）の間隔
+            animateProbabilityInfo(player, "&7" + secondProb, secondAnimationDelay);
+        }
+
     }
-    
+
     /**
      * 全体通知のみを送信（確率表示なし）
      */
@@ -414,7 +422,7 @@ public class CatchEffects {
             String defaultBroadcastMessage = "&6" + player.getName() + "&eが&f" + category + "&eアイテムを釣り上げました！";
             String broadcastMessage = plugin.getConfig().getString(broadcastKey, defaultBroadcastMessage);
             String formattedBroadcastMessage = ChatColor.translateAlternateColorCodes('&', broadcastMessage.replace("%player%", player.getName()));
-            
+
             // 全体通知
             for (Player p : Bukkit.getOnlinePlayers()) {
                 p.sendMessage(formattedBroadcastMessage);
