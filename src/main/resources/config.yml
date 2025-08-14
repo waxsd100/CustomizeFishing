@@ -8,12 +8,6 @@ enabled: true
 double_fishing:
   enabled: true    # ダブルフィッシング機能の有効/無効
 
-# メッセージ表示位置設定
-# subtitle: サブタイトル（画面中央下部/右寄り）
-# title: タイトル（画面中央上部）  
-# action_bar: アクションバー（ホットバー上部）
-message_display_type: subtitle
-
 # 天気による幸運ボーナス
 # 各天気時に追加される幸運値
 weather_luck:
@@ -49,7 +43,7 @@ timing_system:
 categories:
   dolphins_grace:
     enabled: true
-    priority: 0
+    priority: 1
     quality: 0
     conditions:
       require_open_water: true        # 開水域が必要
@@ -60,7 +54,7 @@ categories:
 
   skgkyr:
     enabled: true
-    priority: 1
+    priority: 2
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
@@ -68,11 +62,11 @@ categories:
       min_luck_effect: 2
       weather:
         - "thunder"
-    chance: 1
+    chance: 0.01
 
   god:
     enabled: true
-    priority: 2
+    priority: 3
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
@@ -81,11 +75,11 @@ categories:
       weather:
         - "rain"                      # 雨または雷雨限定
         - "thunder"
-    chance: 0.005
+    chance: 0.05
 
   eternal:
     enabled: false
-    priority: 3
+    priority: 4
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
@@ -96,8 +90,8 @@ categories:
     chance: 0.01
 
   exotic:
-    enabled: false
-    priority: 4
+    enabled: true
+    priority: 5
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
@@ -110,7 +104,7 @@ categories:
 
   relic:
     enabled: false
-    priority: 5
+    priority: 6
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
@@ -123,7 +117,7 @@ categories:
 
   mythic:
     enabled: false
-    priority: 6
+    priority: 7
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
@@ -137,7 +131,7 @@ categories:
 
   legendary:
     enabled: true
-    priority: 7
+    priority: 8
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
@@ -147,11 +141,11 @@ categories:
         - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
-    chance: 0.75
+    chance: 1
 
   epic:
     enabled: true
-    priority: 8
+    priority: 9
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
@@ -161,11 +155,11 @@ categories:
         - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
-    chance: 3.0
+    chance: 5
 
   rare:
     enabled: true
-    priority: 9
+    priority: 10
     quality: 0
     conditions:
       require_open_water: true        # 開水域が必要
@@ -179,7 +173,7 @@ categories:
 
   uncommon:
     enabled: false
-    priority: 10
+    priority: 11
     quality: 0
     conditions:
       require_open_water: true       # 開水域不要
@@ -193,8 +187,8 @@ categories:
 
   common:
     enabled: true
-    priority: 11
-    quality: -1
+    priority: 12
+    quality: -2
     conditions:
       require_open_water: true       # 開水域不要
       max_luck_of_the_sea: 10
@@ -205,10 +199,24 @@ categories:
         - "thunder"
     chance: 15
 
+  treasure:
+    enabled: true
+    priority: 13
+    quality: -2
+    conditions:
+      require_open_water: true       # 開水域不要
+      max_luck_of_the_sea: 10
+      max_luck_effect: 3
+      weather:
+        - "clear"
+        - "rain"
+        - "thunder"
+    chance: 30
+
   fish:
     enabled: true
-    priority: 12
-    quality: -2
+    priority: 14
+    quality: -3
     conditions:
       require_open_water: false       # 開水域不要
       max_luck_of_the_sea: 10
@@ -221,7 +229,7 @@ categories:
 
   junk:
     enabled: true
-    priority: 13
+    priority: 15
     quality: -3
     conditions:
       require_open_water: false       # 開水域不要
@@ -312,7 +320,7 @@ effects:
       primary_count: 35
       secondary_count: 20
       spread: 2.0
-  
+
   # ポーションエフェクト設定
   potion_effects:
     enabled: true                         # ポーション効果の有効/無効
@@ -410,49 +418,53 @@ effects:
     enabled: true                         # サウンド効果の有効/無効
     skgkyr:
       sound: "UI_TOAST_CHALLENGE_COMPLETE"
-      volume: 1.5
+      volume: 0.5
       pitch: 0.8
     god:
       sound: "ENTITY_ENDER_DRAGON_GROWL"  # サウンド名
-      volume: 1.2                         # 音量（0.0-2.0）
+      volume: 0.5                       # 音量（0.0-2.0）
       pitch: 0.3                          # ピッチ（0.5-2.0）
     eternal:
       sound: "ENTITY_WITHER_SPAWN"
-      volume: 1.0
+      volume: 0.5
       pitch: 0.5
     exotic:
       sound: "ENTITY_WITHER_SPAWN"
-      volume: 0.8
+      volume: 0.5
       pitch: 1.0
     relic:
       sound: "ENTITY_ELDER_GUARDIAN_CURSE"
-      volume: 0.8
+      volume: 0.5
       pitch: 1.2
     mythic:
       sound: "ENTITY_EVOKER_PREPARE_SUMMON"
-      volume: 0.8
+      volume: 0.5
       pitch: 1.5
     legendary:
       sound: "ENTITY_PLAYER_LEVELUP"
-      volume: 1.0
+      volume: 0.5
       pitch: 1.2
     epic:
       sound: "UI_TOAST_CHALLENGE_COMPLETE"
-      volume: 1.0
+      volume: 0.5
       pitch: 1.5
     rare:
       sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
-      volume: 1.0
+      volume: 0.5
       pitch: 2.0
     uncommon:
       sound: "ENTITY_ITEM_PICKUP"
-      volume: 1.0
+      volume: 0.5
       pitch: 1.5
     dolphins_grace:
       sound: "ENTITY_DOLPHIN_PLAY"
-      volume: 1.2
+      volume: 0.5
       pitch: 1.3
-  
+    treasure:
+      sound: "BLOCK_CHEST_OPEN"
+      volume: 0.8
+      pitch: 1.2
+
   # 全体通知設定 - どのカテゴリを全プレイヤーに通知するか
   broadcast_categories:
     skgkyr: true                          # skgkyr → 全体通知する
@@ -462,11 +474,12 @@ effects:
     relic: true                           # レリック → 全体通知する
     mythic: true                          # ミシック → 全体通知する
     legendary: true                       # 伝説 → 全体通知する
-    epic: true                            # エピック → 全体通知する
+    epic: false                            # エピック → 全体通知する
     rare: false                           # レア → 個人のみ
     uncommon: false                       # アンコモン → 個人のみ
     dolphins_grace: false                  # イルカの好意 → 個人のみ
     common: false                         # 一般 → 個人のみ
+    treasure: false                       # 宝物 → 個人のみ
     fish: false                           # 魚 → 個人のみ
     junk: false                           # ガラクタ → 個人のみ
   
@@ -484,6 +497,7 @@ effects:
     uncommon: "&e&l○ &f%player% &e&lがアンコモンアイテムを釣り上げました！ &e&l○"
     dolphins_grace: "&b&l🐬 &f%player% &b&lがイルカの恵みを受けました！ &b&l🐬"
     common: "&7%player%がアイテムを釣り上げました"
+    treasure: "&6&l💰 &f%player% &6&lが宝物を釣り上げました！ &6&l💰"
     fish: "&7%player%が魚を釣り上げました"
     junk: "&7%player%がガラクタを釣り上げました"
   
@@ -501,18 +515,12 @@ effects:
     uncommon: "&e&l○ アンコモンアイテムを釣り上げました！ &e&l○"
     dolphins_grace: "&b&l🐬 イルカが恵んでくれました！ &b&l🐬"
     common: "&fアイテムを釣り上げました"
+    treasure: "&6&l💰 宝物を釣り上げました！ &6&l💰"
     fish: "&f魚を釣り上げました"
     junk: "&fガラクタを釣り上げました"
-    great: "&d&l✨ CRITICAL PERFECT! ✨"
-    perfect: "&6&l★ PERFECT! ★"
-    great: "&a&l◆ GREAT! ◆"
-    good: "&b&l○ GOOD! ○"
 
 # メッセージ設定
 messages:
   reload_success: "&aCustomizeFishing設定をリロードしました！"
   reload_error: "&c設定リロードエラー: %error%"
   no_permission: "&cこのコマンドを使用する権限がありません！"
-  debug_conditions: "&7 プレイヤー %player% - 宝釣り:%luck_sea% 幸運:%luck% 開水域:%open_water% 天候:%weather% イルカ:%dolphins%"
-  debug_category: "&7 選択されたカテゴリ: %category%"
-  debug_item_replace: "&7 %original_item% を %new_item% に置換 ルートテーブル: %loot_table%"

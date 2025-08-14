@@ -47,7 +47,6 @@ public class DebugLogger {
      */
     private void writeToFile(String message) {
         // 常にファイルに出力（デバッグ設定を削除）
-
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(debugFile, true))) {
             String timestamp = dateFormat.format(new Date());
             writer.write(String.format("[%s] %s%n", timestamp, message));
@@ -63,7 +62,7 @@ public class DebugLogger {
      */
     public void logFishingStart(Player player, boolean isOpenWater, String weather,
                                 boolean hasDolphinsGrace, String forcedCategory) {
-        logInfo("=== FISHING EVENT START ===");
+
         logInfo(String.format(
                 " Player: %s | OpenWater: %s | Weather: %s | Dolphins: %s",
                 player.getName(), isOpenWater, weather, hasDolphinsGrace
@@ -97,12 +96,10 @@ public class DebugLogger {
      * 幸運値の詳細をログ出力
      */
     public void logLuckBreakdown(LuckResult luckResult) {
-        double potionValue = luckResult.luckPotionLevel() * 0.5;
         logInfo(" LUCK BREAKDOWN:");
         logInfo(String.format(
-                "   LuckOfTheSea: %d | LuckPotion: %d(%.1f) | Equipment: %.1f",
-                luckResult.luckOfTheSeaLevel(), luckResult.luckPotionLevel(),
-                potionValue, luckResult.equipmentLuck()
+                "   LuckOfTheSea: %d | LuckPotion: %d | Equipment: %.1f",
+                luckResult.luckOfTheSeaLevel(), luckResult.luckPotionLevel(), luckResult.equipmentLuck()
         ));
         logInfo(String.format(
                 "   Weather: %.1f | Timing: %.1f | TOTAL: %.1f",
@@ -172,11 +169,16 @@ public class DebugLogger {
     }
 
     /**
+     * 釣り開始をログ出力
+     */
+    public void logFishingStart() {
+        logInfo("=== FISHING EVENT START ===");
+    }
+
+    /**
      * 釣り終了をログ出力
      */
     public void logFishingEnd() {
         logInfo("=== FISHING EVENT END ===");
-        logInfo(""); // 空行で区切り
     }
-
 }

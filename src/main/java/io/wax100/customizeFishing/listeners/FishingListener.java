@@ -12,6 +12,7 @@ import io.wax100.customizeFishing.timing.TimingResult;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
@@ -51,14 +52,23 @@ public class FishingListener implements Listener {
 
     private static String getProbabilityText(LuckResult luckResult, double baseChance, double quality) {
         double totalLuck = luckResult.getTotalLuck();
-        double adjustedChance = Math.floor(baseChance + (quality * totalLuck));
+
+        // Minecraft方式での確率補正
+        double adjustedChance = calculateAdjustedChance(baseChance, quality, totalLuck);
 
         // 確率情報を日本語でフォーマット
         String probabilityText;
-        if (adjustedChance > 0) {
-            probabilityText = "&7確率: &e" + String.format("%.2f%%", adjustedChance) + " &7(ボーナス: &f" + String.format("%.2f%%", baseChance) + "&7)";
+        if (adjustedChance <= 0) {
+            probabilityText = "&7確率: &c0.00%% &7(基本: &e" + String.format("%.2f%%", baseChance) + "&7)";
+        } else if (adjustedChance == baseChance) {
+            probabilityText = "&7確率: &e" + String.format("%.2f%%", baseChance);
         } else {
-            probabilityText = "&7確率: &e" + String.format("%.4f%%", baseChance);
+            double difference = adjustedChance - baseChance;
+            if (difference < 0) {
+                probabilityText = "&7確率: &e" + String.format("%.2f%%", adjustedChance) + " &7(補正値: " + String.format("%.2f%%", baseChance) + " &c-" + String.format("%.2f%%", difference) + "&7)";
+            } else {
+                probabilityText = "&7確率: &e" + String.format("%.2f%%", adjustedChance) + " &7(補正値: " + String.format("%.2f%%", baseChance) + " &a+" + String.format("%.2f%%", difference) + "&7)";
+            }
         }
         return probabilityText;
     }
@@ -70,14 +80,17 @@ public class FishingListener implements Listener {
         }
 
         Player player = event.getPlayer();
+        PlayerFishEvent.State state = event.getState();
+        Location hookLocation = event.getHook().getLocation();
 
-        // 魚が食いついた時間を記録
-        if (event.getState() == PlayerFishEvent.State.BITE) {
+        if (state == PlayerFishEvent.State.BITE)  {
             biteTimestamps.put(player, System.currentTimeMillis());
+            // 釣れた瞬間の音効果を再生
+            Objects.requireNonNull(hookLocation.getWorld()).playSound(hookLocation, Sound.BLOCK_LEVER_CLICK, 1.0f, 2.0f);
             return;
         }
 
-        if (event.getState() != PlayerFishEvent.State.CAUGHT_FISH) {
+        if (state != PlayerFishEvent.State.CAUGHT_FISH && state != PlayerFishEvent.State.CAUGHT_ENTITY) {
             return;
         }
 
@@ -85,7 +98,7 @@ public class FishingListener implements Listener {
             return;
         }
 
-        Location hookLocation = event.getHook().getLocation();
+        debugLogger.logFishingStart();
 
         // ダブルフィッシング条件をチェック
         boolean canDoubleFish = checkDoubleFishingConditions(player);
@@ -105,7 +118,7 @@ public class FishingListener implements Listener {
 
             FishingResult secondResult = processFishing(player, bonusEntity, hookLocation, true, timingResult);
 
-            // 両方の結果を同時に表示（ダブルフィッシング）
+            // 両方の結果を同時に表示
             displayDoubleFishingResults(player, firstResult, secondResult);
 
             // ボーナスアイテムをプレイヤーの位置に移動
@@ -118,10 +131,8 @@ public class FishingListener implements Listener {
 
             // レア度別演出を実行
             catchEffects.playCatchEffects(player, result.category(), result.probabilityInfo());
-
-            // デバッグ終了ログ
-            debugLogger.logFishingEnd();
         }
+        debugLogger.logFishingEnd();
     }
 
     /**
@@ -162,11 +173,10 @@ public class FishingListener implements Listener {
 
         // qualityを使用して各カテゴリのchanceを補正
         List<CategoryData> adjustedCategories = new ArrayList<>();
-        double totalWeight = 0;
 
         for (CategoryData category : categories) {
-            // Minecraft方式: floor(chance + (quality × luck)) での補正
-            double adjustedChance = Math.floor(category.chance() + (category.quality() * totalLuck));
+            // Minecraft方式での確率補正
+            double adjustedChance = calculateAdjustedChance(category.chance(), category.quality(), totalLuck);
 
             // 補正後のchanceが0以下の場合はスキップ
             if (adjustedChance <= 0) {
@@ -178,7 +188,6 @@ public class FishingListener implements Listener {
             }
 
             adjustedCategories.add(new CategoryData(category.name(), category.priority(), category.quality(), adjustedChance));
-            totalWeight += adjustedChance;
 
             debugLogger.logCategoryDetails(
                     category.name(), category.priority(), category.quality(),
@@ -186,25 +195,34 @@ public class FishingListener implements Listener {
             );
         }
 
-        if (adjustedCategories.isEmpty() || totalWeight <= 0) {
+        if (adjustedCategories.isEmpty() || adjustedCategories.stream().allMatch(cat -> cat.chance() <= 0)) {
             return "common";
         }
 
-        // 重み付き抽選を実行
-        double roll = random.nextDouble() * totalWeight;
-        double currentWeight = 0;
 
         // priority順にソート
         adjustedCategories.sort(Comparator.comparingInt(CategoryData::priority));
 
         for (CategoryData category : adjustedCategories) {
-            currentWeight += category.chance();  // 補正されたchanceを使用
-            if (roll < currentWeight) {
+            double roll = random.nextDouble() * 100.0;  // 0.0から100.0の範囲で乱数を生成
+              // 補正されたchanceを使用
+            if (roll < category.chance()) {
                 return category.name();
             }
         }
 
         return "common";
+    }
+    
+    /**
+     * 確率補正を計算（Minecraft方式）
+     * @param baseChance 基本確率
+     * @param quality 品質値
+     * @param totalLuck 総幸運値
+     * @return 補正後の確率
+     */
+    public static double calculateAdjustedChance(double baseChance, double quality, double totalLuck) {
+        return Math.floor(baseChance + (quality * totalLuck));
     }
 
     private String getItemDisplayName(ItemStack item) {
@@ -329,6 +347,12 @@ public class FishingListener implements Listener {
             bonusText.append(" &d装備+").append(String.format("%.2f%%", equipmentBonus));
         }
 
+        // 経験値ボーナス
+        if (luckResult.experienceLevel() > 0) {
+            double experienceBonus = Math.min(100, luckResult.experienceLevel()) * 0.01;
+            bonusText.append(" &e経験値+").append(String.format("%.2f%%", experienceBonus));
+        }
+
         // 天気ボーナス
         if (luckResult.weatherLuck() > 0) {
             String weatherName = switch (weather) {
@@ -419,7 +443,6 @@ public class FishingListener implements Listener {
         LuckCalculator luckCalc = new LuckCalculator(plugin);
         LuckResult luckResult = luckCalc.calculateTotalLuck(player, weather, timingResult);
 
-        // デバッグ情報の出力
         if (isDoubleFishingBonus) {
             debugLogger.logInfo("=== DOUBLE FISHING: BONUS FISHING PROCESS ===");
         }

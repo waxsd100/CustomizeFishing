@@ -8,7 +8,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cobblestone",
-          "weight": 100
+          "weight": 120
         },
         {
           "type": "minecraft:item",
@@ -102,16 +102,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:coal",
-          "weight": 55
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:raw_copper",
-          "weight": 40
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:leather",
           "weight": 35
         },
@@ -169,11 +159,6 @@
           "type": "minecraft:item",
           "name": "minecraft:bamboo",
           "weight": 15
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:gold_nugget",
-          "weight": 10
         }
       ]
     }

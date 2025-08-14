@@ -11,7 +11,8 @@ public record LuckResult(
         int conduitLevel,
         double equipmentLuck,
         double weatherLuck,
-        double timingLuck
+        double timingLuck,
+        int experienceLevel
 
 ) {
     /**
@@ -26,7 +27,7 @@ public record LuckResult(
         if (luckOfTheSeaLevel >= 127) {
             // 0.1から1.0の乱数を生成してボーナスに加える
             Random random = new Random();
-            double randomBonus = 0.1 + (random.nextDouble() * conduitLevel);
+            double randomBonus = 0.1 + (random.nextDouble() * Math.min(3, conduitLevel));
             luckOfTheSeaBonus += randomBonus;
         }
         // luckPotionLevel: 最大10、1増加で0.05%増加
@@ -35,6 +36,9 @@ public record LuckResult(
         // equipmentLuck: 最大6、1増加で0.1%増加
         double equipmentBonus = Math.min(6, equipmentLuck) * 0.1;
 
-        return luckOfTheSeaBonus + luckPotionBonus + equipmentBonus + weatherLuck + timingLuck;
+        // experienceLevel: 最大100、1増加で0.01%増加
+        double experienceBonus = Math.min(100, experienceLevel) * 0.01;
+
+        return luckOfTheSeaBonus + luckPotionBonus + equipmentBonus + weatherLuck + timingLuck + experienceBonus;
     }
 }

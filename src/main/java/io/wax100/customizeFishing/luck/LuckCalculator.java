@@ -58,13 +58,17 @@ public class LuckCalculator {
         // タイミングボーナス
         double timingLuck = timingResult.luckBonus();
 
+        // プレイヤーの経験値レベル
+        int experienceLevel = player.getLevel();
+
         return new LuckResult(
                 luckOfTheSeaLevel,
                 luckPotionLevel,
                 conduitLevel,
                 equipmentLuck,
                 weatherLuck,
-                timingLuck
+                timingLuck,
+                experienceLevel
         );
     }
 
@@ -75,11 +79,9 @@ public class LuckCalculator {
         ItemStack mainHand = player.getInventory().getItemInMainHand();
         ItemStack offHand = player.getInventory().getItemInOffHand();
 
-        int luckOfTheSeaLevel = mainHand.getEnchantmentLevel(Enchantment.LUCK);
-        if (luckOfTheSeaLevel == 0) {
-            luckOfTheSeaLevel = offHand.getEnchantmentLevel(Enchantment.LUCK);
-        }
-        return luckOfTheSeaLevel;
+        int mainHandLuckOfTheSeaLevel = mainHand.getEnchantmentLevel(Enchantment.LUCK);
+        int offHandLuckOfTheSeaLevel = offHand.getEnchantmentLevel(Enchantment.LUCK);
+        return Math.max(mainHandLuckOfTheSeaLevel, offHandLuckOfTheSeaLevel);
     }
 
     /**
