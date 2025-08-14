@@ -1,11 +1,13 @@
 package io.wax100.customizeFishing.effects;
 
 import io.wax100.customizeFishing.CustomizeFishing;
+import io.wax100.customizeFishing.listeners.FishingListener;
 import io.wax100.customizeFishing.utils.MessageDisplay;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -18,79 +20,154 @@ import java.util.Objects;
 public class CatchEffects {
     
     private final CustomizeFishing plugin;
-    private final MessageDisplay messageDisplay;
-    
+
     public CatchEffects(CustomizeFishing plugin) {
         this.plugin = plugin;
-        this.messageDisplay = new MessageDisplay(plugin);
     }
     
-    public void playCatchEffects(Player player, String category) {
-        playCatchEffects(player, category, null);
-    }
-    
-    public void playCatchEffects(Player player, String category, String probabilityInfo) {
-        // お知らせメッセージ
-        sendAnnouncement(player, category, probabilityInfo);
+    /**
+     * 確率情報を中央から広がるアニメーションで表示
+     */
+    private void animateProbabilityInfo(Player player, String fullText, long initialDelay) {
+        String cleanText = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', fullText));
+        int textLength = cleanText.length();
+        int center = textLength / 2;
         
-        // パーティクルエフェクト
-        playParticleEffects(player, category);
+        // アニメーションのステップ数
+        int steps = Math.min(15, center); // 最大15ステップ
         
-        // ポーションエフェクト
-        playPotionEffects(player, category);
-        
-        // 花火
-        launchFirework(player, category);
-        
-        // サウンド
-        playSound(player, category);
-    }
-    
-    private void sendAnnouncement(Player player, String category, String probabilityInfo) {
-        // アクションバーメッセージ（個人通知）
-        String actionBarKey = "effects.action_bar_messages." + category;
-        String defaultActionBarMessage = "&6&l" + category + "アイテムを釣り上げました！";
-        String actionBarMessage = plugin.getConfig().getString(actionBarKey, defaultActionBarMessage);
-        
-        // アクションバーに表示（常にアクションバーを使用）
-        Map<String, String> placeholders = new HashMap<>();
-        placeholders.put("%player%", player.getName());
-        String formattedActionBarMessage = ChatColor.translateAlternateColorCodes('&', 
-            replacePlaceholders(actionBarMessage, placeholders));
-        
-        // アクションバーに送信
-        player.spigot().sendMessage(net.md_5.bungee.api.ChatMessageType.ACTION_BAR, 
-            new net.md_5.bungee.api.chat.TextComponent(formattedActionBarMessage));
-        
-        // 確率情報を改行して表示
-        if (probabilityInfo != null && !probabilityInfo.isEmpty()) {
-            // 0.5秒後に確率情報を表示
+        for (int i = 0; i <= steps; i++) {
+            final int step = i;
+            long delay = initialDelay + (i * 2L); // 各ステップ2tick間隔
+            
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
-                player.spigot().sendMessage(net.md_5.bungee.api.ChatMessageType.ACTION_BAR, 
-                    new net.md_5.bungee.api.chat.TextComponent(ChatColor.translateAlternateColorCodes('&', probabilityInfo)));
-            }, 10L); // 10 ticks = 0.5秒
+                String displayText = buildAnimatedText(fullText, cleanText, center, step, steps);
+                player.spigot().sendMessage(net.md_5.bungee.api.ChatMessageType.ACTION_BAR,
+                    new net.md_5.bungee.api.chat.TextComponent(ChatColor.translateAlternateColorCodes('&', displayText)));
+            }, delay);
+        }
+    }
+    
+    /**
+     * アニメーションの各ステップで表示するテキストを構築
+     */
+    private String buildAnimatedText(String fullText, String cleanText, int center, int step, int maxSteps) {
+        if (step == maxSteps) {
+            return fullText; // 最後のステップでは完全なテキストを表示
         }
         
-        // 全体通知用メッセージ（設定に基づいて通知）
-        if (shouldBroadcastCategory(category)) {
-            String broadcastKey = "effects.announcements." + category;
-            String defaultBroadcastMessage = "&6" + player.getName() + "&eが&f" + category + "&eアイテムを釣り上げました！";
-            String broadcastMessage = plugin.getConfig().getString(broadcastKey, defaultBroadcastMessage);
-            String formattedBroadcastMessage = ChatColor.translateAlternateColorCodes('&', broadcastMessage.replace("%player%", player.getName()));
+        // 中央からの距離を計算
+        float progress = (float) step / maxSteps;
+        int revealRadius = (int) (center * progress);
+        
+        // 表示範囲を計算
+        int startIndex = Math.max(0, center - revealRadius);
+        int endIndex = Math.min(cleanText.length(), center + revealRadius);
+        
+        // 部分的に表示するテキストを構築
+        StringBuilder result = new StringBuilder();
+        
+        // 左側の空白
+        result.append(" ".repeat(startIndex));
+        
+        // 中央部分のテキスト（フェードイン効果付き）
+        if (endIndex > startIndex) {
+            String visiblePart = fullText.substring(
+                getOriginalIndex(fullText, startIndex),
+                getOriginalIndex(fullText, endIndex)
+            );
             
-            // 全体通知
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                p.sendMessage(formattedBroadcastMessage);
+            // エッジ部分にフェード効果を追加
+            if (step < maxSteps - 1) {
+                result.append("&7").append(visiblePart).append("&f");
+            } else {
+                result.append(visiblePart);
             }
         }
+        
+        // 右側の空白
+        result.append(" ".repeat(Math.max(0, cleanText.length() - endIndex)));
+        
+        return result.toString();
     }
     
-    private String replacePlaceholders(String message, Map<String, String> placeholders) {
-        String result = message;
-        for (Map.Entry<String, String> entry : placeholders.entrySet()) {
-            result = result.replace(entry.getKey(), entry.getValue());
+    /**
+     * 色コードを含む文字列での実際のインデックスを取得
+     */
+    private int getOriginalIndex(String coloredText, int cleanIndex) {
+        String stripped = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', coloredText));
+        if (cleanIndex >= stripped.length()) {
+            return coloredText.length();
         }
-        return result;
+        
+        int currentCleanPos = 0;
+        for (int i = 0; i < coloredText.length(); i++) {
+            if (currentCleanPos == cleanIndex) {
+                return i;
+            }
+            
+            // 色コードをスキップ
+            if (i < coloredText.length() - 1 && coloredText.charAt(i) == '&') {
+                i++; // 色コードの次の文字もスキップ
+            } else {
+                currentCleanPos++;
+            }
+        }
+        
+        return coloredText.length();
+    }
+
+    public void playCatchEffects(Player player, String category, String probabilityInfo) {
+        // アクションバー表示
+        displayActionBarMessage(player, category, probabilityInfo);
+        
+        // エフェクト実行
+        executeEffects(player, category);
+        
+        // 全体通知
+        sendBroadcastAnnouncement(player, category);
+    }
+    
+    /**
+     * アクションバーメッセージを表示（通常の釣り用）
+     */
+    private void displayActionBarMessage(Player player, String category, String probabilityInfo) {
+        // カテゴリメッセージを取得・表示
+        String categoryMessage = getCategoryMessage(player, category);
+        sendActionBarMessage(player, categoryMessage);
+        
+        // 確率情報をアニメーション表示
+        if (probabilityInfo != null && !probabilityInfo.isEmpty()) {
+            animateProbabilityInfo(player, probabilityInfo, 30L);
+        }
+    }
+    
+    /**
+     * カテゴリメッセージを取得
+     */
+    private String getCategoryMessage(Player player, String category) {
+        String actionBarKey = "effects.action_bar_messages." + category;
+        String defaultMessage = "&6&l" + category + "アイテムを釣り上げました！";
+        String message = plugin.getConfig().getString(actionBarKey, defaultMessage);
+        return ChatColor.translateAlternateColorCodes('&', message.replace("%player%", player.getName()));
+    }
+    
+    /**
+     * アクションバーにメッセージを送信
+     */
+    private void sendActionBarMessage(Player player, String message) {
+        player.spigot().sendMessage(net.md_5.bungee.api.ChatMessageType.ACTION_BAR,
+            new net.md_5.bungee.api.chat.TextComponent(ChatColor.translateAlternateColorCodes('&', message)));
+    }
+    
+    /**
+     * 全エフェクトを実行
+     */
+    private void executeEffects(Player player, String category) {
+        playParticleEffects(player, category);
+        playPotionEffects(player, category);
+        launchFirework(player, category);
+        playSound(player, category);
     }
     
     private void playParticleEffects(Player player, String category) {
@@ -283,4 +360,57 @@ public class CatchEffects {
         return plugin.getConfig().getBoolean(broadcastKey, false);
     }
     
+    /**
+     * コンジットパワー用の特別なエフェクト表示
+     */
+    public void playConduitPowerEffects(Player player, String primaryCategory, FishingListener.FishingResult firstResult, FishingListener.FishingResult secondResult) {
+        // FishingResultから直接データを取得
+        String firstCategory = firstResult.category();
+        String secondCategory = secondResult.category();
+        String firstProb = firstResult.probabilityInfo();
+        String secondProb = secondResult.probabilityInfo();
+        
+        // アクションバー表示
+        displayConduitPowerProbability(player, firstCategory, firstProb, secondCategory, secondProb);
+        
+        // エフェクト実行
+        executeEffects(player, primaryCategory);
+        
+        // 全体通知（各カテゴリ個別に）
+        sendBroadcastAnnouncement(player, firstCategory);
+        sendBroadcastAnnouncement(player, secondCategory);
+    }
+    
+    /**
+     * コンジットパワー用の確率表示（アクションバー専用）
+     */
+    private void displayConduitPowerProbability(Player player, String firstCategory, String firstProb, String secondCategory, String secondProb) {
+        // カテゴリメッセージを表示
+        String categoryMessage = String.format("&b&l⚡ &e1回目: &6&l%s &7| &e2回目: &6&l%s &b&l⚡",
+            firstCategory.toUpperCase(), secondCategory.toUpperCase());
+        sendActionBarMessage(player, categoryMessage);
+        
+        // 確率情報をアニメーション表示
+        String probMessage = String.format("&71回目: %s &7| 2回目: %s",
+            firstProb != null ? firstProb : "", secondProb != null ? secondProb : "");
+        animateProbabilityInfo(player, probMessage, 30L);
+    }
+    
+    /**
+     * 全体通知のみを送信（確率表示なし）
+     */
+    private void sendBroadcastAnnouncement(Player player, String category) {
+        if (shouldBroadcastCategory(category)) {
+            String broadcastKey = "effects.announcements." + category;
+            String defaultBroadcastMessage = "&6" + player.getName() + "&eが&f" + category + "&eアイテムを釣り上げました！";
+            String broadcastMessage = plugin.getConfig().getString(broadcastKey, defaultBroadcastMessage);
+            String formattedBroadcastMessage = ChatColor.translateAlternateColorCodes('&', broadcastMessage.replace("%player%", player.getName()));
+            
+            // 全体通知
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                p.sendMessage(formattedBroadcastMessage);
+            }
+        }
+    }
+
 }

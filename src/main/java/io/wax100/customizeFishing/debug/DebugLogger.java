@@ -43,17 +43,10 @@ public class DebugLogger {
     }
     
     /**
-     * デバッグが有効かチェック
-     */
-    private boolean isDebugEnabled() {
-        return plugin.getConfig().getBoolean("debug", false);
-    }
-    
-    /**
      * デバッグログをファイルに書き込み
      */
-    public void writeToFile(String message) {
-        if (!isDebugEnabled()) return;
+    private void writeToFile(String message) {
+        // 常にファイルに出力（デバッグ設定を削除）
         
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(debugFile, true))) {
             String timestamp = dateFormat.format(new Date());
@@ -70,14 +63,14 @@ public class DebugLogger {
      */
     public void logFishingStart(Player player, boolean isOpenWater, String weather, 
                                boolean hasDolphinsGrace, String forcedCategory) {
-        writeToFile("=== FISHING EVENT START ===");
-        writeToFile(String.format(
+        logInfo("=== FISHING EVENT START ===");
+        logInfo(String.format(
             " Player: %s | OpenWater: %s | Weather: %s | Dolphins: %s",
             player.getName(), isOpenWater, weather, hasDolphinsGrace
         ));
         
         if (forcedCategory != null) {
-            writeToFile(" Using DEBUG ROD - Forced category: " + forcedCategory);
+            logInfo(" Using DEBUG ROD - Forced category: " + forcedCategory);
         }
     }
     
@@ -86,14 +79,14 @@ public class DebugLogger {
      */
     public void logTimingResult(long reactionTimeMs, TimingResult timingResult) {
         if (timingResult.hasTiming()) {
-            writeToFile(String.format(
+            logInfo(String.format(
                 " TIMING: %s (%dms) - Luck bonus: +%.1f",
                 timingResult.tier().name().toUpperCase(), 
                 reactionTimeMs, 
                 timingResult.luckBonus()
             ));
         } else {
-            writeToFile(String.format(
+            logInfo(String.format(
                 " TIMING: MISS (%dms) - No bonus",
                 reactionTimeMs
             ));
@@ -105,13 +98,13 @@ public class DebugLogger {
      */
     public void logLuckBreakdown(LuckResult luckResult) {
         double potionValue = luckResult.luckPotionLevel() * 0.5;
-        writeToFile(" LUCK BREAKDOWN:");
-        writeToFile(String.format(
+        logInfo(" LUCK BREAKDOWN:");
+        logInfo(String.format(
             "   LuckOfTheSea: %d | LuckPotion: %d(%.1f) | Equipment: %.1f",
             luckResult.luckOfTheSeaLevel(), luckResult.luckPotionLevel(), 
             potionValue, luckResult.equipmentLuck()
         ));
-        writeToFile(String.format(
+        logInfo(String.format(
             "   Weather: %.1f | Timing: %.1f | TOTAL: %.1f",
             luckResult.weatherLuck(), luckResult.timingLuck(), luckResult.getTotalLuck()
         ));
@@ -121,7 +114,7 @@ public class DebugLogger {
      * カテゴリ選択処理をログ出力
      */
     public void logCategorySelection(String selectedCategory, int totalCategories) {
-        writeToFile(String.format(
+        logInfo(String.format(
             " CATEGORY SELECTION: %s (from %d eligible categories)",
             selectedCategory, totalCategories
         ));
@@ -132,7 +125,7 @@ public class DebugLogger {
      */
     public void logCategoryDetails(String categoryName, int priority, double quality, 
                                   double baseChance, double adjustedChance, double totalLuck) {
-        writeToFile(String.format(
+        logInfo(String.format(
             "   [%s] Priority:%d Quality:%.1f Base:%.2f%% → Adjusted:%.0f (Luck:%.1f)",
             categoryName, priority, quality, baseChance, adjustedChance, totalLuck
         ));
@@ -142,7 +135,7 @@ public class DebugLogger {
      * アイテム置換をログ出力
      */
     public void logItemReplacement(String originalItem, String newItem, String lootTable) {
-        writeToFile(String.format(
+        logInfo(String.format(
             " ITEM REPLACEMENT: %s → %s (from %s)",
             originalItem, newItem, lootTable
         ));
@@ -153,32 +146,37 @@ public class DebugLogger {
      */
     public void logEquipmentLuck(double helmet, double chest, double legs, double boots, 
                                 double mainHand, double offHand, double total) {
-        writeToFile(" EQUIPMENT LUCK:");
-        writeToFile(String.format(
+        logInfo(" EQUIPMENT LUCK:");
+        logInfo(String.format(
             "   Helmet:%.1f Chest:%.1f Legs:%.1f Boots:%.1f",
             helmet, chest, legs, boots
         ));
-        writeToFile(String.format(
+        logInfo(String.format(
             "   MainHand:%.1f OffHand:%.1f → TOTAL:%.1f (max 4.0)",
             mainHand, offHand, total
         ));
     }
     
     /**
+     * 一般的な情報をログ出力
+     */
+    public void logInfo(String message) {
+        writeToFile(message);
+    }
+    
+    /**
      * エラーをログ出力
      */
     public void logError(String message) {
-        writeToFile("[ERROR] " + message);
-        // エラーのみコンソールにも出力
-        plugin.getLogger().severe("[CustomizeFishing ERROR] " + message);
+        logInfo("[ERROR] " + message);
     }
     
     /**
      * 釣り終了をログ出力
      */
     public void logFishingEnd() {
-        writeToFile("=== FISHING EVENT END ===");
-        writeToFile(""); // 空行で区切り
+        logInfo("=== FISHING EVENT END ===");
+        logInfo(""); // 空行で区切り
     }
     
 }

@@ -66,92 +66,51 @@ public class FishingListener implements Listener {
         }
 
         Location hookLocation = event.getHook().getLocation();
-
-        // タイミング判定とメッセージ表示
-        TimingResult timingResult = checkTiming(player);
-
-        boolean isOpenWater = FishingConditionChecker.isOpenWater(hookLocation);
-        String weather = "clear";
-        if (Objects.requireNonNull(hookLocation.getWorld()).isThundering()) {
-            weather = "thunder";
-        } else if (hookLocation.getWorld().hasStorm()) {
-            weather = "rain";
-        }
         
-        // Twilight Forest rainy_cloud の検出（ウキの上空32ブロック以内）
-        if (checkForTwilightRainyClouds(hookLocation)) {
-            weather = "rain";
-        }
-
-        boolean hasDolphinsGrace = player.hasPotionEffect(PotionEffectType.DOLPHINS_GRACE);
+        // コンジットパワーチェック
+        boolean hasConduitPower = player.hasPotionEffect(PotionEffectType.CONDUIT_POWER);
         
-        // LuckCalculatorで全ての幸運値を計算
-        LuckCalculator luckCalc = new LuckCalculator(plugin);
-        LuckResult luckResult = luckCalc.calculateTotalLuck(player, weather, timingResult);
-        
-        // デバッグ情報の出力
-        debugLogger.logFishingStart(player, isOpenWater, weather, hasDolphinsGrace, null);
-        debugLogger.logTimingResult(timingResult.reactionTimeMs(), timingResult);
-        debugLogger.logLuckBreakdown(luckResult);
-        String forcedCategory = null;
-        // デバッグロッドのチェック
-        ItemStack mainHand = player.getInventory().getItemInMainHand();
-        if (DebugFishingRod.isDebugRod(plugin, mainHand)) {
-            forcedCategory = DebugFishingRod.getForcedCategory(plugin, mainHand);
-            // デバッグ開始ログを再出力
-            debugLogger.logFishingStart(player, isOpenWater, weather, hasDolphinsGrace, forcedCategory);
-        }
-        String category;
-        if (forcedCategory != null) {
-            category = forcedCategory;
+        // コンジットパワーがある場合、両方の結果を同時に処理
+        if (hasConduitPower && plugin.getConfig().getBoolean("conduit_power.double_fishing", true)) {
+            // 両方の結果を保存するための準備
+            FishingResult firstResult = processFishingWithResult(player, itemEntity, hookLocation, false);
+            
+            // 新しいアイテムエンティティを作成
+            ItemStack bonusItem = new ItemStack(Material.COD); // デフォルトアイテム
+            Item bonusEntity = player.getWorld().dropItem(hookLocation, bonusItem);
+            bonusEntity.setPickupDelay(Integer.MAX_VALUE); // 自動拾いを無効化
+            
+            FishingResult secondResult = processFishingWithResult(player, bonusEntity, hookLocation, true);
+            
+            // 両方の結果を同時に表示
+            displayConduitPowerResults(player, firstResult, secondResult);
+            
+            // ボーナスアイテムをプレイヤーの位置に移動
+            bonusEntity.teleport(player.getLocation());
+            bonusEntity.setPickupDelay(0); // 拾えるように戻す
         } else {
-            category = determineCategoryFromConfig(luckResult, isOpenWater, weather, hasDolphinsGrace);
+            // 通常の1回の処理
+            processFishing(player, itemEntity, hookLocation, false);
         }
+    }
+    
+    /**
+     * 釣り処理のメイン部分
+     */
+    private void processFishing(Player player, Item itemEntity, Location hookLocation, boolean isConduitBonus) {
+        FishingResult result = processFishingCore(player, itemEntity, hookLocation, isConduitBonus);
         
-        // カテゴリ選択結果をログ出力
-        int eligibleCount = getEligibleCategoryCount(luckResult, isOpenWater, weather, hasDolphinsGrace);
-        debugLogger.logCategorySelection(category, eligibleCount);
-
-        String namespace = plugin.getConfig().getString("loot_tables.namespace", "customize_fishing");
-        String path = plugin.getConfig().getString("loot_tables.path", "gameplay/fishing");
-        NamespacedKey lootTableKey = NamespacedKey.fromString(namespace + ":" + path + "/" + category);
-        LootTable lootTable = plugin.getServer().getLootTable(Objects.requireNonNull(lootTableKey));
-
-        ItemStack originalItem = itemEntity.getItemStack().clone();
-
-        if (lootTable != null) {
-            LootContext.Builder contextBuilder = new LootContext.Builder(hookLocation)
-                    .killer(player)
-                    .lootedEntity(itemEntity)
-                    .luck((float) luckResult.getTotalLuck());
-
-            LootContext lootContext = contextBuilder.build();
-            Collection<ItemStack> loot = lootTable.populateLoot(random, lootContext);
-
-            if (!loot.isEmpty()) {
-                ItemStack selectedItem = loot.iterator().next();
-
-                // イルカの好意カテゴリでプレイヤーヘッドの場合、釣り人の顔に置換
-                selectedItem = PlayerHeadProcessor.processPlayerHead(selectedItem, player, category);
-
-                itemEntity.setItemStack(selectedItem);
-
-                debugLogger.logItemReplacement(
-                    getItemDisplayName(originalItem), 
-                    getItemDisplayName(selectedItem), 
-                    lootTableKey.toString()
-                );
-            }
-        } else {
-            // ルートテーブルが見つからない場合はエラー出力
-            debugLogger.logError("Loot table not found: " + lootTableKey);
-        }
-
         // 確率情報を計算
-        String probabilityInfo = calculateProbabilityInfo(category, luckResult, weather, timingResult);
+        String probabilityInfo = result.probabilityInfo();
+        
+        // コンジットパワーのメッセージを追加
+        if (!isConduitBonus && player.hasPotionEffect(PotionEffectType.CONDUIT_POWER) && 
+            plugin.getConfig().getBoolean("conduit_power.double_fishing", true)) {
+            probabilityInfo = (probabilityInfo.isEmpty() ? "" : probabilityInfo + " ") + "&b&l⚡ コンジットパワー x2 ⚡";
+        }
         
         // レア度別演出を実行
-        catchEffects.playCatchEffects(player, category, probabilityInfo);
+        catchEffects.playCatchEffects(player, result.category(), probabilityInfo);
         
         // デバッグ終了ログ
         debugLogger.logFishingEnd();
@@ -346,17 +305,20 @@ public class FishingListener implements Listener {
         
         // 宝釣りエンチャント
         if (luckResult.luckOfTheSeaLevel() > 0) {
-            bonusText.append(" &a宝釣りLv").append(luckResult.luckOfTheSeaLevel());
+            double luckOfTheSeaBonus = Math.min(10, luckResult.luckOfTheSeaLevel()) * 0.08;
+            bonusText.append(" &a宝釣り+").append(String.format("%.2f%%", luckOfTheSeaBonus));
         }
         
         // 幸運ポーション
         if (luckResult.luckPotionLevel() > 0) {
-            bonusText.append(" &b幸運ポーションLv").append(luckResult.luckPotionLevel());
+            double luckPotionBonus = Math.min(10, luckResult.luckPotionLevel()) * 0.05;
+            bonusText.append(" &b幸運+").append(String.format("%.2f%%", luckPotionBonus));
         }
         
         // 装備幸運
         if (luckResult.equipmentLuck() > 0) {
-            bonusText.append(" &d装備幸運+").append(String.format("%.1f", luckResult.equipmentLuck()));
+            double equipmentBonus = Math.min(6, luckResult.equipmentLuck()) * 0.1;
+            bonusText.append(" &d装備+").append(String.format("%.2f%%", equipmentBonus));
         }
         
         // 天気ボーナス
@@ -366,19 +328,19 @@ public class FishingListener implements Listener {
                 case "thunder" -> "雷雨";
                 default -> weather;
             };
-            bonusText.append(" &9").append(weatherName).append("+").append(String.format("%.1f", luckResult.weatherLuck()));
+            bonusText.append(" &9").append(weatherName).append("+").append(String.format("%.2f%%", luckResult.weatherLuck()));
         }
         
         // タイミングボーナス
-        if (luckResult.timingLuck() > 0 && timingResult.hasTiming()) {
+        if (timingResult != null && timingResult.hasTiming() && luckResult.timingLuck() > 0) {
             String timingName = switch (timingResult.tier().name().toLowerCase()) {
                 case "just" -> "JUST";
                 case "perfect" -> "PERFECT";
                 case "great" -> "GREAT";
                 case "good" -> "GOOD";
-                default -> timingResult.tier().name();
+                default -> timingResult.tier().name().toUpperCase();
             };
-            bonusText.append(" &6").append(timingName).append("+").append(String.format("%.1f", luckResult.timingLuck()));
+            bonusText.append(" &6").append(timingName).append("+").append(String.format("%.2f%%", luckResult.timingLuck()));
         }
         
         return probabilityText + bonusText.toString();
@@ -421,41 +383,162 @@ public class FishingListener implements Listener {
      * @return rainy_cloudが見つかった場合はtrue
      */
     private boolean checkForTwilightRainyClouds(Location hookLocation) {
-        try {
-            // 32ブロック半径の範囲で上空のみをチェック
-            for (int x = -32; x <= 32; x++) {
-                for (int z = -32; z <= 32; z++) {
-                    for (int y = 1; y <= 32; y++) {
-                        Location checkLocation = hookLocation.clone().add(x, y, z);
-                        Block block = checkLocation.getBlock();
-                        
-                        // Twilight Forest の rainy_cloud ブロックかチェック
-                        Material blockType = block.getType();
-                        String blockKey = blockType.getKey().toString();
-                        
-                        if ("twilightforest:rainy_cloud".equals(blockKey)) {
-                            if (plugin.getConfig().getBoolean("debug", false)) {
-                                plugin.getLogger().info(String.format(
-                                    " Found Twilight Forest rainy_cloud at %d, %d, %d - applying rain weather",
-                                    checkLocation.getBlockX(), checkLocation.getBlockY(), checkLocation.getBlockZ()
-                                ));
-                            }
-                            return true;
-                        }
-                    }
+            // ウキの真上のみをチェック（Y軸+1〜+32ブロック）
+            for (int y = 1; y <= 32; y++) {
+                Location checkLocation = hookLocation.clone().add(0, y, 0);
+                Block block = checkLocation.getBlock();
+                
+                // Twilight Forest の rainy_cloud ブロックかチェック
+                Material blockType = block.getType();
+                String blockKey = blockType.getKey().toString();
+                
+                if ("twilightforest:rainy_cloud".equals(blockKey)) {
+                    return true;
                 }
             }
-        } catch (Exception e) {
-            // Twilight Forest が存在しない場合やその他のエラーをキャッチ
-            if (plugin.getConfig().getBoolean("debug", false)) {
-                plugin.getLogger().info(" Error checking for Twilight Forest rainy clouds: " + e.getMessage());
-            }
-        }
-        
         return false;
     }
 
     private record CategoryData(String name, int priority, double quality, double chance) {
+    }
+    
+    /**
+     * 釣り結果を保存するレコード
+     */
+    public record FishingResult(String category, String probabilityInfo, ItemStack item) {
+    }
+    
+    /**
+     * 釣り処理のコア部分（共通処理）
+     */
+    private FishingResult processFishingCore(Player player, Item itemEntity, Location hookLocation, boolean isConduitBonus) {
+        // タイミング判定とメッセージ表示
+        TimingResult timingResult = checkTiming(player);
+
+        boolean isOpenWater = FishingConditionChecker.isOpenWater(hookLocation);
+        String weather = "clear";
+        if (Objects.requireNonNull(hookLocation.getWorld()).isThundering()) {
+            weather = "thunder";
+        } else if (hookLocation.getWorld().hasStorm()) {
+            weather = "rain";
+        }
+        
+        // Twilight Forest rainy_cloud の検出（ウキの上空32ブロック以内）
+        if (checkForTwilightRainyClouds(hookLocation)) {
+            weather = "rain";
+        }
+
+        boolean hasDolphinsGrace = player.hasPotionEffect(PotionEffectType.DOLPHINS_GRACE);
+        
+        // LuckCalculatorで全ての幸運値を計算
+        LuckCalculator luckCalc = new LuckCalculator(plugin);
+        LuckResult luckResult = luckCalc.calculateTotalLuck(player, weather, timingResult);
+        
+        // デバッグ情報の出力
+        if (isConduitBonus) {
+            debugLogger.logInfo("=== CONDUIT POWER: BONUS FISHING PROCESS ===");
+        }
+        debugLogger.logFishingStart(player, isOpenWater, weather, hasDolphinsGrace, null);
+        debugLogger.logTimingResult(timingResult.reactionTimeMs(), timingResult);
+        debugLogger.logLuckBreakdown(luckResult);
+        String forcedCategory = null;
+        // デバッグロッドのチェック
+        ItemStack mainHand = player.getInventory().getItemInMainHand();
+        if (DebugFishingRod.isDebugRod(plugin, mainHand)) {
+            forcedCategory = DebugFishingRod.getForcedCategory(plugin, mainHand);
+            // デバッグ開始ログを再出力
+            debugLogger.logFishingStart(player, isOpenWater, weather, hasDolphinsGrace, forcedCategory);
+        }
+        String category;
+        if (forcedCategory != null) {
+            category = forcedCategory;
+        } else {
+            category = determineCategoryFromConfig(luckResult, isOpenWater, weather, hasDolphinsGrace);
+        }
+        
+        // カテゴリ選択結果をログ出力
+        int eligibleCount = getEligibleCategoryCount(luckResult, isOpenWater, weather, hasDolphinsGrace);
+        debugLogger.logCategorySelection(category, eligibleCount);
+
+        String namespace = plugin.getConfig().getString("loot_tables.namespace", "customize_fishing");
+        String path = plugin.getConfig().getString("loot_tables.path", "gameplay/fishing");
+        NamespacedKey lootTableKey = NamespacedKey.fromString(namespace + ":" + path + "/" + category);
+        LootTable lootTable = plugin.getServer().getLootTable(Objects.requireNonNull(lootTableKey));
+
+        ItemStack originalItem = itemEntity.getItemStack().clone();
+        ItemStack selectedItem = originalItem;
+
+        if (lootTable != null) {
+            LootContext.Builder contextBuilder = new LootContext.Builder(hookLocation)
+                    .killer(player)
+                    .lootedEntity(itemEntity)
+                    .luck((float) luckResult.getTotalLuck());
+
+            LootContext lootContext = contextBuilder.build();
+            Collection<ItemStack> loot = lootTable.populateLoot(random, lootContext);
+
+            if (!loot.isEmpty()) {
+                selectedItem = loot.iterator().next();
+
+                // イルカの好意カテゴリでプレイヤーヘッドの場合、釣り人の顔に置換
+                selectedItem = PlayerHeadProcessor.processPlayerHead(selectedItem, player, category);
+
+                itemEntity.setItemStack(selectedItem);
+
+                debugLogger.logItemReplacement(
+                    getItemDisplayName(originalItem), 
+                    getItemDisplayName(selectedItem), 
+                    lootTableKey.toString()
+                );
+            }
+        } else {
+            // ルートテーブルが見つからない場合はエラー出力
+            debugLogger.logError("Loot table not found: " + lootTableKey);
+        }
+
+        // 確率情報を計算
+        String probabilityInfo = calculateProbabilityInfo(category, luckResult, weather, timingResult);
+        
+        // デバッグ: タイミング情報をログ出力
+        if (timingResult.hasTiming()) {
+            debugLogger.logInfo(String.format(" Timing Bonus Debug: tier=%s, luckBonus=%.2f", 
+                timingResult.tier().name(), timingResult.luckBonus()));
+        }
+        
+        return new FishingResult(category, probabilityInfo, selectedItem);
+    }
+    
+    /**
+     * 釣り処理を実行し、結果を返す
+     */
+    private FishingResult processFishingWithResult(Player player, Item itemEntity, Location hookLocation, boolean isConduitBonus) {
+        return processFishingCore(player, itemEntity, hookLocation, isConduitBonus);
+    }
+    
+    /**
+     * コンジットパワー時の両方の結果を同時に表示
+     */
+    private void displayConduitPowerResults(Player player, FishingResult first, FishingResult second) {
+        // エフェクトは両方のカテゴリで最もレアな方を使用
+        String primaryCategory = getHigherPriorityCategory(first.category(), second.category());
+        
+        // カスタムメッセージ表示とエフェクト実行
+        catchEffects.playConduitPowerEffects(player, primaryCategory, first, second);
+    }
+    
+    /**
+     * より優先度の高いカテゴリを返す
+     */
+    private String getHigherPriorityCategory(String cat1, String cat2) {
+        ConfigurationSection categoriesSection = plugin.getConfig().getConfigurationSection("categories");
+        if (categoriesSection == null) {
+            return cat1;
+        }
+        
+        int priority1 = categoriesSection.getInt(cat1 + ".priority", 999);
+        int priority2 = categoriesSection.getInt(cat2 + ".priority", 999);
+        
+        return priority1 <= priority2 ? cat1 : cat2;
     }
         
 }

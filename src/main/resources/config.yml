@@ -3,8 +3,9 @@
 # プラグインの有効/無効
 enabled: true
 
-# デバッグモード（詳細なログ出力）
-debug: true
+# コンジットパワー設定
+conduit_power:
+  double_fishing: true    # コンジットパワー時に釣れる数を2倍にする
 
 # メッセージ表示位置設定
 # subtitle: サブタイトル（画面中央下部/右寄り）
@@ -38,7 +39,7 @@ timing_system:
       bonus_multiplier: 0.8       # 80%
     good:
       max_time_ms: 750            # 750ms以内
-      bonus_multiplier: 0.5       # 50%
+      bonus_multiplier: 0.3       # 30%
 
 # 釣りカテゴリと条件設定
 # priority: 数値が小さいほど優先度が高い（先にチェックされる）
@@ -47,7 +48,7 @@ timing_system:
 categories:
   dolphins_grace:
     enabled: true
-    priority: 1
+    priority: 0
     quality: 0
     conditions:
       require_open_water: true        # 開水域が必要
@@ -58,14 +59,12 @@ categories:
 
   skgkyr:
     enabled: true
-    priority: 2
+    priority: 1
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 10
-      max_luck_of_the_sea: 10        # 宝釣り10ちょうどのみ
       min_luck_effect: 2
-      max_luck_effect: 2              # 幸運2ちょうどのみ
       weather:
         - "thunder"
     chance: 1
@@ -197,8 +196,8 @@ categories:
     quality: -1
     conditions:
       require_open_water: true       # 開水域不要
-      min_luck_of_the_sea: 0         # エンチャント不要
-      min_luck_effect: 0             # エフェクト不要
+      max_luck_of_the_sea: 10
+      max_luck_effect: 3
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -211,8 +210,8 @@ categories:
     quality: -2
     conditions:
       require_open_water: false       # 開水域不要
-      min_luck_of_the_sea: 0         # エンチャント不要
-      min_luck_effect: 0             # エフェクト不要
+      max_luck_of_the_sea: 10
+      max_luck_effect: 3
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -225,8 +224,8 @@ categories:
     quality: -3
     conditions:
       require_open_water: false       # 開水域不要
-      min_luck_of_the_sea: 0         # エンチャント不要
-      min_luck_effect: 0             # エフェクト不要
+      max_luck_of_the_sea: 10
+      max_luck_effect: 3
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -491,6 +490,7 @@ effects:
   action_bar_messages:
     skgkyr: "&b&l✨ チェキ券を釣り上げました！ &b&l✨"
     god: "&5&l✦ 神レベルアイテムを釣り上げました！ &5&l✦"
+    conduit_double: "&b&l⚡ コンジットパワー x2 ⚡"
     eternal: "&5&l★ エターナルアイテムを釣り上げました！ &5&l★"
     exotic: "&c&l☆ エキゾチックアイテムを釣り上げました！ &c&l☆"
     relic: "&3&l◆ レリックアイテムを釣り上げました！ &3&l◆"

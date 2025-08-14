@@ -1,0 +1,34 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "チェキ券",
+                "italic": false,
+                "color": "aqua",
+                "bold": true,
+                "underlined": true
+              }
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "08/31まで",
+                  "italic": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

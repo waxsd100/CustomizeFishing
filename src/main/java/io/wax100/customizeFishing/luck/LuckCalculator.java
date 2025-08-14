@@ -14,7 +14,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * 幸運値の計算を一元管理するクラス
@@ -44,6 +46,9 @@ public class LuckCalculator {
         // 幸運ポーション効果
         int luckPotionLevel = calculateLuckPotion(player);
 
+        // コンジットパワーボーナス
+        int conduitLevel = getConduitLevel(player);
+
         // 装備の幸運属性
         double equipmentLuck = calculateEquipmentLuck(player);
         
@@ -54,11 +59,12 @@ public class LuckCalculator {
         double timingLuck = timingResult.luckBonus();
         
         return new LuckResult(
-            luckOfTheSeaLevel,
-            luckPotionLevel,
-            equipmentLuck,
-            weatherLuck,
-            timingLuck
+                luckOfTheSeaLevel,
+                luckPotionLevel,
+                conduitLevel,
+                equipmentLuck,
+                weatherLuck,
+                timingLuck
         );
     }
     
@@ -153,13 +159,13 @@ public class LuckCalculator {
      */
     private double getItemLuck(ItemStack item, EquipmentSlot slot) {
         if (item == null || !item.hasItemMeta()) {
-            debugLogger.writeToFile("     Item is null or has no meta for slot: " + slot);
+            debugLogger.logInfo("     Item is null or has no meta for slot: " + slot);
             return 0;
         }
         
         ItemMeta meta = item.getItemMeta();
         if (meta == null) {
-            debugLogger.writeToFile("     ItemMeta is null for slot: " + slot);
+            debugLogger.logInfo("     ItemMeta is null for slot: " + slot);
             return 0;
         }
         
@@ -168,19 +174,19 @@ public class LuckCalculator {
         if (meta.hasDisplayName()) {
             itemName = meta.getDisplayName();
         }
-        debugLogger.writeToFile("     Checking item: " + itemName + " at slot: " + slot);
+        debugLogger.logInfo("     Checking item: " + itemName + " at slot: " + slot);
         
         if (!meta.hasAttributeModifiers()) {
-            debugLogger.writeToFile("     Item has no attribute modifiers for slot: " + slot);
+            debugLogger.logInfo("     Item has no attribute modifiers for slot: " + slot);
             return 0;
         }
         
         // 全属性修飾子をログ出力
         var allModifiers = meta.getAttributeModifiers();
         if (allModifiers != null && !allModifiers.isEmpty()) {
-            debugLogger.writeToFile("     All attribute modifiers:");
-            for (var entry : allModifiers.entries()) {
-                debugLogger.writeToFile(String.format(
+            debugLogger.logInfo("     All attribute modifiers:");
+            for (Map.Entry<Attribute, AttributeModifier> entry : allModifiers.entries()) {
+                debugLogger.logInfo(String.format(
                     "       Attribute: %s, Modifier: %s = %.3f (Operation: %s, Slot: %s)",
                     entry.getKey().name(), entry.getValue().getName(), 
                     entry.getValue().getAmount(), entry.getValue().getOperation(), 
@@ -188,7 +194,7 @@ public class LuckCalculator {
                 ));
             }
         } else {
-            debugLogger.writeToFile("     No attribute modifiers found");
+            debugLogger.logInfo("     No attribute modifiers found");
         }
         
         // Minecraftの属性計算仕様に従って計算
@@ -204,7 +210,7 @@ public class LuckCalculator {
         
         var modifiers = meta.getAttributeModifiers(Attribute.GENERIC_LUCK);
         if (modifiers != null && !modifiers.isEmpty()) {
-            debugLogger.writeToFile("     Found " + modifiers.size() + " luck modifiers");
+            debugLogger.logInfo("     Found " + modifiers.size() + " luck modifiers");
             
             // まず ADD_NUMBER を処理
             for (AttributeModifier modifier : modifiers) {
@@ -212,7 +218,7 @@ public class LuckCalculator {
                     double modifierValue = modifier.getAmount();
                     
                     if (modifier.getOperation() == AttributeModifier.Operation.ADD_NUMBER) {
-                        debugLogger.writeToFile(String.format(
+                        debugLogger.logInfo(String.format(
                             "     ADD_NUMBER modifier: %s = %.3f",
                             modifier.getName(), modifierValue
                         ));
@@ -227,7 +233,7 @@ public class LuckCalculator {
                     double modifierValue = modifier.getAmount();
                     
                     if (modifier.getOperation() == AttributeModifier.Operation.ADD_SCALAR) {
-                        debugLogger.writeToFile(String.format(
+                        debugLogger.logInfo(String.format(
                             "     ADD_SCALAR modifier: %s = %.3f (%.0f%%)",
                             modifier.getName(), modifierValue, modifierValue * 100
                         ));
@@ -244,7 +250,7 @@ public class LuckCalculator {
                     double modifierValue = modifier.getAmount();
                     
                     if (modifier.getOperation() == AttributeModifier.Operation.MULTIPLY_SCALAR_1) {
-                        debugLogger.writeToFile(String.format(
+                        debugLogger.logInfo(String.format(
                             "     MULTIPLY_SCALAR_1 modifier: %s = %.3f (×%.1f)",
                             modifier.getName(), modifierValue, (1 + modifierValue)
                         ));
@@ -255,7 +261,7 @@ public class LuckCalculator {
                 }
             }
         } else {
-            debugLogger.writeToFile("     No GENERIC_LUCK modifiers found for slot: " + slot);
+            debugLogger.logInfo("     No GENERIC_LUCK modifiers found for slot: " + slot);
         }
         
         // Minecraft式の計算順序:
@@ -266,19 +272,19 @@ public class LuckCalculator {
         double step2 = step1 * (1 + addScalar);  // ADD_SCALARはベース値に対するパーセント
         double finalLuck = step2 * multiplyScalar;
         
-        debugLogger.writeToFile(String.format(
+        debugLogger.logInfo(String.format(
             "     Calculation steps:",
             baseLuck, addNumber, step1
         ));
-        debugLogger.writeToFile(String.format(
+        debugLogger.logInfo(String.format(
             "       Step 1: base(%.1f) + ADD_NUMBER(%.3f) = %.3f",
             baseLuck, addNumber, step1
         ));
-        debugLogger.writeToFile(String.format(
+        debugLogger.logInfo(String.format(
             "       Step 2: %.3f × (1 + ADD_SCALAR(%.3f)) = %.3f",
             step1, addScalar, step2
         ));
-        debugLogger.writeToFile(String.format(
+        debugLogger.logInfo(String.format(
             "       Step 3: %.3f × MULTIPLY_SCALAR_1(%.3f) = %.3f",
             step2, multiplyScalar, finalLuck
         ));
@@ -291,6 +297,17 @@ public class LuckCalculator {
      */
     private double calculateWeatherLuck(String weather) {
         return plugin.getConfig().getDouble("weather_luck." + weather, 0.0);
+    }
+    
+    /**
+     * コンジットパワーによる幸運ボーナスを計算
+     */
+    private int getConduitLevel(Player player) {
+        int conduitLevel = 0;
+        if (player.hasPotionEffect(PotionEffectType.CONDUIT_POWER)) {
+            conduitLevel = Objects.requireNonNull(player.getPotionEffect(PotionEffectType.CONDUIT_POWER)).getAmplifier() + 1;
+        }
+        return conduitLevel;
     }
     
     /**
@@ -312,9 +329,8 @@ public class LuckCalculator {
             String configPath = "timing_system.tiers." + tierName;
             double maxTimeMs = plugin.getConfig().getDouble(configPath + ".max_time_ms", Double.MAX_VALUE);
             double bonusMultiplier = plugin.getConfig().getDouble(configPath + ".bonus_multiplier", 0);
-
-            if (reactionTimeMs <= maxTimeMs) {
-                TimingTier tier = new TimingTier(tierName, maxTimeMs, bonusMultiplier);
+            TimingTier tier = new TimingTier(tierName, maxTimeMs, bonusMultiplier);
+            if (tier.matches(reactionTimeMs)) {
                 double luckBonus = tier.calculateLuckBonus(baseLuckBonus);
                 return TimingResult.success(tier, reactionTimeMs, luckBonus);
             }
