@@ -390,10 +390,19 @@ public class CatchEffects {
             firstCategory.toUpperCase(), secondCategory.toUpperCase());
         sendActionBarMessage(player, categoryMessage);
         
-        // 確率情報をアニメーション表示
-        String probMessage = String.format("&71回目: %s &7| 2回目: %s",
-            firstProb != null ? firstProb : "", secondProb != null ? secondProb : "");
-        animateProbabilityInfo(player, probMessage, 30L);
+        // 1回目の確率情報を表示（1.5秒後）
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            String firstProbMessage = String.format("&e【1回目】 &6%s &7%s", 
+                firstCategory.toUpperCase(), firstProb != null ? firstProb : "");
+            sendActionBarMessage(player, firstProbMessage);
+        }, 30L);
+        
+        // 2回目の確率情報を表示（3秒後）
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            String secondProbMessage = String.format("&e【2回目】 &6%s &7%s", 
+                secondCategory.toUpperCase(), secondProb != null ? secondProb : "");
+            sendActionBarMessage(player, secondProbMessage);
+        }, 60L);
     }
     
     /**
