@@ -1,0 +1,674 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,double_drop:1b,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "yellow"},
+                {"text": "双", "italic": false, "bold": true, "color": "gold"},
+                {"text": "称の祝福", "italic": false, "color": "yellow"},
+                {"text": "牌", "italic": false, "color": "dark_green"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "yellow"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "このアイテムを持った状態で敵を倒すと", "italic": false, "color": "white"},
+                [
+                  "",
+                  {"text": "いつもの", "italic": false, "color": "white"},
+                  {"text": "2倍", "italic": false, "color": "red"},
+                  {"text": "アイテムを落とすようになる", "italic": false, "color": "white"}
+                ],
+                "",
+                [
+                  "",
+                  {"text": "両手で持っていると", "italic": false, "color": "white"},
+                  {"text": "4倍", "italic": false, "underlined": true, "color": "red"},
+                  {"text": "アイテムを落とす", "italic": false, "color": "white"}
+                ]
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "blessing_armor",
+                  "amount": 5,
+                  "operation": "multiply_base",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "blessing_health",
+                  "amount": 10,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_knockback",
+                  "name": "blessing_knockback",
+                  "amount": 10,
+                  "operation": "multiply_total",
+                  "slot": "mainhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "blessing_damage",
+                  "amount": 5,
+                  "operation": "multiply_total",
+                  "slot": "mainhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "gray"},
+                {"text": "闘気の祝福牌", "italic": false, "color": "red"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると闘気を纏い、攻撃力が上がる。", "italic": false, "color": "white"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "fighting_spirit_damage",
+                  "amount": 10,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_knockback",
+                  "name": "fighting_spirit_knockback",
+                  "amount": 10,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_purple"},
+                {"text": "重撃の祝福牌", "italic": false, "color": "dark_red"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_purple"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると体が重くなり、ノックバック耐性が上がる。", "italic": false, "color": "white"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.knockback_resistance",
+                  "name": "heavy_strike_resistance",
+                  "amount": 10,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "heavy_strike_toughness",
+                  "amount": 2,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "yellow"},
+                {"text": "生命の祝福牌", "italic": false, "color": "dark_green"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "yellow"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると体力が溢れ、最大体力が上がる。", "italic": false, "color": "white"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "life_blessing_health",
+                  "amount": 20,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "green"},
+                {"text": "幸福の祝福牌", "italic": false, "color": "gold"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "green"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると幸せを引き寄せて、幸運になる。", "italic": false, "color": "white"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "luck_blessing",
+                  "amount": 2,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "red"},
+                {"text": "鋼鉄の祝福牌", "italic": false, "color": "gray"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "red"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると体が硬化して、防御力が上がる。", "italic": false, "color": "white"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "steel_blessing_armor",
+                  "amount": 10,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "steel_blessing_toughness",
+                  "amount": 20,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_aqua"},
+                {"text": "迅速の祝福牌", "italic": false, "color": "blue"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_aqua"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると足が軽くなり移動速度が上がる。", "italic": false, "color": "blue"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "name": "swiftness_blessing_speed",
+                  "amount": 2,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "name": "swiftness_blessing_attack_speed",
+                  "amount": 1024,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_red"},
+                {"text": "破", "italic": false, "bold": true, "color": "black"},
+                {"text": "滅の呪印", "italic": false, "color": "dark_red"},
+                {"text": "牌", "italic": false, "color": "dark_gray"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_red"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "このアイテムを持った状態で敵を倒すと", "italic": false, "color": "gray"},
+                [
+                  "",
+                  {"text": "いつもの", "italic": false, "color": "gray"},
+                  {"text": "半分", "italic": false, "color": "dark_red"},
+                  {"text": "のアイテムしか落とさなくなる", "italic": false, "color": "gray"}
+                ],
+                "",
+                [
+                  "",
+                  {"text": "両手で持っていると", "italic": false, "color": "gray"},
+                  {"text": "1/4", "italic": false, "underlined": true, "color": "dark_red"},
+                  {"text": "しかアイテムを落とさない", "italic": false, "color": "gray"}
+                ],
+                "",
+                {"text": "※このアイテムは死亡時に消失します", "italic": false, "color": "red"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "curse_armor",
+                  "amount": -5,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "curse_health",
+                  "amount": -10,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "curse_damage",
+                  "amount": -0.5,
+                  "operation": "multiply_total",
+                  "slot": "mainhand"
+                },
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "name": "curse_slowness",
+                  "amount": -0.05,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_gray"},
+                {"text": "弱気の呪印牌", "italic": false, "color": "dark_red"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると気力が削がれ、攻撃力が下がる。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "weakness_curse_damage",
+                  "amount": -10,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "name": "weakness_curse_speed",
+                  "amount": -2,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_purple"},
+                {"text": "軽撃の呪印牌", "italic": false, "color": "red"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_purple"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると体が軽くなり、吹き飛ばされやすくなる。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.knockback_resistance",
+                  "name": "light_curse_resistance",
+                  "amount": -1,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "light_curse_toughness",
+                  "amount": -5,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_red"},
+                {"text": "死の呪印牌", "italic": false, "color": "black"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_red"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると体力が枯れ、最大体力が下がる。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "death_curse_health",
+                  "amount": -18,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_green"},
+                {"text": "不運の呪印牌", "italic": false, "color": "dark_gray"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_green"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると不幸を引き寄せて、不運になる。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "bad_luck_curse",
+                  "amount": -1024,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_red"},
+                {"text": "脆弱の呪印牌", "italic": false, "color": "red"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_red"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると体が脆くなり、防御力が下がる。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "fragile_curse_armor",
+                  "amount": -10,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "fragile_curse_toughness",
+                  "amount": -20,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_blue"},
+                {"text": "鈍重の呪印牌", "italic": false, "color": "dark_gray"},
+                {"text": "|||", "italic": false, "obfuscated": true, "color": "dark_blue"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると足が重くなり移動速度が下がる。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "name": "slowness_curse_speed",
+                  "amount": -0.08,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "name": "slowness_curse_attack_speed",
+                  "amount": -3,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:gameplay/fishing/god"
+}

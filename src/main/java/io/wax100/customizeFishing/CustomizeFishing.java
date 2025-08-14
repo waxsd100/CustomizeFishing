@@ -4,6 +4,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import io.wax100.customizeFishing.listeners.FishingListener;
 import io.wax100.customizeFishing.commands.CustomizeFishingCommand;
 
+import java.util.Objects;
+
 public final class CustomizeFishing extends JavaPlugin {
 
     @Override
@@ -12,8 +14,8 @@ public final class CustomizeFishing extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FishingListener(this), this);
         
         CustomizeFishingCommand commandExecutor = new CustomizeFishingCommand(this);
-        getCommand("customizefishing").setExecutor(commandExecutor);
-        getCommand("customizefishing").setTabCompleter(commandExecutor);
+        Objects.requireNonNull(getCommand("customizefishing")).setExecutor(commandExecutor);
+        Objects.requireNonNull(getCommand("customizefishing")).setTabCompleter(commandExecutor);
         
         getLogger().info("CustomizeFishing has been enabled!");
     }

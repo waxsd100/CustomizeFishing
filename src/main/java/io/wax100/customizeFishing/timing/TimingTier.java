@@ -6,8 +6,7 @@ package io.wax100.customizeFishing.timing;
 public record TimingTier(
     String name,
     double maxTimeMs,
-    double bonusMultiplier,
-    String message
+    double bonusMultiplier
 ) {
     
     /**

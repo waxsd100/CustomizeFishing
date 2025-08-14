@@ -6,37 +6,39 @@ enabled: true
 # デバッグモード（詳細なログ出力）
 debug: true
 
+# メッセージ表示位置設定
+# subtitle: サブタイトル（画面中央下部/右寄り）
+# title: タイトル（画面中央上部）  
+# action_bar: アクションバー（ホットバー上部）
+message_display_type: subtitle
+
 # 天気による幸運ボーナス
 # 各天気時に追加される幸運値
 weather_luck:
   clear: 0.0      # 晴れ: ボーナスなし
-  rain: 0.5       # 雨: +0.5幸運
-  thunder: 1.0    # 雷雨: +1.0幸運
+  rain: 0.4       # 雨: +0.4幸運
+  thunder: 0.7    # 雷雨: +0.7幸運
 
 # タイミングシステム設定
 # 浮きが沈んでからの反応時間によるボーナス
 timing_system:
   enabled: true                   # タイミングシステムの有効/無効
-  base_luck_bonus: 1.5           # ベースの幸運ボーナス
+  base_luck_bonus: 1.0           # ベースの幸運ボーナス
   
   # タイミングティア設定（ミリ秒とボーナス倍率）
   tiers:
-    critical_perfect:
+    just:
       max_time_ms: 16.67          # 16.67ms以内
-      bonus_multiplier: 1.2       # 120% (PERFECTより20%高い)
-      message: "&d&l✨ CRITICAL PERFECT! ✨"  # ピンク色
+      bonus_multiplier: 1.4       # 140% (PERFECTより40%高い)
     perfect:
       max_time_ms: 50.0           # 50ms以内
       bonus_multiplier: 1.0       # 100%
-      message: "&6&l★ PERFECT! ★"        # ゴールド色
     great:
       max_time_ms: 300            # 300ms以内
       bonus_multiplier: 0.8       # 80%
-      message: "&a&l◆ GREAT! ◆"          # 緑色
     good:
       max_time_ms: 750            # 750ms以内
       bonus_multiplier: 0.5       # 50%
-      message: "&b&l○ GOOD! ○"           # 水色
 
 # 釣りカテゴリと条件設定
 # priority: 数値が小さいほど優先度が高い（先にチェックされる）
@@ -53,11 +55,50 @@ categories:
       weather:
         - "clear"                     # 晴れ天候限定
     chance: 100.0
-    
+
+  skgkyr:
+    enabled: true
+    priority: 2
+    quality: 1
+    conditions:
+      require_open_water: true        # 開水域が必要
+      min_luck_of_the_sea: 10
+      max_luck_of_the_sea: 10        # 宝釣り10ちょうどのみ
+      min_luck_effect: 2
+      max_luck_effect: 2              # 幸運2ちょうどのみ
+      weather:
+        - "thunder"
+    chance: 1
+
   god:
     enabled: true
     priority: 2
-    quality: 5
+    quality: 1
+    conditions:
+      require_open_water: true        # 開水域が必要
+      min_luck_of_the_sea: 6
+      min_luck_effect: 2
+      weather:
+        - "rain"                      # 雨または雷雨限定
+        - "thunder"
+    chance: 0.005
+    
+  eternal:
+    enabled: false
+    priority: 3
+    quality: 1
+    conditions:
+      require_open_water: true        # 開水域が必要
+      min_luck_of_the_sea: 8         # 宝釣りレベル8以上
+      min_luck_effect: 3             # 幸運エフェクトレベル3以上
+      weather:
+        - "thunder"                   # 雷雨限定
+    chance: 0.01
+    
+  exotic:
+    enabled: false
+    priority: 4
+    quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 7         # 宝釣りレベル7以上
@@ -67,10 +108,37 @@ categories:
         - "thunder"
     chance: 0.05
     
+  relic:
+    enabled: false
+    priority: 5
+    quality: 1
+    conditions:
+      require_open_water: true        # 開水域が必要
+      min_luck_of_the_sea: 7         # 宝釣りレベル7以上
+      min_luck_effect: 2             # 幸運エフェクトレベル2以上
+      weather:
+        - "rain"                      # 雨または雷雨限定
+        - "thunder"
+    chance: 0.1
+    
+  mythic:
+    enabled: false
+    priority: 6
+    quality: 1
+    conditions:
+      require_open_water: true        # 開水域が必要
+      min_luck_of_the_sea: 6         # 宝釣りレベル6以上
+      min_luck_effect: 2             # 幸運エフェクトレベル2以上
+      weather:
+        - "clear"                     # 全天候対応
+        - "rain"
+        - "thunder"
+    chance: 0.5
+    
   legendary:
     enabled: true
-    priority: 3
-    quality: 4
+    priority: 7
+    quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 6         # 宝釣りレベル6以上
@@ -83,8 +151,8 @@ categories:
     
   epic:
     enabled: true
-    priority: 4
-    quality: 3
+    priority: 8
+    quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 4         # 宝釣りレベル4以上
@@ -97,8 +165,8 @@ categories:
     
   rare:
     enabled: true
-    priority: 5
-    quality: 2
+    priority: 9
+    quality: 0
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 3         # 宝釣りレベル3以上
@@ -109,12 +177,26 @@ categories:
         - "thunder"
     chance: 10.0
     
+  uncommon:
+    enabled: false
+    priority: 10
+    quality: 0
+    conditions:
+      require_open_water: true       # 開水域不要
+      min_luck_of_the_sea: 0         # エンチャント不要
+      min_luck_effect: 0             # エフェクト不要
+      weather:
+        - "clear"                     # 全天候対応
+        - "rain"
+        - "thunder"
+    chance: 20.0
+    
   common:
     enabled: true
-    priority: 6
+    priority: 11
     quality: -1
     conditions:
-      require_open_water: false       # 開水域不要
+      require_open_water: true       # 開水域不要
       min_luck_of_the_sea: 0         # エンチャント不要
       min_luck_effect: 0             # エフェクト不要
       weather:
@@ -125,7 +207,7 @@ categories:
     
   fish:
     enabled: true
-    priority: 7
+    priority: 12
     quality: -2
     conditions:
       require_open_water: false       # 開水域不要
@@ -135,11 +217,11 @@ categories:
         - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
-    chance: 40
+    chance: 60
     
   junk:
     enabled: true
-    priority: 8
+    priority: 13
     quality: -3
     conditions:
       require_open_water: false       # 開水域不要
@@ -164,12 +246,42 @@ effects:
   # パーティクルエフェクト設定
   particles:
     enabled: true                         # パーティクル効果の有効/無効
+    skgkyr:
+      primary: "END_ROD"
+      secondary: "TOTEM"
+      primary_count: 100
+      secondary_count: 60
+      spread: 3.5
     god:
       primary: "DRAGON_BREATH"            # メインパーティクル
       secondary: "END_ROD"                # サブパーティクル
-      primary_count: 50                   # メインパーティクル数
-      secondary_count: 30                 # サブパーティクル数
-      spread: 2.0                         # パーティクル拡散範囲
+      primary_count: 80                   # メインパーティクル数
+      secondary_count: 50                 # サブパーティクル数
+      spread: 3.0                         # パーティクル拡散範囲
+    eternal:
+      primary: "SOUL_FIRE_FLAME"
+      secondary: "REVERSE_PORTAL"
+      primary_count: 60
+      secondary_count: 40
+      spread: 2.5
+    exotic:
+      primary: "SOUL_FIRE_FLAME"
+      secondary: "REVERSE_PORTAL"
+      primary_count: 50
+      secondary_count: 30
+      spread: 2.0
+    relic:
+      primary: "PORTAL"
+      secondary: "ENCHANTMENT_TABLE"
+      primary_count: 45
+      secondary_count: 25
+      spread: 1.8
+    mythic:
+      primary: "TOTEM"
+      secondary: "SPELL_MOB"
+      primary_count: 40
+      secondary_count: 25
+      spread: 1.8
     legendary:
       primary: "TOTEM"
       secondary: "ENCHANTMENT_TABLE"
@@ -188,6 +300,12 @@ effects:
       primary_count: 25
       secondary_count: 15
       spread: 1.2
+    uncommon:
+      primary: "COMPOSTER"
+      secondary: "VILLAGER_HAPPY"
+      primary_count: 20
+      secondary_count: 10
+      spread: 1.0
     dolphins_grace:
       primary: "DOLPHIN"
       secondary: "WATER_BUBBLE"
@@ -198,10 +316,30 @@ effects:
   # ポーションエフェクト設定
   potion_effects:
     enabled: true                         # ポーション効果の有効/無効
+    skgkyr:
+      effect: "HERO_OF_THE_VILLAGE"
+      duration: 300
+      amplifier: 2
     god:
       effect: "GLOWING"                   # エフェクトタイプ
-      duration: 100                       # 持続時間（tick）
-      amplifier: 0                        # 効果の強さ（0=レベル1）
+      duration: 200                       # 持続時間（tick）
+      amplifier: 1                        # 効果の強さ（0=レベル1）
+    eternal:
+      effect: "REGENERATION"
+      duration: 120
+      amplifier: 1
+    exotic:
+      effect: "REGENERATION"
+      duration: 100
+      amplifier: 1
+    relic:
+      effect: "ABSORPTION"
+      duration: 80
+      amplifier: 0
+    mythic:
+      effect: "SPEED"
+      duration: 60
+      amplifier: 1
     legendary:
       effect: "HERO_OF_THE_VILLAGE"
       duration: 60
@@ -210,6 +348,13 @@ effects:
   # 花火エフェクト設定
   fireworks:
     enabled: true                         # 花火効果の有効/無効
+    skgkyr:
+      colors: ["AQUA", "WHITE"]
+      fade_colors: ["PURPLE", "BLUE"]
+      type: "STAR"
+      flicker: true
+      trail: true
+      power: 3
     god:
       colors: ["PURPLE", "WHITE"]         # 花火の色
       fade_colors: ["GREEN", "LIME"]              # フェード色
@@ -217,6 +362,34 @@ effects:
       flicker: true                       # 点滅効果
       trail: true                         # 軌跡効果
       power: 3                            # 花火の高度（1-3）
+    eternal:
+      colors: ["PURPLE", "BLUE"]
+      fade_colors: ["WHITE"]
+      type: "STAR"
+      flicker: true
+      trail: true
+      power: 3
+    exotic:
+      colors: ["RED", "ORANGE"]
+      fade_colors: ["YELLOW"]
+      type: "BURST"
+      flicker: true
+      trail: true
+      power: 3
+    relic:
+      colors: ["BLUE", "AQUA"]
+      fade_colors: ["WHITE"]
+      type: "CREEPER"
+      flicker: true
+      trail: false
+      power: 2
+    mythic:
+      colors: ["GREEN", "LIME"]
+      fade_colors: ["YELLOW"]
+      type: "BALL_LARGE"
+      flicker: false
+      trail: true
+      power: 2
     legendary:
       colors: ["YELLOW", "ORANGE"]
       fade_colors: ["WHITE"]
@@ -235,10 +408,30 @@ effects:
   # サウンドエフェクト設定
   sounds:
     enabled: true                         # サウンド効果の有効/無効
+    skgkyr:
+      sound: "UI_TOAST_CHALLENGE_COMPLETE"
+      volume: 1.5
+      pitch: 0.8
     god:
       sound: "ENTITY_ENDER_DRAGON_GROWL"  # サウンド名
-      volume: 0.8                         # 音量（0.0-2.0）
-      pitch: 0.5                          # ピッチ（0.5-2.0）
+      volume: 1.2                         # 音量（0.0-2.0）
+      pitch: 0.3                          # ピッチ（0.5-2.0）
+    eternal:
+      sound: "ENTITY_WITHER_SPAWN"
+      volume: 1.0
+      pitch: 0.5
+    exotic:
+      sound: "ENTITY_WITHER_SPAWN"
+      volume: 0.8
+      pitch: 1.0
+    relic:
+      sound: "ENTITY_ELDER_GUARDIAN_CURSE"
+      volume: 0.8
+      pitch: 1.2
+    mythic:
+      sound: "ENTITY_EVOKER_PREPARE_SUMMON"
+      volume: 0.8
+      pitch: 1.5
     legendary:
       sound: "ENTITY_PLAYER_LEVELUP"
       volume: 1.0
@@ -251,6 +444,10 @@ effects:
       sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
       volume: 1.0
       pitch: 2.0
+    uncommon:
+      sound: "ENTITY_ITEM_PICKUP"
+      volume: 1.0
+      pitch: 1.5
     dolphins_grace:
       sound: "ENTITY_DOLPHIN_PLAY"
       volume: 1.2
@@ -258,10 +455,16 @@ effects:
   
   # 全体通知設定 - どのカテゴリを全プレイヤーに通知するか
   broadcast_categories:
+    skgkyr: true                          # skgkyr → 全体通知する
     god: true                             # 神レベル → 全体通知する
+    eternal: true                         # エターナル → 全体通知する
+    exotic: true                          # エキゾチック → 全体通知する
+    relic: true                           # レリック → 全体通知する
+    mythic: true                          # ミシック → 全体通知する
     legendary: true                       # 伝説 → 全体通知する
     epic: true                            # エピック → 全体通知する
     rare: false                           # レア → 個人のみ
+    uncommon: false                       # アンコモン → 個人のみ
     dolphins_grace: false                  # イルカの好意 → 個人のみ
     common: false                         # 一般 → 個人のみ
     fish: false                           # 魚 → 個人のみ
@@ -269,10 +472,16 @@ effects:
   
   # 全体通知メッセージ設定（他のプレイヤーに表示）
   announcements:
+    skgkyr: "&b&l✨ &f%player% &b&lがチェキ券を釣り上げました！ &b&l✨"
     god: "&5&l✦ &f%player% &d&lが神レベルアイテムを釣り上げました！ &5&l✦"
+    eternal: "&5&l★ &f%player% &d&lがエターナルアイテムを釣り上げました！ &5&l★"
+    exotic: "&c&l☆ &f%player% &c&lがエキゾチックアイテムを釣り上げました！ &c&l☆"
+    relic: "&3&l◆ &f%player% &3&lがレリックアイテムを釣り上げました！ &3&l◆"
+    mythic: "&2&l✸ &f%player% &2&lがミシックアイテムを釣り上げました！ &2&l✸"
     legendary: "&6&l★ &f%player% &e&lが伝説アイテムを釣り上げました！ &6&l★"
     epic: "&b&l◆ &f%player% &b&lがエピックアイテムを釣り上げました！ &b&l◆"
     rare: "&a&l♦ &f%player% &a&lがレアアイテムを釣り上げました！ &a&l♦"
+    uncommon: "&e&l○ &f%player% &e&lがアンコモンアイテムを釣り上げました！ &e&l○"
     dolphins_grace: "&b&l🐬 &f%player% &b&lがイルカの恵みを受けました！ &b&l🐬"
     common: "&7%player%がアイテムを釣り上げました"
     fish: "&7%player%が魚を釣り上げました"
@@ -280,15 +489,21 @@ effects:
   
   # アクションバーメッセージ設定（釣った本人に表示）
   action_bar_messages:
+    skgkyr: "&b&l✨ チェキ券を釣り上げました！ &b&l✨"
     god: "&5&l✦ 神レベルアイテムを釣り上げました！ &5&l✦"
+    eternal: "&5&l★ エターナルアイテムを釣り上げました！ &5&l★"
+    exotic: "&c&l☆ エキゾチックアイテムを釣り上げました！ &c&l☆"
+    relic: "&3&l◆ レリックアイテムを釣り上げました！ &3&l◆"
+    mythic: "&2&l✸ ミシックアイテムを釣り上げました！ &2&l✸"
     legendary: "&6&l★ 伝説アイテムを釣り上げました！ &6&l★"
     epic: "&b&l◆ エピックアイテムを釣り上げました！ &b&l◆"
     rare: "&a&l♦ レアアイテムを釣り上げました！ &a&l♦"
+    uncommon: "&e&l○ アンコモンアイテムを釣り上げました！ &e&l○"
     dolphins_grace: "&b&l🐬 イルカが恵んでくれました！ &b&l🐬"
     common: "&fアイテムを釣り上げました"
     fish: "&f魚を釣り上げました"
     junk: "&fガラクタを釣り上げました"
-    critical_perfect: "&d&l✨ CRITICAL PERFECT! ✨"
+    great: "&d&l✨ CRITICAL PERFECT! ✨"
     perfect: "&6&l★ PERFECT! ★"
     great: "&a&l◆ GREAT! ◆"
     good: "&b&l○ GOOD! ○"

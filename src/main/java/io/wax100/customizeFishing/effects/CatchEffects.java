@@ -1,8 +1,7 @@
 package io.wax100.customizeFishing.effects;
 
 import io.wax100.customizeFishing.CustomizeFishing;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
+import io.wax100.customizeFishing.utils.MessageDisplay;
 import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Firework;
@@ -11,20 +10,28 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class CatchEffects {
     
     private final CustomizeFishing plugin;
+    private final MessageDisplay messageDisplay;
     
     public CatchEffects(CustomizeFishing plugin) {
         this.plugin = plugin;
+        this.messageDisplay = new MessageDisplay(plugin);
     }
     
     public void playCatchEffects(Player player, String category) {
+        playCatchEffects(player, category, null);
+    }
+    
+    public void playCatchEffects(Player player, String category, String probabilityInfo) {
         // お知らせメッセージ
-        sendAnnouncement(player, category);
+        sendAnnouncement(player, category, probabilityInfo);
         
         // パーティクルエフェクト
         playParticleEffects(player, category);
@@ -39,15 +46,30 @@ public class CatchEffects {
         playSound(player, category);
     }
     
-    private void sendAnnouncement(Player player, String category) {
-        // サブタイトル用メッセージ（個人通知）
+    private void sendAnnouncement(Player player, String category, String probabilityInfo) {
+        // アクションバーメッセージ（個人通知）
         String actionBarKey = "effects.action_bar_messages." + category;
         String defaultActionBarMessage = "&6&l" + category + "アイテムを釣り上げました！";
         String actionBarMessage = plugin.getConfig().getString(actionBarKey, defaultActionBarMessage);
-        String formattedActionBarMessage = ChatColor.translateAlternateColorCodes('&', actionBarMessage.replace("%player%", player.getName()));
         
-        // 自分にはサブタイトルで表示（空のタイトルと一緒に）
-        player.sendTitle("", formattedActionBarMessage, 10, 60, 20);
+        // アクションバーに表示（常にアクションバーを使用）
+        Map<String, String> placeholders = new HashMap<>();
+        placeholders.put("%player%", player.getName());
+        String formattedActionBarMessage = ChatColor.translateAlternateColorCodes('&', 
+            replacePlaceholders(actionBarMessage, placeholders));
+        
+        // アクションバーに送信
+        player.spigot().sendMessage(net.md_5.bungee.api.ChatMessageType.ACTION_BAR, 
+            new net.md_5.bungee.api.chat.TextComponent(formattedActionBarMessage));
+        
+        // 確率情報を改行して表示
+        if (probabilityInfo != null && !probabilityInfo.isEmpty()) {
+            // 0.5秒後に確率情報を表示
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                player.spigot().sendMessage(net.md_5.bungee.api.ChatMessageType.ACTION_BAR, 
+                    new net.md_5.bungee.api.chat.TextComponent(ChatColor.translateAlternateColorCodes('&', probabilityInfo)));
+            }, 10L); // 10 ticks = 0.5秒
+        }
         
         // 全体通知用メッセージ（設定に基づいて通知）
         if (shouldBroadcastCategory(category)) {
@@ -56,13 +78,19 @@ public class CatchEffects {
             String broadcastMessage = plugin.getConfig().getString(broadcastKey, defaultBroadcastMessage);
             String formattedBroadcastMessage = ChatColor.translateAlternateColorCodes('&', broadcastMessage.replace("%player%", player.getName()));
             
-            // 全体通知（自分以外）
+            // 全体通知
             for (Player p : Bukkit.getOnlinePlayers()) {
-                if (!p.equals(player)) {
-                    p.sendMessage(formattedBroadcastMessage);
-                }
+                p.sendMessage(formattedBroadcastMessage);
             }
         }
+    }
+    
+    private String replacePlaceholders(String message, Map<String, String> placeholders) {
+        String result = message;
+        for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+            result = result.replace(entry.getKey(), entry.getValue());
+        }
+        return result;
     }
     
     private void playParticleEffects(Player player, String category) {
