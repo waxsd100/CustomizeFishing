@@ -15,6 +15,45 @@ weather_luck:
   rain: 0.45
   thunder: 0.9
 
+# 幸運効果設定
+# 幸運ポーションと不幸ポーションの影響を定義
+luck_effects:
+  # 幸運ポーション効果（正の値）
+  luck_potion:
+    per_level: 0.07    # レベルごとの幸運ボーナス（%）
+    max_level: 10      # 最大レベル
+    min_level: -10     # 最小レベル（負の値も許可）
+  
+  # 不幸ポーション効果（負の値）
+  unluck_potion:
+    per_level: -0.07   # レベルごとの幸運ペナルティ（%）
+    max_level: 10      # 最大レベル
+    min_level: 1       # 最小レベル
+  
+  # 装備幸運値
+  equipment_luck:
+    per_point: 0.1     # ポイントごとの幸運ボーナス（%）
+    max_value: 6       # 最大値
+    min_value: -6      # 最小値（負の値も許可）
+  
+  # 宝釣りエンチャント
+  luck_of_the_sea:
+    per_level: 0.10    # レベルごとの幸運ボーナス（%）
+    max_level: 10      # 最大レベル
+    min_level: 0       # 最小レベル
+    # 特殊ボーナス（宝釣りLv127以上）
+    special_bonus:
+      enabled: true
+      min_level: 127   # 特殊ボーナス発動レベル
+      base_random: 0.1 # 基本乱数ボーナス（%）
+      conduit_multiplier: true # コンジットパワーによる倍率適用
+  
+  # 経験値レベル
+  experience_level:
+    per_level: 0.01    # レベルごとの幸運ボーナス（%）
+    max_level: 100     # 最大レベル
+    min_level: 0       # 最小レベル
+
 # タイミングシステム設定
 # 浮きが沈んでからの反応時間によるボーナス
 timing_system:
@@ -24,7 +63,7 @@ timing_system:
   # タイミングティア設定（ミリ秒とボーナス倍率）
   tiers:
     just:
-      max_time_ms: 75
+      max_time_ms: 50
       bonus_multiplier: 0.5
     perfect:
       max_time_ms: 100
@@ -36,6 +75,15 @@ timing_system:
       max_time_ms: 750
       bonus_multiplier: 0.2
 
+
+# 幸運と不幸の相殺計算
+# 幸運効果と不幸効果は自動的に相殺されます
+# 例: 幸運Lv3 + 不幸Lv2 = 幸運Lv1相当
+luck_calculation:
+  # 相殺後の最小値（これより下にはならない）
+  min_total_luck: -10.0
+  # 相殺後の最大値（これより上にはならない）
+  max_total_luck: 10.0
 
 categories:
   dolphins_grace:
@@ -102,7 +150,7 @@ categories:
     chance: 0.05
 
   relic:
-    enabled: true
+    enabled: false
     priority: 6
     quality: 1
     conditions:
@@ -116,7 +164,7 @@ categories:
     chance: 0.1
 
   mythic:
-    enabled: true
+    enabled: false
     priority: 7
     quality: 1
     conditions:
@@ -172,8 +220,8 @@ categories:
     chance: 10.0
 
   uncommon:
-    enabled: true
-    priority: 11
+    enabled: false
+    priority: 10
     quality: 0
     conditions:
       require_open_water: true       # 開水域不要
@@ -187,7 +235,7 @@ categories:
 
   common:
     enabled: true
-    priority: 12
+    priority: 11
     quality: -2
     conditions:
       require_open_water: true       # 開水域不要
@@ -201,7 +249,7 @@ categories:
 
   treasure:
     enabled: true
-    priority: 13
+    priority: 12
     quality: -2
     conditions:
       require_open_water: true       # 開水域不要
@@ -232,11 +280,9 @@ categories:
     priority: 14
     quality: -3
     conditions:
-      require_open_water: false       # 開水域不要
-      max_luck_of_the_sea: 10
-      max_luck_effect: 3
+      require_open_water: false
       weather:
-        - "clear"                     # 全天候対応
+        - "clear"
         - "rain"
         - "thunder"
     chance: 100
@@ -248,6 +294,19 @@ loot_tables:
   namespace: "customize_fishing"
   # ルートテーブルのパス
   path: "gameplay/fishing"
+
+# 幸運値による確率調整設定
+luck_adjustment:
+  # 正の幸運時の高品質アイテム減衰設定
+  positive_luck_diminishing:
+    enabled: true
+    factor: 0.3
+    # 計算式: diminishingFactor = 1.0 / (1.0 + quality × factor)
+  
+  # 負の幸運時の確率調整
+  negative_luck_threshold:
+    # 負の幸運時の確率補正倍率
+    negative_multiplier: 1.5       # 負の幸運時の効果を1.5倍にする
 
 # エフェクト設定
 effects:

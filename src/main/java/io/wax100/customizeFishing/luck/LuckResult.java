@@ -1,5 +1,6 @@
 package io.wax100.customizeFishing.luck;
 
+import io.wax100.customizeFishing.CustomizeFishing;
 import java.util.Random;
 
 /**
@@ -8,6 +9,7 @@ import java.util.Random;
 public record LuckResult(
         int luckOfTheSeaLevel,
         int luckPotionLevel,
+        int unluckPotionLevel,
         int conduitLevel,
         double equipmentLuck,
         double weatherLuck,
@@ -20,14 +22,51 @@ public record LuckResult(
      * @return 宝釣りボーナス（パーセンテージ）
      */
     public double getLuckOfTheSeaBonus() {
-        double bonus = Math.min(10, luckOfTheSeaLevel) * 0.10;
-        // conduitLevel: 最大3、1増加で0.1%増加
-        if (luckOfTheSeaLevel >= 127) {
-            // 0.1から1.0の乱数を生成してボーナスに加える
+        return getLuckOfTheSeaBonusWithConfig(null);
+    }
+    
+    /**
+     * 宝釣りエンチャントボーナスを計算（config考慮）
+     *
+     * @param plugin プラグインインスタンス（nullの場合はデフォルト値使用）
+     * @return 宝釣りボーナス（パーセンテージ）
+     */
+    public double getLuckOfTheSeaBonusWithConfig(CustomizeFishing plugin) {
+        // 基本設定値（プラグインがnullの場合のデフォルト）
+        double perLevel = 0.10;
+        int maxLevel = 10;
+        int specialMinLevel = 127;
+        double baseRandom = 0.1;
+        boolean specialEnabled = true;
+        boolean conduitMultiplierEnabled = true;
+        
+        // プラグインが利用可能な場合は設定値を取得
+        if (plugin != null) {
+            perLevel = plugin.getConfig().getDouble("luck_effects.luck_of_the_sea.per_level", 0.10);
+            maxLevel = plugin.getConfig().getInt("luck_effects.luck_of_the_sea.max_level", 10);
+            specialEnabled = plugin.getConfig().getBoolean("luck_effects.luck_of_the_sea.special_bonus.enabled", true);
+            specialMinLevel = plugin.getConfig().getInt("luck_effects.luck_of_the_sea.special_bonus.min_level", 127);
+            baseRandom = plugin.getConfig().getDouble("luck_effects.luck_of_the_sea.special_bonus.base_random", 0.1);
+            conduitMultiplierEnabled = plugin.getConfig().getBoolean("luck_effects.luck_of_the_sea.special_bonus.conduit_multiplier", true);
+        }
+        
+        // 基本ボーナス計算
+        double bonus = Math.min(maxLevel, luckOfTheSeaLevel) * perLevel;
+        
+        // 特殊ボーナス（高レベル時）
+        if (specialEnabled && luckOfTheSeaLevel >= specialMinLevel) {
             Random random = new Random();
-            double randomBonus = 0.1 + (random.nextDouble() * Math.min(3, conduitLevel));
+            double randomBonus = baseRandom;
+            
+            // コンジットパワー倍率適用
+            if (conduitMultiplierEnabled && conduitLevel > 0) {
+                double conduitMultiplier = Math.min(3, conduitLevel);
+                randomBonus += (random.nextDouble() * conduitMultiplier);
+            }
+            
             bonus += randomBonus;
         }
+        
         return bonus;
     }
 
@@ -39,14 +78,25 @@ public record LuckResult(
     public double getLuckPotionBonus() {
         return Math.min(10, luckPotionLevel) * 0.07;
     }
+    
+    /**
+     * 不幸ポーションペナルティを計算
+     *
+     * @return 不幸ポーションペナルティ（パーセンテージ）
+     */
+    public double getUnluckPotionPenalty() {
+        return Math.min(10, unluckPotionLevel) * -0.07;
+    }
 
     /**
-     * 装備幸運ボーナスを計算
+     * 装備幸運ボーナスを計算（負の値も考慮）
      *
      * @return 装備幸運ボーナス（パーセンテージ）
      */
     public double getEquipmentBonus() {
-        return Math.min(6, equipmentLuck) * 0.1;
+        // config.ymlの設定に基づいて負の値も考慮
+        double perPoint = 0.1; // luck_effects.equipment_luck.per_pointの値
+        return equipmentLuck * perPoint;
     }
 
     /**
@@ -61,9 +111,25 @@ public record LuckResult(
     /**
      * 総合幸運値を計算
      *
+     * @param plugin プラグインインスタンス（nullの場合は相殺・制限なし）
      * @return 総合幸運値（パーセンテージ）
      */
-    public double getTotalLuck() {
-        return getLuckOfTheSeaBonus() + getLuckPotionBonus() + getEquipmentBonus() + weatherLuck + timingLuck + getExperienceBonus();
+    public double getTotalLuck(CustomizeFishing plugin) {
+        // 基本的な幸運値計算（config考慮）
+        double baseLuck = getLuckOfTheSeaBonusWithConfig(plugin) + getEquipmentBonus() + weatherLuck + timingLuck + getExperienceBonus();
+        
+        // 幸運と不幸の相殺計算
+        double potionLuck = getLuckPotionBonus() + getUnluckPotionPenalty();
+        
+        double totalLuck = baseLuck + potionLuck;
+        
+        // config.ymlの制限を適用（pluginがある場合のみ）
+        if (plugin != null) {
+            double minLuck = plugin.getConfig().getDouble("luck_calculation.min_total_luck", -10.0);
+            double maxLuck = plugin.getConfig().getDouble("luck_calculation.max_total_luck", 10.0);
+            totalLuck = Math.max(minLuck, Math.min(maxLuck, totalLuck));
+        }
+        
+        return totalLuck;
     }
 }

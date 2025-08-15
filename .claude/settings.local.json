@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(rmdir:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(sed:*)"
     ],
     "deny": []
   }

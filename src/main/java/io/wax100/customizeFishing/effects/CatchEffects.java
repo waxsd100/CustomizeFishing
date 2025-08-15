@@ -410,11 +410,10 @@ public class CatchEffects {
             long secondAnimationDelay = firstAnimationDuration + 10L; // 10tick（0.5秒）の間隔
             animateProbabilityInfo(player, "&7" + secondProb, secondAnimationDelay);
         }
-
     }
 
     /**
-     * 全体通知のみを送信（確率表示なし）
+     * 全体通知のみを送信
      */
     private void sendBroadcastAnnouncement(Player player, String category) {
         if (shouldBroadcastCategory(category)) {
@@ -429,5 +428,4 @@ public class CatchEffects {
             }
         }
     }
-
 }

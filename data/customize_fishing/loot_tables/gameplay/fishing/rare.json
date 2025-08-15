@@ -1153,5 +1153,6 @@
         }
       ]
     }
-  ]
+  ],
+  "random_sequence": "minecraft:gameplay/fishing/rare"
 }

@@ -51,8 +51,8 @@ public class FishingListener implements Listener {
         this.debugLogger = new DebugLogger(plugin);
     }
 
-    private static String getProbabilityText(LuckResult luckResult, double baseChance, double quality) {
-        double totalLuck = luckResult.getTotalLuck();
+    private String getProbabilityText(LuckResult luckResult, double baseChance, double quality) {
+        double totalLuck = luckResult.getTotalLuck(plugin);
 
         // Minecraft方式での確率補正
         double adjustedChance = calculateAdjustedChance(baseChance, quality, totalLuck);
@@ -169,7 +169,7 @@ public class FishingListener implements Listener {
             return "common";
         }
 
-        double totalLuck = luckResult.getTotalLuck();
+        double totalLuck = luckResult.getTotalLuck(plugin);
 
         // qualityを使用して各カテゴリのchanceを補正
         List<CategoryData> adjustedCategories = new ArrayList<>();
@@ -215,14 +215,48 @@ public class FishingListener implements Listener {
     }
     
     /**
-     * 確率補正を計算（Minecraft方式）
+     * 確率補正を計算（改良版：負の幸運時に低品質アイテムが出やすくなる）
      * @param baseChance 基本確率
      * @param quality 品質値
      * @param totalLuck 総幸運値
      * @return 補正後の確率
      */
-    public static double calculateAdjustedChance(double baseChance, double quality, double totalLuck) {
-        return Math.floor(baseChance + (quality * totalLuck));
+    private double calculateAdjustedChance(double baseChance, double quality, double totalLuck) {
+        double adjustment;
+        
+        if (totalLuck >= 0) {
+            // 正の幸運時：qualityが高いほどボーナス上昇を抑制
+            if (quality > 0) {
+                // config.ymlから減衰設定を読み込み
+                boolean diminishingEnabled = plugin.getConfig().getBoolean("luck_adjustment.positive_luck_diminishing.enabled", true);
+                double diminishingFactor = 1.0;
+                
+                if (diminishingEnabled) {
+                    double factor = plugin.getConfig().getDouble("luck_adjustment.positive_luck_diminishing.factor", 0.3);
+                    diminishingFactor = 1.0 / (1.0 + quality * factor);
+                }
+                
+                adjustment = quality * totalLuck * diminishingFactor;
+            } else {
+                // 負のqualityや0の場合は通常計算
+                adjustment = quality * totalLuck;
+            }
+        } else {
+            // 負の幸運時：低品質（負のquality）がより有利になるよう計算
+            if (quality < 0) {
+                // 負のqualityの場合、幸運の負の効果を軽減（より良い結果）
+                adjustment = Math.abs(quality * totalLuck);
+            } else if (quality > 0) {
+                // 正のqualityの場合、幸運の負の効果を増幅（より悪い結果）
+                double negativeMultiplier = plugin.getConfig().getDouble("luck_adjustment.negative_luck_threshold.negative_multiplier", 1.5);
+                adjustment = quality * totalLuck * negativeMultiplier;
+            } else {
+                // quality=0の場合：幸運値の影響なし
+                adjustment = 0;
+            }
+        }
+        
+        return Math.floor(baseChance + adjustment);
     }
 
     private String getItemDisplayName(ItemStack item) {
@@ -338,6 +372,7 @@ public class FishingListener implements Listener {
     private String buildBonusText(LuckResult luckResult, String weather, TimingResult timingResult) {
         return getLuckOfTheSeaBonusText(luckResult) +
                 getLuckPotionBonusText(luckResult) +
+                getUnluckPotionPenaltyText(luckResult) +
                 getEquipmentBonusText(luckResult) +
                 getExperienceBonusText(luckResult) +
                 getWeatherBonusText(luckResult, weather) +
@@ -367,14 +402,29 @@ public class FishingListener implements Listener {
     }
 
     /**
+     * 不幸ポーションペナルティテキストを取得
+     */
+    private String getUnluckPotionPenaltyText(LuckResult luckResult) {
+        if (luckResult.unluckPotionLevel() <= 0) {
+            return "";
+        }
+        double penalty = luckResult.getUnluckPotionPenalty();
+        return " &c不幸" + String.format("%.2f%%", penalty);
+    }
+
+    /**
      * 装備幸運ボーナステキストを取得
      */
     private String getEquipmentBonusText(LuckResult luckResult) {
-        if (luckResult.equipmentLuck() <= 0) {
+        double bonus = luckResult.getEquipmentBonus();
+        if (bonus == 0) {
             return "";
         }
-        double bonus = luckResult.getEquipmentBonus();
-        return " &d装備+" + String.format("%.2f%%", bonus);
+        if (bonus > 0) {
+            return " &d装備+" + String.format("%.2f%%", bonus);
+        } else {
+            return " &c装備" + String.format("%.2f%%", bonus);
+        }
     }
 
     /**
@@ -517,7 +567,7 @@ public class FishingListener implements Listener {
                 LootContext.Builder contextBuilder = new LootContext.Builder(hookLocation)
                         .killer(player)
                         .lootedEntity(itemEntity)
-                        .luck((float) luckResult.getTotalLuck());
+                        .luck((float) luckResult.getTotalLuck(plugin));
 
                 LootContext lootContext = contextBuilder.build();
                 Collection<ItemStack> loot = lootTable.populateLoot(random, lootContext);

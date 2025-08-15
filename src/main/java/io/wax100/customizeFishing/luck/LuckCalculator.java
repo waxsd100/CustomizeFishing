@@ -45,6 +45,9 @@ public class LuckCalculator {
 
         // 幸運ポーション効果
         int luckPotionLevel = calculateLuckPotion(player);
+        
+        // 不幸ポーション効果
+        int unluckPotionLevel = calculateUnluckPotion(player);
 
         // コンジットパワーボーナス
         int conduitLevel = getConduitLevel(player);
@@ -64,6 +67,7 @@ public class LuckCalculator {
         return new LuckResult(
                 luckOfTheSeaLevel,
                 luckPotionLevel,
+                unluckPotionLevel,
                 conduitLevel,
                 equipmentLuck,
                 weatherLuck,
@@ -90,6 +94,17 @@ public class LuckCalculator {
     private int calculateLuckPotion(Player player) {
         if (player.hasPotionEffect(PotionEffectType.LUCK)) {
             return Objects.requireNonNull(player.getPotionEffect(PotionEffectType.LUCK)).getAmplifier() + 1;
+        } else {
+            return 0;
+        }
+    }
+    
+    /**
+     * 不幸ポーション効果を計算
+     */
+    private int calculateUnluckPotion(Player player) {
+        if (player.hasPotionEffect(PotionEffectType.UNLUCK)) {
+            return Objects.requireNonNull(player.getPotionEffect(PotionEffectType.UNLUCK)).getAmplifier() + 1;
         } else {
             return 0;
         }
@@ -141,12 +156,24 @@ public class LuckCalculator {
         if (!offHand.getType().isAir()) {
             offHandLuck = getItemLuck(offHand, EquipmentSlot.OFF_HAND);
         }
-        double finalEquipmentLuck = Math.min(1.0, Math.max(0, helmetLuck)) +
-                Math.min(1.0, Math.max(0, chestLuck)) +
-                Math.min(1.0, Math.max(0, legsLuck)) +
-                Math.min(1.0, Math.max(0, bootsLuck)) +
-                Math.min(1.0, Math.max(0, mainHandLuck)) +
-                Math.min(1.0, Math.max(0, offHandLuck));
+        // config.ymlの設定に基づいて制限を適用
+        double minEquipmentLuck = plugin.getConfig().getDouble("luck_effects.equipment_luck.min_value", -6.0);
+        double maxEquipmentLuck = plugin.getConfig().getDouble("luck_effects.equipment_luck.max_value", 6.0);
+        
+        // 各装備スロットの幸運値を制限内にクランプ
+        helmetLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, helmetLuck));
+        chestLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, chestLuck));
+        legsLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, legsLuck));
+        bootsLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, bootsLuck));
+        mainHandLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, mainHandLuck));
+        offHandLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, offHandLuck));
+        
+        double finalEquipmentLuck = helmetLuck + chestLuck + legsLuck + bootsLuck + mainHandLuck + offHandLuck;
+        
+        // 合計値も制限内にクランプ
+        double totalMinLuck = minEquipmentLuck * 6; // 6スロット分
+        double totalMaxLuck = maxEquipmentLuck * 6;
+        finalEquipmentLuck = Math.max(totalMinLuck, Math.min(totalMaxLuck, finalEquipmentLuck));
 
         debugLogger.logEquipmentLuck(
                 helmetLuck, chestLuck, legsLuck, bootsLuck,

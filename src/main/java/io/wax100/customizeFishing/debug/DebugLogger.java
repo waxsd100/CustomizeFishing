@@ -167,12 +167,12 @@ public class DebugLogger {
     public void logLuckBreakdown(LuckResult luckResult) {
         logInfo(" LUCK BREAKDOWN:");
         logInfo(String.format(
-                "   LuckOfTheSea: %d | LuckPotion: %d | Equipment: %.1f",
-                luckResult.luckOfTheSeaLevel(), luckResult.luckPotionLevel(), luckResult.equipmentLuck()
+                "   LuckOfTheSea: %d | LuckPotion: %d | UnluckPotion: %d | Equipment: %.1f",
+                luckResult.luckOfTheSeaLevel(), luckResult.luckPotionLevel(), luckResult.unluckPotionLevel(), luckResult.equipmentLuck()
         ));
         logInfo(String.format(
                 "   Weather: %.1f | Timing: %.1f | TOTAL: %.1f",
-                luckResult.weatherLuck(), luckResult.timingLuck(), luckResult.getTotalLuck()
+                luckResult.weatherLuck(), luckResult.timingLuck(), luckResult.getTotalLuck(plugin)
         ));
     }
 

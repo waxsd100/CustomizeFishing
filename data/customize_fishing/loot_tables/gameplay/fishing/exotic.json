@@ -371,7 +371,9 @@
                   {"text": "両手で持っていると", "italic": false, "color": "gray"},
                   {"text": "1/4", "italic": false, "underlined": true, "color": "dark_red"},
                   {"text": "しかアイテムを落とさない", "italic": false, "color": "gray"}
-                ]
+                ],
+                "",
+                {"text": "※このアイテムは死亡時に消失します", "italic": false, "color": "red"}
               ]
             },
             {
@@ -668,5 +670,5 @@
       ]
     }
   ],
-  "random_sequence": "minecraft:gameplay/fishing/god"
+  "random_sequence": "minecraft:gameplay/fishing/exotic"
 }

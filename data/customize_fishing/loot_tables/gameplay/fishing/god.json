@@ -7,175 +7,40 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:potion",
-          "weight": 50,
-          "comment": "ハニカム-O-ライト",
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{revision:1,CustomPotionColor:65535,CustomPotionEffects:[{Id:16,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:0},{Id:10,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:0},{Id:6,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:0},{Id:22,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:0},{Id:26,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:9,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:0}],Potion:\"minecraft:empty\",HideFlags:32}"
-            },
-            {
-              "function": "minecraft:set_name",
-              "name": [
-                "",
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "green"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "O", "italic": false, "bold": true, "color": "aqua"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "ライト", "italic": false, "bold": true, "color": "green"},
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true}
-              ]
-            },
-            {
-              "function": "minecraft:set_lore",
-              "lore": [
-                {"text": "泡立つしゅわっとした液体に", "italic": false, "color": "dark_aqua"},
-                {"text": "神秘の輝きを放つ", "italic": false, "color": "dark_aqua"},
-                [
-                  "",
-                  {"text": "六角形の何かが", "italic": false, "color": "dark_aqua"},
-                  {"text": "１", "italic": false, "color": "green", "bold": true},
-                  {"text": "つ入っている。", "italic": false, "color": "dark_aqua"}
-                ],
-                [
-                  "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_aqua"},
-                  {"text": "ちょっぴり", "italic": false, "color": "gold", "bold": true},
-                  {"text": "上昇させ傷を癒す。", "italic": false, "color": "dark_aqua"}
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:potion",
-          "weight": 30,
-          "comment": "ハニカム-W-スタンダード",
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{revision:1,CustomPotionColor:65535,CustomPotionEffects:[{Id:16,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1},{Id:10,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:1},{Id:6,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:1},{Id:22,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:1},{Id:26,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:2},{Id:9,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1}],Potion:\"minecraft:empty\",HideFlags:32}"
-            },
-            {
-              "function": "minecraft:set_name",
-              "name": [
-                "",
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "green"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "W", "italic": false, "bold": true, "color": "aqua"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "スタンダード", "italic": false, "bold": true, "color": "green"},
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true}
-              ]
-            },
-            {
-              "function": "minecraft:set_lore",
-              "lore": [
-                {"text": "泡立つしゅわっとした液体に", "italic": false, "color": "dark_aqua"},
-                {"text": "神秘の輝きを放つ", "italic": false, "color": "dark_aqua"},
-                [
-                  "",
-                  {"text": "六角形の何かが", "italic": false, "color": "dark_aqua"},
-                  {"text": "２", "italic": false, "color": "green", "bold": true},
-                  {"text": "つ入っている。", "italic": false, "color": "dark_aqua"}
-                ],
-                [
-                  "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_aqua"},
-                  {"text": "程々に", "italic": false, "color": "gold", "bold": true},
-                  {"text": "上昇させ傷を癒す。", "italic": false, "color": "dark_aqua"}
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:potion",
-          "weight": 10,
-          "comment": "ハニカム-T-クリティカル",
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{revision:1,CustomPotionColor:65535,CustomPotionEffects:[{Id:1,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:5,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:8,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:16,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1},{Id:10,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:2},{Id:6,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:2},{Id:22,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:2},{Id:26,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:4},{Id:9,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1}],Potion:\"minecraft:empty\",HideFlags:32}"
-            },
-            {
-              "function": "minecraft:set_name",
-              "name": [
-                "",
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "green"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "T", "italic": false, "bold": true, "color": "aqua"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "クリティカル", "italic": false, "bold": true, "color": "green"},
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true}
-              ]
-            },
-            {
-              "function": "minecraft:set_lore",
-              "lore": [
-                {"text": "泡立つしゅわっとした液体に", "italic": false, "color": "dark_aqua"},
-                {"text": "神秘の輝きを放つ", "italic": false, "color": "dark_aqua"},
-                [
-                  "",
-                  {"text": "六角形の何かが", "italic": false, "color": "dark_aqua"},
-                  {"text": "３", "italic": false, "color": "green", "bold": true},
-                  {"text": "つ入っている。", "italic": false, "color": "dark_aqua"}
-                ],
-                [
-                  "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_aqua"},
-                  {"text": "大きく", "italic": false, "color": "gold", "bold": true},
-                  {"text": "上昇させ傷を癒す。", "italic": false, "color": "dark_aqua"}
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:potion",
+          "name": "minecraft:paper",
           "weight": 1,
-          "comment": "ハニカム-∞-777",
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{revision:1,CustomPotionColor:65535,CustomPotionEffects:[{Id:11,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:32,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:1,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:5,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:8,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:16,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1},{Id:10,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:3},{Id:6,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:127},{Id:22,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:3},{Id:26,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:9},{Id:9,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1}],Potion:\"minecraft:empty\",Enchantments:[{}],HideFlags:32}"
+              "tag": "{revision:1,triple_drop:1b,RepairCost:1024,Enchantments:[{}]}"
             },
             {
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "green"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "∞", "italic": false, "bold": true, "color": "aqua"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "777", "italic": false, "bold": true, "color": "green"},
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true}
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
+                {"text": "永遠の", "italic": false, "bold": true, "color": "aqua"},
+                {"text": "双称の祝福", "italic": false, "color": "yellow"},
+                {"text": "牌", "italic": false, "color": "dark_green"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "泡立つしゅわっとした液体に", "italic": false, "color": "dark_aqua"},
-                {"text": "神秘の輝きを放つ", "italic": false, "color": "dark_aqua"},
+                {"text": "このアイテムを持った状態で敵を倒すと", "italic": false, "color": "white"},
                 [
                   "",
-                  {"text": "六角形の", "italic": false, "color": "dark_aqua"},
-                  {"text": "結晶", "italic": false, "color": "green", "bold": true},
-                  {"text": "が入っている。", "italic": false, "color": "dark_aqua"}
+                  {"text": "いつもの", "italic": false, "color": "white"},
+                  {"text": "3倍", "italic": false, "color": "red"},
+                  {"text": "アイテムを落とすようになる", "italic": false, "color": "white"}
                 ],
+                "",
                 [
                   "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_aqua"},
-                  {"text": "限界まで", "italic": false, "color": "gold", "bold": true},
-                  {"text": "上昇させ傷を瞬時に癒す。", "italic": false, "color": "dark_aqua"}
+                  {"text": "両手で持っていると", "italic": false, "color": "white"},
+                  {"text": "9倍", "italic": false, "underlined": true, "color": "red"},
+                  {"text": "アイテムを落とす", "italic": false, "color": "white"}
                 ]
               ]
             },
@@ -183,12 +48,32 @@
               "function": "minecraft:set_attributes",
               "modifiers": [
                 {
-                  "attribute": "minecraft:generic.max_health",
-                  "name": "honeycomb_777_health",
+                  "attribute": "minecraft:generic.armor",
+                  "name": "eternal_blessing_armor",
                   "amount": 10,
+                  "operation": "multiply_base",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "eternal_blessing_health",
+                  "amount": 20,
                   "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11, 0, 1, 0]
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_knockback",
+                  "name": "eternal_blessing_knockback",
+                  "amount": 15,
+                  "operation": "multiply_total",
+                  "slot": "mainhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "eternal_blessing_damage",
+                  "amount": 10,
+                  "operation": "multiply_total",
+                  "slot": "mainhand"
                 }
               ]
             }
@@ -196,176 +81,116 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:potion",
-          "weight": 50,
-          "comment": "ハニカム-X-ダーク",
+          "name": "minecraft:paper",
+          "weight": 100,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{revision:1,CustomPotionColor:11546150,CustomPotionEffects:[{Id:15,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:0},{Id:19,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:0},{Id:7,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:0},{Id:17,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:0},{Id:27,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:9,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:0}],Potion:\"minecraft:empty\",HideFlags:32}"
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
             },
             {
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "X", "italic": false, "bold": true, "color": "dark_purple"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "ダーク", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true}
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
+                {"text": "永遠の闘気の祝福牌", "italic": false, "color": "red"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "暗く澱んだ液体に", "italic": false, "color": "dark_red"},
-                {"text": "不吉な気配を漂わせる", "italic": false, "color": "dark_red"},
-                [
-                  "",
-                  {"text": "六角形の何かが", "italic": false, "color": "dark_red"},
-                  {"text": "１", "italic": false, "color": "dark_purple", "bold": true},
-                  {"text": "つ沈んでいる。", "italic": false, "color": "dark_red"}
-                ],
-                [
-                  "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_red"},
-                  {"text": "少し", "italic": false, "color": "gold", "bold": true},
-                  {"text": "低下させダメージを与える。", "italic": false, "color": "dark_red"}
-                ]
+                {"text": "身につけると永遠の闘気を纏い、圧倒的な攻撃力を得る。", "italic": false, "color": "white"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "eternal_fighting_spirit_damage",
+                  "amount": 25,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_knockback",
+                  "name": "eternal_fighting_spirit_knockback",
+                  "amount": 20,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
               ]
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:potion",
-          "weight": 30,
-          "comment": "ハニカム-Y-アンスタンダード",
+          "name": "minecraft:paper",
+          "weight": 100,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{revision:1,CustomPotionColor:11546150,CustomPotionEffects:[{Id:15,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1},{Id:19,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:1},{Id:7,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:1},{Id:17,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:1},{Id:27,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:9,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1}],Potion:\"minecraft:empty\",HideFlags:32}"
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
             },
             {
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "Y", "italic": false, "bold": true, "color": "dark_purple"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "アンスタンダード", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true}
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
+                {"text": "永遠の重撃の祝福牌", "italic": false, "color": "dark_red"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "暗く澱んだ液体に", "italic": false, "color": "dark_red"},
-                {"text": "不吉な気配を漂わせる", "italic": false, "color": "dark_red"},
-                [
-                  "",
-                  {"text": "六角形の何かが", "italic": false, "color": "dark_red"},
-                  {"text": "２", "italic": false, "color": "dark_purple", "bold": true},
-                  {"text": "つ沈んでいる。", "italic": false, "color": "dark_red"}
-                ],
-                [
-                  "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_red"},
-                  {"text": "ほどほどに", "italic": false, "color": "gold", "bold": true},
-                  {"text": "低下させダメージを与える。", "italic": false, "color": "dark_red"}
-                ]
+                {"text": "身につけると永遠の重量を得て、絶対的なノックバック耐性を持つ。", "italic": false, "color": "white"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.knockback_resistance",
+                  "name": "eternal_heavy_strike_resistance",
+                  "amount": 20,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "eternal_heavy_strike_toughness",
+                  "amount": 5,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
               ]
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:potion",
-          "weight": 10,
-          "comment": "ハニカム-Z-ファンブル",
+          "name": "minecraft:paper",
+          "weight": 100,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{revision:1,CustomPotionColor:11546150,CustomPotionEffects:[{Id:2,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:18,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:4,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:15,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1},{Id:19,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:2},{Id:7,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:2},{Id:17,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:2},{Id:20,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:4},{Id:27,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1}],Potion:\"minecraft:empty\",HideFlags:32}"
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
             },
             {
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "Z", "italic": false, "bold": true, "color": "dark_purple"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "ファンブル", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true}
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
+                {"text": "永遠の生命の祝福牌", "italic": false, "color": "dark_green"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "暗く澱んだ液体に", "italic": false, "color": "dark_red"},
-                {"text": "不吉な気配を漂わせる", "italic": false, "color": "dark_red"},
-                [
-                  "",
-                  {"text": "六角形の何かが", "italic": false, "color": "dark_red"},
-                  {"text": "３", "italic": false, "color": "dark_purple", "bold": true},
-                  {"text": "つ沈んでいる。", "italic": false, "color": "dark_red"}
-                ],
-                [
-                  "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_red"},
-                  {"text": "大きく", "italic": false, "color": "gold", "bold": true},
-                  {"text": "低下させダメージを与える。", "italic": false, "color": "dark_red"}
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:potion",
-          "weight": 1,
-          "comment": "ハニカム-∅-000",
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{revision:1,CustomPotionColor:11546150,CustomPotionEffects:[{Id:2,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:18,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:4,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:15,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1},{Id:19,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:1},{Id:7,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:3},{Id:17,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:3},{Id:20,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:9},{Id:27,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:3},{Id:31,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:9,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1}],Potion:\"minecraft:empty\",Enchantments:[{}],HideFlags:32}"
-            },
-            {
-              "function": "minecraft:set_name",
-              "name": [
-                "",
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "∅", "italic": false, "bold": true, "color": "dark_purple"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "000", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true}
-              ]
-            },
-            {
-              "function": "minecraft:set_lore",
-              "lore": [
-                {"text": "泡立つ淀んだ液体に", "italic": false, "color": "dark_red"},
-                {"text": "絶望の気配を漂わせる", "italic": false, "color": "dark_red"},
-                [
-                  "",
-                  {"text": "六角形の", "italic": false, "color": "dark_red"},
-                  {"text": "結晶", "italic": false, "color": "dark_purple", "bold": true},
-                  {"text": "が消えかけている。", "italic": false, "color": "dark_red"}
-                ],
-                [
-                  "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_red"},
-                  {"text": "限界まで", "italic": false, "color": "gold", "bold": true},
-                  {"text": "低下させ致命的なダメージを与える。", "italic": false, "color": "dark_red"}
-                ]
+                {"text": "身につけると永遠の生命力が宿り、膨大な最大体力を得る。", "italic": false, "color": "white"}
               ]
             },
             {
@@ -373,11 +198,470 @@
               "modifiers": [
                 {
                   "attribute": "minecraft:generic.max_health",
-                  "name": "honeycomb_000_health",
+                  "name": "eternal_life_blessing_health",
+                  "amount": 50,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
+                {"text": "永遠の幸福の祝福牌", "italic": false, "color": "gold"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると永遠の幸運を呼び寄せ、究極の運を得る。", "italic": false, "color": "white"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "eternal_luck_blessing",
+                  "amount": 5,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
+                {"text": "永遠の鋼鉄の祝福牌", "italic": false, "color": "gray"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると永遠の鋼鉄で覆われ、絶対的な防御力を得る。", "italic": false, "color": "white"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "eternal_steel_blessing_armor",
+                  "amount": 25,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "eternal_steel_blessing_toughness",
+                  "amount": 50,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
+                {"text": "永遠の迅速の祝福牌", "italic": false, "color": "blue"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると永遠の速度を得て、時空を超える移動速度を手に入れる。", "italic": false, "color": "blue"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "name": "eternal_swiftness_blessing_speed",
+                  "amount": 5,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "name": "eternal_swiftness_blessing_attack_speed",
+                  "amount": 2048,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1},{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
+                {"text": "永劫の", "italic": false, "bold": true, "color": "dark_red"},
+                {"text": "破滅の呪印", "italic": false, "color": "black"},
+                {"text": "牌", "italic": false, "color": "dark_gray"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "このアイテムを持った状態で敵を倒すと", "italic": false, "color": "gray"},
+                [
+                  "",
+                  {"text": "いつもの", "italic": false, "color": "gray"},
+                  {"text": "1/10", "italic": false, "color": "dark_red"},
+                  {"text": "のアイテムしか落とさなくなる", "italic": false, "color": "gray"}
+                ],
+                "",
+                [
+                  "",
+                  {"text": "両手で持っていると", "italic": false, "color": "gray"},
+                  {"text": "1/100", "italic": false, "underlined": true, "color": "dark_red"},
+                  {"text": "しかアイテムを落とさない", "italic": false, "color": "gray"}
+                ],
+                "",
+                {"text": "≪ 神級呪い ≫", "italic": false, "bold": true, "color": "black"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "eternal_curse_armor",
+                  "amount": -15,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "eternal_curse_health",
+                  "amount": -15,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "eternal_curse_damage",
+                  "amount": -0.8,
+                  "operation": "multiply_total",
+                  "slot": "mainhand"
+                },
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "name": "eternal_curse_slowness",
+                  "amount": -0.08,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
+                {"text": "永劫の弱気の呪印牌", "italic": false, "color": "dark_red"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると永劫の弱気に包まれ、圧倒的な攻撃力低下を受ける。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "eternal_weakness_curse_damage",
+                  "amount": -25,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "name": "eternal_weakness_curse_speed",
+                  "amount": -5,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
+                {"text": "永劫の軽撃の呪印牌", "italic": false, "color": "red"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると永劫の軽さに包まれ、極度に吹き飛ばされやすくなる。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.knockback_resistance",
+                  "name": "eternal_light_curse_resistance",
+                  "amount": -2,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "eternal_light_curse_toughness",
                   "amount": -10,
                   "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11, 0, 1, 0]
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
+                {"text": "永劫の死の呪印牌", "italic": false, "color": "black"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると永劫の死に触れ、膨大な最大体力減少を受ける。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "eternal_death_curse_health",
+                  "amount": -30,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
+                {"text": "永劫の不運の呪印牌", "italic": false, "color": "dark_gray"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると永劫の不運に取り憑かれ、極度の不運になる。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "eternal_bad_luck_curse",
+                  "amount": -2048,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
+                {"text": "永劫の脆弱の呪印牌", "italic": false, "color": "red"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると永劫の脆弱さに包まれ、極度の防御力減少を受ける。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "eternal_fragile_curse_armor",
+                  "amount": -25,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "eternal_fragile_curse_toughness",
+                  "amount": -50,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
+                {"text": "永劫の鈍重の呪印牌", "italic": false, "color": "dark_gray"},
+                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text": "身につけると永劫の重さに束縛され、極度の移動速度減少を受ける。", "italic": false, "color": "gray"}
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "name": "eternal_slowness_curse_speed",
+                  "amount": -0.15,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "name": "eternal_slowness_curse_attack_speed",
+                  "amount": -8,
+                  "operation": "addition",
+                  "slot": "offhand"
                 }
               ]
             }
