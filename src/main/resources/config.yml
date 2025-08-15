@@ -11,35 +11,32 @@ double_fishing:
 # 天気による幸運ボーナス
 # 各天気時に追加される幸運値
 weather_luck:
-  clear: 0.0      # 晴れ: ボーナスなし
-  rain: 0.4       # 雨: +0.4幸運
-  thunder: 0.7    # 雷雨: +0.7幸運
+  clear: 0.0
+  rain: 0.45
+  thunder: 0.9
 
 # タイミングシステム設定
 # 浮きが沈んでからの反応時間によるボーナス
 timing_system:
   enabled: true                   # タイミングシステムの有効/無効
-  base_luck_bonus: 1.0           # ベースの幸運ボーナス
+  base_luck_bonus: 1.6           # ベースの幸運ボーナス
   
   # タイミングティア設定（ミリ秒とボーナス倍率）
   tiers:
     just:
-      max_time_ms: 16.67          # 16.67ms以内
-      bonus_multiplier: 1.4       # 140% (PERFECTより40%高い)
+      max_time_ms: 75
+      bonus_multiplier: 0.5
     perfect:
-      max_time_ms: 50.0           # 50ms以内
-      bonus_multiplier: 1.0       # 100%
+      max_time_ms: 100
+      bonus_multiplier: 0.4
     great:
-      max_time_ms: 300            # 300ms以内
-      bonus_multiplier: 0.8       # 80%
+      max_time_ms: 300
+      bonus_multiplier: 0.3
     good:
-      max_time_ms: 750            # 750ms以内
-      bonus_multiplier: 0.3       # 30%
+      max_time_ms: 750
+      bonus_multiplier: 0.2
 
-# 釣りカテゴリと条件設定
-# priority: 数値が小さいほど優先度が高い（先にチェックされる）
-# quality: 運の値に応じてchanceを補正する値（負の値も可）
-# 補正されたchance = floor(chance + (quality × luck))
+
 categories:
   dolphins_grace:
     enabled: true
@@ -67,56 +64,59 @@ categories:
   god:
     enabled: true
     priority: 3
-    quality: 1
+    quality: 0
     conditions:
       require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 6
-      min_luck_effect: 2
+      min_luck_of_the_sea: 6         # 宝釣りレベル6以上
+      min_luck_effect: 2             # 幸運エフェクトレベル2以上
       weather:
-        - "rain"                      # 雨または雷雨限定
+        - "rain"
         - "thunder"
     chance: 0.05
 
   eternal:
-    enabled: false
+    enabled: true
     priority: 4
-    quality: 1
+    quality: 0
     conditions:
       require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 8         # 宝釣りレベル8以上
-      min_luck_effect: 3             # 幸運エフェクトレベル3以上
+      min_luck_of_the_sea: 6         # 宝釣りレベル6以上
+      min_luck_effect: 2             # 幸運エフェクトレベル2以上
       weather:
-        - "thunder"                   # 雷雨限定
+        - "rain"
+        - "thunder"
     chance: 0.01
 
   exotic:
     enabled: true
     priority: 5
-    quality: 1
+    quality: 0
     conditions:
       require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 7         # 宝釣りレベル7以上
+      min_luck_of_the_sea: 6         # 宝釣りレベル6以上
       min_luck_effect: 2             # 幸運エフェクトレベル2以上
       weather:
-        - "rain"                      # 雨または雷雨限定
+        - "clear"                     # 全天候対応
+        - "rain"
         - "thunder"
     chance: 0.05
 
   relic:
-    enabled: false
+    enabled: true
     priority: 6
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 7         # 宝釣りレベル7以上
+      min_luck_of_the_sea: 6         # 宝釣りレベル6以上
       min_luck_effect: 2             # 幸運エフェクトレベル2以上
       weather:
-        - "rain"                      # 雨または雷雨限定
+        - "clear"                     # 全天候対応
+        - "rain"
         - "thunder"
     chance: 0.1
 
   mythic:
-    enabled: false
+    enabled: true
     priority: 7
     quality: 1
     conditions:
@@ -135,7 +135,7 @@ categories:
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 6         # 宝釣りレベル6以上
+      min_luck_of_the_sea: 5         # 宝釣りレベル3以上
       min_luck_effect: 2             # 幸運エフェクトレベル2以上
       weather:
         - "clear"                     # 全天候対応
@@ -149,7 +149,7 @@ categories:
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 4         # 宝釣りレベル4以上
+      min_luck_of_the_sea: 4         # 宝釣りレベル3以上
       min_luck_effect: 1             # 幸運エフェクトレベル1以上
       weather:
         - "clear"                     # 全天候対応
@@ -163,7 +163,7 @@ categories:
     quality: 0
     conditions:
       require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 3         # 宝釣りレベル3以上
+      min_luck_of_the_sea: 4         # 宝釣りレベル3以上
       min_luck_effect: 1             # 幸運エフェクトレベル1以上
       weather:
         - "clear"                     # 全天候対応
@@ -172,18 +172,18 @@ categories:
     chance: 10.0
 
   uncommon:
-    enabled: false
+    enabled: true
     priority: 11
     quality: 0
     conditions:
       require_open_water: true       # 開水域不要
-      min_luck_of_the_sea: 0         # エンチャント不要
-      min_luck_effect: 0             # エフェクト不要
+      min_luck_of_the_sea: 3         # 宝釣りレベル3以上
+      min_luck_effect: 1             # 幸運エフェクトレベル1以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
-    chance: 20.0
+    chance: 15
 
   common:
     enabled: true
@@ -197,7 +197,7 @@ categories:
         - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
-    chance: 15
+    chance: 20
 
   treasure:
     enabled: true
@@ -215,7 +215,7 @@ categories:
 
   fish:
     enabled: true
-    priority: 14
+    priority: 13
     quality: -3
     conditions:
       require_open_water: false       # 開水域不要
@@ -229,7 +229,7 @@ categories:
 
   junk:
     enabled: true
-    priority: 15
+    priority: 14
     quality: -3
     conditions:
       require_open_water: false       # 開水域不要

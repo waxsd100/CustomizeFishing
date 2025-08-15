@@ -9,7 +9,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -19,26 +25,87 @@ public class DebugLogger {
 
     private final CustomizeFishing plugin;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-    private final File debugFile;
+    private final DateTimeFormatter fileNameFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+    private final File logsFolder;
+    private final File currentLogFile;
 
     public DebugLogger(CustomizeFishing plugin) {
         this.plugin = plugin;
 
-        // デバッグログファイルの準備
+        // logsフォルダの準備
         File pluginDataFolder = plugin.getDataFolder();
         if (!pluginDataFolder.exists()) {
             pluginDataFolder.mkdirs();
         }
 
-        this.debugFile = new File(pluginDataFolder, "debug.log");
+        this.logsFolder = new File(pluginDataFolder, "logs");
+        if (!logsFolder.exists()) {
+            logsFolder.mkdirs();
+        }
 
-        // 起動時にログファイルをクリア（サイズ制限のため）
-        if (debugFile.exists() && debugFile.length() > 10 * 1024 * 1024) { // 10MB超えたらクリア
-            try {
-                new FileWriter(debugFile, false).close();
-            } catch (IOException e) {
-                plugin.getLogger().warning("Failed to clear debug log file: " + e.getMessage());
+        // 現在のログファイルを初期化
+        this.currentLogFile = new File(logsFolder, "debug.log");
+        
+        // 起動時にログファイルをローテーション
+        rotateLogFile();
+    }
+
+    /**
+     * ログファイルをローテーションする
+     */
+    private void rotateLogFile() {
+        if (!currentLogFile.exists()) {
+            return;
+        }
+
+        try {
+            // ファイル作成時刻を取得してファイル名に使用
+            String timestamp = LocalDateTime.now().format(fileNameFormat);
+            File rotatedFile = new File(logsFolder, "debug-" + timestamp + ".log");
+            
+            // 既存のログファイルをリネーム
+            Files.move(currentLogFile.toPath(), rotatedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            
+            // 古いログファイルを削除
+            cleanupOldLogs();
+            
+        } catch (IOException e) {
+            plugin.getLogger().warning("Failed to rotate log file: " + e.getMessage());
+        }
+    }
+
+    /**
+     * 古いログファイルを削除する
+     */
+    private void cleanupOldLogs() {
+        File[] logFiles = logsFolder.listFiles((dir, name) -> 
+            name.startsWith("debug-") && name.endsWith(".log"));
+
+        // 最大保持ログファイル数
+        int maxLogFiles = 60;
+        if (logFiles == null || logFiles.length <= maxLogFiles) {
+            return;
+        }
+
+        // ファイルを作成日時順にソート（古い順）
+        Arrays.sort(logFiles, Comparator.comparingLong(File::lastModified));
+
+        // 古いファイルを削除
+        for (int i = 0; i < logFiles.length - maxLogFiles; i++) {
+            if (logFiles[i].delete()) {
+                plugin.getLogger().info("Deleted old log file: " + logFiles[i].getName());
             }
+        }
+    }
+
+    /**
+     * ファイルサイズをチェックしてローテーションが必要かどうか判定
+     */
+    private void checkAndRotateIfNeeded() {
+        // 100MB
+        long maxFileSize = 100 * 1024 * 1024;
+        if (currentLogFile.exists() && currentLogFile.length() > maxFileSize) {
+            rotateLogFile();
         }
     }
 
@@ -46,8 +113,10 @@ public class DebugLogger {
      * デバッグログをファイルに書き込み
      */
     private void writeToFile(String message) {
-        // 常にファイルに出力（デバッグ設定を削除）
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(debugFile, true))) {
+        // ファイルサイズをチェックしてローテーション
+        checkAndRotateIfNeeded();
+        
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(currentLogFile, true))) {
             String timestamp = dateFormat.format(new Date());
             writer.write(String.format("[%s] %s%n", timestamp, message));
             writer.flush();

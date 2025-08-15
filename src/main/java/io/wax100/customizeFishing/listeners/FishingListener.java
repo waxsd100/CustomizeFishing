@@ -18,6 +18,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TextDisplay;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -59,15 +60,15 @@ public class FishingListener implements Listener {
         // 確率情報を日本語でフォーマット
         String probabilityText;
         if (adjustedChance <= 0) {
-            probabilityText = "&7確率: &c0.00%% &7(基本: &e" + String.format("%.2f%%", baseChance) + "&7)";
+            probabilityText = "&7確率: &c0.00%%";
         } else if (adjustedChance == baseChance) {
             probabilityText = "&7確率: &e" + String.format("%.2f%%", baseChance);
         } else {
             double difference = adjustedChance - baseChance;
             if (difference < 0) {
-                probabilityText = "&7確率: &e" + String.format("%.2f%%", adjustedChance) + " &7(補正値: " + String.format("%.2f%%", baseChance) + " &c-" + String.format("%.2f%%", difference) + "&7)";
+                probabilityText = "&7確率: &e" + String.format("%.2f%%", adjustedChance) + " &7(補正値: &c" + String.format("%.2f%%", baseChance) + " " + String.format("%.2f%%", difference) + "&7)";
             } else {
-                probabilityText = "&7確率: &e" + String.format("%.2f%%", adjustedChance) + " &7(補正値: " + String.format("%.2f%%", baseChance) + " &a+" + String.format("%.2f%%", difference) + "&7)";
+                probabilityText = "&7確率: &e" + String.format("%.2f%%", adjustedChance) + " &7(補正値: &a" + String.format("%.2f%%", baseChance) + " +" + String.format("%.2f%%", difference) + "&7)";
             }
         }
         return probabilityText;
@@ -84,13 +85,13 @@ public class FishingListener implements Listener {
         Location hookLocation = event.getHook().getLocation();
 
         if (state == PlayerFishEvent.State.BITE)  {
-            biteTimestamps.put(player, System.currentTimeMillis());
             // 釣れた瞬間の音効果を再生
             Objects.requireNonNull(hookLocation.getWorld()).playSound(hookLocation, Sound.BLOCK_LEVER_CLICK, 1.0f, 2.0f);
+            biteTimestamps.put(player, System.currentTimeMillis());
             return;
         }
 
-        if (state != PlayerFishEvent.State.CAUGHT_FISH && state != PlayerFishEvent.State.CAUGHT_ENTITY) {
+        if (state != PlayerFishEvent.State.CAUGHT_FISH) {
             return;
         }
 
@@ -99,14 +100,12 @@ public class FishingListener implements Listener {
         }
 
         debugLogger.logFishingStart();
-
+        TimingResult timingResult = checkTiming(player);
         // ダブルフィッシング条件をチェック
         boolean canDoubleFish = checkDoubleFishingConditions(player);
 
         // ダブルフィッシングが有効な場合、両方の結果を同時に処理
         if (canDoubleFish && plugin.getConfig().getBoolean("double_fishing.enabled", true)) {
-            // タイミング判定（1回だけ行う）
-            TimingResult timingResult = checkTiming(player);
 
             // 両方の結果を保存するための準備
             FishingResult firstResult = processFishing(player, itemEntity, hookLocation, false, timingResult);
@@ -125,13 +124,14 @@ public class FishingListener implements Listener {
             bonusEntity.teleport(player.getLocation());
             bonusEntity.setPickupDelay(0); // 拾えるように戻す
         } else {
-            // 通常の1回の処理（タイミング判定込み）
-            TimingResult timingResult = checkTiming(player);
             FishingResult result = processFishing(player, itemEntity, hookLocation, false, timingResult);
 
             // レア度別演出を実行
             catchEffects.playCatchEffects(player, result.category(), result.probabilityInfo());
         }
+
+        // タイミング情報をウキに表示
+        displayTimingAtHook(hookLocation, timingResult);
         debugLogger.logFishingEnd();
     }
 
@@ -327,55 +327,91 @@ public class FishingListener implements Listener {
         String probabilityText = getProbabilityText(luckResult, baseChance, quality);
 
         // ボーナス要因を表示
-        StringBuilder bonusText = new StringBuilder();
-
-        // 宝釣りエンチャント
-        if (luckResult.luckOfTheSeaLevel() > 0) {
-            double luckOfTheSeaBonus = Math.min(10, luckResult.luckOfTheSeaLevel()) * 0.08;
-            bonusText.append(" &a宝釣り+").append(String.format("%.2f%%", luckOfTheSeaBonus));
-        }
-
-        // 幸運ポーション
-        if (luckResult.luckPotionLevel() > 0) {
-            double luckPotionBonus = Math.min(10, luckResult.luckPotionLevel()) * 0.05;
-            bonusText.append(" &b幸運+").append(String.format("%.2f%%", luckPotionBonus));
-        }
-
-        // 装備幸運
-        if (luckResult.equipmentLuck() > 0) {
-            double equipmentBonus = Math.min(6, luckResult.equipmentLuck()) * 0.1;
-            bonusText.append(" &d装備+").append(String.format("%.2f%%", equipmentBonus));
-        }
-
-        // 経験値ボーナス
-        if (luckResult.experienceLevel() > 0) {
-            double experienceBonus = Math.min(100, luckResult.experienceLevel()) * 0.01;
-            bonusText.append(" &e経験値+").append(String.format("%.2f%%", experienceBonus));
-        }
-
-        // 天気ボーナス
-        if (luckResult.weatherLuck() > 0) {
-            String weatherName = switch (weather) {
-                case "rain" -> "雨";
-                case "thunder" -> "雷雨";
-                default -> weather;
-            };
-            bonusText.append(" &9").append(weatherName).append("+").append(String.format("%.2f%%", luckResult.weatherLuck()));
-        }
-
-        // タイミングボーナス
-        if (timingResult != null && timingResult.hasTiming() && luckResult.timingLuck() > 0) {
-            String timingName = switch (timingResult.tier().name().toLowerCase()) {
-                case "just" -> "JUST";
-                case "perfect" -> "PERFECT";
-                case "great" -> "GREAT";
-                case "good" -> "GOOD";
-                default -> timingResult.tier().name().toUpperCase();
-            };
-            bonusText.append(" &6").append(timingName).append("+").append(String.format("%.2f%%", luckResult.timingLuck()));
-        }
+        String bonusText = buildBonusText(luckResult, weather, timingResult);
 
         return probabilityText + bonusText;
+    }
+
+    /**
+     * ボーナステキストを構築
+     */
+    private String buildBonusText(LuckResult luckResult, String weather, TimingResult timingResult) {
+        return getLuckOfTheSeaBonusText(luckResult) +
+                getLuckPotionBonusText(luckResult) +
+                getEquipmentBonusText(luckResult) +
+                getExperienceBonusText(luckResult) +
+                getWeatherBonusText(luckResult, weather) +
+                getTimingBonusText(luckResult, timingResult);
+    }
+
+    /**
+     * 宝釣りエンチャントボーナステキストを取得
+     */
+    private String getLuckOfTheSeaBonusText(LuckResult luckResult) {
+        if (luckResult.luckOfTheSeaLevel() <= 0) {
+            return "";
+        }
+        double bonus = luckResult.getLuckOfTheSeaBonus();
+        return " &a宝釣り+" + String.format("%.2f%%", bonus);
+    }
+
+    /**
+     * 幸運ポーションボーナステキストを取得
+     */
+    private String getLuckPotionBonusText(LuckResult luckResult) {
+        if (luckResult.luckPotionLevel() <= 0) {
+            return "";
+        }
+        double bonus = luckResult.getLuckPotionBonus();
+        return " &b幸運+" + String.format("%.2f%%", bonus);
+    }
+
+    /**
+     * 装備幸運ボーナステキストを取得
+     */
+    private String getEquipmentBonusText(LuckResult luckResult) {
+        if (luckResult.equipmentLuck() <= 0) {
+            return "";
+        }
+        double bonus = luckResult.getEquipmentBonus();
+        return " &d装備+" + String.format("%.2f%%", bonus);
+    }
+
+    /**
+     * 経験値ボーナステキストを取得
+     */
+    private String getExperienceBonusText(LuckResult luckResult) {
+        if (luckResult.experienceLevel() <= 0) {
+            return "";
+        }
+        double bonus = luckResult.getExperienceBonus();
+        return " &e経験値+" + String.format("%.2f%%", bonus);
+    }
+
+    /**
+     * 天気ボーナステキストを取得
+     */
+    private String getWeatherBonusText(LuckResult luckResult, String weather) {
+        if (luckResult.weatherLuck() <= 0) {
+            return "";
+        }
+        String weatherName = switch (weather) {
+            case "rain" -> "雨";
+            case "thunder" -> "雷雨";
+            default -> weather;
+        };
+        return " &9" + weatherName + "+" + String.format("%.2f%%", luckResult.weatherLuck());
+    }
+
+    /**
+     * タイミングボーナステキストを取得
+     */
+    private String getTimingBonusText(LuckResult luckResult, TimingResult timingResult) {
+        if (timingResult == null || !timingResult.hasTiming() || luckResult.timingLuck() <= 0) {
+            return "";
+        }
+
+        return " &6タイミング+" + String.format("%.2f%%", luckResult.timingLuck());
     }
 
     /**
@@ -477,16 +513,17 @@ public class FishingListener implements Listener {
         ItemStack selectedItem = originalItem;
 
         if (lootTable != null) {
-            LootContext.Builder contextBuilder = new LootContext.Builder(hookLocation)
-                    .killer(player)
-                    .lootedEntity(itemEntity)
-                    .luck((float) luckResult.getTotalLuck());
+            try {
+                LootContext.Builder contextBuilder = new LootContext.Builder(hookLocation)
+                        .killer(player)
+                        .lootedEntity(itemEntity)
+                        .luck((float) luckResult.getTotalLuck());
 
-            LootContext lootContext = contextBuilder.build();
-            Collection<ItemStack> loot = lootTable.populateLoot(random, lootContext);
+                LootContext lootContext = contextBuilder.build();
+                Collection<ItemStack> loot = lootTable.populateLoot(random, lootContext);
 
-            if (!loot.isEmpty()) {
-                selectedItem = loot.iterator().next();
+                if (!loot.isEmpty()) {
+                    selectedItem = loot.iterator().next();
 
                 // イルカの好意カテゴリでプレイヤーヘッドの場合、釣り人の顔に置換
                 selectedItem = PlayerHeadProcessor.processPlayerHead(selectedItem, player, category);
@@ -498,6 +535,11 @@ public class FishingListener implements Listener {
                         getItemDisplayName(selectedItem),
                         lootTableKey.toString()
                 );
+                }
+            } catch (IllegalArgumentException e) {
+                // LootContext に必要なパラメータが不足している場合は元のアイテムを使用
+                debugLogger.logError("Failed to populate loot table due to missing parameters: " + e.getMessage());
+                debugLogger.logInfo("Using original item instead");
             }
         } else {
             // ルートテーブルが見つからない場合はエラー出力
@@ -568,6 +610,48 @@ public class FishingListener implements Listener {
      * 釣り結果を保存するレコード
      */
     public record FishingResult(String category, String probabilityInfo, ItemStack item) {
+    }
+
+    /**
+     * タイミング情報をウキの位置にテキストディスプレイとして表示
+     */
+    private void displayTimingAtHook(Location hookLocation, TimingResult timingResult) {
+        if (!timingResult.hasTiming()) {
+            return;
+        }
+
+        String timingText = formatTimingText(timingResult);
+        
+        // テキストディスプレイを作成
+        TextDisplay textDisplay = Objects.requireNonNull(hookLocation.getWorld()).spawn(
+            hookLocation.clone().add(0, 1, 0), 
+            TextDisplay.class
+        );
+        
+        textDisplay.setText(timingText);
+        textDisplay.setBillboard(TextDisplay.Billboard.CENTER);
+
+        // 3秒後に自動削除
+        plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+            if (!textDisplay.isDead()) {
+                textDisplay.remove();
+            }
+        }, 60L); // 3秒 = 60tick
+    }
+
+    /**
+     * タイミング結果を表示用テキストにフォーマット
+     */
+    private String formatTimingText(TimingResult timingResult) {
+        String tierName = switch (timingResult.tier().name().toLowerCase()) {
+            case "just" -> "§6§lJUST!";
+            case "perfect" -> "§d§lPERFECT!";
+            case "great" -> "§a§lGREAT!";
+            case "good" -> "§e§lGOOD!";
+            default -> "§7" + timingResult.tier().name().toUpperCase();
+        };
+        
+        return tierName + "\n§f" + timingResult.reactionTimeMs() + "ms";
     }
 
 }
