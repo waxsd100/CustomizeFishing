@@ -91,7 +91,7 @@ public class FishingListener implements Listener {
 
         if (state == PlayerFishEvent.State.FISHING) {
             // 釣りを開始した時点でログ開始
-            debugLogger.logFishingStart();
+            debugLogger.logFishingStart(player);
             return;
         }
 
@@ -142,7 +142,7 @@ public class FishingListener implements Listener {
 
         // タイミング情報をウキに表示
         displayTimingAtHook(hookLocation, timingResult);
-        debugLogger.logFishingEnd();
+        debugLogger.logFishingEnd(player);
     }
 
     /**
@@ -153,7 +153,7 @@ public class FishingListener implements Listener {
      * @param dolphinsGrace イルカの好意エフェクトがあるか
      * @return 選択されたカテゴリ
      */
-    private String determineCategoryFromConfig(LuckResult luckResult, boolean openWater, String weather, boolean dolphinsGrace) {
+    private String determineCategoryFromConfig(Player player, LuckResult luckResult, boolean openWater, String weather, boolean dolphinsGrace) {
         ConfigurationSection categoriesSection = plugin.getConfig().getConfigurationSection("categories");
         if (categoriesSection == null) {
             return "common";
@@ -191,7 +191,7 @@ public class FishingListener implements Listener {
             // 補正後のchanceが0以下の場合はスキップ
             if (adjustedChance <= 0) {
                 debugLogger.logCategoryDetails(
-                        category.name() + " (SKIPPED)", category.priority(), category.quality(),
+                        player, category.name() + " (SKIPPED)", category.priority(), category.quality(),
                         category.chance(), adjustedChance, totalLuck
                 );
                 continue;
@@ -200,7 +200,7 @@ public class FishingListener implements Listener {
             adjustedCategories.add(new CategoryData(category.name(), category.priority(), category.quality(), adjustedChance));
 
             debugLogger.logCategoryDetails(
-                    category.name(), category.priority(), category.quality(),
+                    player, category.name(), category.priority(), category.quality(),
                     category.chance(), adjustedChance, totalLuck
             );
         }
@@ -532,11 +532,11 @@ public class FishingListener implements Listener {
         LuckResult luckResult = luckCalc.calculateTotalLuck(player, weather, timingResult);
 
         if (isDoubleFishingBonus) {
-            debugLogger.logInfo("=== DOUBLE FISHING: BONUS FISHING PROCESS ===");
+            debugLogger.logInfo(player, "=== DOUBLE FISHING: BONUS FISHING PROCESS ===");
         }
         debugLogger.logFishingStart(player, isOpenWater, weather, hasDolphinsGrace, null);
-        debugLogger.logTimingResult(timingResult.reactionTimeMs(), timingResult);
-        debugLogger.logLuckBreakdown(luckResult);
+        debugLogger.logTimingResult(player, timingResult.reactionTimeMs(), timingResult);
+        debugLogger.logLuckBreakdown(player, luckResult);
         String forcedCategory = null;
         // デバッグロッドのチェック
         ItemStack mainHand = player.getInventory().getItemInMainHand();
@@ -549,12 +549,12 @@ public class FishingListener implements Listener {
         if (forcedCategory != null) {
             category = forcedCategory;
         } else {
-            category = determineCategoryFromConfig(luckResult, isOpenWater, weather, hasDolphinsGrace);
+            category = determineCategoryFromConfig(player, luckResult, isOpenWater, weather, hasDolphinsGrace);
         }
 
         // カテゴリ選択結果をログ出力
         int eligibleCount = getEligibleCategoryCount(luckResult, isOpenWater, weather, hasDolphinsGrace);
-        debugLogger.logCategorySelection(category, eligibleCount);
+        debugLogger.logCategorySelection(player, category, eligibleCount);
 
         String namespace = plugin.getConfig().getString("loot_tables.namespace", "customize_fishing");
         String path = plugin.getConfig().getString("loot_tables.path", "gameplay/fishing");
@@ -588,25 +588,26 @@ public class FishingListener implements Listener {
                         itemEntity.setItemStack(selectedItem);
                         
                         debugLogger.logItemReplacement(
+                                player,
                                 getItemDisplayName(originalItem),
                                 getItemDisplayName(selectedItem),
                                 lootTableKey.toString()
                         );
                     } else {
-                        debugLogger.logError("Selected item is invalid, keeping original item");
+                        debugLogger.logInfo(player, "[ERROR] Selected item is invalid, keeping original item");
                         selectedItem = originalItem;
                     }
                 } else {
-                    debugLogger.logError("Loot table returned empty results for category: " + category);
+                    debugLogger.logInfo(player, "[ERROR] Loot table returned empty results for category: " + category);
                 }
             } catch (IllegalArgumentException e) {
                 // LootContext に必要なパラメータが不足している場合は元のアイテムを使用
-                debugLogger.logError("Failed to populate loot table due to missing parameters: " + e.getMessage());
-                debugLogger.logInfo("Using original item instead");
+                debugLogger.logInfo(player, "[ERROR] Failed to populate loot table due to missing parameters: " + e.getMessage());
+                debugLogger.logInfo(player, "Using original item instead");
             }
         } else {
             // ルートテーブルが見つからない場合はエラー出力
-            debugLogger.logError("Loot table not found: " + lootTableKey);
+            debugLogger.logInfo(player, "[ERROR] Loot table not found: " + lootTableKey);
         }
 
         // 確率情報を計算
@@ -614,7 +615,7 @@ public class FishingListener implements Listener {
 
         // デバッグ: タイミング情報をログ出力
         if (timingResult.hasTiming()) {
-            debugLogger.logInfo(String.format(" Timing Bonus Debug: tier=%s, luckBonus=%.2f",
+            debugLogger.logInfo(player, String.format(" Timing Bonus Debug: tier=%s, luckBonus=%.2f",
                     timingResult.tier().name(), timingResult.luckBonus()));
         }
 
