@@ -25,9 +25,9 @@ public class DebugLogger {
 
     private final CustomizeFishing plugin;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-    private final DateTimeFormatter fileNameFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
-    private final File logsFolder;
-    private final File currentLogFile;
+    private final DateTimeFormatter fileNameFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private File currentLogFile;
+    private String currentDate;
 
     public DebugLogger(CustomizeFishing plugin) {
         this.plugin = plugin;
@@ -38,74 +38,25 @@ public class DebugLogger {
             pluginDataFolder.mkdirs();
         }
 
-        this.logsFolder = new File(pluginDataFolder, "logs");
+        File logsFolder = new File(pluginDataFolder, "logs");
         if (!logsFolder.exists()) {
             logsFolder.mkdirs();
         }
 
-        // 現在のログファイルを初期化
-        this.currentLogFile = new File(logsFolder, "debug.log");
-        
-        // 起動時にログファイルをローテーション
-        rotateLogFile();
+        // 現在の日付でログファイルを初期化
+        this.currentDate = LocalDateTime.now().format(fileNameFormat);
+        this.currentLogFile = new File(logsFolder, currentDate + ".log");
     }
 
     /**
-     * ログファイルをローテーションする
+     * 日付が変わったかチェックし、必要に応じて新しいログファイルを作成
      */
-    private void rotateLogFile() {
-        if (!currentLogFile.exists()) {
-            return;
-        }
-
-        try {
-            // ファイル作成時刻を取得してファイル名に使用
-            String timestamp = LocalDateTime.now().format(fileNameFormat);
-            File rotatedFile = new File(logsFolder, "debug-" + timestamp + ".log");
-            
-            // 既存のログファイルをリネーム
-            Files.move(currentLogFile.toPath(), rotatedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            
-            // 古いログファイルを削除
-            cleanupOldLogs();
-            
-        } catch (IOException e) {
-            plugin.getLogger().warning("Failed to rotate log file: " + e.getMessage());
-        }
-    }
-
-    /**
-     * 古いログファイルを削除する
-     */
-    private void cleanupOldLogs() {
-        File[] logFiles = logsFolder.listFiles((dir, name) -> 
-            name.startsWith("debug-") && name.endsWith(".log"));
-
-        // 最大保持ログファイル数
-        int maxLogFiles = 60;
-        if (logFiles == null || logFiles.length <= maxLogFiles) {
-            return;
-        }
-
-        // ファイルを作成日時順にソート（古い順）
-        Arrays.sort(logFiles, Comparator.comparingLong(File::lastModified));
-
-        // 古いファイルを削除
-        for (int i = 0; i < logFiles.length - maxLogFiles; i++) {
-            if (logFiles[i].delete()) {
-                plugin.getLogger().info("Deleted old log file: " + logFiles[i].getName());
-            }
-        }
-    }
-
-    /**
-     * ファイルサイズをチェックしてローテーションが必要かどうか判定
-     */
-    private void checkAndRotateIfNeeded() {
-        // 100MB
-        long maxFileSize = 100 * 1024 * 1024;
-        if (currentLogFile.exists() && currentLogFile.length() > maxFileSize) {
-            rotateLogFile();
+    private void checkAndUpdateLogFile() {
+        String newDate = LocalDateTime.now().format(fileNameFormat);
+        if (!newDate.equals(currentDate)) {
+            currentDate = newDate;
+            File logsFolder = currentLogFile.getParentFile();
+            currentLogFile = new File(logsFolder, currentDate + ".log");
         }
     }
 
@@ -113,9 +64,7 @@ public class DebugLogger {
      * デバッグログをファイルに書き込み
      */
     private void writeToFile(String message) {
-        // ファイルサイズをチェックしてローテーション
-        checkAndRotateIfNeeded();
-        
+        checkAndUpdateLogFile();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(currentLogFile, true))) {
             String timestamp = dateFormat.format(new Date());
             writer.write(String.format("[%s] %s%n", timestamp, message));

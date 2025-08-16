@@ -89,6 +89,12 @@ public class FishingListener implements Listener {
         PlayerFishEvent.State state = event.getState();
         Location hookLocation = event.getHook().getLocation();
 
+        if (state == PlayerFishEvent.State.FISHING) {
+            // 釣りを開始した時点でログ開始
+            debugLogger.logFishingStart();
+            return;
+        }
+
         if (state == PlayerFishEvent.State.BITE)  {
             // 釣れた瞬間の音効果を再生
             Objects.requireNonNull(hookLocation.getWorld()).playSound(hookLocation, Sound.BLOCK_LEVER_CLICK, 1.0f, 2.0f);
@@ -104,7 +110,6 @@ public class FishingListener implements Listener {
             return;
         }
 
-        debugLogger.logFishingStart();
         TimingResult timingResult = checkTiming(player);
         // ダブルフィッシング条件をチェック
         boolean canDoubleFish = checkDoubleFishingConditions(player);
