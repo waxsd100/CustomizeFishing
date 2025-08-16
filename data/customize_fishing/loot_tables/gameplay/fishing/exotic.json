@@ -1226,7 +1226,7 @@
         {
           "type": "minecraft:item",
           "name": "twilightforest:snowy_cloud",
-          "weight": 80,
+          "weight": 40,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -1240,7 +1240,7 @@
         {
           "type": "minecraft:item",
           "name": "twilightforest:rainy_cloud",
-          "weight": 80,
+          "weight": 40,
           "functions": [
             {
               "function": "minecraft:set_count",
