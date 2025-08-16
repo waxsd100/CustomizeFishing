@@ -802,63 +802,6 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:potion",
-          "weight": 1,
-          "comment": "ハニカム-∞-777",
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{revision:1,CustomPotionColor:65535,CustomPotionEffects:[{Id:11,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:32,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:1,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:5,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:8,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:16,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1},{Id:10,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:3},{Id:6,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:127},{Id:22,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:3},{Id:26,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:9},{Id:9,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1}],Potion:\"minecraft:empty\",Enchantments:[{}],HideFlags:32}"
-            },
-            {
-              "function": "minecraft:set_name",
-              "name": [
-                "",
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "green"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "∞", "italic": false, "bold": true, "color": "aqua"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "777", "italic": false, "bold": true, "color": "green"},
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true}
-              ]
-            },
-            {
-              "function": "minecraft:set_lore",
-              "lore": [
-                {"text": "泡立つしゅわっとした液体に", "italic": false, "color": "dark_aqua"},
-                {"text": "神秘の輝きを放つ", "italic": false, "color": "dark_aqua"},
-                [
-                  "",
-                  {"text": "六角形の", "italic": false, "color": "dark_aqua"},
-                  {"text": "結晶", "italic": false, "color": "green", "bold": true},
-                  {"text": "が入っている。", "italic": false, "color": "dark_aqua"}
-                ],
-                [
-                  "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_aqua"},
-                  {"text": "限界まで", "italic": false, "color": "gold", "bold": true},
-                  {"text": "上昇させ傷を瞬時に癒す。", "italic": false, "color": "dark_aqua"}
-                ]
-              ]
-            },
-            {
-              "function": "minecraft:set_attributes",
-              "modifiers": [
-                {
-                  "attribute": "minecraft:generic.max_health",
-                  "name": "honeycomb_777_health",
-                  "amount": 10,
-                  "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11, 0, 1, 0]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:potion",
           "weight": 50,
           "comment": "ハニカム-X-ダーク",
           "functions": [
@@ -984,63 +927,6 @@
                   {"text": "大きく", "italic": false, "color": "gold", "bold": true},
                   {"text": "低下させダメージを与える。", "italic": false, "color": "dark_red"}
                 ]
-              ]
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:potion",
-          "weight": 1,
-          "comment": "ハニカム-∅-000",
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{revision:1,CustomPotionColor:11546150,CustomPotionEffects:[{Id:2,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:18,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:4,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:15,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1},{Id:19,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:1},{Id:7,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:3},{Id:17,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:3},{Id:20,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:9},{Id:27,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:3},{Id:31,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:9,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1}],Potion:\"minecraft:empty\",Enchantments:[{}],HideFlags:32}"
-            },
-            {
-              "function": "minecraft:set_name",
-              "name": [
-                "",
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "∅", "italic": false, "bold": true, "color": "dark_purple"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "000", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true}
-              ]
-            },
-            {
-              "function": "minecraft:set_lore",
-              "lore": [
-                {"text": "泡立つ淀んだ液体に", "italic": false, "color": "dark_red"},
-                {"text": "絶望の気配を漂わせる", "italic": false, "color": "dark_red"},
-                [
-                  "",
-                  {"text": "六角形の", "italic": false, "color": "dark_red"},
-                  {"text": "結晶", "italic": false, "color": "dark_purple", "bold": true},
-                  {"text": "が消えかけている。", "italic": false, "color": "dark_red"}
-                ],
-                [
-                  "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_red"},
-                  {"text": "限界まで", "italic": false, "color": "gold", "bold": true},
-                  {"text": "低下させ致命的なダメージを与える。", "italic": false, "color": "dark_red"}
-                ]
-              ]
-            },
-            {
-              "function": "minecraft:set_attributes",
-              "modifiers": [
-                {
-                  "attribute": "minecraft:generic.max_health",
-                  "name": "honeycomb_000_health",
-                  "amount": -10,
-                  "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11, 0, 1, 0]
-                }
               ]
             }
           ]
@@ -1304,50 +1190,6 @@
                   {"text": "5分間、コンジットパワー Lv", "italic": false, "color": "dark_blue"},
                   {"text": "2", "italic": false, "color": "gold", "bold": true},
                   {"text": "の効果を得る", "italic": false, "color": "dark_blue"}
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:potion",
-          "weight": 5,
-          "comment": "Conduit-Infinity-Atlantis",
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{revision:1,CustomPotionColor:65535,CustomPotionEffects:[{Id:29,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:2},{Id:13,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:26,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1}],Potion:\"minecraft:empty\",Enchantments:[{}],HideFlags:32}"
-            },
-            {
-              "function": "minecraft:set_name",
-              "name": [
-                "",
-                {"text": "~", "italic": false, "color": "aqua", "obfuscated": true},
-                {"text": "コンジット", "italic": false, "bold": true, "color": "aqua"},
-                {"text": "✰", "italic": false, "bold": true},
-                {"text": "∞", "italic": false, "bold": true, "color": "light_purple"},
-                {"text": "✰", "italic": false, "bold": true},
-                {"text": "アトランティス", "italic": false, "bold": true, "color": "aqua"},
-                {"text": "~", "italic": false, "color": "aqua", "obfuscated": true}
-              ]
-            },
-            {
-              "function": "minecraft:set_lore",
-              "lore": [
-                {"text": "失われた海底都市の秘宝", "italic": false, "color": "light_purple"},
-                {"text": "伝説の力を秘めた神秘の液体", "italic": false, "color": "light_purple"},
-                [
-                  "",
-                  {"text": "海の", "italic": false, "color": "light_purple"},
-                  {"text": "支配者", "italic": false, "color": "aqua", "bold": true},
-                  {"text": "となる力を与える", "italic": false, "color": "light_purple"}
-                ],
-                [
-                  "",
-                  {"text": "10分間、コンジットパワー Lv", "italic": false, "color": "light_purple"},
-                  {"text": "3", "italic": false, "color": "gold", "bold": true},
-                  {"text": "と水中呼吸、", "italic": false, "color": "light_purple"}
                 ]
               ]
             }

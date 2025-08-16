@@ -2,6 +2,7 @@ package io.wax100.customizeFishing.luck;
 
 import io.wax100.customizeFishing.CustomizeFishing;
 import io.wax100.customizeFishing.debug.DebugLogger;
+import io.wax100.customizeFishing.enums.Weather;
 import io.wax100.customizeFishing.timing.TimingResult;
 import io.wax100.customizeFishing.timing.TimingTier;
 import org.bukkit.Material;
@@ -38,7 +39,7 @@ public class LuckCalculator {
      * @param timingResult タイミング結果
      * @return 幸運計算結果
      */
-    public LuckResult calculateTotalLuck(Player player, String weather, TimingResult timingResult) {
+    public LuckResult calculateTotalLuck(Player player, Weather weather, TimingResult timingResult) {
 
         // 宝釣りエンチャント
         int luckOfTheSeaLevel = calculateLuckOfTheSea(player);
@@ -321,8 +322,8 @@ public class LuckCalculator {
     /**
      * 天気による幸運ボーナスを計算
      */
-    private double calculateWeatherLuck(String weather) {
-        return plugin.getConfig().getDouble("weather_luck." + weather, 0.0);
+    private double calculateWeatherLuck(Weather weather) {
+        return plugin.getConfig().getDouble("weather_luck." + weather.getConfigKey(), 0.0);
     }
 
     /**

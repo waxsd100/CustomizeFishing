@@ -4,6 +4,7 @@ import io.wax100.customizeFishing.CustomizeFishing;
 import io.wax100.customizeFishing.debug.DebugFishingRod;
 import io.wax100.customizeFishing.debug.DebugLogger;
 import io.wax100.customizeFishing.effects.CatchEffects;
+import io.wax100.customizeFishing.enums.Weather;
 import io.wax100.customizeFishing.fishing.FishingConditionChecker;
 import io.wax100.customizeFishing.fishing.PlayerHeadProcessor;
 import io.wax100.customizeFishing.luck.LuckCalculator;
@@ -111,6 +112,24 @@ public class FishingListener implements Listener {
         }
 
         TimingResult timingResult = checkTiming(player);
+        
+        // 幸運値を事前に計算（ダブルフィッシングでも1回だけ計算）
+        boolean isOpenWater = FishingConditionChecker.isOpenWater(hookLocation);
+        Weather weather = Weather.CLEAR;
+        if (Objects.requireNonNull(hookLocation.getWorld()).isThundering()) {
+            weather = Weather.THUNDER;
+        } else if (hookLocation.getWorld().hasStorm()) {
+            weather = Weather.RAIN;
+        }
+        
+        // Twilight Forest rainy_cloud の検出（ウキの上空32ブロック以内）
+        if (checkForTwilightRainyClouds(hookLocation)) {
+            weather = Weather.RAIN;
+        }
+        
+        LuckCalculator luckCalc = new LuckCalculator(plugin);
+        LuckResult luckResult = luckCalc.calculateTotalLuck(player, weather, timingResult);
+        
         // ダブルフィッシング条件をチェック
         boolean canDoubleFish = checkDoubleFishingConditions(player);
 
@@ -118,14 +137,14 @@ public class FishingListener implements Listener {
         if (canDoubleFish && plugin.getConfig().getBoolean("double_fishing.enabled", true)) {
 
             // 両方の結果を保存するための準備
-            FishingResult firstResult = processFishing(player, itemEntity, hookLocation, false, timingResult);
+            FishingResult firstResult = processFishing(player, itemEntity, hookLocation, false, timingResult, luckResult, isOpenWater, weather);
 
             // 新しいアイテムエンティティを作成
             ItemStack bonusItem = new ItemStack(Material.COD); // デフォルトアイテム
             Item bonusEntity = player.getWorld().dropItem(hookLocation, bonusItem);
             bonusEntity.setPickupDelay(Integer.MAX_VALUE); // 自動拾いを無効化
 
-            FishingResult secondResult = processFishing(player, bonusEntity, hookLocation, true, timingResult);
+            FishingResult secondResult = processFishing(player, bonusEntity, hookLocation, true, timingResult, luckResult, isOpenWater, weather);
 
             // 両方の結果を同時に表示
             displayDoubleFishingResults(player, firstResult, secondResult);
@@ -134,7 +153,7 @@ public class FishingListener implements Listener {
             bonusEntity.teleport(player.getLocation());
             bonusEntity.setPickupDelay(0); // 拾えるように戻す
         } else {
-            FishingResult result = processFishing(player, itemEntity, hookLocation, false, timingResult);
+            FishingResult result = processFishing(player, itemEntity, hookLocation, false, timingResult, luckResult, isOpenWater, weather);
 
             // レア度別演出を実行
             catchEffects.playCatchEffects(player, result.category(), result.probabilityInfo());
@@ -142,6 +161,8 @@ public class FishingListener implements Listener {
 
         // タイミング情報をウキに表示
         displayTimingAtHook(hookLocation, timingResult);
+        
+        // ログ終了は最後に実行
         debugLogger.logFishingEnd(player);
     }
 
@@ -153,7 +174,7 @@ public class FishingListener implements Listener {
      * @param dolphinsGrace イルカの好意エフェクトがあるか
      * @return 選択されたカテゴリ
      */
-    private String determineCategoryFromConfig(Player player, LuckResult luckResult, boolean openWater, String weather, boolean dolphinsGrace) {
+    private String determineCategoryFromConfig(Player player, LuckResult luckResult, boolean openWater, Weather weather, boolean dolphinsGrace) {
         ConfigurationSection categoriesSection = plugin.getConfig().getConfigurationSection("categories");
         if (categoriesSection == null) {
             return "common";
@@ -282,7 +303,7 @@ public class FishingListener implements Listener {
     /**
      * カテゴリの条件をチェックし、条件を満たすかを返す
      */
-    private boolean checkCategoryConditions(ConfigurationSection categorySection, LuckResult luckResult, boolean openWater, String weather, boolean dolphinsGrace) {
+    private boolean checkCategoryConditions(ConfigurationSection categorySection, LuckResult luckResult, boolean openWater, Weather weather, boolean dolphinsGrace) {
         if (categorySection == null || !categorySection.getBoolean("enabled", true)) {
             return false;
         }
@@ -331,13 +352,13 @@ public class FishingListener implements Listener {
         }
 
         List<String> allowedWeather = conditionsSection.getStringList("weather");
-        return allowedWeather.isEmpty() || allowedWeather.contains(weather);
+        return allowedWeather.isEmpty() || allowedWeather.contains(weather.getConfigKey());
     }
 
     /**
      * 条件を満たすカテゴリ数を取得（デバッグ用）
      */
-    private int getEligibleCategoryCount(LuckResult luckResult, boolean openWater, String weather, boolean dolphinsGrace) {
+    private int getEligibleCategoryCount(LuckResult luckResult, boolean openWater, Weather weather, boolean dolphinsGrace) {
         ConfigurationSection categoriesSection = plugin.getConfig().getConfigurationSection("categories");
         if (categoriesSection == null) {
             return 0;
@@ -356,7 +377,7 @@ public class FishingListener implements Listener {
     /**
      * 確率情報を計算してフォーマットした文字列を返す
      */
-    private String calculateProbabilityInfo(String selectedCategory, LuckResult luckResult, String weather, TimingResult timingResult) {
+    private String calculateProbabilityInfo(String selectedCategory, LuckResult luckResult, Weather weather, TimingResult timingResult) {
         ConfigurationSection categoriesSection = plugin.getConfig().getConfigurationSection("categories");
         if (categoriesSection == null) {
             return "";
@@ -380,7 +401,7 @@ public class FishingListener implements Listener {
     /**
      * ボーナステキストを構築
      */
-    private String buildBonusText(LuckResult luckResult, String weather, TimingResult timingResult) {
+    private String buildBonusText(LuckResult luckResult, Weather weather, TimingResult timingResult) {
         return getLuckOfTheSeaBonusText(luckResult) +
                 getLuckPotionBonusText(luckResult) +
                 getEquipmentBonusText(luckResult) +
@@ -444,14 +465,14 @@ public class FishingListener implements Listener {
     /**
      * 天気ボーナステキストを取得
      */
-    private String getWeatherBonusText(LuckResult luckResult, String weather) {
+    private String getWeatherBonusText(LuckResult luckResult, Weather weather) {
         if (luckResult.weatherLuck() <= 0) {
             return "";
         }
         String weatherName = switch (weather) {
-            case "rain" -> "雨";
-            case "thunder" -> "雷雨";
-            default -> weather;
+            case RAIN -> "雨";
+            case THUNDER -> "雷雨";
+            default -> weather.getConfigKey();
         };
         return " " + ChatColor.BLUE + weatherName + "+" + String.format("%.2f%%", luckResult.weatherLuck());
     }
@@ -511,26 +532,9 @@ public class FishingListener implements Listener {
     /**
      * 釣り処理を実行し、結果を返す
      */
-    private FishingResult processFishing(Player player, Item itemEntity, Location hookLocation, boolean isDoubleFishingBonus, TimingResult timingResult) {
-
-        boolean isOpenWater = FishingConditionChecker.isOpenWater(hookLocation);
-        String weather = "clear";
-        if (Objects.requireNonNull(hookLocation.getWorld()).isThundering()) {
-            weather = "thunder";
-        } else if (hookLocation.getWorld().hasStorm()) {
-            weather = "rain";
-        }
-
-        // Twilight Forest rainy_cloud の検出（ウキの上空32ブロック以内）
-        if (checkForTwilightRainyClouds(hookLocation)) {
-            weather = "rain";
-        }
+    private FishingResult processFishing(Player player, Item itemEntity, Location hookLocation, boolean isDoubleFishingBonus, TimingResult timingResult, LuckResult luckResult, boolean isOpenWater, Weather weather) {
 
         boolean hasDolphinsGrace = player.hasPotionEffect(PotionEffectType.DOLPHINS_GRACE);
-
-        // LuckCalculatorで全ての幸運値を計算
-        LuckCalculator luckCalc = new LuckCalculator(plugin);
-        LuckResult luckResult = luckCalc.calculateTotalLuck(player, weather, timingResult);
 
         if (isDoubleFishingBonus) {
             debugLogger.logInfo(player, "=== DOUBLE FISHING: BONUS FISHING PROCESS ===");

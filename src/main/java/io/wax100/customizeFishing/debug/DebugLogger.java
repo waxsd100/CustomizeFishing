@@ -1,6 +1,7 @@
 package io.wax100.customizeFishing.debug;
 
 import io.wax100.customizeFishing.CustomizeFishing;
+import io.wax100.customizeFishing.enums.Weather;
 import io.wax100.customizeFishing.luck.LuckResult;
 import io.wax100.customizeFishing.timing.TimingResult;
 import org.bukkit.entity.Player;
@@ -119,12 +120,12 @@ public class DebugLogger {
     /**
      * 釣り開始時の情報をログ出力
      */
-    public void logFishingStart(Player player, boolean isOpenWater, String weather,
+    public void logFishingStart(Player player, boolean isOpenWater, Weather weather,
                                 boolean hasDolphinsGrace, String forcedCategory) {
 
         logInfo(player, String.format(
                 " Player: %s | OpenWater: %s | Weather: %s | Dolphins: %s",
-                player.getName(), isOpenWater, weather, hasDolphinsGrace
+                player.getName(), isOpenWater, weather.getConfigKey(), hasDolphinsGrace
         ));
 
         if (forcedCategory != null) {
