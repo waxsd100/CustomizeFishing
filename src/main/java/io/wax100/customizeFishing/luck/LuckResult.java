@@ -16,22 +16,14 @@ public record LuckResult(
         double timingLuck,
         int experienceLevel
 ) {
+
     /**
      * 宝釣りエンチャントボーナスを計算
      *
+     * @param plugin プラグインインスタンス
      * @return 宝釣りボーナス（パーセンテージ）
      */
-    public double getLuckOfTheSeaBonus() {
-        return getLuckOfTheSeaBonusWithConfig(null);
-    }
-    
-    /**
-     * 宝釣りエンチャントボーナスを計算（config考慮）
-     *
-     * @param plugin プラグインインスタンス（nullの場合はデフォルト値使用）
-     * @return 宝釣りボーナス（パーセンテージ）
-     */
-    public double getLuckOfTheSeaBonusWithConfig(CustomizeFishing plugin) {
+    public double getLuckOfTheSeaBonus(CustomizeFishing plugin) {
         // 基本設定値（プラグインがnullの場合のデフォルト）
         double perLevel = 0.10;
         int maxLevel = 10;
@@ -78,14 +70,22 @@ public record LuckResult(
     public double getLuckPotionBonus() {
         return Math.min(10, luckPotionLevel) * 0.07;
     }
-    
+
     /**
      * 不幸ポーションペナルティを計算
      *
      * @return 不幸ポーションペナルティ（パーセンテージ）
      */
-    public double getUnluckPotionPenalty() {
-        return Math.min(10, unluckPotionLevel) * -0.07;
+    public double getUnluckPotionPenalty(CustomizeFishing plugin) {
+        double perLevel = -0.44; // デフォルト値
+        int maxLevel = 10;
+        
+        if (plugin != null) {
+            perLevel = plugin.getConfig().getDouble("luck_effects.unluck_potion.per_level", -0.29);
+            maxLevel = plugin.getConfig().getInt("luck_effects.unluck_potion.max_level", 10);
+        }
+        
+        return Math.min(maxLevel, unluckPotionLevel) * perLevel;
     }
 
     /**
@@ -94,8 +94,7 @@ public record LuckResult(
      * @return 装備幸運ボーナス（パーセンテージ）
      */
     public double getEquipmentBonus() {
-        // config.ymlの設定に基づいて負の値も考慮
-        double perPoint = 0.1; // luck_effects.equipment_luck.per_pointの値
+        double perPoint = 0.1;
         return equipmentLuck * perPoint;
     }
 
@@ -115,11 +114,11 @@ public record LuckResult(
      * @return 総合幸運値（パーセンテージ）
      */
     public double getTotalLuck(CustomizeFishing plugin) {
-        // 基本的な幸運値計算（config考慮）
-        double baseLuck = getLuckOfTheSeaBonusWithConfig(plugin) + getEquipmentBonus() + weatherLuck + timingLuck + getExperienceBonus();
+        // 基本的な幸運値計算
+        double baseLuck = getLuckOfTheSeaBonus(plugin) + getEquipmentBonus() + weatherLuck + timingLuck + getExperienceBonus();
         
         // 幸運と不幸の相殺計算
-        double potionLuck = getLuckPotionBonus() + getUnluckPotionPenalty();
+        double potionLuck = getLuckPotionBonus() + getUnluckPotionPenalty(plugin);
         
         double totalLuck = baseLuck + potionLuck;
         

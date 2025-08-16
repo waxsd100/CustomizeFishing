@@ -9,6 +9,7 @@ import io.wax100.customizeFishing.fishing.PlayerHeadProcessor;
 import io.wax100.customizeFishing.luck.LuckCalculator;
 import io.wax100.customizeFishing.luck.LuckResult;
 import io.wax100.customizeFishing.timing.TimingResult;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -60,15 +61,19 @@ public class FishingListener implements Listener {
         // 確率情報を日本語でフォーマット
         String probabilityText;
         if (adjustedChance <= 0) {
-            probabilityText = "&7確率: &c0.00%%";
+            probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + "0%";
         } else if (adjustedChance == baseChance) {
-            probabilityText = "&7確率: &e" + String.format("%.2f%%", baseChance);
+            probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", baseChance);
+        } else if (adjustedChance >= 100) {
+            probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + "100%";
         } else {
             double difference = adjustedChance - baseChance;
             if (difference < 0) {
-                probabilityText = "&7確率: &e" + String.format("%.2f%%", adjustedChance) + " &7(補正値: &c" + String.format("%.2f%%", baseChance) + " " + String.format("%.2f%%", difference) + "&7)";
+                probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", adjustedChance) + 
+                    " " + ChatColor.GRAY + "(補正値:" + ChatColor.RED + " " + String.format("%.2f%%", difference) + ChatColor.GRAY + ")";
             } else {
-                probabilityText = "&7確率: &e" + String.format("%.2f%%", adjustedChance) + " &7(補正値: &a" + String.format("%.2f%%", baseChance) + " +" + String.format("%.2f%%", difference) + "&7)";
+                probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", adjustedChance) + 
+                    " " + ChatColor.GRAY + "(補正値:" + ChatColor.GREEN + " +" + String.format("%.2f%%", difference) + ChatColor.GRAY + ")";
             }
         }
         return probabilityText;
@@ -205,7 +210,7 @@ public class FishingListener implements Listener {
 
         for (CategoryData category : adjustedCategories) {
             double roll = random.nextDouble() * 100.0;  // 0.0から100.0の範囲で乱数を生成
-              // 補正されたchanceを使用
+            // 補正されたchanceを使用
             if (roll < category.chance()) {
                 return category.name();
             }
@@ -213,7 +218,7 @@ public class FishingListener implements Listener {
 
         return "common";
     }
-    
+
     /**
      * 確率補正を計算（改良版：負の幸運時に低品質アイテムが出やすくなる）
      * @param baseChance 基本確率
@@ -223,19 +228,19 @@ public class FishingListener implements Listener {
      */
     private double calculateAdjustedChance(double baseChance, double quality, double totalLuck) {
         double adjustment;
-        
+
         if (totalLuck >= 0) {
             // 正の幸運時：qualityが高いほどボーナス上昇を抑制
             if (quality > 0) {
                 // config.ymlから減衰設定を読み込み
                 boolean diminishingEnabled = plugin.getConfig().getBoolean("luck_adjustment.positive_luck_diminishing.enabled", true);
                 double diminishingFactor = 1.0;
-                
+
                 if (diminishingEnabled) {
-                    double factor = plugin.getConfig().getDouble("luck_adjustment.positive_luck_diminishing.factor", 0.3);
+                    double factor = plugin.getConfig().getDouble("luck_adjustment.positive_luck_diminishing.factor", 0.01);
                     diminishingFactor = 1.0 / (1.0 + quality * factor);
                 }
-                
+
                 adjustment = quality * totalLuck * diminishingFactor;
             } else {
                 // 負のqualityや0の場合は通常計算
@@ -255,7 +260,7 @@ public class FishingListener implements Listener {
                 adjustment = 0;
             }
         }
-        
+
         return Math.floor(baseChance + adjustment);
     }
 
@@ -372,7 +377,6 @@ public class FishingListener implements Listener {
     private String buildBonusText(LuckResult luckResult, String weather, TimingResult timingResult) {
         return getLuckOfTheSeaBonusText(luckResult) +
                 getLuckPotionBonusText(luckResult) +
-                getUnluckPotionPenaltyText(luckResult) +
                 getEquipmentBonusText(luckResult) +
                 getExperienceBonusText(luckResult) +
                 getWeatherBonusText(luckResult, weather) +
@@ -386,30 +390,23 @@ public class FishingListener implements Listener {
         if (luckResult.luckOfTheSeaLevel() <= 0) {
             return "";
         }
-        double bonus = luckResult.getLuckOfTheSeaBonus();
-        return " &a宝釣り+" + String.format("%.2f%%", bonus);
+        double bonus = luckResult.getLuckOfTheSeaBonus(plugin);
+        return " " + ChatColor.GREEN + "宝釣り+" + String.format("%.2f%%", bonus);
     }
 
     /**
      * 幸運ポーションボーナステキストを取得
      */
     private String getLuckPotionBonusText(LuckResult luckResult) {
-        if (luckResult.luckPotionLevel() <= 0) {
+        double bonus = luckResult.getLuckPotionBonus() + luckResult.getUnluckPotionPenalty(plugin);
+        if (bonus == 0) {
             return "";
         }
-        double bonus = luckResult.getLuckPotionBonus();
-        return " &b幸運+" + String.format("%.2f%%", bonus);
-    }
-
-    /**
-     * 不幸ポーションペナルティテキストを取得
-     */
-    private String getUnluckPotionPenaltyText(LuckResult luckResult) {
-        if (luckResult.unluckPotionLevel() <= 0) {
-            return "";
+        if (bonus > 0) {
+            return " " + ChatColor.AQUA + "幸運+" + String.format("%.2f%%", bonus);
+        } else  {
+            return " " + ChatColor.RED + "幸運" + String.format("%.2f%%", bonus);
         }
-        double penalty = luckResult.getUnluckPotionPenalty();
-        return " &c不幸" + String.format("%.2f%%", penalty);
     }
 
     /**
@@ -421,9 +418,9 @@ public class FishingListener implements Listener {
             return "";
         }
         if (bonus > 0) {
-            return " &d装備+" + String.format("%.2f%%", bonus);
+            return " " + ChatColor.LIGHT_PURPLE + "装備+" + String.format("%.2f%%", bonus);
         } else {
-            return " &c装備" + String.format("%.2f%%", bonus);
+            return " " + ChatColor.RED + "装備" + String.format("%.2f%%", bonus);
         }
     }
 
@@ -435,7 +432,7 @@ public class FishingListener implements Listener {
             return "";
         }
         double bonus = luckResult.getExperienceBonus();
-        return " &e経験値+" + String.format("%.2f%%", bonus);
+        return " " + ChatColor.YELLOW + "経験値+" + String.format("%.2f%%", bonus);
     }
 
     /**
@@ -450,7 +447,7 @@ public class FishingListener implements Listener {
             case "thunder" -> "雷雨";
             default -> weather;
         };
-        return " &9" + weatherName + "+" + String.format("%.2f%%", luckResult.weatherLuck());
+        return " " + ChatColor.BLUE + weatherName + "+" + String.format("%.2f%%", luckResult.weatherLuck());
     }
 
     /**
@@ -461,7 +458,7 @@ public class FishingListener implements Listener {
             return "";
         }
 
-        return " &6タイミング+" + String.format("%.2f%%", luckResult.timingLuck());
+        return " " + ChatColor.GOLD + "タイミング+" + String.format("%.2f%%", luckResult.timingLuck());
     }
 
     /**
@@ -575,16 +572,16 @@ public class FishingListener implements Listener {
                 if (!loot.isEmpty()) {
                     selectedItem = loot.iterator().next();
 
-                // イルカの好意カテゴリでプレイヤーヘッドの場合、釣り人の顔に置換
-                selectedItem = PlayerHeadProcessor.processPlayerHead(selectedItem, player, category);
+                    // イルカの好意カテゴリでプレイヤーヘッドの場合、釣り人の顔に置換
+                    selectedItem = PlayerHeadProcessor.processPlayerHead(selectedItem, player, category);
 
-                itemEntity.setItemStack(selectedItem);
+                    itemEntity.setItemStack(selectedItem);
 
-                debugLogger.logItemReplacement(
-                        getItemDisplayName(originalItem),
-                        getItemDisplayName(selectedItem),
-                        lootTableKey.toString()
-                );
+                    debugLogger.logItemReplacement(
+                            getItemDisplayName(originalItem),
+                            getItemDisplayName(selectedItem),
+                            lootTableKey.toString()
+                    );
                 }
             } catch (IllegalArgumentException e) {
                 // LootContext に必要なパラメータが不足している場合は元のアイテムを使用
@@ -671,13 +668,13 @@ public class FishingListener implements Listener {
         }
 
         String timingText = formatTimingText(timingResult);
-        
+
         // テキストディスプレイを作成
         TextDisplay textDisplay = Objects.requireNonNull(hookLocation.getWorld()).spawn(
-            hookLocation.clone().add(0, 1, 0), 
-            TextDisplay.class
+                hookLocation.clone().add(0, 1, 0),
+                TextDisplay.class
         );
-        
+
         textDisplay.setText(timingText);
         textDisplay.setBillboard(TextDisplay.Billboard.CENTER);
 
@@ -700,7 +697,7 @@ public class FishingListener implements Listener {
             case "good" -> "§e§lGOOD!";
             default -> "§7" + timingResult.tier().name().toUpperCase();
         };
-        
+
         return tierName + "\n§f" + timingResult.reactionTimeMs() + "ms";
     }
 
