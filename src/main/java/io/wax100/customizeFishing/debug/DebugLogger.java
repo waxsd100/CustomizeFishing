@@ -9,12 +9,14 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -25,9 +27,9 @@ public class DebugLogger {
     private final CustomizeFishing plugin;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
     private final DateTimeFormatter fileNameFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private final Map<UUID, List<String>> playerLogBuffers = new ConcurrentHashMap<>();
     private File currentLogFile;
     private String currentDate;
-    private final Map<UUID, List<String>> playerLogBuffers = new ConcurrentHashMap<>();
 
     public DebugLogger(CustomizeFishing plugin) {
         this.plugin = plugin;
@@ -66,7 +68,7 @@ public class DebugLogger {
     public void startLogBuffer(Player player) {
         playerLogBuffers.put(player.getUniqueId(), new ArrayList<>());
     }
-    
+
     /**
      * プレイヤー用のログバッファにメッセージを追加
      */
@@ -80,7 +82,7 @@ public class DebugLogger {
             writeToFile(message);
         }
     }
-    
+
     /**
      * プレイヤー用のログバッファをファイルに書き込んでクリア
      */
@@ -99,7 +101,7 @@ public class DebugLogger {
             }
         }
     }
-    
+
     /**
      * デバッグログをファイルに書き込み（バッファリングなし）
      */

@@ -45,7 +45,7 @@ public class LuckCalculator {
 
         // 幸運ポーション効果
         int luckPotionLevel = calculateLuckPotion(player);
-        
+
         // 不幸ポーション効果
         int unluckPotionLevel = calculateUnluckPotion(player);
 
@@ -98,7 +98,7 @@ public class LuckCalculator {
             return 0;
         }
     }
-    
+
     /**
      * 不幸ポーション効果を計算
      */
@@ -119,47 +119,47 @@ public class LuckCalculator {
         ItemStack helmet = player.getInventory().getHelmet();
         double helmetLuck = 0;
         if (helmet != null && helmet.getType() != Material.AIR) {
-            helmetLuck = getItemLuck(helmet, EquipmentSlot.HEAD);
+            helmetLuck = getItemLuck(player, helmet, EquipmentSlot.HEAD);
         }
 
         // チェストプレート
         ItemStack chestplate = player.getInventory().getChestplate();
         double chestLuck = 0;
         if (chestplate != null) {
-            chestLuck = getItemLuck(chestplate, EquipmentSlot.CHEST);
+            chestLuck = getItemLuck(player, chestplate, EquipmentSlot.CHEST);
         }
 
         // レギンス
         ItemStack leggings = player.getInventory().getLeggings();
         double legsLuck = 0;
         if (leggings != null) {
-            legsLuck = getItemLuck(leggings, EquipmentSlot.LEGS);
+            legsLuck = getItemLuck(player, leggings, EquipmentSlot.LEGS);
         }
 
         // ブーツ
         ItemStack boots = player.getInventory().getBoots();
         double bootsLuck = 0;
         if (boots != null) {
-            bootsLuck = getItemLuck(boots, EquipmentSlot.FEET);
+            bootsLuck = getItemLuck(player, boots, EquipmentSlot.FEET);
         }
 
         // メインハンド
         ItemStack mainHand = player.getInventory().getItemInMainHand();
         double mainHandLuck = 0;
         if (!mainHand.getType().isAir()) {
-            mainHandLuck = getItemLuck(mainHand, EquipmentSlot.HAND);
+            mainHandLuck = getItemLuck(player, mainHand, EquipmentSlot.HAND);
         }
 
         // オフハンド
         ItemStack offHand = player.getInventory().getItemInOffHand();
         double offHandLuck = 0;
         if (!offHand.getType().isAir()) {
-            offHandLuck = getItemLuck(offHand, EquipmentSlot.OFF_HAND);
+            offHandLuck = getItemLuck(player, offHand, EquipmentSlot.OFF_HAND);
         }
         // config.ymlの設定に基づいて制限を適用
         double minEquipmentLuck = plugin.getConfig().getDouble("luck_effects.equipment_luck.min_value", -6.0);
         double maxEquipmentLuck = plugin.getConfig().getDouble("luck_effects.equipment_luck.max_value", 6.0);
-        
+
         // 各装備スロットの幸運値を制限内にクランプ
         helmetLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, helmetLuck));
         chestLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, chestLuck));
@@ -167,15 +167,15 @@ public class LuckCalculator {
         bootsLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, bootsLuck));
         mainHandLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, mainHandLuck));
         offHandLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, offHandLuck));
-        
+
         double finalEquipmentLuck = helmetLuck + chestLuck + legsLuck + bootsLuck + mainHandLuck + offHandLuck;
-        
+
         // 合計値も制限内にクランプ
         double totalMinLuck = minEquipmentLuck * 6; // 6スロット分
         double totalMaxLuck = maxEquipmentLuck * 6;
         finalEquipmentLuck = Math.max(totalMinLuck, Math.min(totalMaxLuck, finalEquipmentLuck));
 
-        debugLogger.logEquipmentLuck(
+        debugLogger.logEquipmentLuck(player,
                 helmetLuck, chestLuck, legsLuck, bootsLuck,
                 mainHandLuck, offHandLuck, finalEquipmentLuck
         );
@@ -186,15 +186,15 @@ public class LuckCalculator {
     /**
      * アイテムから幸運属性値を取得
      */
-    private double getItemLuck(ItemStack item, EquipmentSlot slot) {
+    private double getItemLuck(Player player, ItemStack item, EquipmentSlot slot) {
         if (item == null || !item.hasItemMeta()) {
-            debugLogger.logInfo("     Item is null or has no meta for slot: " + slot);
+            debugLogger.logInfo(player, "     Item is null or has no meta for slot: " + slot);
             return 0;
         }
 
         ItemMeta meta = item.getItemMeta();
         if (meta == null) {
-            debugLogger.logInfo("     ItemMeta is null for slot: " + slot);
+            debugLogger.logInfo(player, "     ItemMeta is null for slot: " + slot);
             return 0;
         }
 
@@ -203,19 +203,19 @@ public class LuckCalculator {
         if (meta.hasDisplayName()) {
             itemName = meta.getDisplayName();
         }
-        debugLogger.logInfo("     Checking item: " + itemName + " at slot: " + slot);
+        debugLogger.logInfo(player, "     Checking item: " + itemName + " at slot: " + slot);
 
         if (!meta.hasAttributeModifiers()) {
-            debugLogger.logInfo("     Item has no attribute modifiers for slot: " + slot);
+            debugLogger.logInfo(player, "     Item has no attribute modifiers for slot: " + slot);
             return 0;
         }
 
         // 全属性修飾子をログ出力
         var allModifiers = meta.getAttributeModifiers();
         if (allModifiers != null && !allModifiers.isEmpty()) {
-            debugLogger.logInfo("     All attribute modifiers:");
+            debugLogger.logInfo(player, "     All attribute modifiers:");
             for (Map.Entry<Attribute, AttributeModifier> entry : allModifiers.entries()) {
-                debugLogger.logInfo(String.format(
+                debugLogger.logInfo(player, String.format(
                         "       Attribute: %s, Modifier: %s = %.3f (Operation: %s, Slot: %s)",
                         entry.getKey().name(), entry.getValue().getName(),
                         entry.getValue().getAmount(), entry.getValue().getOperation(),
@@ -223,7 +223,7 @@ public class LuckCalculator {
                 ));
             }
         } else {
-            debugLogger.logInfo("     No attribute modifiers found");
+            debugLogger.logInfo(player, "     No attribute modifiers found");
         }
 
         // Minecraftの属性計算仕様に従って計算
@@ -239,7 +239,7 @@ public class LuckCalculator {
 
         var modifiers = meta.getAttributeModifiers(Attribute.GENERIC_LUCK);
         if (modifiers != null && !modifiers.isEmpty()) {
-            debugLogger.logInfo("     Found " + modifiers.size() + " luck modifiers");
+            debugLogger.logInfo(player, "     Found " + modifiers.size() + " luck modifiers");
 
             // まず ADD_NUMBER を処理
             for (AttributeModifier modifier : modifiers) {
@@ -247,7 +247,7 @@ public class LuckCalculator {
                     double modifierValue = modifier.getAmount();
 
                     if (modifier.getOperation() == AttributeModifier.Operation.ADD_NUMBER) {
-                        debugLogger.logInfo(String.format(
+                        debugLogger.logInfo(player, String.format(
                                 "     ADD_NUMBER modifier: %s = %.3f",
                                 modifier.getName(), modifierValue
                         ));
@@ -262,7 +262,7 @@ public class LuckCalculator {
                     double modifierValue = modifier.getAmount();
 
                     if (modifier.getOperation() == AttributeModifier.Operation.ADD_SCALAR) {
-                        debugLogger.logInfo(String.format(
+                        debugLogger.logInfo(player, String.format(
                                 "     ADD_SCALAR modifier: %s = %.3f (%.0f%%)",
                                 modifier.getName(), modifierValue, modifierValue * 100
                         ));
@@ -279,7 +279,7 @@ public class LuckCalculator {
                     double modifierValue = modifier.getAmount();
 
                     if (modifier.getOperation() == AttributeModifier.Operation.MULTIPLY_SCALAR_1) {
-                        debugLogger.logInfo(String.format(
+                        debugLogger.logInfo(player, String.format(
                                 "     MULTIPLY_SCALAR_1 modifier: %s = %.3f (×%.1f)",
                                 modifier.getName(), modifierValue, (1 + modifierValue)
                         ));
@@ -290,7 +290,7 @@ public class LuckCalculator {
                 }
             }
         } else {
-            debugLogger.logInfo("     No GENERIC_LUCK modifiers found for slot: " + slot);
+            debugLogger.logInfo(player, "     No GENERIC_LUCK modifiers found for slot: " + slot);
         }
 
         // Minecraft式の計算順序:
@@ -301,19 +301,16 @@ public class LuckCalculator {
         double step2 = step1 * (1 + addScalar);  // ADD_SCALARはベース値に対するパーセント
         double finalLuck = step2 * multiplyScalar;
 
-        debugLogger.logInfo(String.format(
-                "     Calculation steps:",
-                baseLuck, addNumber, step1
-        ));
-        debugLogger.logInfo(String.format(
+        debugLogger.logInfo(player, "     Calculation steps:");
+        debugLogger.logInfo(player, String.format(
                 "       Step 1: base(%.1f) + ADD_NUMBER(%.3f) = %.3f",
                 baseLuck, addNumber, step1
         ));
-        debugLogger.logInfo(String.format(
+        debugLogger.logInfo(player, String.format(
                 "       Step 2: %.3f × (1 + ADD_SCALAR(%.3f)) = %.3f",
                 step1, addScalar, step2
         ));
-        debugLogger.logInfo(String.format(
+        debugLogger.logInfo(player, String.format(
                 "       Step 3: %.3f × MULTIPLY_SCALAR_1(%.3f) = %.3f",
                 step2, multiplyScalar, finalLuck
         ));

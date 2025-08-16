@@ -69,11 +69,11 @@ public class FishingListener implements Listener {
         } else {
             double difference = adjustedChance - baseChance;
             if (difference < 0) {
-                probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", adjustedChance) + 
-                    " " + ChatColor.GRAY + "(補正値:" + ChatColor.RED + " " + String.format("%.2f%%", difference) + ChatColor.GRAY + ")";
+                probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", adjustedChance) +
+                        " " + ChatColor.GRAY + "(補正値:" + ChatColor.RED + " " + String.format("%.2f%%", difference) + ChatColor.GRAY + ")";
             } else {
-                probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", adjustedChance) + 
-                    " " + ChatColor.GRAY + "(補正値:" + ChatColor.GREEN + " +" + String.format("%.2f%%", difference) + ChatColor.GRAY + ")";
+                probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", adjustedChance) +
+                        " " + ChatColor.GRAY + "(補正値:" + ChatColor.GREEN + " +" + String.format("%.2f%%", difference) + ChatColor.GRAY + ")";
             }
         }
         return probabilityText;
@@ -95,7 +95,7 @@ public class FishingListener implements Listener {
             return;
         }
 
-        if (state == PlayerFishEvent.State.BITE)  {
+        if (state == PlayerFishEvent.State.BITE) {
             // 釣れた瞬間の音効果を再生
             Objects.requireNonNull(hookLocation.getWorld()).playSound(hookLocation, Sound.BLOCK_LEVER_CLICK, 1.0f, 2.0f);
             biteTimestamps.put(player, System.currentTimeMillis());
@@ -226,9 +226,10 @@ public class FishingListener implements Listener {
 
     /**
      * 確率補正を計算（改良版：負の幸運時に低品質アイテムが出やすくなる）
+     *
      * @param baseChance 基本確率
-     * @param quality 品質値
-     * @param totalLuck 総幸運値
+     * @param quality    品質値
+     * @param totalLuck  総幸運値
      * @return 補正後の確率
      */
     private double calculateAdjustedChance(double baseChance, double quality, double totalLuck) {
@@ -409,7 +410,7 @@ public class FishingListener implements Listener {
         }
         if (bonus > 0) {
             return " " + ChatColor.AQUA + "幸運+" + String.format("%.2f%%", bonus);
-        } else  {
+        } else {
             return " " + ChatColor.RED + "幸運" + String.format("%.2f%%", bonus);
         }
     }
@@ -568,7 +569,7 @@ public class FishingListener implements Listener {
             try {
                 // LootContextの幸運値は-1024〜1024の範囲に制限し、適切にスケール
                 float contextLuck = Math.max(-1024f, Math.min(1024f, (float) luckResult.getTotalLuck(plugin) * 10));
-                
+
                 LootContext.Builder contextBuilder = new LootContext.Builder(hookLocation)
                         .killer(player)
                         .lootedEntity(itemEntity)
@@ -586,7 +587,7 @@ public class FishingListener implements Listener {
                     // アイテムが有効かチェック
                     if (selectedItem != null && selectedItem.getType() != Material.AIR && selectedItem.getAmount() > 0) {
                         itemEntity.setItemStack(selectedItem);
-                        
+
                         debugLogger.logItemReplacement(
                                 player,
                                 getItemDisplayName(originalItem),
@@ -667,15 +668,6 @@ public class FishingListener implements Listener {
         return priority1 <= priority2 ? cat1 : cat2;
     }
 
-    private record CategoryData(String name, int priority, double quality, double chance) {
-    }
-
-    /**
-     * 釣り結果を保存するレコード
-     */
-    public record FishingResult(String category, String probabilityInfo, ItemStack item) {
-    }
-
     /**
      * タイミング情報をウキの位置にテキストディスプレイとして表示
      */
@@ -716,6 +708,15 @@ public class FishingListener implements Listener {
         };
 
         return tierName + "\n§f" + timingResult.reactionTimeMs() + "ms";
+    }
+
+    private record CategoryData(String name, int priority, double quality, double chance) {
+    }
+
+    /**
+     * 釣り結果を保存するレコード
+     */
+    public record FishingResult(String category, String probabilityInfo, ItemStack item) {
     }
 
 }
