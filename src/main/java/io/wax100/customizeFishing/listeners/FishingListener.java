@@ -561,10 +561,13 @@ public class FishingListener implements Listener {
 
         if (lootTable != null) {
             try {
+                // LootContextの幸運値は-1024〜1024の範囲に制限し、適切にスケール
+                float contextLuck = Math.max(-1024f, Math.min(1024f, (float) luckResult.getTotalLuck(plugin) * 10));
+                
                 LootContext.Builder contextBuilder = new LootContext.Builder(hookLocation)
                         .killer(player)
                         .lootedEntity(itemEntity)
-                        .luck((float) luckResult.getTotalLuck(plugin));
+                        .luck(contextLuck);
 
                 LootContext lootContext = contextBuilder.build();
                 Collection<ItemStack> loot = lootTable.populateLoot(random, lootContext);
@@ -575,13 +578,21 @@ public class FishingListener implements Listener {
                     // イルカの好意カテゴリでプレイヤーヘッドの場合、釣り人の顔に置換
                     selectedItem = PlayerHeadProcessor.processPlayerHead(selectedItem, player, category);
 
-                    itemEntity.setItemStack(selectedItem);
-
-                    debugLogger.logItemReplacement(
-                            getItemDisplayName(originalItem),
-                            getItemDisplayName(selectedItem),
-                            lootTableKey.toString()
-                    );
+                    // アイテムが有効かチェック
+                    if (selectedItem != null && selectedItem.getType() != Material.AIR && selectedItem.getAmount() > 0) {
+                        itemEntity.setItemStack(selectedItem);
+                        
+                        debugLogger.logItemReplacement(
+                                getItemDisplayName(originalItem),
+                                getItemDisplayName(selectedItem),
+                                lootTableKey.toString()
+                        );
+                    } else {
+                        debugLogger.logError("Selected item is invalid, keeping original item");
+                        selectedItem = originalItem;
+                    }
+                } else {
+                    debugLogger.logError("Loot table returned empty results for category: " + category);
                 }
             } catch (IllegalArgumentException e) {
                 // LootContext に必要なパラメータが不足している場合は元のアイテムを使用

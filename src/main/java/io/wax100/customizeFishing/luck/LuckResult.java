@@ -47,13 +47,12 @@ public record LuckResult(
         
         // 特殊ボーナス（高レベル時）
         if (specialEnabled && luckOfTheSeaLevel >= specialMinLevel) {
-            Random random = new Random();
             double randomBonus = baseRandom;
             
-            // コンジットパワー倍率適用
+            // コンジットパワー倍率適用（最大値の半分を固定ボーナスとして）
             if (conduitMultiplierEnabled && conduitLevel > 0) {
                 double conduitMultiplier = Math.min(3, conduitLevel);
-                randomBonus += (random.nextDouble() * conduitMultiplier);
+                randomBonus += (conduitMultiplier * 0.5); // ランダムの代わりに固定値の50%
             }
             
             bonus += randomBonus;

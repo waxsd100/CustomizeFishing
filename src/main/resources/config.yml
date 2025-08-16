@@ -239,13 +239,11 @@ categories:
     quality: 2
     conditions:
       require_open_water: true       # 開水域不要
-      max_luck_of_the_sea: 10
-      max_luck_effect: 3
       weather:
         - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
-    chance: 20
+    chance: 30
 
   treasure:
     enabled: true
@@ -253,13 +251,11 @@ categories:
     quality: 3
     conditions:
       require_open_water: true       # 開水域不要
-      max_luck_of_the_sea: 10
-      max_luck_effect: 3
       weather:
         - "clear"
         - "rain"
         - "thunder"
-    chance: 30
+    chance: 40
 
   fish:
     enabled: true
@@ -273,7 +269,7 @@ categories:
         - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
-    chance: 60
+    chance: 70
 
   junk:
     enabled: true
@@ -281,6 +277,8 @@ categories:
     quality: 0
     conditions:
       require_open_water: false
+      max_luck_of_the_sea: 10
+      max_luck_effect: 3
       weather:
         - "clear"
         - "rain"
