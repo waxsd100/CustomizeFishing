@@ -63,7 +63,7 @@ public class FishingListener implements Listener {
         if (adjustedChance <= 0) {
             probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + "0%";
         } else if (adjustedChance == baseChance) {
-            probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", baseChance);
+            probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", adjustedChance);
         } else if (adjustedChance >= 100) {
             probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + "100%";
         } else {
@@ -261,7 +261,7 @@ public class FishingListener implements Listener {
             }
         }
 
-        return Math.floor(baseChance + adjustment);
+        return baseChance + adjustment;
     }
 
     private String getItemDisplayName(ItemStack item) {
