@@ -601,6 +601,184 @@
           "weight": 1
         },
         {
+          "type": "minecraft:item",
+          "name": "twilightforest:wispy_cloud",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "twilightforest:fluffy_cloud",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "quark:pickarang",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|=|", "italic": false, "color": "yellow"},
+                {"text": "伝説のピッケラン(封印)", "italic": false, "color": "yellow", "underlined": true},
+                {"text": "|=|", "italic": false, "color": "yellow"}
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:bane_of_arthropods": 10,
+                "minecraft:fire_aspect": 10,
+                "minecraft:knockback": 10,
+                "minecraft:looting": 10
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "pickeran_luck",
+                  "amount": -1,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,80]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_knockback",
+                  "name": "pickeran_knockback",
+                  "amount": 1,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,81]
+                },
+                {
+                  "attribute": "forge:step_height_addition",
+                  "name": "pickeran_step_height",
+                  "amount": 2,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,82]
+                },
+                {
+                  "attribute": "forge:swim_speed",
+                  "name": "pickeran_swim_speed",
+                  "amount": 4,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,83]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:acacia_button",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {"text": "|=|", "italic": false, "color": "dark_red"},
+                {"text": "伝説のフラメラン(封印)", "italic": false, "color": "dark_red", "underlined": true},
+                {"text": "|=|", "italic": false, "color": "dark_red"}
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:fire_aspect": 10,
+                "minecraft:fortune": 1,
+                "minecraft:knockback": 10,
+                "minecraft:looting": 10,
+                "minecraft:loyalty": 10,
+                "minecraft:smite": 10
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "flameran_luck",
+                  "amount": 2,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,80]
+                },
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "flameran_armor",
+                  "amount": 5,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,60]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "name": "flameran_attack_speed",
+                  "amount": 1024,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,50]
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "flameran_max_health",
+                  "amount": 15,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,10]
+                },
+                {
+                  "attribute": "forge:step_height_addition",
+                  "name": "flameran_step_height",
+                  "amount": 2,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,84]
+                },
+                {
+                  "attribute": "forge:swim_speed",
+                  "name": "flameran_swim_speed",
+                  "amount": 4,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,85]
+                },
+                {
+                  "attribute": "forge:block_reach",
+                  "name": "flameran_block_reach",
+                  "amount": 6,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,86]
+                }
+              ]
+            }
+          ]
+        },
+        {
           "type": "minecraft:loot_table",
           "conditions": [
             {

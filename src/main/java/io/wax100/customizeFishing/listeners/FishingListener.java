@@ -127,7 +127,7 @@ public class FishingListener implements Listener {
             weather = Weather.RAIN;
         }
         
-        LuckCalculator luckCalc = new LuckCalculator(plugin);
+        LuckCalculator luckCalc = new LuckCalculator(plugin, debugLogger);
         LuckResult luckResult = luckCalc.calculateTotalLuck(player, weather, timingResult);
         
         // ダブルフィッシング条件をチェック
@@ -337,16 +337,16 @@ public class FishingListener implements Listener {
             }
         }
 
-        // 幸運エフェクトレベルチェック
-        int minLuckEffect = conditionsSection.getInt("min_luck_effect", 0);
-        if (luckResult.luckPotionLevel() < minLuckEffect) {
+        // 総合幸運値による最小値チェック
+        double minTotalLuck = conditionsSection.getDouble("min_luck_effect", 0);
+        if (luckResult.getTotalLuck(plugin) < minTotalLuck) {
             return false;
         }
 
-        // 幸運エフェクト最大レベルチェック
+        // 総合幸運値による最大値チェック
         if (conditionsSection.contains("max_luck_effect")) {
-            int maxLuckEffect = conditionsSection.getInt("max_luck_effect");
-            if (luckResult.luckPotionLevel() > maxLuckEffect) {
+            double maxTotalLuck = conditionsSection.getDouble("max_luck_effect");
+            if (luckResult.getTotalLuck(plugin) > maxTotalLuck) {
                 return false;
             }
         }
@@ -502,7 +502,7 @@ public class FishingListener implements Listener {
         long reactionTime = System.currentTimeMillis() - biteTime;
 
         // LuckCalculatorでタイミング結果を計算
-        LuckCalculator luckCalc = new LuckCalculator(plugin);
+        LuckCalculator luckCalc = new LuckCalculator(plugin, debugLogger);
         return luckCalc.calculateTimingResult(reactionTime);
     }
 

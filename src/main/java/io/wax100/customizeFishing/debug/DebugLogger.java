@@ -202,15 +202,14 @@ public class DebugLogger {
      * 装備の幸運値詳細をログ出力
      */
     public void logEquipmentLuck(Player player, double helmet, double chest, double legs, double boots,
-                                 double mainHand, double offHand, double total) {
-        logInfo(player, " EQUIPMENT LUCK:");
+                                 double mainHand, double offHand, double totalLuck) {
         logInfo(player, String.format(
-                "   Helmet:%.1f Chest:%.1f Legs:%.1f Boots:%.1f",
-                helmet, chest, legs, boots
+                "   Helmet:%.1f Chest:%.1f Legs:%.1f Boots:%.1f MainHand:%.1f OffHand:%.1f",
+                helmet, chest, legs, boots, mainHand, offHand
         ));
         logInfo(player, String.format(
-                "   MainHand:%.1f OffHand:%.1f → TOTAL:%.1f (max 4.0)",
-                mainHand, offHand, total
+                "    → TOTAL:%.1f",
+                totalLuck
         ));
     }
 

@@ -144,7 +144,6 @@ categories:
       min_luck_of_the_sea: 6         # 宝釣りレベル6以上
       min_luck_effect: 2             # 幸運エフェクトレベル2以上
       weather:
-        - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
     chance: 0.01

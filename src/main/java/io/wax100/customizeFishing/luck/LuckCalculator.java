@@ -26,9 +26,9 @@ public class LuckCalculator {
     private final CustomizeFishing plugin;
     private final DebugLogger debugLogger;
 
-    public LuckCalculator(CustomizeFishing plugin) {
+    public LuckCalculator(CustomizeFishing plugin, DebugLogger debugLogger) {
         this.plugin = plugin;
-        this.debugLogger = new DebugLogger(plugin);
+        this.debugLogger = debugLogger;
     }
 
     /**
@@ -161,6 +161,13 @@ public class LuckCalculator {
         double minEquipmentLuck = plugin.getConfig().getDouble("luck_effects.equipment_luck.min_value", -6.0);
         double maxEquipmentLuck = plugin.getConfig().getDouble("luck_effects.equipment_luck.max_value", 6.0);
 
+        debugLogger.logInfo(player, " EQUIPMENT LUCK:");
+        double finalEquipmentLuck = helmetLuck + chestLuck + legsLuck + bootsLuck + mainHandLuck + offHandLuck;
+        debugLogger.logEquipmentLuck(player,
+                helmetLuck, chestLuck, legsLuck, bootsLuck,
+                mainHandLuck, offHandLuck, finalEquipmentLuck
+        );
+
         // 各装備スロットの幸運値を制限内にクランプ
         helmetLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, helmetLuck));
         chestLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, chestLuck));
@@ -168,19 +175,18 @@ public class LuckCalculator {
         bootsLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, bootsLuck));
         mainHandLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, mainHandLuck));
         offHandLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, offHandLuck));
-
-        double finalEquipmentLuck = helmetLuck + chestLuck + legsLuck + bootsLuck + mainHandLuck + offHandLuck;
+        finalEquipmentLuck = helmetLuck + chestLuck + legsLuck + bootsLuck + mainHandLuck + offHandLuck;
 
         // 合計値も制限内にクランプ
         double totalMinLuck = minEquipmentLuck * 6; // 6スロット分
         double totalMaxLuck = maxEquipmentLuck * 6;
         finalEquipmentLuck = Math.max(totalMinLuck, Math.min(totalMaxLuck, finalEquipmentLuck));
 
+        debugLogger.logInfo(player, " FINAL EQUIPMENT LUCK:");
         debugLogger.logEquipmentLuck(player,
                 helmetLuck, chestLuck, legsLuck, bootsLuck,
                 mainHandLuck, offHandLuck, finalEquipmentLuck
         );
-
         return finalEquipmentLuck;
     }
 

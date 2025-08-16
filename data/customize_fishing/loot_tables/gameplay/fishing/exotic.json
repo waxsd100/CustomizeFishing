@@ -52,28 +52,32 @@
                   "name": "blessing_armor",
                   "amount": 5,
                   "operation": "multiply_base",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,61]
                 },
                 {
                   "attribute": "minecraft:generic.max_health",
                   "name": "blessing_health",
                   "amount": 10,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,10]
                 },
                 {
                   "attribute": "minecraft:generic.attack_knockback",
                   "name": "blessing_knockback",
                   "amount": 10,
                   "operation": "multiply_total",
-                  "slot": "mainhand"
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,82]
                 },
                 {
                   "attribute": "minecraft:generic.attack_damage",
                   "name": "blessing_damage",
                   "amount": 5,
                   "operation": "multiply_total",
-                  "slot": "mainhand"
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,42]
                 }
               ]
             }
@@ -111,14 +115,16 @@
                   "name": "fighting_spirit_damage",
                   "amount": 10,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,40]
                 },
                 {
                   "attribute": "minecraft:generic.attack_knockback",
                   "name": "fighting_spirit_knockback",
                   "amount": 10,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,80]
                 }
               ]
             }
@@ -156,14 +162,16 @@
                   "name": "heavy_strike_resistance",
                   "amount": 10,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,20]
                 },
                 {
                   "attribute": "minecraft:generic.armor_toughness",
                   "name": "heavy_strike_toughness",
                   "amount": 2,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,70]
                 }
               ]
             }
@@ -201,7 +209,8 @@
                   "name": "life_blessing_health",
                   "amount": 20,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,10]
                 }
               ]
             }
@@ -239,7 +248,8 @@
                   "name": "luck_blessing",
                   "amount": 2,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,80]
                 }
               ]
             }
@@ -277,14 +287,16 @@
                   "name": "steel_blessing_armor",
                   "amount": 10,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,60]
                 },
                 {
                   "attribute": "minecraft:generic.armor_toughness",
                   "name": "steel_blessing_toughness",
                   "amount": 20,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 }
               ]
             }
@@ -322,14 +334,16 @@
                   "name": "swiftness_blessing_speed",
                   "amount": 2,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 },
                 {
                   "attribute": "minecraft:generic.attack_speed",
                   "name": "swiftness_blessing_attack_speed",
                   "amount": 1024,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 }
               ]
             }
@@ -384,28 +398,32 @@
                   "name": "curse_armor",
                   "amount": -5,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 },
                 {
                   "attribute": "minecraft:generic.max_health",
                   "name": "curse_health",
                   "amount": -10,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 },
                 {
                   "attribute": "minecraft:generic.attack_damage",
                   "name": "curse_damage",
                   "amount": -0.5,
                   "operation": "multiply_total",
-                  "slot": "mainhand"
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,90]
                 },
                 {
                   "attribute": "minecraft:generic.movement_speed",
                   "name": "curse_slowness",
                   "amount": -0.05,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 }
               ]
             }
@@ -443,14 +461,16 @@
                   "name": "weakness_curse_damage",
                   "amount": -10,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 },
                 {
                   "attribute": "minecraft:generic.attack_speed",
                   "name": "weakness_curse_speed",
                   "amount": -2,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 }
               ]
             }
@@ -488,14 +508,16 @@
                   "name": "light_curse_resistance",
                   "amount": -1,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 },
                 {
                   "attribute": "minecraft:generic.armor_toughness",
                   "name": "light_curse_toughness",
                   "amount": -5,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 }
               ]
             }
@@ -533,7 +555,8 @@
                   "name": "death_curse_health",
                   "amount": -18,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 }
               ]
             }
@@ -571,7 +594,8 @@
                   "name": "bad_luck_curse",
                   "amount": -1024,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 }
               ]
             }
@@ -609,14 +633,16 @@
                   "name": "fragile_curse_armor",
                   "amount": -10,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 },
                 {
                   "attribute": "minecraft:generic.armor_toughness",
                   "name": "fragile_curse_toughness",
                   "amount": -20,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 }
               ]
             }
@@ -654,14 +680,16 @@
                   "name": "slowness_curse_speed",
                   "amount": -0.08,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 },
                 {
                   "attribute": "minecraft:generic.attack_speed",
                   "name": "slowness_curse_attack_speed",
                   "amount": -3,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 }
               ]
             }
@@ -1192,6 +1220,34 @@
                   {"text": "の効果を得る", "italic": false, "color": "dark_blue"}
                 ]
               ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "twilightforest:snowy_cloud",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "twilightforest:rainy_cloud",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
             }
           ]
         }
