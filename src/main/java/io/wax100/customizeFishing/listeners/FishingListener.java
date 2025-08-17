@@ -63,18 +63,25 @@ public class FishingListener implements Listener {
         String probabilityText;
         if (adjustedChance <= 0) {
             probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + "0%";
-        } else if (adjustedChance == baseChance) {
-            probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", adjustedChance);
         } else if (adjustedChance >= 100) {
             probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + "100%";
         } else {
-            double difference = adjustedChance - baseChance;
-            if (difference < 0) {
-                probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", adjustedChance) +
-                        " " + ChatColor.GRAY + "(補正値:" + ChatColor.RED + " " + String.format("%.2f%%", difference) + ChatColor.GRAY + ")";
+            // 非常に小さい確率の場合は科学的記法を使用
+            String formattedChance = DebugLogger.formatProbabilityForDisplay(adjustedChance);
+            
+            if (adjustedChance == baseChance) {
+                probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + formattedChance;
             } else {
-                probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + String.format("%.2f%%", adjustedChance) +
-                        " " + ChatColor.GRAY + "(補正値:" + ChatColor.GREEN + " +" + String.format("%.2f%%", difference) + ChatColor.GRAY + ")";
+                double difference = adjustedChance - baseChance;
+                String formattedDiff = DebugLogger.formatProbabilityForDisplay(Math.abs(difference));
+                
+                if (difference < 0) {
+                    probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + formattedChance +
+                            " " + ChatColor.GRAY + "(補正値:" + ChatColor.RED + " -" + formattedDiff + ChatColor.GRAY + ")";
+                } else {
+                    probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + formattedChance +
+                            " " + ChatColor.GRAY + "(補正値:" + ChatColor.GREEN + " +" + formattedDiff + ChatColor.GRAY + ")";
+                }
             }
         }
         return probabilityText;
@@ -186,6 +193,14 @@ public class FishingListener implements Listener {
             ConfigurationSection categorySection = categoriesSection.getConfigurationSection(categoryName);
 
             if (!checkCategoryConditions(categorySection, luckResult, openWater, weather, dolphinsGrace)) {
+                // 条件を満たさないカテゴリもログに出力（MISS）
+                int priority = Objects.requireNonNull(categorySection).getInt("priority", 999);
+                double quality = categorySection.getDouble("quality", 0);
+                double chance = categorySection.getDouble("chance", 0);
+                debugLogger.logCategoryDetails(
+                        player, categoryName + " [MISS]", priority, quality,
+                        chance, 0, luckResult.getTotalLuck(plugin)
+                );
                 continue;
             }
 
@@ -212,7 +227,7 @@ public class FishingListener implements Listener {
             // 補正後のchanceが0以下の場合はスキップ
             if (adjustedChance <= 0) {
                 debugLogger.logCategoryDetails(
-                        player, category.name() + " (SKIPPED)", category.priority(), category.quality(),
+                        player, category.name() + " [SKIP]", category.priority(), category.quality(),
                         category.chance(), adjustedChance, totalLuck
                 );
                 continue;
@@ -221,7 +236,7 @@ public class FishingListener implements Listener {
             adjustedCategories.add(new CategoryData(category.name(), category.priority(), category.quality(), adjustedChance));
 
             debugLogger.logCategoryDetails(
-                    player, category.name(), category.priority(), category.quality(),
+                    player, category.name() + " [ELIGIBLE]", category.priority(), category.quality(),
                     category.chance(), adjustedChance, totalLuck
             );
         }
@@ -242,16 +257,25 @@ public class FishingListener implements Listener {
         // 一度だけ乱数を生成（0から総確率の範囲）
         double roll = random.nextDouble() * totalChance;
         
+        // 選択結果をログ出力
+        debugLogger.logInfo(player, String.format(" ROLL: %.2f / %.2f", roll, totalChance));
+        
         // 累積確率で判定
         double cumulative = 0;
+        String selectedCategory = null;
         for (CategoryData category : adjustedCategories) {
             cumulative += category.chance();
-            if (roll < cumulative) {
-                return category.name();
+            if (selectedCategory == null && roll < cumulative) {
+                selectedCategory = category.name();
+                debugLogger.logInfo(player, String.format("   [HIT]  %s (%.2f - %.2f)", 
+                    category.name(), cumulative - category.chance(), cumulative));
+            } else {
+                debugLogger.logInfo(player, String.format("   [MISS] %s (%.2f - %.2f)", 
+                    category.name(), cumulative - category.chance(), cumulative));
             }
         }
 
-        return "common";
+        return selectedCategory != null ? selectedCategory : "common";
     }
 
     /**
