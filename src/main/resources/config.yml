@@ -80,9 +80,7 @@ timing_system:
 # 幸運効果と不幸効果は自動的に相殺されます
 # 例: 幸運Lv3 + 不幸Lv2 = 幸運Lv1相当
 luck_calculation:
-  # 相殺後の最小値（これより下にはならない）
   min_total_luck: -10.0
-  # 相殺後の最大値（これより上にはならない）
   max_total_luck: 10.0
 
 categories:
@@ -127,9 +125,9 @@ categories:
     priority: 4
     quality: 1
     conditions:
-      require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 6         # 宝釣りレベル6以上
-      min_luck_effect: 2             # 幸運エフェクトレベル2以上
+      require_open_water: true
+      min_luck_of_the_sea: 6
+      min_luck_effect: 2
       weather:
         - "rain"
         - "thunder"
@@ -140,9 +138,9 @@ categories:
     priority: 5
     quality: 1
     conditions:
-      require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 6         # 宝釣りレベル6以上
-      min_luck_effect: 2             # 幸運エフェクトレベル2以上
+      require_open_water: true
+      min_luck_of_the_sea: 6
+      min_luck_effect: 2
       weather:
         - "rain"
         - "thunder"

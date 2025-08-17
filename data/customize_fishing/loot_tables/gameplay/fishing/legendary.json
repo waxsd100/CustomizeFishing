@@ -492,35 +492,40 @@
                   "amount": 2,
                   "operation": "multiply_total",
                   "name": "minecraft:luck_modifier",
-                  "slot": "mainhand"
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,82]
                 },
                 {
                   "attribute": "minecraft:generic.max_health",
                   "amount": 10,
                   "name": "minecraft:max_health_modifier",
                   "operation": "addition",
-                  "slot": "mainhand"
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,10]
                 },
                 {
                   "attribute": "minecraft:generic.movement_speed",
                   "amount": 0.5,
                   "name": "minecraft:movement_speed_modifier",
                   "operation": "multiply_base",
-                  "slot": "mainhand"
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,31]
                 },
                 {
                   "attribute": "minecraft:generic.attack_damage",
                   "amount": 15,
                   "name": "minecraft:attack_damage_modifier",
                   "operation": "addition",
-                  "slot": "mainhand"
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,40]
                 },
                 {
                   "attribute": "minecraft:generic.armor",
                   "amount": 10,
                   "name": "minecraft:armor_modifier",
                   "operation": "addition",
-                  "slot": "mainhand"
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,60]
                 }
               ]
             }
@@ -569,21 +574,24 @@
                   "name": "minecraft:attack_damage_boost",
                   "amount": 15,
                   "operation": "addition",
-                  "slot": "mainhand"
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,40]
                 },
                 {
                   "attribute": "minecraft:generic.max_health",
                   "name": "minecraft:health_penalty",
                   "amount": -1024,
                   "operation": "addition",
-                  "slot": "mainhand"
+                  "slot": "mainhand",
+                  "uuid": [11,0,0,10]
                 },
                 {
                   "attribute": "minecraft:generic.luck",
                   "name": "minecraft:luck_penalty",
                   "amount": -1024,
                   "operation": "addition",
-                  "slot": "offhand"
+                  "slot": "offhand",
+                  "uuid": [12,0,0,80]
                 }
               ]
             },
@@ -638,7 +646,7 @@
               "name": [
                 "",
                 {"text": "|=|", "italic": false, "color": "yellow"},
-                {"text": "伝説のピッケラン(封印)", "italic": false, "color": "yellow", "underlined": true},
+                {"text": "伝説のピッケラン", "italic": false, "color": "yellow", "underlined": true},
                 {"text": "|=|", "italic": false, "color": "yellow"}
               ]
             },
@@ -657,26 +665,26 @@
                 {
                   "attribute": "minecraft:generic.luck",
                   "name": "pickeran_luck",
-                  "amount": -1,
+                  "amount": 1,
                   "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11,0,0,80]
+                  "slot": "offhand",
+                  "uuid": [12,0,0,80]
                 },
                 {
                   "attribute": "minecraft:generic.attack_knockback",
                   "name": "pickeran_knockback",
                   "amount": 1,
                   "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11,0,0,81]
+                  "slot": "offhand",
+                  "uuid": [12,0,0,90]
                 },
                 {
                   "attribute": "forge:step_height_addition",
                   "name": "pickeran_step_height",
                   "amount": 2,
                   "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11,0,0,82]
+                  "slot": "offhand",
+                  "uuid": [12,0,0,91]
                 },
                 {
                   "attribute": "forge:swim_speed",
@@ -684,7 +692,15 @@
                   "amount": 4,
                   "operation": "addition",
                   "slot": "mainhand",
-                  "uuid": [11,0,0,83]
+                  "uuid": [11,0,0,92]
+                },
+                {
+                  "attribute": "forge:swim_speed",
+                  "name": "pickeran_swim_speed",
+                  "amount": 4,
+                  "operation": "addition",
+                  "slot": "offhand",
+                  "uuid": [12,0,0,92]
                 }
               ]
             }
@@ -692,7 +708,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:acacia_button",
+          "name": "quark:flamerang",
           "weight": 3,
           "functions": [
             {
@@ -700,7 +716,7 @@
               "name": [
                 "",
                 {"text": "|=|", "italic": false, "color": "dark_red"},
-                {"text": "伝説のフラメラン(封印)", "italic": false, "color": "dark_red", "underlined": true},
+                {"text": "伝説のフラメラン", "italic": false, "color": "dark_red", "underlined": true},
                 {"text": "|=|", "italic": false, "color": "dark_red"}
               ]
             },
@@ -723,48 +739,48 @@
                   "name": "flameran_luck",
                   "amount": 2,
                   "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11,0,0,80]
+                  "slot": "offhand",
+                  "uuid": [12,0,0,80]
                 },
                 {
                   "attribute": "minecraft:generic.armor",
                   "name": "flameran_armor",
                   "amount": 5,
                   "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11,0,0,60]
+                  "slot": "offhand",
+                  "uuid": [12,0,0,60]
                 },
                 {
                   "attribute": "minecraft:generic.attack_speed",
                   "name": "flameran_attack_speed",
                   "amount": 1024,
                   "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11,0,0,50]
+                  "slot": "offhand",
+                  "uuid": [12,0,0,50]
                 },
                 {
                   "attribute": "minecraft:generic.max_health",
                   "name": "flameran_max_health",
                   "amount": 15,
                   "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11,0,0,10]
+                  "slot": "offhand",
+                  "uuid": [12,0,0,10]
                 },
                 {
                   "attribute": "forge:step_height_addition",
                   "name": "flameran_step_height",
                   "amount": 2,
                   "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11,0,0,84]
+                  "slot": "offhand",
+                  "uuid": [12,0,0,93]
                 },
                 {
                   "attribute": "forge:swim_speed",
                   "name": "flameran_swim_speed",
                   "amount": 4,
                   "operation": "addition",
-                  "slot": "mainhand",
-                  "uuid": [11,0,0,85]
+                  "slot": "offhand",
+                  "uuid": [12,0,0,94]
                 },
                 {
                   "attribute": "forge:block_reach",
@@ -772,7 +788,15 @@
                   "amount": 6,
                   "operation": "addition",
                   "slot": "mainhand",
-                  "uuid": [11,0,0,86]
+                  "uuid": [11,0,0,95]
+                },
+                {
+                  "attribute": "forge:block_reach",
+                  "name": "flameran_block_reach",
+                  "amount": 6,
+                  "operation": "addition",
+                  "slot": "offhand",
+                  "uuid": [12,0,0,95]
                 }
               ]
             }
