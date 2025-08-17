@@ -12,8 +12,8 @@ double_fishing:
 # 各天気時に追加される幸運値
 weather_luck:
   clear: 0.0
-  rain: 0.45
-  thunder: 0.9
+  rain: 0.4
+  thunder: 0.8
 
 # 幸運効果設定
 # 幸運ポーションと不幸ポーションの影響を定義
@@ -57,7 +57,7 @@ luck_effects:
 # 浮きが沈んでからの反応時間によるボーナス
 timing_system:
   enabled: true                   # タイミングシステムの有効/無効
-  base_luck_bonus: 1.6           # ベースの幸運ボーナス
+  base_luck_bonus: 1.8           # ベースの幸運ボーナス
   
   # タイミングティア設定（ミリ秒とボーナス倍率）
   tiers:
