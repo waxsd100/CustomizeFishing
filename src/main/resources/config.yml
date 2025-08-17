@@ -98,7 +98,7 @@ categories:
   skgkyr:
     enabled: true
     priority: 2
-    quality: 50
+    quality: 20
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 10
@@ -116,7 +116,6 @@ categories:
       min_luck_of_the_sea: 6
       min_luck_effect: 3
       weather:
-        - "rain"
         - "thunder"
     chance: 0.0001
 
@@ -292,16 +291,10 @@ loot_tables:
 
 # 幸運値による確率調整設定
 luck_adjustment:
-  # 正の幸運時の高品質アイテム減衰設定
-  positive_luck_diminishing:
-    enabled: true
-    factor: 2
-    # 計算式: diminishingFactor = 1.0 / (1.0 + quality × factor)
-  
-  # 負の幸運時の確率調整
-  negative_luck_threshold:
-    # 負の幸運時の確率補正倍率
-    negative_multiplier: 1.5       # 負の幸運時の効果を1.5倍にする
+  max_multiplier: 3.0      # 確率の最大倍率（例：3.0 = 最大3倍）
+  luck_scale: 0.1          # 運の影響度（小さいほど緩やか）
+  quality_impact: 0.5      # 品質の影響度（小さいほど緩やか）
+  penalty_scale: 0.05      # 負の運のペナルティ度
 
 # エフェクト設定
 effects:

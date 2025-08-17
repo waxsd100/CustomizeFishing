@@ -3,7 +3,8 @@
     "allow": [
       "Bash(rmdir:*)",
       "Bash(mv:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(./gradlew test:*)"
     ],
     "deny": []
   }

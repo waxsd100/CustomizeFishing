@@ -231,13 +231,22 @@ public class FishingListener implements Listener {
         }
 
 
-        // priority順にソート
-        adjustedCategories.sort(Comparator.comparingInt(CategoryData::priority));
+        // priority順にソート（優先度の高い順）
+        adjustedCategories.sort(Comparator.comparingInt(CategoryData::priority).reversed());
 
+        // 総確率を計算
+        double totalChance = adjustedCategories.stream()
+            .mapToDouble(CategoryData::chance)
+            .sum();
+        
+        // 一度だけ乱数を生成（0から総確率の範囲）
+        double roll = random.nextDouble() * totalChance;
+        
+        // 累積確率で判定
+        double cumulative = 0;
         for (CategoryData category : adjustedCategories) {
-            double roll = random.nextDouble() * 100.0;  // 0.0から100.0の範囲で乱数を生成
-            // 補正されたchanceを使用
-            if (roll < category.chance()) {
+            cumulative += category.chance();
+            if (roll < cumulative) {
                 return category.name();
             }
         }
@@ -246,7 +255,7 @@ public class FishingListener implements Listener {
     }
 
     /**
-     * 確率補正を計算（改良版：負の幸運時に低品質アイテムが出やすくなる）
+     * 確率補正を計算（改良版：乗算型 + 対数減衰で極端な増加を防止）
      *
      * @param baseChance 基本確率
      * @param quality    品質値
@@ -254,41 +263,40 @@ public class FishingListener implements Listener {
      * @return 補正後の確率
      */
     private double calculateAdjustedChance(double baseChance, double quality, double totalLuck) {
-        double adjustment;
-
-        if (totalLuck >= 0) {
-            // 正の幸運時：qualityが高いほどボーナス上昇を抑制
-            if (quality > 0) {
-                // config.ymlから減衰設定を読み込み
-                boolean diminishingEnabled = plugin.getConfig().getBoolean("luck_adjustment.positive_luck_diminishing.enabled", true);
-                double diminishingFactor = 1.0;
-
-                if (diminishingEnabled) {
-                    double factor = plugin.getConfig().getDouble("luck_adjustment.positive_luck_diminishing.factor", 0.01);
-                    diminishingFactor = 1.0 / (1.0 + quality * factor);
-                }
-
-                adjustment = quality * totalLuck * diminishingFactor;
-            } else {
-                // 負のqualityや0の場合は通常計算
-                adjustment = quality * totalLuck;
-            }
-        } else {
-            // 負の幸運時：低品質（負のquality）がより有利になるよう計算
-            if (quality < 0) {
-                // 負のqualityの場合、幸運の負の効果を軽減（より良い結果）
-                adjustment = Math.abs(quality * totalLuck);
-            } else if (quality > 0) {
-                // 正のqualityの場合、幸運の負の効果を増幅（より悪い結果）
-                double negativeMultiplier = plugin.getConfig().getDouble("luck_adjustment.negative_luck_threshold.negative_multiplier", 1.5);
-                adjustment = quality * totalLuck * negativeMultiplier;
-            } else {
-                // quality=0の場合：幸運値の影響なし
-                adjustment = 0;
-            }
+        if (totalLuck == 0 || quality == 0) {
+            return baseChance;
         }
 
-        return baseChance + adjustment;
+        if (totalLuck > 0) {
+            // 正の幸運時：乗算型 + 対数減衰
+            if (quality > 0) {
+                // config.ymlから設定を読み込み
+                double maxMultiplier = plugin.getConfig().getDouble("luck_adjustment.max_multiplier", 3.0); // 最大3倍
+                double luckScale = plugin.getConfig().getDouble("luck_adjustment.luck_scale", 0.1); // 運の影響度
+                double qualityImpact = plugin.getConfig().getDouble("luck_adjustment.quality_impact", 0.5); // 品質の影響度
+                
+                // 対数減衰を使用して極端な増加を防止
+                // log(1 + x)を使用することで、xが大きくなっても緩やかに増加
+                double scaledLuck = Math.log1p(totalLuck * luckScale);
+                double qualityFactor = Math.log1p(quality * qualityImpact);
+                
+                // 乗算倍率を計算（1.0 ～ maxMultiplier の範囲）
+                double multiplier = 1.0 + (scaledLuck * qualityFactor);
+                multiplier = Math.min(multiplier, maxMultiplier);
+                
+                return baseChance * multiplier;
+            } else {
+                // 負のqualityの場合は影響なし
+                return baseChance;
+            }
+        } else {
+            // 負の幸運時：確率を減少させる
+            double penaltyScale = plugin.getConfig().getDouble("luck_adjustment.penalty_scale", 0.05);
+            double penalty = Math.abs(totalLuck) * penaltyScale * quality;
+            
+            // 0%まで下がる可能性あり
+            return Math.max(baseChance - penalty, 0.0);
+        }
     }
 
     private String getItemDisplayName(ItemStack item) {
