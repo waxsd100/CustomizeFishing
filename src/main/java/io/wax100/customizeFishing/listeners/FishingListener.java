@@ -448,7 +448,7 @@ public class FishingListener implements Listener {
      * 装備幸運ボーナステキストを取得
      */
     private String getEquipmentBonusText(LuckResult luckResult) {
-        double bonus = luckResult.getEquipmentBonus();
+        double bonus = luckResult.getEquipmentBonus(plugin);
         if (bonus == 0) {
             return "";
         }

@@ -199,6 +199,48 @@ class FishingListenerTest {
         assertEquals(0.0, zeroChance, "Extreme negative luck should reach 0%");
     }
     
+    @Test
+    void testNegativeLuckBalancing() {
+        System.out.println("\n===== Negative Luck Balancing Test =====");
+        
+        // 新しい設定でのマイナス値の計算
+        // 不幸ポーション: -0.25 × 10 = -2.5%
+        // 装備: -0.05 × 6 = -0.3%
+        // 天気: 最大0%（基本的にプラス効果のみ）
+        // 合計理論最大マイナス: -2.8% (まだ-10.0には遠い)
+        
+        System.out.println("Current maximum negative luck sources:");
+        System.out.println("- Unluck Potion Lv10: -0.25 × 10 = -2.5%");
+        System.out.println("- Equipment (6 pieces): -0.05 × 6 = -0.3%");
+        System.out.println("- Weather: 0% (no negative weather effects)");
+        System.out.println("- Timing: 0% (miss = no bonus)");
+        System.out.println("- Total theoretical max: -2.8%");
+        System.out.println("- Configuration max: -10.0%");
+        
+        // 実際の効果をテスト
+        double baseChance = 1.0;
+        double quality = 1.0;
+        
+        System.out.println("\nTesting with adjusted values:");
+        
+        // 中程度の負の幸運テスト
+        double moderateLuck = -2.8; // 理論最大マイナス
+        double adjustedModerate = calculateAdjustedChance(baseChance, quality, moderateLuck);
+        System.out.printf("Moderate negative luck (-2.8): %.4f%% → %.4f%% (%.2fx)%n", 
+            baseChance, adjustedModerate, adjustedModerate / baseChance);
+        
+        // より厳しい負の幸運テスト（設定上限）
+        double extremeLuck = -10.0; // 設定上限
+        double adjustedExtreme = calculateAdjustedChance(baseChance, quality, extremeLuck);
+        System.out.printf("Extreme negative luck (-10.0): %.4f%% → %.4f%% (%.2fx)%n", 
+            baseChance, adjustedExtreme, adjustedExtreme / baseChance);
+        
+        // 負の幸運が適切に機能することを確認
+        assertTrue(adjustedModerate < baseChance, "Moderate negative luck should reduce chance");
+        assertTrue(adjustedExtreme < adjustedModerate, "Extreme negative luck should be more severe");
+        assertTrue(adjustedExtreme >= 0.0, "Adjusted chance should not be negative");
+    }
+    
     // ヘルパーメソッド：カテゴリー選択のシミュレーション（運補正込み）
     private Map<String, Integer> simulateCategorySelection(int iterations) {
         return simulateCategorySelectionWithLuck(iterations, 3.2);

@@ -45,7 +45,6 @@ luck_effects:
     special_bonus:
       enabled: true
       min_level: 127   # 特殊ボーナス発動レベル
-      base_random: 0.1 # 基本乱数ボーナス（%）
       conduit_multiplier: true # コンジットパワーによる倍率適用
   
   # 経験値レベル
