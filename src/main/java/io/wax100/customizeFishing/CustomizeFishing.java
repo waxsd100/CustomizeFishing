@@ -1,6 +1,7 @@
 package io.wax100.customizeFishing;
 
 import io.wax100.customizeFishing.commands.CustomizeFishingCommand;
+import io.wax100.customizeFishing.listeners.BindingCurseListener;
 import io.wax100.customizeFishing.listeners.FishingListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,6 +13,7 @@ public final class CustomizeFishing extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new FishingListener(this), this);
+        getServer().getPluginManager().registerEvents(new BindingCurseListener(this), this);
 
         CustomizeFishingCommand commandExecutor = new CustomizeFishingCommand(this);
         Objects.requireNonNull(getCommand("customizefishing")).setExecutor(commandExecutor);

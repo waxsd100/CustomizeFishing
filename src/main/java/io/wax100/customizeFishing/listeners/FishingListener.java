@@ -1,6 +1,7 @@
 package io.wax100.customizeFishing.listeners;
 
 import io.wax100.customizeFishing.CustomizeFishing;
+import io.wax100.customizeFishing.binding.BindingCurseManager;
 import io.wax100.customizeFishing.debug.DebugFishingRod;
 import io.wax100.customizeFishing.debug.DebugLogger;
 import io.wax100.customizeFishing.effects.CatchEffects;
@@ -46,11 +47,13 @@ public class FishingListener implements Listener {
     private final CatchEffects catchEffects;
     private final Map<Player, Long> biteTimestamps = new ConcurrentHashMap<>();
     private final DebugLogger debugLogger;
+    private final BindingCurseManager bindingCurseManager;
 
     public FishingListener(CustomizeFishing plugin) {
         this.plugin = plugin;
         this.catchEffects = new CatchEffects(plugin);
         this.debugLogger = new DebugLogger(plugin);
+        this.bindingCurseManager = new BindingCurseManager(plugin);
     }
 
     private String getProbabilityText(LuckResult luckResult, double baseChance, double quality) {
@@ -68,13 +71,13 @@ public class FishingListener implements Listener {
         } else {
             // 非常に小さい確率の場合は科学的記法を使用
             String formattedChance = DebugLogger.formatProbabilityForDisplay(adjustedChance);
-            
+
             if (adjustedChance == baseChance) {
                 probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + formattedChance;
             } else {
                 double difference = adjustedChance - baseChance;
                 String formattedDiff = DebugLogger.formatProbabilityForDisplay(Math.abs(difference));
-                
+
                 if (difference < 0) {
                     probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + formattedChance +
                             " " + ChatColor.GRAY + "(補正値:" + ChatColor.RED + " -" + formattedDiff + ChatColor.GRAY + ")";
@@ -119,7 +122,7 @@ public class FishingListener implements Listener {
         }
 
         TimingResult timingResult = checkTiming(player);
-        
+
         // 幸運値を事前に計算（ダブルフィッシングでも1回だけ計算）
         boolean isOpenWater = FishingConditionChecker.isOpenWater(hookLocation);
         Weather weather = Weather.CLEAR;
@@ -128,15 +131,15 @@ public class FishingListener implements Listener {
         } else if (hookLocation.getWorld().hasStorm()) {
             weather = Weather.RAIN;
         }
-        
+
         // Twilight Forest rainy_cloud の検出（ウキの上空32ブロック以内）
         if (checkForTwilightRainyClouds(hookLocation)) {
             weather = Weather.RAIN;
         }
-        
+
         LuckCalculator luckCalc = new LuckCalculator(plugin, debugLogger);
         LuckResult luckResult = luckCalc.calculateTotalLuck(player, weather, timingResult);
-        
+
         // ダブルフィッシング条件をチェック
         boolean canDoubleFish = checkDoubleFishingConditions(player);
 
@@ -168,7 +171,7 @@ public class FishingListener implements Listener {
 
         // タイミング情報をウキに表示
         displayTimingAtHook(hookLocation, timingResult);
-        
+
         // ログ終了は最後に実行
         debugLogger.logFishingEnd(player);
     }
@@ -251,15 +254,15 @@ public class FishingListener implements Listener {
 
         // 総確率を計算
         double totalChance = adjustedCategories.stream()
-            .mapToDouble(CategoryData::chance)
-            .sum();
-        
+                .mapToDouble(CategoryData::chance)
+                .sum();
+
         // 一度だけ乱数を生成（0から総確率の範囲）
         double roll = random.nextDouble() * totalChance;
-        
+
         // 選択結果をログ出力
         debugLogger.logInfo(player, String.format(" ROLL: %.2f / %.2f", roll, totalChance));
-        
+
         // 累積確率で判定
         double cumulative = 0;
         String selectedCategory = null;
@@ -267,11 +270,11 @@ public class FishingListener implements Listener {
             cumulative += category.chance();
             if (selectedCategory == null && roll < cumulative) {
                 selectedCategory = category.name();
-                debugLogger.logInfo(player, String.format("   [HIT]  %s (%.2f - %.2f)", 
-                    category.name(), cumulative - category.chance(), cumulative));
+                debugLogger.logInfo(player, String.format("   [HIT]  %s (%.2f - %.2f)",
+                        category.name(), cumulative - category.chance(), cumulative));
             } else {
-                debugLogger.logInfo(player, String.format("   [MISS] %s (%.2f - %.2f)", 
-                    category.name(), cumulative - category.chance(), cumulative));
+                debugLogger.logInfo(player, String.format("   [MISS] %s (%.2f - %.2f)",
+                        category.name(), cumulative - category.chance(), cumulative));
             }
         }
 
@@ -298,16 +301,16 @@ public class FishingListener implements Listener {
                 double maxMultiplier = plugin.getConfig().getDouble("luck_adjustment.max_multiplier", 3.0); // 最大3倍
                 double luckScale = plugin.getConfig().getDouble("luck_adjustment.luck_scale", 0.1); // 運の影響度
                 double qualityImpact = plugin.getConfig().getDouble("luck_adjustment.quality_impact", 0.5); // 品質の影響度
-                
+
                 // 対数減衰を使用して極端な増加を防止
                 // log(1 + x)を使用することで、xが大きくなっても緩やかに増加
                 double scaledLuck = Math.log1p(totalLuck * luckScale);
                 double qualityFactor = Math.log1p(quality * qualityImpact);
-                
+
                 // 乗算倍率を計算（1.0 ～ maxMultiplier の範囲）
                 double multiplier = 1.0 + (scaledLuck * qualityFactor);
                 multiplier = Math.min(multiplier, maxMultiplier);
-                
+
                 return baseChance * multiplier;
             } else {
                 // 負のqualityの場合は影響なし
@@ -317,7 +320,7 @@ public class FishingListener implements Listener {
             // 負の幸運時：確率を減少させる
             double penaltyScale = plugin.getConfig().getDouble("luck_adjustment.penalty_scale", 0.05);
             double penalty = Math.abs(totalLuck) * penaltyScale * quality;
-            
+
             // 0%まで下がる可能性あり
             return Math.max(baseChance - penalty, 0.0);
         }
@@ -622,6 +625,8 @@ public class FishingListener implements Listener {
 
                     // アイテムが有効かチェック
                     if (selectedItem != null && selectedItem.getType() != Material.AIR && selectedItem.getAmount() > 0) {
+                        // 束縛の呪いがある場合、所有者を設定
+                        bindingCurseManager.setItemOwner(selectedItem, player);
                         itemEntity.setItemStack(selectedItem);
 
                         debugLogger.logItemReplacement(

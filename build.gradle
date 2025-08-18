@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT")
-    
+
     testImplementation("org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT")
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
     testImplementation("org.mockito:mockito-core:5.5.0")
@@ -30,7 +30,7 @@ tasks {
         // Your plugin's jar (or shadowJar if present) will be used automatically.
         minecraftVersion("1.20")
     }
-    
+
     test {
         useJUnitPlatform()
     }

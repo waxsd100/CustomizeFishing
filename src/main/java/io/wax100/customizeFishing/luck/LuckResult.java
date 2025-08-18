@@ -89,11 +89,11 @@ public record LuckResult(
      */
     public double getEquipmentBonus(CustomizeFishing plugin) {
         double perPoint = 0.1; // デフォルト値
-        
+
         if (plugin != null) {
             perPoint = plugin.getConfig().getDouble("luck_effects.equipment_luck.per_point", 0.1);
         }
-        
+
         return equipmentLuck * perPoint;
     }
 

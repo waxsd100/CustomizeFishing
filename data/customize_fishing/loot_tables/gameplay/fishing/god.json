@@ -18,29 +18,81 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
-                {"text": "永遠の", "italic": false, "bold": true, "color": "aqua"},
-                {"text": "双称の祝福", "italic": false, "color": "yellow"},
-                {"text": "牌", "italic": false, "color": "dark_green"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の",
+                  "italic": false,
+                  "bold": true,
+                  "color": "aqua"
+                },
+                {
+                  "text": "双称の祝福",
+                  "italic": false,
+                  "color": "yellow"
+                },
+                {
+                  "text": "牌",
+                  "italic": false,
+                  "color": "dark_green"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "このアイテムを持った状態で敵を倒すと", "italic": false, "color": "white"},
+                {
+                  "text": "このアイテムを持った状態で敵を倒すと",
+                  "italic": false,
+                  "color": "white"
+                },
                 [
                   "",
-                  {"text": "いつもの", "italic": false, "color": "white"},
-                  {"text": "3倍", "italic": false, "color": "red"},
-                  {"text": "アイテムを落とすようになる", "italic": false, "color": "white"}
+                  {
+                    "text": "いつもの",
+                    "italic": false,
+                    "color": "white"
+                  },
+                  {
+                    "text": "3倍",
+                    "italic": false,
+                    "color": "red"
+                  },
+                  {
+                    "text": "アイテムを落とすようになる",
+                    "italic": false,
+                    "color": "white"
+                  }
                 ],
                 "",
                 [
                   "",
-                  {"text": "両手で持っていると", "italic": false, "color": "white"},
-                  {"text": "9倍", "italic": false, "underlined": true, "color": "red"},
-                  {"text": "アイテムを落とす", "italic": false, "color": "white"}
+                  {
+                    "text": "両手で持っていると",
+                    "italic": false,
+                    "color": "white"
+                  },
+                  {
+                    "text": "9倍",
+                    "italic": false,
+                    "underlined": true,
+                    "color": "red"
+                  },
+                  {
+                    "text": "アイテムを落とす",
+                    "italic": false,
+                    "color": "white"
+                  }
                 ]
               ]
             },
@@ -92,15 +144,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
-                {"text": "永遠の闘気の祝福牌", "italic": false, "color": "red"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の闘気の祝福牌",
+                  "italic": false,
+                  "color": "red"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永遠の闘気を纏い、圧倒的な攻撃力を得る。", "italic": false, "color": "white"}
+                {
+                  "text": "身につけると永遠の闘気を纏い、圧倒的な攻撃力を得る。",
+                  "italic": false,
+                  "color": "white"
+                }
               ]
             },
             {
@@ -137,15 +207,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
-                {"text": "永遠の重撃の祝福牌", "italic": false, "color": "dark_red"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の重撃の祝福牌",
+                  "italic": false,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永遠の重量を得て、絶対的なノックバック耐性を持つ。", "italic": false, "color": "white"}
+                {
+                  "text": "身につけると永遠の重量を得て、絶対的なノックバック耐性を持つ。",
+                  "italic": false,
+                  "color": "white"
+                }
               ]
             },
             {
@@ -182,15 +270,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
-                {"text": "永遠の生命の祝福牌", "italic": false, "color": "dark_green"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の生命の祝福牌",
+                  "italic": false,
+                  "color": "dark_green"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永遠の生命力が宿り、膨大な最大体力を得る。", "italic": false, "color": "white"}
+                {
+                  "text": "身につけると永遠の生命力が宿り、膨大な最大体力を得る。",
+                  "italic": false,
+                  "color": "white"
+                }
               ]
             },
             {
@@ -220,15 +326,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
-                {"text": "永遠の幸福の祝福牌", "italic": false, "color": "gold"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の幸福の祝福牌",
+                  "italic": false,
+                  "color": "gold"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永遠の幸運を呼び寄せ、究極の運を得る。", "italic": false, "color": "white"}
+                {
+                  "text": "身につけると永遠の幸運を呼び寄せ、究極の運を得る。",
+                  "italic": false,
+                  "color": "white"
+                }
               ]
             },
             {
@@ -258,15 +382,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
-                {"text": "永遠の鋼鉄の祝福牌", "italic": false, "color": "gray"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の鋼鉄の祝福牌",
+                  "italic": false,
+                  "color": "gray"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永遠の鋼鉄で覆われ、絶対的な防御力を得る。", "italic": false, "color": "white"}
+                {
+                  "text": "身につけると永遠の鋼鉄で覆われ、絶対的な防御力を得る。",
+                  "italic": false,
+                  "color": "white"
+                }
               ]
             },
             {
@@ -303,15 +445,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"},
-                {"text": "永遠の迅速の祝福牌", "italic": false, "color": "blue"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "light_purple"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の迅速の祝福牌",
+                  "italic": false,
+                  "color": "blue"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永遠の速度を得て、時空を超える移動速度を手に入れる。", "italic": false, "color": "blue"}
+                {
+                  "text": "身につけると永遠の速度を得て、時空を超える移動速度を手に入れる。",
+                  "italic": false,
+                  "color": "blue"
+                }
               ]
             },
             {
@@ -348,32 +508,89 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
-                {"text": "永劫の", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "破滅の呪印", "italic": false, "color": "black"},
-                {"text": "牌", "italic": false, "color": "dark_gray"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の",
+                  "italic": false,
+                  "bold": true,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "破滅の呪印",
+                  "italic": false,
+                  "color": "black"
+                },
+                {
+                  "text": "牌",
+                  "italic": false,
+                  "color": "dark_gray"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "このアイテムを持った状態で敵を倒すと", "italic": false, "color": "gray"},
+                {
+                  "text": "このアイテムを持った状態で敵を倒すと",
+                  "italic": false,
+                  "color": "gray"
+                },
                 [
                   "",
-                  {"text": "いつもの", "italic": false, "color": "gray"},
-                  {"text": "1/10", "italic": false, "color": "dark_red"},
-                  {"text": "のアイテムしか落とさなくなる", "italic": false, "color": "gray"}
+                  {
+                    "text": "いつもの",
+                    "italic": false,
+                    "color": "gray"
+                  },
+                  {
+                    "text": "1/10",
+                    "italic": false,
+                    "color": "dark_red"
+                  },
+                  {
+                    "text": "のアイテムしか落とさなくなる",
+                    "italic": false,
+                    "color": "gray"
+                  }
                 ],
                 "",
                 [
                   "",
-                  {"text": "両手で持っていると", "italic": false, "color": "gray"},
-                  {"text": "1/100", "italic": false, "underlined": true, "color": "dark_red"},
-                  {"text": "しかアイテムを落とさない", "italic": false, "color": "gray"}
+                  {
+                    "text": "両手で持っていると",
+                    "italic": false,
+                    "color": "gray"
+                  },
+                  {
+                    "text": "1/100",
+                    "italic": false,
+                    "underlined": true,
+                    "color": "dark_red"
+                  },
+                  {
+                    "text": "しかアイテムを落とさない",
+                    "italic": false,
+                    "color": "gray"
+                  }
                 ],
                 "",
-                {"text": "≪ 神級呪い ≫", "italic": false, "bold": true, "color": "black"}
+                {
+                  "text": "≪ 神級呪い ≫",
+                  "italic": false,
+                  "bold": true,
+                  "color": "black"
+                }
               ]
             },
             {
@@ -424,15 +641,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
-                {"text": "永劫の弱気の呪印牌", "italic": false, "color": "dark_red"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の弱気の呪印牌",
+                  "italic": false,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永劫の弱気に包まれ、圧倒的な攻撃力低下を受ける。", "italic": false, "color": "gray"}
+                {
+                  "text": "身につけると永劫の弱気に包まれ、圧倒的な攻撃力低下を受ける。",
+                  "italic": false,
+                  "color": "gray"
+                }
               ]
             },
             {
@@ -469,15 +704,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
-                {"text": "永劫の軽撃の呪印牌", "italic": false, "color": "red"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の軽撃の呪印牌",
+                  "italic": false,
+                  "color": "red"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永劫の軽さに包まれ、極度に吹き飛ばされやすくなる。", "italic": false, "color": "gray"}
+                {
+                  "text": "身につけると永劫の軽さに包まれ、極度に吹き飛ばされやすくなる。",
+                  "italic": false,
+                  "color": "gray"
+                }
               ]
             },
             {
@@ -514,15 +767,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
-                {"text": "永劫の死の呪印牌", "italic": false, "color": "black"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の死の呪印牌",
+                  "italic": false,
+                  "color": "black"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永劫の死に触れ、膨大な最大体力減少を受ける。", "italic": false, "color": "gray"}
+                {
+                  "text": "身につけると永劫の死に触れ、膨大な最大体力減少を受ける。",
+                  "italic": false,
+                  "color": "gray"
+                }
               ]
             },
             {
@@ -552,15 +823,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
-                {"text": "永劫の不運の呪印牌", "italic": false, "color": "dark_gray"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の不運の呪印牌",
+                  "italic": false,
+                  "color": "dark_gray"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永劫の不運に取り憑かれ、極度の不運になる。", "italic": false, "color": "gray"}
+                {
+                  "text": "身につけると永劫の不運に取り憑かれ、極度の不運になる。",
+                  "italic": false,
+                  "color": "gray"
+                }
               ]
             },
             {
@@ -590,15 +879,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
-                {"text": "永劫の脆弱の呪印牌", "italic": false, "color": "red"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の脆弱の呪印牌",
+                  "italic": false,
+                  "color": "red"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永劫の脆弱さに包まれ、極度の防御力減少を受ける。", "italic": false, "color": "gray"}
+                {
+                  "text": "身につけると永劫の脆弱さに包まれ、極度の防御力減少を受ける。",
+                  "italic": false,
+                  "color": "gray"
+                }
               ]
             },
             {
@@ -635,15 +942,33 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"},
-                {"text": "永劫の鈍重の呪印牌", "italic": false, "color": "dark_gray"},
-                {"text": "◆◇◆", "italic": false, "obfuscated": true, "color": "black"}
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の鈍重の呪印牌",
+                  "italic": false,
+                  "color": "dark_gray"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "身につけると永劫の重さに束縛され、極度の移動速度減少を受ける。", "italic": false, "color": "gray"}
+                {
+                  "text": "身につけると永劫の重さに束縛され、極度の移動速度減少を受ける。",
+                  "italic": false,
+                  "color": "gray"
+                }
               ]
             },
             {
@@ -681,31 +1006,98 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "green"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "∞", "italic": false, "bold": true, "color": "aqua"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "777", "italic": false, "bold": true, "color": "green"},
-                {"text": "?", "italic": false, "color": "yellow", "obfuscated": true}
+                {
+                  "text": "?",
+                  "italic": false,
+                  "color": "yellow",
+                  "obfuscated": true
+                },
+                {
+                  "text": "ハニカム",
+                  "italic": false,
+                  "bold": true,
+                  "color": "green"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "∞",
+                  "italic": false,
+                  "bold": true,
+                  "color": "aqua"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "777",
+                  "italic": false,
+                  "bold": true,
+                  "color": "green"
+                },
+                {
+                  "text": "?",
+                  "italic": false,
+                  "color": "yellow",
+                  "obfuscated": true
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "泡立つしゅわっとした液体に", "italic": false, "color": "dark_aqua"},
-                {"text": "神秘の輝きを放つ", "italic": false, "color": "dark_aqua"},
+                {
+                  "text": "泡立つしゅわっとした液体に",
+                  "italic": false,
+                  "color": "dark_aqua"
+                },
+                {
+                  "text": "神秘の輝きを放つ",
+                  "italic": false,
+                  "color": "dark_aqua"
+                },
                 [
                   "",
-                  {"text": "六角形の", "italic": false, "color": "dark_aqua"},
-                  {"text": "結晶", "italic": false, "color": "green", "bold": true},
-                  {"text": "が入っている。", "italic": false, "color": "dark_aqua"}
+                  {
+                    "text": "六角形の",
+                    "italic": false,
+                    "color": "dark_aqua"
+                  },
+                  {
+                    "text": "結晶",
+                    "italic": false,
+                    "color": "green",
+                    "bold": true
+                  },
+                  {
+                    "text": "が入っている。",
+                    "italic": false,
+                    "color": "dark_aqua"
+                  }
                 ],
                 [
                   "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_aqua"},
-                  {"text": "限界まで", "italic": false, "color": "gold", "bold": true},
-                  {"text": "上昇させ傷を瞬時に癒す。", "italic": false, "color": "dark_aqua"}
+                  {
+                    "text": "10分間の間、使用者の運を",
+                    "italic": false,
+                    "color": "dark_aqua"
+                  },
+                  {
+                    "text": "限界まで",
+                    "italic": false,
+                    "color": "gold",
+                    "bold": true
+                  },
+                  {
+                    "text": "上昇させ傷を瞬時に癒す。",
+                    "italic": false,
+                    "color": "dark_aqua"
+                  }
                 ]
               ]
             },
@@ -718,7 +1110,12 @@
                   "amount": 10,
                   "operation": "addition",
                   "slot": "mainhand",
-                  "uuid": [11, 0, 1, 0]
+                  "uuid": [
+                    11,
+                    0,
+                    1,
+                    0
+                  ]
                 }
               ]
             }
@@ -738,31 +1135,98 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true},
-                {"text": "ハニカム", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "∅", "italic": false, "bold": true, "color": "dark_purple"},
-                {"text": "-", "italic": false, "bold": true},
-                {"text": "000", "italic": false, "bold": true, "color": "dark_red"},
-                {"text": "!", "italic": false, "color": "dark_gray", "obfuscated": true}
+                {
+                  "text": "!",
+                  "italic": false,
+                  "color": "dark_gray",
+                  "obfuscated": true
+                },
+                {
+                  "text": "ハニカム",
+                  "italic": false,
+                  "bold": true,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "∅",
+                  "italic": false,
+                  "bold": true,
+                  "color": "dark_purple"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "000",
+                  "italic": false,
+                  "bold": true,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "!",
+                  "italic": false,
+                  "color": "dark_gray",
+                  "obfuscated": true
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "泡立つ淀んだ液体に", "italic": false, "color": "dark_red"},
-                {"text": "絶望の気配を漂わせる", "italic": false, "color": "dark_red"},
+                {
+                  "text": "泡立つ淀んだ液体に",
+                  "italic": false,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "絶望の気配を漂わせる",
+                  "italic": false,
+                  "color": "dark_red"
+                },
                 [
                   "",
-                  {"text": "六角形の", "italic": false, "color": "dark_red"},
-                  {"text": "結晶", "italic": false, "color": "dark_purple", "bold": true},
-                  {"text": "が消えかけている。", "italic": false, "color": "dark_red"}
+                  {
+                    "text": "六角形の",
+                    "italic": false,
+                    "color": "dark_red"
+                  },
+                  {
+                    "text": "結晶",
+                    "italic": false,
+                    "color": "dark_purple",
+                    "bold": true
+                  },
+                  {
+                    "text": "が消えかけている。",
+                    "italic": false,
+                    "color": "dark_red"
+                  }
                 ],
                 [
                   "",
-                  {"text": "10分間の間、使用者の運を", "italic": false, "color": "dark_red"},
-                  {"text": "限界まで", "italic": false, "color": "gold", "bold": true},
-                  {"text": "低下させ致命的なダメージを与える。", "italic": false, "color": "dark_red"}
+                  {
+                    "text": "10分間の間、使用者の運を",
+                    "italic": false,
+                    "color": "dark_red"
+                  },
+                  {
+                    "text": "限界まで",
+                    "italic": false,
+                    "color": "gold",
+                    "bold": true
+                  },
+                  {
+                    "text": "低下させ致命的なダメージを与える。",
+                    "italic": false,
+                    "color": "dark_red"
+                  }
                 ]
               ]
             },
@@ -775,7 +1239,12 @@
                   "amount": -10,
                   "operation": "addition",
                   "slot": "mainhand",
-                  "uuid": [11, 0, 1, 0]
+                  "uuid": [
+                    11,
+                    0,
+                    1,
+                    0
+                  ]
                 }
               ]
             }
@@ -795,31 +1264,98 @@
               "function": "minecraft:set_name",
               "name": [
                 "",
-                {"text": "~", "italic": false, "color": "aqua", "obfuscated": true},
-                {"text": "コンジット", "italic": false, "bold": true, "color": "aqua"},
-                {"text": "✰", "italic": false, "bold": true},
-                {"text": "∞", "italic": false, "bold": true, "color": "light_purple"},
-                {"text": "✰", "italic": false, "bold": true},
-                {"text": "アトランティス", "italic": false, "bold": true, "color": "aqua"},
-                {"text": "~", "italic": false, "color": "aqua", "obfuscated": true}
+                {
+                  "text": "~",
+                  "italic": false,
+                  "color": "aqua",
+                  "obfuscated": true
+                },
+                {
+                  "text": "コンジット",
+                  "italic": false,
+                  "bold": true,
+                  "color": "aqua"
+                },
+                {
+                  "text": "✰",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "∞",
+                  "italic": false,
+                  "bold": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "✰",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "アトランティス",
+                  "italic": false,
+                  "bold": true,
+                  "color": "aqua"
+                },
+                {
+                  "text": "~",
+                  "italic": false,
+                  "color": "aqua",
+                  "obfuscated": true
+                }
               ]
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text": "失われた海底都市の秘宝", "italic": false, "color": "light_purple"},
-                {"text": "伝説の力を秘めた神秘の液体", "italic": false, "color": "light_purple"},
+                {
+                  "text": "失われた海底都市の秘宝",
+                  "italic": false,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "伝説の力を秘めた神秘の液体",
+                  "italic": false,
+                  "color": "light_purple"
+                },
                 [
                   "",
-                  {"text": "海の", "italic": false, "color": "light_purple"},
-                  {"text": "支配者", "italic": false, "color": "aqua", "bold": true},
-                  {"text": "となる力を与える", "italic": false, "color": "light_purple"}
+                  {
+                    "text": "海の",
+                    "italic": false,
+                    "color": "light_purple"
+                  },
+                  {
+                    "text": "支配者",
+                    "italic": false,
+                    "color": "aqua",
+                    "bold": true
+                  },
+                  {
+                    "text": "となる力を与える",
+                    "italic": false,
+                    "color": "light_purple"
+                  }
                 ],
                 [
                   "",
-                  {"text": "10分間、コンジットパワー Lv", "italic": false, "color": "light_purple"},
-                  {"text": "3", "italic": false, "color": "gold", "bold": true},
-                  {"text": "と水中呼吸、", "italic": false, "color": "light_purple"}
+                  {
+                    "text": "10分間、コンジットパワー Lv",
+                    "italic": false,
+                    "color": "light_purple"
+                  },
+                  {
+                    "text": "3",
+                    "italic": false,
+                    "color": "gold",
+                    "bold": true
+                  },
+                  {
+                    "text": "と水中呼吸、",
+                    "italic": false,
+                    "color": "light_purple"
+                  }
                 ]
               ]
             }
