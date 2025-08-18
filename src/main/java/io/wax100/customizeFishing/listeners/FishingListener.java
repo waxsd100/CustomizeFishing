@@ -11,6 +11,7 @@ import io.wax100.customizeFishing.fishing.PlayerHeadProcessor;
 import io.wax100.customizeFishing.luck.LuckCalculator;
 import io.wax100.customizeFishing.luck.LuckResult;
 import io.wax100.customizeFishing.timing.TimingResult;
+import io.wax100.customizeFishing.unique.UniqueItemManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -48,12 +49,14 @@ public class FishingListener implements Listener {
     private final Map<Player, Long> biteTimestamps = new ConcurrentHashMap<>();
     private final DebugLogger debugLogger;
     private final BindingCurseManager bindingCurseManager;
+    private final UniqueItemManager uniqueItemManager;
 
     public FishingListener(CustomizeFishing plugin) {
         this.plugin = plugin;
         this.catchEffects = new CatchEffects(plugin);
         this.debugLogger = new DebugLogger(plugin);
         this.bindingCurseManager = new BindingCurseManager(plugin);
+        this.uniqueItemManager = new UniqueItemManager(plugin);
     }
 
     private String getProbabilityText(LuckResult luckResult, double baseChance, double quality) {
@@ -585,13 +588,8 @@ public class FishingListener implements Listener {
             // デバッグ開始ログを再出力
             debugLogger.logFishingStart(player, isOpenWater, weather, hasDolphinsGrace, forcedCategory);
         }
-        String category;
-        if (forcedCategory != null) {
-            category = forcedCategory;
-        } else {
-            category = determineCategoryFromConfig(player, luckResult, isOpenWater, weather, hasDolphinsGrace);
-        }
 
+        String category = Objects.requireNonNullElseGet(forcedCategory, () -> determineCategoryFromConfig(player, luckResult, isOpenWater, weather, hasDolphinsGrace));
         // カテゴリ選択結果をログ出力
         int eligibleCount = getEligibleCategoryCount(luckResult, isOpenWater, weather, hasDolphinsGrace);
         debugLogger.logCategorySelection(player, category, eligibleCount);
@@ -625,6 +623,9 @@ public class FishingListener implements Listener {
 
                     // アイテムが有効かチェック
                     if (selectedItem != null && selectedItem.getType() != Material.AIR && selectedItem.getAmount() > 0) {
+                        // ユニークアイテムの処理
+                        selectedItem = handleUniqueItemProcessing(selectedItem, player, category, lootTable, lootContext);
+
                         // 束縛の呪いがある場合、所有者を設定
                         bindingCurseManager.setItemOwner(selectedItem, player);
                         itemEntity.setItemStack(selectedItem);
@@ -749,6 +750,136 @@ public class FishingListener implements Listener {
         };
 
         return tierName + "\n§f" + timingResult.reactionTimeMs() + "ms";
+    }
+
+    /**
+     * ユニークアイテムの処理を行う
+     *
+     * @param selectedItem 選択されたアイテム
+     * @param player       プレイヤー
+     * @param category     カテゴリ
+     * @param lootTable    ルートテーブル
+     * @param lootContext  ルートコンテキスト
+     * @return 処理後のアイテム
+     */
+    private ItemStack handleUniqueItemProcessing(ItemStack selectedItem, Player player, String category,
+                                                 LootTable lootTable, LootContext lootContext) {
+        if (!uniqueItemManager.isUniqueItem(selectedItem)) {
+            return selectedItem;
+        }
+
+        String uniqueId = uniqueItemManager.getUniqueId(selectedItem);
+        if (uniqueId == null) {
+            return selectedItem;
+        }
+
+        // 既に釣られているかチェック
+        if (uniqueItemManager.isItemAlreadyCaught(player.getWorld(), uniqueId)) {
+            return rollUniqueItem(uniqueId, player, category, lootTable, lootContext);
+        } else {
+            // まだ釣られていない場合は記録
+            uniqueItemManager.markItemAsCaught(player.getWorld(), uniqueId, player);
+            debugLogger.logInfo(player, "[UNIQUE] Marked item as caught: " + uniqueId);
+            return selectedItem;
+        }
+    }
+
+    /**
+     * 既に釣られたユニークアイテムの再抽選を行う
+     *
+     * @param originalUniqueId 元のユニークID
+     * @param player           プレイヤー
+     * @param category         カテゴリ
+     * @param lootTable        ルートテーブル
+     * @param lootContext      ルートコンテキスト
+     * @return 再抽選後のアイテム
+     */
+    private ItemStack rollUniqueItem(String originalUniqueId, Player player,
+                                     String category, LootTable lootTable, LootContext lootContext) {
+        debugLogger.logInfo(player, "[UNIQUE] Item " + originalUniqueId + " already caught, re-rolling loot");
+
+        // 再抽選実行
+        Collection<ItemStack> rerolledLoot = lootTable.populateLoot(random, lootContext);
+        if (rerolledLoot.isEmpty()) {
+            debugLogger.logInfo(player, "[UNIQUE] Re-roll failed, replacing with fish");
+            return new ItemStack(Material.COD);
+        }
+
+        ItemStack rerolledItem = rerolledLoot.iterator().next();
+        rerolledItem = PlayerHeadProcessor.processPlayerHead(rerolledItem, player, category);
+
+        // 再抽選結果もユニークかチェック（最大3回まで）
+        return processRollChain(rerolledItem, player, category, lootTable, lootContext, 1);
+    }
+
+    /**
+     * 再抽選の連鎖処理（無限ループ防止）
+     *
+     * @param currentItem 現在のアイテム
+     * @param player      プレイヤー
+     * @param category    カテゴリ
+     * @param lootTable   ルートテーブル
+     * @param lootContext ルートコンテキスト
+     * @param rollCount   現在の再抽選回数
+     * @return 最終的なアイテム
+     */
+    private ItemStack processRollChain(ItemStack currentItem, Player player, String category,
+                                       LootTable lootTable, LootContext lootContext, int rollCount) {
+        final int MAX_ROLLS = 3;
+
+        // 再抽選上限チェック
+        if (rollCount >= MAX_ROLLS) {
+            debugLogger.logInfo(player, "[UNIQUE] Max re-roll attempts reached, keeping current item");
+            return finalizeUniqueItem(currentItem, player);
+        }
+
+        // ユニークアイテムでない場合は終了
+        if (!uniqueItemManager.isUniqueItem(currentItem)) {
+            return currentItem;
+        }
+
+        String uniqueId = uniqueItemManager.getUniqueId(currentItem);
+        if (uniqueId == null) {
+            return currentItem;
+        }
+
+        // 既に釣られているかチェック
+        if (uniqueItemManager.isItemAlreadyCaught(player.getWorld(), uniqueId)) {
+            debugLogger.logInfo(player, "[UNIQUE] Re-roll " + rollCount + ": Item " + uniqueId +
+                    " also already caught, re-rolling again");
+
+            // さらに再抽選
+            Collection<ItemStack> nextRoll = lootTable.populateLoot(random, lootContext);
+            if (!nextRoll.isEmpty()) {
+                ItemStack nextItem = nextRoll.iterator().next();
+                nextItem = PlayerHeadProcessor.processPlayerHead(nextItem, player, category);
+                return processRollChain(nextItem, player, category, lootTable, lootContext, rollCount + 1);
+            } else {
+                debugLogger.logInfo(player, "[UNIQUE] Re-roll failed, replacing with fish");
+                return new ItemStack(Material.COD);
+            }
+        } else {
+            // 未釣りのユニークアイテムなので記録して終了
+            return finalizeUniqueItem(currentItem, player);
+        }
+    }
+
+    /**
+     * ユニークアイテムの最終処理
+     *
+     * @param item   アイテム
+     * @param player プレイヤー
+     * @return 処理済みアイテム
+     */
+    private ItemStack finalizeUniqueItem(ItemStack item, Player player) {
+        if (uniqueItemManager.isUniqueItem(item)) {
+            String uniqueId = uniqueItemManager.getUniqueId(item);
+            if (uniqueId != null && !uniqueItemManager.isItemAlreadyCaught(player.getWorld(), uniqueId)) {
+                uniqueItemManager.markItemAsCaught(player.getWorld(), uniqueId, player);
+                debugLogger.logInfo(player, "[UNIQUE] Marked re-rolled item as caught: " + uniqueId);
+            }
+        }
+        return item;
     }
 
     private record CategoryData(String name, int priority, double quality, double chance) {

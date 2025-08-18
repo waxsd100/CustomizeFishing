@@ -85,7 +85,7 @@ luck_calculation:
 categories:
   dolphins_grace:
     enabled: true
-    priority: 1
+    priority: 0
     quality: 0
     conditions:
       require_open_water: true        # 開水域が必要
@@ -93,6 +93,19 @@ categories:
       weather:
         - "clear"                     # 晴れ天候限定
     chance: 100.0
+
+  unique:
+    enabled: true
+    priority: 1
+    quality: 1
+    conditions:
+      require_open_water: true
+      min_luck_of_the_sea: 8
+      min_luck_effect: 3
+      weather:
+        - "rain"
+        - "thunder"
+    chance: 0.005
 
   skgkyr:
     enabled: true
@@ -330,6 +343,12 @@ effects:
       primary_count: 45
       secondary_count: 25
       spread: 1.8
+    unique:
+      primary: "END_ROD"
+      secondary: "ENCHANTMENT_TABLE"
+      primary_count: 60
+      secondary_count: 40
+      spread: 2.5
     mythic:
       primary: "TOTEM"
       secondary: "SPELL_MOB"
@@ -390,6 +409,10 @@ effects:
       effect: "ABSORPTION"
       duration: 80
       amplifier: 0
+    unique:
+      effect: "HERO_OF_THE_VILLAGE"
+      duration: 600
+      amplifier: 2
     mythic:
       effect: "SPEED"
       duration: 60
@@ -437,6 +460,13 @@ effects:
       flicker: true
       trail: false
       power: 2
+    unique:
+      colors: [ "WHITE", "SILVER" ]
+      fade_colors: [ "GRAY", "BLACK" ]
+      type: "STAR"
+      flicker: true
+      trail: true
+      power: 3
     mythic:
       colors: [ "GREEN", "LIME" ]
       fade_colors: [ "YELLOW" ]
@@ -482,6 +512,10 @@ effects:
       sound: "ENTITY_ELDER_GUARDIAN_CURSE"
       volume: 0.3
       pitch: 1.2
+    unique:
+      sound: "UI_TOAST_CHALLENGE_COMPLETE"
+      volume: 0.5
+      pitch: 0.5
     mythic:
       sound: "ENTITY_EVOKER_PREPARE_SUMMON"
       volume: 0.3
@@ -517,6 +551,7 @@ effects:
     god: true                             # 神レベル → 全体通知する
     eternal: true                         # エターナル → 全体通知する
     exotic: true                          # エキゾチック → 全体通知する
+    unique: true                          # ユニーク → 全体通知する
     relic: true                           # レリック → 全体通知する
     mythic: true                          # ミシック → 全体通知する
     legendary: true                       # 伝説 → 全体通知する
@@ -535,6 +570,7 @@ effects:
     god: "&5&l✦ &f%player% &d&lが神レベルアイテムを釣り上げました！ &5&l✦"
     eternal: "&5&l★ &f%player% &d&lがエターナルアイテムを釣り上げました！ &5&l★"
     exotic: "&c&l☆ &f%player% &c&lがエキゾチックアイテムを釣り上げました！ &c&l☆"
+    unique: "&f&l◇ &7%player% &f&lが世界初のユニークアイテムを釣り上げました！ &f&l◇"
     relic: "&3&l◆ &f%player% &3&lがレリックアイテムを釣り上げました！ &3&l◆"
     mythic: "&2&l✸ &f%player% &2&lがミシックアイテムを釣り上げました！ &2&l✸"
     legendary: "&6&l★ &f%player% &e&lが伝説アイテムを釣り上げました！ &6&l★"
@@ -553,6 +589,7 @@ effects:
     god: "&5&l✦ 神レベルアイテムを釣り上げました！ &5&l✦"
     eternal: "&5&l★ エターナルアイテムを釣り上げました！ &5&l★"
     exotic: "&c&l☆ エキゾチックアイテムを釣り上げました！ &c&l☆"
+    unique: "&f&l◇ 世界初のユニークアイテムを釣り上げました！ &f&l◇"
     relic: "&3&l◆ レリックアイテムを釣り上げました！ &3&l◆"
     mythic: "&2&l✸ ミシックアイテムを釣り上げました！ &2&l✸"
     legendary: "&6&l★ 伝説アイテムを釣り上げました！ &6&l★"

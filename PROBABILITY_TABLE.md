@@ -495,6 +495,7 @@ Minecraftの属性修飾子には3つの操作タイプが存在し、それぞ�
 ### 新しい計算式（改良版）
 
 #### 正の幸運時の計算
+
 ```
 scaledLuck = log(1 + totalLuck × luckScale)
 qualityFactor = log(1 + quality × qualityImpact)
@@ -504,6 +505,7 @@ adjustedChance = baseChance × multiplier
 ```
 
 #### 負の幸運時の計算
+
 ```
 penalty = |totalLuck| × penaltyScale × quality
 adjustedChance = max(baseChance - penalty, 0.0)
@@ -511,19 +513,21 @@ adjustedChance = max(baseChance - penalty, 0.0)
 
 ### 設定値
 
-| パラメータ | デフォルト値 | 説明 |
-|----------|------------|------|
-| maxMultiplier | 3.0 | 最大倍率（3倍まで） |
-| luckScale | 0.1 | 運の影響度 |
-| qualityImpact | 0.5 | 品質の影響度 |
-| penaltyScale | 0.05 | 負の幸運ペナルティスケール |
+| パラメータ         | デフォルト値 | 説明            |
+|---------------|--------|---------------|
+| maxMultiplier | 3.0    | 最大倍率（3倍まで）    |
+| luckScale     | 0.1    | 運の影響度         |
+| qualityImpact | 0.5    | 品質の影響度        |
+| penaltyScale  | 0.05   | 負の幸運ペナルティスケール |
 
 ## 束縛の呪い機能
 
 ### 概要
+
 束縛の呪いエンチャントが付いたアイテムは、釣り上げた本人のみが使用・所持できます。
 
 ### 機能詳細
+
 - **所有者設定**: 釣り上げた瞬間にプレイヤーのUUIDと名前を保存
 - **制限範囲**: アイテム拾得、インベントリ操作、使用、ドロップ、手持ち変更など全操作
 - **表示**: アイテムのLoreに「束縛: [プレイヤー名] のみ所持・使用可能」を表示
