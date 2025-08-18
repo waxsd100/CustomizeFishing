@@ -1,0 +1,347 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "name": "unique_pool",
+      "bonus_rolls": 0,
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_sword",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "§f§l伝説の断罪剣",
+                "color": "white",
+                "bold": true
+              }
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7伝説により封印された断罪の剣",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7世界で唯一の武器",
+                  "color": "gray"
+                },
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§c束縛の呪い",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 20,
+                "max": 30
+              }
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1,
+                "minecraft:sharpness": 5,
+                "minecraft:looting": 3,
+                "minecraft:sweeping": 3,
+                "minecraft:unbreaking": 3,
+                "minecraft:mending": 1
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomizeFishing:{unique:1b,unique_id:\"legendary_judgment_sword\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bow",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "§f§l星詠みの弓",
+                "color": "white",
+                "bold": true
+              }
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7星の力を宿した古代の弓",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7世界で唯一の遠距離武器",
+                  "color": "gray"
+                },
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§c束縛の呪い",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1,
+                "minecraft:power": 5,
+                "minecraft:infinity": 1,
+                "minecraft:punch": 3,
+                "minecraft:flame": 1,
+                "minecraft:unbreaking": 3,
+                "minecraft:mending": 1
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomizeFishing:{unique:1b,unique_id:\"star_reading_bow\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_chestplate",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "§f§l守護者の胸当て",
+                "color": "white",
+                "bold": true
+              }
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7古代の守護者が身に纏っていた鎧",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7世界で唯一の防具",
+                  "color": "gray"
+                },
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§c束縛の呪い",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1,
+                "minecraft:protection": 4,
+                "minecraft:blast_protection": 4,
+                "minecraft:fire_protection": 4,
+                "minecraft:projectile_protection": 4,
+                "minecraft:thorns": 3,
+                "minecraft:unbreaking": 3,
+                "minecraft:mending": 1
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomizeFishing:{unique:1b,unique_id:\"guardian_chestplate\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_pickaxe",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "§f§l創世のツルハシ",
+                "color": "white",
+                "bold": true
+              }
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7世界を創造した神のツルハシ",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7世界で唯一の採掘具",
+                  "color": "gray"
+                },
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§c束縛の呪い",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1,
+                "minecraft:efficiency": 5,
+                "minecraft:fortune": 3,
+                "minecraft:unbreaking": 3,
+                "minecraft:mending": 1
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomizeFishing:{unique:1b,unique_id:\"genesis_pickaxe\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "§f§l時空釣師の竿",
+                "color": "white",
+                "bold": true
+              }
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7時空を超越した伝説の釣り竿",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7世界で唯一の究極釣具",
+                  "color": "gray"
+                },
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§c束縛の呪い",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1,
+                "minecraft:luck": 3,
+                "minecraft:lure": 5,
+                "minecraft:unbreaking": 3,
+                "minecraft:mending": 1
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomizeFishing:{unique:1b,unique_id:\"spacetime_fishing_rod\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:totem_of_undying",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "§f§l永劫回帰のトーテム",
+                "color": "white",
+                "bold": true
+              }
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7永遠の命を約束する神器",
+                  "color": "gray"
+                },
+                {
+                  "text": "§7世界で唯一の不死のトーテム",
+                  "color": "gray"
+                },
+                {
+                  "text": "",
+                  "color": "gray"
+                },
+                {
+                  "text": "§c束縛の呪い",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomizeFishing:{unique:1b,unique_id:\"eternal_recurrence_totem\"}}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:gameplay/fishing/unique"
+}
