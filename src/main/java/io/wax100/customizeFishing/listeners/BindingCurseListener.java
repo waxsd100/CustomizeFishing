@@ -29,10 +29,10 @@ import java.util.UUID;
 
 public class BindingCurseListener implements Listener {
 
+    private static final long MESSAGE_COOLDOWN = 3000; // 3秒のクールダウン
     private final CustomizeFishing plugin;
     private final BindingCurseManager bindingCurseManager;
     private final Map<UUID, Long> lastMessageTime = new HashMap<>();
-    private static final long MESSAGE_COOLDOWN = 3000; // 3秒のクールダウン
 
     public BindingCurseListener(CustomizeFishing plugin) {
         this.plugin = plugin;
@@ -56,7 +56,7 @@ public class BindingCurseListener implements Listener {
         UUID playerId = player.getUniqueId();
         long currentTime = System.currentTimeMillis();
         Long lastTime = lastMessageTime.get(playerId);
-        
+
         if (lastTime == null || currentTime - lastTime > MESSAGE_COOLDOWN) {
             String ownerName = bindingCurseManager.getOwnerName(item);
             player.sendMessage(ChatColor.RED + "このアイテムは " + ChatColor.YELLOW + ownerName + ChatColor.RED + " にのみ束縛されています！");
@@ -67,46 +67,46 @@ public class BindingCurseListener implements Listener {
     private void dropBoundItemsNotOwnedBy(Player player) {
         PlayerInventory inventory = player.getInventory();
         Location playerLocation = player.getLocation();
-        
+
         // インベントリ内の全スロットをチェック
         for (int i = 0; i < inventory.getSize(); i++) {
             ItemStack item = inventory.getItem(i);
-            if (item != null && bindingCurseManager.hasBindingCurse(item) && 
-                bindingCurseManager.hasOwner(item) && !bindingCurseManager.isOwner(item, player)) {
-                
+            if (item != null && bindingCurseManager.hasBindingCurse(item) &&
+                    bindingCurseManager.hasOwner(item) && !bindingCurseManager.isOwner(item, player)) {
+
                 // アイテムをドロップ
                 Objects.requireNonNull(playerLocation.getWorld()).dropItem(playerLocation, item);
                 inventory.setItem(i, null);
-                
+
                 String ownerName = bindingCurseManager.getOwnerName(item);
                 player.sendMessage(ChatColor.YELLOW + ownerName + ChatColor.RED + " の束縛アイテムが自動的にドロップされました。");
             }
         }
-        
+
         // 防具スロットもチェック
         ItemStack[] armorContents = inventory.getArmorContents();
         for (int i = 0; i < armorContents.length; i++) {
             ItemStack item = armorContents[i];
-            if (item != null && bindingCurseManager.hasBindingCurse(item) && 
-                bindingCurseManager.hasOwner(item) && !bindingCurseManager.isOwner(item, player)) {
-                
+            if (item != null && bindingCurseManager.hasBindingCurse(item) &&
+                    bindingCurseManager.hasOwner(item) && !bindingCurseManager.isOwner(item, player)) {
+
                 // アイテムをドロップ
                 Objects.requireNonNull(playerLocation.getWorld()).dropItem(playerLocation, item);
                 armorContents[i] = null;
-                
+
                 String ownerName = bindingCurseManager.getOwnerName(item);
                 player.sendMessage(ChatColor.YELLOW + ownerName + ChatColor.RED + " の束縛アイテムが自動的にドロップされました。");
             }
         }
         inventory.setArmorContents(armorContents);
-        
+
         // オフハンドもチェック
         ItemStack offHand = inventory.getItemInOffHand();
         if (bindingCurseManager.hasBindingCurse(offHand) && bindingCurseManager.hasOwner(offHand) && !bindingCurseManager.isOwner(offHand, player)) {
-            
+
             Objects.requireNonNull(playerLocation.getWorld()).dropItem(playerLocation, offHand);
             inventory.setItemInOffHand(null);
-            
+
             String ownerName = bindingCurseManager.getOwnerName(offHand);
             player.sendMessage(ChatColor.YELLOW + ownerName + ChatColor.RED + " の束縛アイテムが自動的にドロップされました。");
         }
@@ -149,7 +149,7 @@ public class BindingCurseListener implements Listener {
         if (!(event.getPlayer() instanceof Player player)) {
             return;
         }
-        
+
         // インベントリを閉じた後に遅延実行
         new BukkitRunnable() {
             @Override

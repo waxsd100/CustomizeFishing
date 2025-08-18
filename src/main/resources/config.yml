@@ -95,7 +95,7 @@ categories:
     chance: 100.0
 
   unique:
-    enabled: true
+    enabled: false
     priority: 1
     quality: 1
     conditions:
@@ -110,7 +110,7 @@ categories:
   skgkyr:
     enabled: true
     priority: 2
-    quality: 20
+    quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 10
@@ -551,7 +551,7 @@ effects:
     god: true                             # 神レベル → 全体通知する
     eternal: true                         # エターナル → 全体通知する
     exotic: true                          # エキゾチック → 全体通知する
-    unique: true                          # ユニーク → 全体通知する
+    unique: false                          # ユニーク → 全体通知する
     relic: true                           # レリック → 全体通知する
     mythic: true                          # ミシック → 全体通知する
     legendary: true                       # 伝説 → 全体通知する

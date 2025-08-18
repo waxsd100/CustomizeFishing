@@ -618,11 +618,11 @@ public class FishingListener implements Listener {
                 if (!loot.isEmpty()) {
                     selectedItem = loot.iterator().next();
 
-                    // イルカの好意カテゴリでプレイヤーヘッドの場合、釣り人の顔に置換
-                    selectedItem = PlayerHeadProcessor.processPlayerHead(selectedItem, player, category);
-
                     // アイテムが有効かチェック
                     if (selectedItem != null && selectedItem.getType() != Material.AIR && selectedItem.getAmount() > 0) {
+                        // イルカの好意カテゴリでプレイヤーヘッドの場合、釣り人の顔に置換
+                        selectedItem = PlayerHeadProcessor.processPlayerHead(selectedItem, player, category);
+
                         // ユニークアイテムの処理
                         selectedItem = handleUniqueItemProcessing(selectedItem, player, category, lootTable, lootContext);
 
@@ -780,6 +780,8 @@ public class FishingListener implements Listener {
             // まだ釣られていない場合は記録
             uniqueItemManager.markItemAsCaught(player.getWorld(), uniqueId, player);
             debugLogger.logInfo(player, "[UNIQUE] Marked item as caught: " + uniqueId);
+            // ユニークアイテムのLoreを追加
+            selectedItem = uniqueItemManager.addUniqueLore(selectedItem, player.getWorld(), player);
             return selectedItem;
         }
     }
@@ -830,6 +832,10 @@ public class FishingListener implements Listener {
         // 再抽選上限チェック
         if (rollCount >= MAX_ROLLS) {
             debugLogger.logInfo(player, "[UNIQUE] Max re-roll attempts reached, keeping current item");
+            // 既に釣られているユニークアイテムの場合でもLoreを追加
+            if (uniqueItemManager.isUniqueItem(currentItem)) {
+                currentItem = uniqueItemManager.addUniqueLore(currentItem, player.getWorld(), player);
+            }
             return finalizeUniqueItem(currentItem, player);
         }
 
@@ -877,6 +883,8 @@ public class FishingListener implements Listener {
             if (uniqueId != null && !uniqueItemManager.isItemAlreadyCaught(player.getWorld(), uniqueId)) {
                 uniqueItemManager.markItemAsCaught(player.getWorld(), uniqueId, player);
                 debugLogger.logInfo(player, "[UNIQUE] Marked re-rolled item as caught: " + uniqueId);
+                // ユニークアイテムのLoreを追加
+                item = uniqueItemManager.addUniqueLore(item, player.getWorld(), player);
             }
         }
         return item;

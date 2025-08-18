@@ -1,0 +1,16 @@
+# UniqueItem管理ファイル
+# このファイルはプラグインによって自動生成・管理されます
+# 手動で編集しないでください
+
+# ワールドごとのUniqueアイテム取得状況
+worlds:
+# 例:
+# world:
+#   caught_items:
+#     - "伝説の断罪剣"
+#     - "星詠みの弓"
+#   items:
+#     "伝説の断罪剣":
+#       caught_by: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+#       caught_by_name: "PlayerName"
+#       caught_at: 1234567890123
