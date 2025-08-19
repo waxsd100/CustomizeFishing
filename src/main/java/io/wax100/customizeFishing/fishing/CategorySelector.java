@@ -51,7 +51,7 @@ public class CategorySelector {
                 double quality = categorySection.getDouble("quality", 0);
                 double chance = categorySection.getDouble("chance", 0);
                 debugLogger.logCategoryDetails(
-                        player, categoryName + " [INELIGIBLE]", priority, quality,
+                        player, categoryName + " ✘", priority, quality,
                         chance, 0, luckResult.getTotalLuck(plugin)
                 );
                 continue;
@@ -77,7 +77,7 @@ public class CategorySelector {
 
             if (adjustedChance <= 0) {
                 debugLogger.logCategoryDetails(
-                        player, category.name() + " [INELIGIBLE]", category.priority(), category.quality(),
+                        player, category.name() + " ✘", category.priority(), category.quality(),
                         category.chance(), adjustedChance, totalLuck
                 );
                 continue;
@@ -86,7 +86,7 @@ public class CategorySelector {
             adjustedCategories.add(new CategoryData(category.name(), category.priority(), category.quality(), adjustedChance));
 
             debugLogger.logCategoryDetails(
-                    player, category.name() + " [ELIGIBLE]", category.priority(), category.quality(),
+                    player, category.name() + " ✓", category.priority(), category.quality(),
                     category.chance(), adjustedChance, totalLuck
             );
         }

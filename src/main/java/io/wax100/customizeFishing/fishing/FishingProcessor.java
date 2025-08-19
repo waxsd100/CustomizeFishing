@@ -35,8 +35,15 @@ record FishingConditionsCache(
         Weather weather,
         boolean hasDolphinsGrace,
         Location hookLocation
-) {
-}
+) {}
+
+/**
+ * ユニークアイテム処理の結果
+ */
+record UniqueProcessingResult(
+        ItemStack item,
+        String category
+) {}
 
 public class FishingProcessor {
 
@@ -127,7 +134,9 @@ public class FishingProcessor {
                     if (selectedItem != null && selectedItem.getType() != Material.AIR && selectedItem.getAmount() > 0) {
                         selectedItem = PlayerHeadProcessor.processPlayerHead(selectedItem, player, category);
 
-                        selectedItem = handleUniqueItemProcessing(selectedItem, player, conditionsCache);
+                        UniqueProcessingResult result = handleUniqueItemProcessing(selectedItem, player, category, conditionsCache);
+                        selectedItem = result.item();
+                        category = result.category();
 
                         bindingCurseManager.setItemOwner(selectedItem, player);
                         itemEntity.setItemStack(selectedItem);
@@ -177,10 +186,11 @@ public class FishingProcessor {
      *
      * @param selectedItem    選択されたアイテム
      * @param player          プレイヤー
+     * @param originalCategory 元のカテゴリ
      * @param conditionsCache キャッシュされた釣り条件
-     * @return 処理後のアイテム
+     * @return 処理後のアイテムとカテゴリ
      */
-    private ItemStack handleUniqueItemProcessing(ItemStack selectedItem, Player player, FishingConditionsCache conditionsCache) {
+    private UniqueProcessingResult handleUniqueItemProcessing(ItemStack selectedItem, Player player, String originalCategory, FishingConditionsCache conditionsCache) {
         // NBTタグからPersistentDataContainerに変換
         selectedItem = convertNbtToPersistentData(selectedItem);
 
@@ -188,7 +198,7 @@ public class FishingProcessor {
         debugLogger.logInfo(player, "[UNIQUE-DEBUG] Processing item, isUnique: " + uniqueItemManager.isUniqueItem(selectedItem));
 
         if (!uniqueItemManager.isUniqueItem(selectedItem)) {
-            return selectedItem;
+            return new UniqueProcessingResult(selectedItem, originalCategory);
         }
 
         String uniqueId = uniqueItemManager.getUniqueId(selectedItem);
@@ -196,7 +206,7 @@ public class FishingProcessor {
 
         if (uniqueId == null) {
             debugLogger.logInfo(player, "[UNIQUE-DEBUG] Unique ID is null, returning item");
-            return selectedItem;
+            return new UniqueProcessingResult(selectedItem, originalCategory);
         }
 
         boolean alreadyCaught = uniqueItemManager.isItemAlreadyCaught(player.getWorld(), uniqueId);
@@ -209,7 +219,7 @@ public class FishingProcessor {
             uniqueItemManager.markItemAsCaught(player.getWorld(), uniqueId, player);
             debugLogger.logInfo(player, "[UNIQUE-DEBUG] Successfully marked item as caught: " + uniqueId);
             selectedItem = uniqueItemManager.addUniqueLore(selectedItem, player.getWorld(), player);
-            return selectedItem;
+            return new UniqueProcessingResult(selectedItem, originalCategory);
         }
     }
 
@@ -294,16 +304,17 @@ public class FishingProcessor {
      * @param player          プレイヤー
      * @param conditionsCache キャッシュされた釣り条件
      * @param rerollCount     再抽選回数
-     * @return 釣り結果のアイテム
+     * @return 釣り結果のアイテムとカテゴリ
      */
-    private ItemStack performFullReFishing(Player player, FishingConditionsCache conditionsCache, int rerollCount) {
+    private UniqueProcessingResult performFullReFishing(Player player, FishingConditionsCache conditionsCache, int rerollCount) {
         final int MAX_REROLLS = 3;
 
         if (rerollCount > MAX_REROLLS) {
             debugLogger.logInfo(player, "[CACHED-REROLL] Max re-roll attempts reached, forcing common fallback");
             // LootContextを再作成してcommonから取得
             LootContext commonContext = createLootContext(player, conditionsCache);
-            return getItemFromCategory("common", player, commonContext);
+            ItemStack fallbackItem = getItemFromCategory("common", player, commonContext);
+            return new UniqueProcessingResult(fallbackItem, "common");
         }
 
         debugLogger.logInfo(player, "[CACHED-REROLL] Attempt " + rerollCount + " - Using cached fishing conditions");
@@ -348,7 +359,7 @@ public class FishingProcessor {
                 debugLogger.logInfo(player, "[CACHED-REROLL] Successfully got non-unique item: " + newItem.getType());
             }
 
-            return newItem;
+            return new UniqueProcessingResult(newItem, newCategory);
 
         } catch (Exception e) {
             debugLogger.logInfo(player, "[CACHED-REROLL] Error during cached re-fishing: " + e.getMessage());
