@@ -115,7 +115,7 @@ public class LuckCalculator {
      * 装備の幸運属性値を計算
      */
     private double calculateEquipmentLuck(Player player) {
-
+        debugLogger.logInfo(player, " EQUIPMENT LUCK:");
         // ヘルメット
         ItemStack helmet = player.getInventory().getHelmet();
         double helmetLuck = 0;
@@ -161,7 +161,7 @@ public class LuckCalculator {
         double minEquipmentLuck = plugin.getConfig().getDouble("luck_effects.equipment_luck.min_value", -6.0);
         double maxEquipmentLuck = plugin.getConfig().getDouble("luck_effects.equipment_luck.max_value", 6.0);
 
-        debugLogger.logInfo(player, " EQUIPMENT LUCK:");
+
         double finalEquipmentLuck = helmetLuck + chestLuck + legsLuck + bootsLuck + mainHandLuck + offHandLuck;
         debugLogger.logEquipmentLuck(player,
                 helmetLuck, chestLuck, legsLuck, bootsLuck,

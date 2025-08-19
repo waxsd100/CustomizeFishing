@@ -14,10 +14,8 @@ import org.bukkit.persistence.PersistentDataType;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class UniqueItemManager {
 
@@ -68,7 +66,7 @@ public class UniqueItemManager {
         }
 
         ItemMeta meta = item.getItemMeta();
-        PersistentDataContainer container = meta.getPersistentDataContainer();
+        PersistentDataContainer container = Objects.requireNonNull(meta).getPersistentDataContainer();
         return container.has(uniqueKey, PersistentDataType.BYTE) &&
                 container.get(uniqueKey, PersistentDataType.BYTE) == 1;
     }
@@ -131,49 +129,6 @@ public class UniqueItemManager {
                 uniqueId, player.getName(), worldName));
     }
 
-    /**
-     * 指定されたユニークアイテムIDから、まだ釣られていないものを取得
-     *
-     * @param world              ワールド
-     * @param availableUniqueIds 利用可能なユニークアイテムIDのセット
-     * @return 釣ることができるユニークIDのセット
-     */
-    public Set<String> getAvailableUniqueItems(World world, Set<String> availableUniqueIds) {
-        Set<String> available = new HashSet<>(availableUniqueIds);
-        String worldName = world.getName();
-        List<String> caughtItems = uniqueData.getStringList("worlds." + worldName + ".caught_items");
-
-        // 既に釣られたアイテムを除外
-        caughtItems.forEach(available::remove);
-
-        return available;
-    }
-
-    /**
-     * 指定したユニークアイテムを釣った人の情報を取得
-     *
-     * @param world    ワールド
-     * @param uniqueId ユニークアイテムのID
-     * @return 釣った人の名前、釣られていない場合はnull
-     */
-    public String getItemCaughtBy(World world, String uniqueId) {
-        String worldName = world.getName();
-        String path = "worlds." + worldName + ".items." + uniqueId + ".caught_by_name";
-        return uniqueData.getString(path);
-    }
-
-    /**
-     * 指定したユニークアイテムが釣られた時刻を取得
-     *
-     * @param world    ワールド
-     * @param uniqueId ユニークアイテムのID
-     * @return 釣られた時刻（milliseconds）、釣られていない場合は-1
-     */
-    public long getItemCaughtTime(World world, String uniqueId) {
-        String worldName = world.getName();
-        String path = "worlds." + worldName + ".items." + uniqueId + ".caught_at";
-        return uniqueData.getLong(path, -1);
-    }
 
     /**
      * uniqueデータをリロード
@@ -182,31 +137,6 @@ public class UniqueItemManager {
         loadUniqueData();
     }
 
-    /**
-     * ワールドの統計情報を取得
-     *
-     * @param world ワールド
-     * @return 統計情報の文字列
-     */
-    public String getWorldStats(World world) {
-        String worldName = world.getName();
-        List<String> caughtItems = uniqueData.getStringList("worlds." + worldName + ".caught_items");
-
-        StringBuilder stats = new StringBuilder();
-        stats.append("World: ").append(worldName).append("\n");
-        stats.append("Unique items caught: ").append(caughtItems.size()).append("\n");
-
-        for (String uniqueId : caughtItems) {
-            String caughtBy = getItemCaughtBy(world, uniqueId);
-            long caughtTime = getItemCaughtTime(world, uniqueId);
-            stats.append("- ").append(uniqueId)
-                    .append(" (by ").append(caughtBy)
-                    .append(" at ").append(new java.util.Date(caughtTime))
-                    .append(")\n");
-        }
-
-        return stats.toString();
-    }
 
     /**
      * ユニークアイテムにLoreを追加
@@ -235,7 +165,9 @@ public class UniqueItemManager {
         lore.add(0, "");
         // 既に釣られているかチェック
         if (isItemAlreadyCaught(world, uniqueId)) {
-            String firstCatcher = getItemCaughtBy(world, uniqueId);
+            String worldName = world.getName();
+            String path = "worlds." + worldName + ".items." + uniqueId + ".caught_by_name";
+            String firstCatcher = uniqueData.getString(path);
             lore.add(0, "§7先駆者: §f" + firstCatcher);
         } else {
             lore.add(0, "§7先駆者: §f" + player.getName());

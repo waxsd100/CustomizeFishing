@@ -35,7 +35,7 @@
             },
             {
               "function": "minecraft:set_nbt",
-              "tag": "{CustomizeFishing:{unique:1b,unique_id:\"test\"}}"
+              "tag": "{customizefishing:{unique:1b,unique_id:\"test\"}}"
             }
           ]
         }

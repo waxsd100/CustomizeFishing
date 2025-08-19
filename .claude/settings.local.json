@@ -4,7 +4,8 @@
       "Bash(rmdir:*)",
       "Bash(mv:*)",
       "Bash(sed:*)",
-      "Bash(./gradlew test:*)"
+      "Bash(./gradlew test:*)",
+      "Bash(./gradlew:*)"
     ],
     "deny": []
   }

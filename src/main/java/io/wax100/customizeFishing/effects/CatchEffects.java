@@ -1,7 +1,7 @@
 package io.wax100.customizeFishing.effects;
 
 import io.wax100.customizeFishing.CustomizeFishing;
-import io.wax100.customizeFishing.listeners.FishingListener;
+import io.wax100.customizeFishing.fishing.FishingProcessor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -370,7 +370,7 @@ public class CatchEffects {
     /**
      * ダブルフィッシング用の特別なエフェクト表示
      */
-    public void playDoubleFishingEffects(Player player, String primaryCategory, FishingListener.FishingResult firstResult, FishingListener.FishingResult secondResult) {
+    public void playDoubleFishingEffects(Player player, String primaryCategory, FishingProcessor.FishingResult firstResult, FishingProcessor.FishingResult secondResult) {
         // FishingResultから直接データを取得
         String firstCategory = firstResult.category();
         String secondCategory = secondResult.category();
