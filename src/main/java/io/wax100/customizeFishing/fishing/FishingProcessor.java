@@ -1,5 +1,7 @@
 package io.wax100.customizeFishing.fishing;
 
+import de.tr7zw.changeme.nbtapi.NBTCompound;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import io.wax100.customizeFishing.CustomizeFishing;
 import io.wax100.customizeFishing.binding.BindingCurseManager;
 import io.wax100.customizeFishing.debug.DebugFishingRod;
@@ -16,11 +18,25 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.loot.LootContext;
 import org.bukkit.loot.LootTable;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Random;
+
+/**
+ * 釣り条件のキャッシュ
+ */
+record FishingConditionsCache(
+        LuckResult luckResult,
+        boolean isOpenWater,
+        Weather weather,
+        boolean hasDolphinsGrace,
+        Location hookLocation
+) {
+}
 
 public class FishingProcessor {
 
@@ -56,6 +72,15 @@ public class FishingProcessor {
     public FishingResult processFishing(Player player, Item itemEntity, Location hookLocation, boolean isDoubleFishingBonus, TimingResult timingResult, LuckResult luckResult, boolean isOpenWater, Weather weather) {
 
         boolean hasDolphinsGrace = player.hasPotionEffect(PotionEffectType.DOLPHINS_GRACE);
+
+        // 釣り条件をキャッシュ
+        FishingConditionsCache conditionsCache = new FishingConditionsCache(
+                luckResult,
+                isOpenWater,
+                weather,
+                hasDolphinsGrace,
+                hookLocation
+        );
 
         if (isDoubleFishingBonus) {
             debugLogger.logInfo(player, "=== DOUBLE FISHING: BONUS FISHING PROCESS ===");
@@ -102,7 +127,7 @@ public class FishingProcessor {
                     if (selectedItem != null && selectedItem.getType() != Material.AIR && selectedItem.getAmount() > 0) {
                         selectedItem = PlayerHeadProcessor.processPlayerHead(selectedItem, player, category);
 
-                        selectedItem = handleUniqueItemProcessing(selectedItem, player, category, lootTable, lootContext);
+                        selectedItem = handleUniqueItemProcessing(selectedItem, player, conditionsCache);
 
                         bindingCurseManager.setItemOwner(selectedItem, player);
                         itemEntity.setItemStack(selectedItem);
@@ -150,131 +175,235 @@ public class FishingProcessor {
     /**
      * ユニークアイテムの処理を行う
      *
-     * @param selectedItem 選択されたアイテム
-     * @param player       プレイヤー
-     * @param category     カテゴリ
-     * @param lootTable    ルートテーブル
-     * @param lootContext  ルートコンテキスト
+     * @param selectedItem    選択されたアイテム
+     * @param player          プレイヤー
+     * @param conditionsCache キャッシュされた釣り条件
      * @return 処理後のアイテム
      */
-    private ItemStack handleUniqueItemProcessing(ItemStack selectedItem, Player player, String category,
-                                                 LootTable lootTable, LootContext lootContext) {
+    private ItemStack handleUniqueItemProcessing(ItemStack selectedItem, Player player, FishingConditionsCache conditionsCache) {
+        // NBTタグからPersistentDataContainerに変換
+        selectedItem = convertNbtToPersistentData(selectedItem);
+
         UniqueItemManager uniqueItemManager = plugin.getUniqueItemManager();
+        debugLogger.logInfo(player, "[UNIQUE-DEBUG] Processing item, isUnique: " + uniqueItemManager.isUniqueItem(selectedItem));
+
         if (!uniqueItemManager.isUniqueItem(selectedItem)) {
             return selectedItem;
         }
 
         String uniqueId = uniqueItemManager.getUniqueId(selectedItem);
+        debugLogger.logInfo(player, "[UNIQUE-DEBUG] Unique ID: " + uniqueId);
+
         if (uniqueId == null) {
+            debugLogger.logInfo(player, "[UNIQUE-DEBUG] Unique ID is null, returning item");
             return selectedItem;
         }
 
-        if (uniqueItemManager.isItemAlreadyCaught(player.getWorld(), uniqueId)) {
-            return rollUniqueItem(uniqueId, player, category, lootTable, lootContext);
+        boolean alreadyCaught = uniqueItemManager.isItemAlreadyCaught(player.getWorld(), uniqueId);
+        debugLogger.logInfo(player, "[UNIQUE-DEBUG] Item " + uniqueId + " already caught: " + alreadyCaught);
+
+        if (alreadyCaught) {
+            debugLogger.logInfo(player, "[UNIQUE-DEBUG] Starting re-roll for " + uniqueId);
+            return performFullReFishing(player, conditionsCache, 1);
         } else {
             uniqueItemManager.markItemAsCaught(player.getWorld(), uniqueId, player);
-            debugLogger.logInfo(player, "[UNIQUE] Marked item as caught: " + uniqueId);
+            debugLogger.logInfo(player, "[UNIQUE-DEBUG] Successfully marked item as caught: " + uniqueId);
             selectedItem = uniqueItemManager.addUniqueLore(selectedItem, player.getWorld(), player);
             return selectedItem;
         }
     }
 
-    /**
-     * 既に釣られたユニークアイテムの再抽選を行う
-     *
-     * @param originalUniqueId 元のユニークID
-     * @param player           プレイヤー
-     * @param category         カテゴリ
-     * @param lootTable        ルートテーブル
-     * @param lootContext      ルートコンテキスト
-     * @return 再抽選後のアイテム
-     */
-    private ItemStack rollUniqueItem(String originalUniqueId, Player player,
-                                     String category, LootTable lootTable, LootContext lootContext) {
-        debugLogger.logInfo(player, "[UNIQUE] Item " + originalUniqueId + " already caught, re-rolling loot");
 
-        Collection<ItemStack> rerolledLoot = lootTable.populateLoot(random, lootContext);
-        if (rerolledLoot.isEmpty()) {
-            debugLogger.logInfo(player, "[UNIQUE] Re-roll failed, replacing with fish");
-            return new ItemStack(Material.COD);
+    /**
+     * NBTタグからPersistentDataContainerにユニーク情報を変換する
+     *
+     * @param item 変換対象のアイテム
+     * @return 変換後のアイテム
+     */
+    private ItemStack convertNbtToPersistentData(ItemStack item) {
+        if (item == null || !item.hasItemMeta()) {
+            return item;
         }
 
-        ItemStack rerolledItem = rerolledLoot.iterator().next();
-        rerolledItem = PlayerHeadProcessor.processPlayerHead(rerolledItem, player, category);
-
-        return processRollChain(rerolledItem, player, category, lootTable, lootContext, 1);
-    }
-
-    /**
-     * 再抽選の連鎖処理（無限ループ防止）
-     *
-     * @param currentItem 現在のアイテム
-     * @param player      プレイヤー
-     * @param category    カテゴリ
-     * @param lootTable   ルートテーブル
-     * @param lootContext ルートコンテキスト
-     * @param rollCount   現在の再抽選回数
-     * @return 最終的なアイテム
-     */
-    private ItemStack processRollChain(ItemStack currentItem, Player player, String category,
-                                       LootTable lootTable, LootContext lootContext, int rollCount) {
-        final int MAX_ROLLS = 3;
-        UniqueItemManager uniqueItemManager = plugin.getUniqueItemManager();
-
-        if (rollCount >= MAX_ROLLS) {
-            debugLogger.logInfo(player, "[UNIQUE] Max re-roll attempts reached, keeping current item");
-            if (uniqueItemManager.isUniqueItem(currentItem)) {
-                currentItem = uniqueItemManager.addUniqueLore(currentItem, player.getWorld(), player);
+        // PersistentDataContainerに既にデータがある場合はスキップ
+        var meta = item.getItemMeta();
+        if (meta != null) {
+            PersistentDataContainer container = meta.getPersistentDataContainer();
+            NamespacedKey uniqueKey = new NamespacedKey(plugin, "unique");
+            if (container.has(uniqueKey, PersistentDataType.BYTE)) {
+                return item; // 既に変換済み
             }
-            return finalizeUniqueItem(currentItem, player);
         }
 
-        if (!uniqueItemManager.isUniqueItem(currentItem)) {
-            return currentItem;
-        }
+        try {
+            // NBT-APIを使用してNBTデータに直接アクセス
+            NBTItem nbtItem = new NBTItem(item);
+            debugLogger.logInfo(null, "[NBT-CONVERT] Item type: " + item.getType() + ", NBT keys: " + nbtItem.getKeys());
 
-        String uniqueId = uniqueItemManager.getUniqueId(currentItem);
-        if (uniqueId == null) {
-            return currentItem;
-        }
+            // customizefishingタグが存在するかチェック
+            if (nbtItem.getKeys().contains("customizefishing")) {
+                NBTCompound customizeFishingTag = nbtItem.getCompound("customizefishing");
+                debugLogger.logInfo(null, "[NBT-CONVERT] Found customizefishing tag with keys: " + customizeFishingTag.getKeys());
 
-        if (uniqueItemManager.isItemAlreadyCaught(player.getWorld(), uniqueId)) {
-            debugLogger.logInfo(player, "[UNIQUE] Re-roll " + rollCount + ": Item " + uniqueId +
-                    " also already caught, re-rolling again");
+                // uniqueタグとunique_idタグをチェック
+                if (customizeFishingTag.getKeys().contains("unique") && customizeFishingTag.getKeys().contains("unique_id")) {
+                    byte uniqueFlag = customizeFishingTag.getByte("unique");
+                    String uniqueId = customizeFishingTag.getString("unique_id");
 
-            Collection<ItemStack> nextRoll = lootTable.populateLoot(random, lootContext);
-            if (!nextRoll.isEmpty()) {
-                ItemStack nextItem = nextRoll.iterator().next();
-                nextItem = PlayerHeadProcessor.processPlayerHead(nextItem, player, category);
-                return processRollChain(nextItem, player, category, lootTable, lootContext, rollCount + 1);
+                    debugLogger.logInfo(null, "[NBT-API] Found unique flag: " + uniqueFlag + ", unique_id: " + uniqueId);
+
+                    if (uniqueFlag == 1 && uniqueId != null && !uniqueId.isEmpty()) {
+                        debugLogger.logInfo(null, "[NBT-API] Processing unique item with ID: " + uniqueId);
+
+                        // PersistentDataContainerに設定
+                        if (meta != null) {
+                            PersistentDataContainer container = meta.getPersistentDataContainer();
+                            NamespacedKey uniqueKey = new NamespacedKey(plugin, "unique");
+                            NamespacedKey uniqueIdKey = new NamespacedKey(plugin, "unique_id");
+
+                            container.set(uniqueKey, PersistentDataType.BYTE, uniqueFlag);
+                            container.set(uniqueIdKey, PersistentDataType.STRING, uniqueId);
+
+                            // NBTタグを削除（PersistentDataContainerに移行したため）
+                            nbtItem.removeKey("customizefishing");
+
+                            // 変更を適用
+                            item = nbtItem.getItem();
+                            item.setItemMeta(meta);
+
+                            debugLogger.logInfo(null, "[NBT-CONVERT] Successfully converted NBT to PersistentData for unique_id: " + uniqueId);
+                        }
+                    }
+                } else {
+                    debugLogger.logInfo(null, "[NBT-CONVERT] Missing required keys. Available: " + customizeFishingTag.getKeys());
+                }
             } else {
-                debugLogger.logInfo(player, "[UNIQUE] Re-roll failed, replacing with fish");
-                return new ItemStack(Material.COD);
+                debugLogger.logInfo(null, "[NBT-CONVERT] No customizefishing key found in NBT");
             }
-        } else {
-            return finalizeUniqueItem(currentItem, player);
+        } catch (Exception e) {
+            debugLogger.logInfo(null, "[NBT-API] Error during NBT conversion: " + e.getMessage());
+            e.printStackTrace();
         }
-    }
 
-    /**
-     * ユニークアイテムの最終処理
-     *
-     * @param item   アイテム
-     * @param player プレイヤー
-     * @return 処理済みアイテム
-     */
-    private ItemStack finalizeUniqueItem(ItemStack item, Player player) {
-        UniqueItemManager uniqueItemManager = plugin.getUniqueItemManager();
-        if (uniqueItemManager.isUniqueItem(item)) {
-            String uniqueId = uniqueItemManager.getUniqueId(item);
-            if (uniqueId != null && !uniqueItemManager.isItemAlreadyCaught(player.getWorld(), uniqueId)) {
-                uniqueItemManager.markItemAsCaught(player.getWorld(), uniqueId, player);
-                debugLogger.logInfo(player, "[UNIQUE] Marked re-rolled item as caught: " + uniqueId);
-                item = uniqueItemManager.addUniqueLore(item, player.getWorld(), player);
-            }
-        }
         return item;
     }
+
+    /**
+     * 完全な釣り処理を再実行（キャッシュされた条件を使用）
+     *
+     * @param player          プレイヤー
+     * @param conditionsCache キャッシュされた釣り条件
+     * @param rerollCount     再抽選回数
+     * @return 釣り結果のアイテム
+     */
+    private ItemStack performFullReFishing(Player player, FishingConditionsCache conditionsCache, int rerollCount) {
+        final int MAX_REROLLS = 3;
+
+        if (rerollCount > MAX_REROLLS) {
+            debugLogger.logInfo(player, "[CACHED-REROLL] Max re-roll attempts reached, forcing common fallback");
+            // LootContextを再作成してcommonから取得
+            LootContext commonContext = createLootContext(player, conditionsCache);
+            return getItemFromCategory("common", player, commonContext);
+        }
+
+        debugLogger.logInfo(player, "[CACHED-REROLL] Attempt " + rerollCount + " - Using cached fishing conditions");
+
+        try {
+            // 1. キャッシュされた条件を使用（再計算不要）
+            debugLogger.logInfo(player, "[CACHED-REROLL] Using cached conditions: openWater=" +
+                    conditionsCache.isOpenWater() + ", weather=" + conditionsCache.weather() +
+                    ", dolphins=" + conditionsCache.hasDolphinsGrace());
+
+            // 2. ティア選択を再実行（キャッシュされたLuckResultを使用）
+            String newCategory = categorySelector.determineCategoryFromConfig(
+                    player,
+                    conditionsCache.luckResult(),
+                    conditionsCache.isOpenWater(),
+                    conditionsCache.weather(),
+                    conditionsCache.hasDolphinsGrace()
+            );
+            debugLogger.logInfo(player, "[CACHED-REROLL] Re-selected category: " + newCategory);
+
+            // 3. 新しいloot_tableから抽選
+            LootContext lootContext = createLootContext(player, conditionsCache);
+            ItemStack newItem = getItemFromCategory(newCategory, player, lootContext);
+
+            // 4. NBT変換とユニーク判定
+            newItem = convertNbtToPersistentData(newItem);
+            newItem = PlayerHeadProcessor.processPlayerHead(newItem, player, newCategory);
+
+            UniqueItemManager uniqueItemManager = plugin.getUniqueItemManager();
+            if (uniqueItemManager.isUniqueItem(newItem)) {
+                String uniqueId = uniqueItemManager.getUniqueId(newItem);
+                if (uniqueId != null && uniqueItemManager.isItemAlreadyCaught(player.getWorld(), uniqueId)) {
+                    debugLogger.logInfo(player, "[CACHED-REROLL] Re-rolled item " + uniqueId + " also already caught, re-rolling again");
+                    return performFullReFishing(player, conditionsCache, rerollCount + 1);
+                } else if (uniqueId != null) {
+                    // 新しいユニークアイテム
+                    uniqueItemManager.markItemAsCaught(player.getWorld(), uniqueId, player);
+                    newItem = uniqueItemManager.addUniqueLore(newItem, player.getWorld(), player);
+                    debugLogger.logInfo(player, "[CACHED-REROLL] Successfully got new unique item: " + uniqueId);
+                }
+            } else {
+                debugLogger.logInfo(player, "[CACHED-REROLL] Successfully got non-unique item: " + newItem.getType());
+            }
+
+            return newItem;
+
+        } catch (Exception e) {
+            debugLogger.logInfo(player, "[CACHED-REROLL] Error during cached re-fishing: " + e.getMessage());
+            return performFullReFishing(player, conditionsCache, rerollCount + 1);
+        }
+    }
+
+    /**
+     * キャッシュされた条件からLootContextを作成
+     *
+     * @param player          プレイヤー
+     * @param conditionsCache キャッシュされた条件
+     * @return LootContext
+     */
+    private LootContext createLootContext(Player player, FishingConditionsCache conditionsCache) {
+        // 元の幸運値を再計算
+        float contextLuck = Math.max(-1024f, Math.min(1024f, (float) conditionsCache.luckResult().getTotalLuck(plugin) * 10));
+
+        return new LootContext.Builder(conditionsCache.hookLocation())
+                .killer(player)
+                .luck(contextLuck)
+                .build();
+    }
+
+
+    /**
+     * 指定されたカテゴリからアイテムを取得
+     *
+     * @param category    カテゴリ名
+     * @param player      プレイヤー
+     * @param lootContext ルートコンテキスト
+     * @return 取得したアイテム
+     */
+    private ItemStack getItemFromCategory(String category, Player player, LootContext lootContext) {
+        try {
+            NamespacedKey lootTableKey = new NamespacedKey(plugin, "customize_fishing/gameplay/fishing/" + category);
+            LootTable lootTable = plugin.getServer().getLootTable(lootTableKey);
+
+            if (lootTable != null) {
+                Collection<ItemStack> loot = lootTable.populateLoot(random, lootContext);
+                if (!loot.isEmpty()) {
+                    ItemStack item = loot.iterator().next();
+                    debugLogger.logInfo(player, "[TIER-RETRY] Got item from " + category + ": " + item.getType());
+                    return item;
+                }
+            }
+        } catch (Exception e) {
+            debugLogger.logInfo(player, "[TIER-RETRY] Error getting item from category " + category + ": " + e.getMessage());
+        }
+
+        // フォールバック
+        debugLogger.logInfo(player, "[TIER-RETRY] Fallback to COD for category: " + category);
+        return new ItemStack(Material.COD);
+    }
+
 
     /**
      * 釣り結果を保存するレコード

@@ -32,8 +32,6 @@ public class FishingListener implements Listener {
     private final CustomizeFishing plugin;
     private final DebugLogger debugLogger;
     private final CatchEffects catchEffects;
-    private final CategorySelector categorySelector;
-    private final ProbabilityCalculator probabilityCalculator;
     private final FishingProcessor fishingProcessor;
     private final DoubleFishingHandler doubleFishingHandler;
     private final TimingHandler timingHandler;
@@ -45,8 +43,8 @@ public class FishingListener implements Listener {
 
         BindingCurseManager bindingCurseManager = new BindingCurseManager(plugin);
 
-        this.categorySelector = new CategorySelector(plugin, debugLogger);
-        this.probabilityCalculator = new ProbabilityCalculator(plugin);
+        CategorySelector categorySelector = new CategorySelector(plugin, debugLogger);
+        ProbabilityCalculator probabilityCalculator = new ProbabilityCalculator(plugin);
         this.fishingProcessor = new FishingProcessor(plugin, debugLogger, bindingCurseManager, categorySelector, probabilityCalculator);
         this.doubleFishingHandler = new DoubleFishingHandler(plugin, fishingProcessor, categorySelector, catchEffects);
         this.timingHandler = new TimingHandler(plugin, debugLogger);
