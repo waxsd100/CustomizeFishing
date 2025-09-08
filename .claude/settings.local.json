@@ -1,12 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(rmdir:*)",
-      "Bash(mv:*)",
-      "Bash(sed:*)",
-      "Bash(./gradlew test:*)",
-      "Bash(./gradlew:*)"
+      "Bash(python:*)",
+      "Bash(test:*)"
     ],
-    "deny": []
+    "deny": [],
+    "ask": []
   }
 }

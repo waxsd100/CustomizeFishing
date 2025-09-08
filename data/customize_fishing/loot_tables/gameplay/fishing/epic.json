@@ -7,244 +7,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:netherite_helmet",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'}}"
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:netherite_chestplate",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'}}"
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:netherite_leggings",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'}}"
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:netherite_boots",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'}}"
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 25,
-                "max": 30
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:end_stone",
-          "weight": 15,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 5,
-                "max": 12
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:end_stone_bricks",
-          "weight": 12,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 4,
-                "max": 10
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:purpur_block",
-          "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 4,
-                "max": 8
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:shulker_shell",
-          "weight": 12,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 2,
-                "max": 4
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:ender_pearl",
-          "weight": 15,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 3,
-                "max": 6
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:chorus_fruit",
-          "weight": 20,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 4,
-                "max": 8
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:chorus_flower",
-          "weight": 6,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 3
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:elytra",
           "weight": 8,
           "functions": [
@@ -260,64 +22,6 @@
             {
               "function": "minecraft:set_nbt",
               "tag": "{RepairCost:1024}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:end_crystal",
-          "weight": 2,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 1
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:shulker_box",
-          "weight": 4,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 1
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:enderman_spawn_egg",
-          "weight": 5,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 1
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:shulker_spawn_egg",
-          "weight": 3,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 1
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:dragon_breath",
-          "weight": 50,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 2,
-                "max": 5
-              }
             }
           ]
         },
@@ -485,17 +189,6 @@
           ],
           "name": "minecraft:book",
           "weight": 12
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:netherite_upgrade_smithing_template",
-          "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 1
-            }
-          ]
         },
         {
           "type": "minecraft:item",
@@ -697,6 +390,86 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_ore",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald_ore",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gold_ore",
+          "weight": 12
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_ore",
+          "weight": 18
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:copper_ore",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:coal_ore",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:redstone_ore",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:lapis_ore",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:deepslate_diamond_ore",
+          "weight": 7
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:deepslate_emerald_ore",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:deepslate_gold_ore",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:deepslate_iron_ore",
+          "weight": 16
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:deepslate_copper_ore",
+          "weight": 18
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:deepslate_coal_ore",
+          "weight": 22
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:deepslate_redstone_ore",
+          "weight": 13
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:deepslate_lapis_ore",
+          "weight": 8
         }
       ]
     }

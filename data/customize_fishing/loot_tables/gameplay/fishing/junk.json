@@ -7,11 +7,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crabbersdelight:can",
-          "weight": 25
-        },
-        {
-          "type": "minecraft:item",
           "name": "quark:abacus",
           "weight": 1
         },
@@ -19,11 +14,6 @@
           "type": "minecraft:item",
           "name": "minecraft:lily_pad",
           "weight": 12
-        },
-        {
-          "type": "minecraft:item",
-          "name": "farmersdelight:rope",
-          "weight": 5
         },
         {
           "type": "minecraft:item",

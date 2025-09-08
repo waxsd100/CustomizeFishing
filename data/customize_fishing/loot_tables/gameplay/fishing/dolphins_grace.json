@@ -30,11 +30,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:heart_of_the_sea",
-          "weight": 5
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:trident",
           "weight": 5,
           "functions": [

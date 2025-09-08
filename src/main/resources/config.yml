@@ -95,7 +95,7 @@ categories:
     chance: 100.0
 
   unique:
-    enabled: false
+    enabled: true
     priority: 1
     quality: 1
     conditions:
@@ -132,7 +132,7 @@ categories:
     chance: 0.0001
 
   eternal:
-    enabled: false
+    enabled: true
     priority: 4
     quality: 1
     conditions:
@@ -158,7 +158,7 @@ categories:
     chance: 0.01
 
   relic:
-    enabled: false
+    enabled: true
     priority: 6
     quality: 1
     conditions:
@@ -172,7 +172,7 @@ categories:
     chance: 0.1
 
   mythic:
-    enabled: false
+    enabled: true
     priority: 7
     quality: 1
     conditions:
@@ -228,7 +228,7 @@ categories:
     chance: 10
 
   uncommon:
-    enabled: false
+    enabled: true
     priority: 11
     quality: 2
     conditions:

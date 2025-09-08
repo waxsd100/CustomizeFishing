@@ -267,46 +267,6 @@
           "type": "minecraft:item",
           "name": "quark:crab_bucket",
           "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "corn_delight:wild_corn",
-          "weight": 3
-        },
-        {
-          "type": "minecraft:item",
-          "name": "farmersdelight:wild_rice",
-          "weight": 3
-        },
-        {
-          "type": "minecraft:item",
-          "name": "farmersdelight:wild_carrots",
-          "weight": 3
-        },
-        {
-          "type": "minecraft:item",
-          "name": "farmersdelight:wild_potatoes",
-          "weight": 3
-        },
-        {
-          "type": "minecraft:item",
-          "name": "farmersdelight:wild_cabbages",
-          "weight": 3
-        },
-        {
-          "type": "minecraft:item",
-          "name": "farmersdelight:wild_onions",
-          "weight": 3
-        },
-        {
-          "type": "minecraft:item",
-          "name": "farmersdelight:cabbage_seeds",
-          "weight": 3
-        },
-        {
-          "type": "minecraft:item",
-          "name": "farmersdelight:tomato_seeds",
-          "weight": 3
         }
       ]
     }
