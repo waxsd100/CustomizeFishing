@@ -7,7 +7,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:dragon_egg",
-          "weight": 5,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -21,7 +21,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:dragon_head",
-          "weight": 15,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -35,7 +35,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:enderman_spawn_egg",
-          "weight": 5,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -46,7 +46,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:shulker_spawn_egg",
-          "weight": 3,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -57,7 +57,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:piglin_spawn_egg",
-          "weight": 6,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -71,7 +71,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:zombified_piglin_spawn_egg",
-          "weight": 6,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -85,7 +85,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:blaze_spawn_egg",
-          "weight": 4,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -99,7 +99,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:ghast_spawn_egg",
-          "weight": 3,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -107,6 +107,699 @@
                 "min": 1,
                 "max": 1
               }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 15,
+                "max": 25
+              },
+              "treasure": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 15,
+                "max": 25
+              },
+              "treasure": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 15,
+                "max": 25
+              },
+              "treasure": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 15,
+                "max": 25
+              },
+              "treasure": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 20,
+                "minecraft:fire_protection": 20,
+                "minecraft:respiration": 5,
+                "minecraft:aqua_affinity": 2,
+                "minecraft:thorns": 10,
+                "minecraft:unbreaking": 30,
+                "minecraft:mending": 2
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 10,
+                  "operation": "addition",
+                  "name": "relic_pajama_health_head",
+                  "slot": "head",
+                  "uuid": [20, 0, 0, 10]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 20,
+                "minecraft:fire_protection": 20,
+                "minecraft:thorns": 10,
+                "minecraft:unbreaking": 30,
+                "minecraft:mending": 2
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 10,
+                  "operation": "addition",
+                  "name": "relic_pajama_health_chest",
+                  "slot": "chest",
+                  "uuid": [20, 0, 0, 11]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 20,
+                "minecraft:fire_protection": 20,
+                "minecraft:thorns": 10,
+                "minecraft:unbreaking": 30,
+                "minecraft:mending": 2
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 10,
+                  "operation": "addition",
+                  "name": "relic_pajama_health_legs",
+                  "slot": "legs",
+                  "uuid": [20, 0, 0, 12]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 20,
+                "minecraft:fire_protection": 20,
+                "minecraft:feather_falling": 10,
+                "minecraft:depth_strider": 5,
+                "minecraft:soul_speed": 5,
+                "minecraft:swift_sneak": 5,
+                "minecraft:thorns": 10,
+                "minecraft:unbreaking": 30,
+                "minecraft:mending": 2
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 10,
+                  "operation": "addition",
+                  "name": "relic_pajama_health_feet",
+                  "slot": "feet",
+                  "uuid": [20, 0, 0, 13]
+                },
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "amount": 0.1,
+                  "operation": "multiply_base",
+                  "name": "relic_pajama_speed",
+                  "slot": "feet",
+                  "uuid": [20, 0, 0, 14]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 15,
+                "max": 30
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "伝説の釣り竿",
+                "color": "dark_purple",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 25,
+                "max": 35
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": 5,
+                "minecraft:lure": 6,
+                "minecraft:sharpness": 7,
+                "minecraft:fire_aspect": 1,
+                "minecraft:knockback": 1
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 5,
+                  "operation": "addition",
+                  "name": "relic_fishing_luck",
+                  "slot": "mainhand",
+                  "uuid": [24, 0, 0, 10]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "amount": 10,
+                  "operation": "addition",
+                  "name": "relic_weapon_damage",
+                  "slot": "mainhand",
+                  "uuid": [24, 0, 0, 20]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "amount": 0.5,
+                  "operation": "addition",
+                  "name": "relic_weapon_speed",
+                  "slot": "mainhand",
+                  "uuid": [24, 0, 0, 21]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:spire,material:iron}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 25,
+                "max": 45
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 5,
+                  "operation": "addition",
+                  "name": "relic_fishing_luck_helmet",
+                  "slot": "head",
+                  "uuid": [32, 0, 0, 30]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:spire,material:iron}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 25,
+                "max": 45
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 5,
+                  "operation": "addition",
+                  "name": "relic_fishing_luck_chest",
+                  "slot": "chest",
+                  "uuid": [32, 0, 0, 31]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:spire,material:iron}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 25,
+                "max": 45
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 5,
+                  "operation": "addition",
+                  "name": "relic_fishing_luck_legs",
+                  "slot": "legs",
+                  "uuid": [32, 0, 0, 32]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:spire,material:iron}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 25,
+                "max": 45
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 5,
+                  "operation": "addition",
+                  "name": "relic_fishing_luck_feet",
+                  "slot": "feet",
+                  "uuid": [32, 0, 0, 33]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 1,
+          "comment": "ハニカム-∞-777",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,CustomPotionColor:65535,CustomPotionEffects:[{Id:11,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:32,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:1,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:5,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:8,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:16,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1},{Id:10,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:3},{Id:6,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:127},{Id:22,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:3},{Id:26,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:9},{Id:9,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1}],Potion:\"minecraft:empty\",Enchantments:[{}],HideFlags:32}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "?",
+                  "italic": false,
+                  "color": "yellow",
+                  "obfuscated": true
+                },
+                {
+                  "text": "ハニカム",
+                  "italic": false,
+                  "bold": true,
+                  "color": "green"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "∞",
+                  "italic": false,
+                  "bold": true,
+                  "color": "aqua"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "777",
+                  "italic": false,
+                  "bold": true,
+                  "color": "green"
+                },
+                {
+                  "text": "?",
+                  "italic": false,
+                  "color": "yellow",
+                  "obfuscated": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "泡立つしゅわっとした液体に",
+                  "italic": false,
+                  "color": "dark_aqua"
+                },
+                {
+                  "text": "神秘の輝きを放つ",
+                  "italic": false,
+                  "color": "dark_aqua"
+                },
+                [
+                  "",
+                  {
+                    "text": "六角形の",
+                    "italic": false,
+                    "color": "dark_aqua"
+                  },
+                  {
+                    "text": "結晶",
+                    "italic": false,
+                    "color": "green",
+                    "bold": true
+                  },
+                  {
+                    "text": "が入っている。",
+                    "italic": false,
+                    "color": "dark_aqua"
+                  }
+                ],
+                [
+                  "",
+                  {
+                    "text": "10分間の間、使用者の運を",
+                    "italic": false,
+                    "color": "dark_aqua"
+                  },
+                  {
+                    "text": "限界まで",
+                    "italic": false,
+                    "color": "gold",
+                    "bold": true
+                  },
+                  {
+                    "text": "上昇させ傷を瞬時に癒す。",
+                    "italic": false,
+                    "color": "dark_aqua"
+                  }
+                ]
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "honeycomb_777_health",
+                  "amount": 10,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [
+                    11,
+                    0,
+                    1,
+                    0
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 1,
+          "comment": "ハニカム-∅-000",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,CustomPotionColor:11546150,CustomPotionEffects:[{Id:2,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:18,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:4,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:15,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1},{Id:19,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:1},{Id:7,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1,Amplifier:3},{Id:17,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:1200,Amplifier:3},{Id:20,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:9},{Id:27,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:3},{Id:31,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1},{Id:9,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:120,Amplifier:1}],Potion:\"minecraft:empty\",Enchantments:[{}],HideFlags:32}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "!",
+                  "italic": false,
+                  "color": "dark_gray",
+                  "obfuscated": true
+                },
+                {
+                  "text": "ハニカム",
+                  "italic": false,
+                  "bold": true,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "∅",
+                  "italic": false,
+                  "bold": true,
+                  "color": "dark_purple"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "000",
+                  "italic": false,
+                  "bold": true,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "!",
+                  "italic": false,
+                  "color": "dark_gray",
+                  "obfuscated": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "泡立つ淀んだ液体に",
+                  "italic": false,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "絶望の気配を漂わせる",
+                  "italic": false,
+                  "color": "dark_red"
+                },
+                [
+                  "",
+                  {
+                    "text": "六角形の",
+                    "italic": false,
+                    "color": "dark_red"
+                  },
+                  {
+                    "text": "結晶",
+                    "italic": false,
+                    "color": "dark_purple",
+                    "bold": true
+                  },
+                  {
+                    "text": "が消えかけている。",
+                    "italic": false,
+                    "color": "dark_red"
+                  }
+                ],
+                [
+                  "",
+                  {
+                    "text": "10分間の間、使用者の運を",
+                    "italic": false,
+                    "color": "dark_red"
+                  },
+                  {
+                    "text": "限界まで",
+                    "italic": false,
+                    "color": "gold",
+                    "bold": true
+                  },
+                  {
+                    "text": "低下させ致命的なダメージを与える。",
+                    "italic": false,
+                    "color": "dark_red"
+                  }
+                ]
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "honeycomb_000_health",
+                  "amount": -10,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [
+                    11,
+                    0,
+                    1,
+                    0
+                  ]
+                }
+              ]
             }
           ]
         }

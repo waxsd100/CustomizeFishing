@@ -8,7 +8,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:slime_ball",
-          "weight": 6,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -22,7 +22,7 @@
         {
           "type": "minecraft:item",
           "name": "quark:ravager_hide",
-          "weight": 6,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -36,7 +36,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:kelp",
-          "weight": 2,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -50,7 +50,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:book",
-          "weight": 4,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -64,7 +64,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:spawner",
-          "weight": 2,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -78,7 +78,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:trident",
-          "weight": 3,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -92,7 +92,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:zombie_head",
-          "weight": 6,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -106,7 +106,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:book",
-          "weight": 3,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -128,7 +128,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:ink_sac",
-          "weight": 8,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -142,7 +142,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:glow_ink_sac",
-          "weight": 8,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -156,7 +156,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:lily_pad",
-          "weight": 5,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -170,7 +170,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:potion",
-          "weight": 2,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -184,7 +184,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:leather_boots",
-          "weight": 3,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -206,7 +206,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:skeleton_skull",
-          "weight": 2,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -220,7 +220,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:frogspawn",
-          "weight": 2,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -234,7 +234,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:player_head",
-          "weight": 3,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -357,7 +357,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:bow",
-          "weight": 3,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -379,22 +379,49 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:iron_ingot",
-          "weight": 50
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:copper_ingot",
-          "weight": 45
+          "weight": 17,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:gold_ingot",
-          "weight": 30
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:emerald",
-          "weight": 15,
+          "weight": 9,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -408,7 +435,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:diamond",
-          "weight": 12,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -422,22 +449,22 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:emerald_block",
-          "weight": 8
+          "weight": 1
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:diamond_block",
-          "weight": 6
+          "weight": 1
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:gold_block",
-          "weight": 5
+          "weight": 1
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:amethyst_shard",
-          "weight": 10,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -451,7 +478,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:amethyst_block",
-          "weight": 4
+          "weight": 1
         },
         {
           "type": "minecraft:item",
@@ -489,6 +516,19 @@
                 "text": "ちょっと良い釣り竿",
                 "italic": false
               }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 1,
+                  "operation": "addition",
+                  "name": "rare_fishing_luck",
+                  "slot": "mainhand",
+                  "uuid": [30, 0, 0, 10]
+                }
+              ]
             }
           ],
           "name": "minecraft:fishing_rod",
@@ -527,6 +567,19 @@
                 "text": "良い釣り竿",
                 "italic": false
               }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 1,
+                  "operation": "addition",
+                  "name": "rare_fishing_luck_2",
+                  "slot": "mainhand",
+                  "uuid": [30, 0, 0, 11]
+                }
+              ]
             }
           ],
           "name": "minecraft:fishing_rod",
@@ -561,7 +614,7 @@
             }
           ],
           "name": "minecraft:bow",
-          "weight": 3
+          "weight": 1
         },
         {
           "type": "minecraft:item",
@@ -583,7 +636,7 @@
             }
           ],
           "name": "minecraft:book",
-          "weight": 4
+          "weight": 1
         },
         {
           "type": "minecraft:item",
@@ -666,12 +719,12 @@
         {
           "type": "minecraft:item",
           "name": "quark:flamerang",
-          "weight": 8
+          "weight": 1
         },
         {
           "type": "minecraft:item",
           "name": "quark:pickarang",
-          "weight": 15
+          "weight": 9
         },
         {
           "type": "minecraft:item",
@@ -696,6 +749,348 @@
             {
               "function": "minecraft:set_nbt",
               "tag": "{display:{color:16777215}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 10
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:dune,material:lapis}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 5,
+                "max": 25
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 1,
+                  "operation": "addition",
+                  "name": "rare_fishing_luck_helmet",
+                  "slot": "head",
+                  "uuid": [36, 0, 0, 30]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:dune,material:lapis}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 5,
+                "max": 25
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 1,
+                  "operation": "addition",
+                  "name": "rare_fishing_luck_chest",
+                  "slot": "chest",
+                  "uuid": [36, 0, 0, 31]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:dune,material:lapis}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 5,
+                "max": 25
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 1,
+                  "operation": "addition",
+                  "name": "rare_fishing_luck_legs",
+                  "slot": "legs",
+                  "uuid": [36, 0, 0, 32]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:dune,material:lapis}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 5,
+                "max": 25
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 1,
+                  "operation": "addition",
+                  "name": "rare_fishing_luck_feet",
+                  "slot": "feet",
+                  "uuid": [36, 0, 0, 33]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 5,
+          "comment": "ハニカム-D-デイリー",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,CustomPotionColor:9498256,CustomPotionEffects:[{Id:11,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:6000,Amplifier:0},{Id:1,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:6000,Amplifier:0},{Id:22,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:6000,Amplifier:0},{Id:26,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:6000,Amplifier:0}],Potion:\"minecraft:empty\",HideFlags:32}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◦",
+                  "italic": false,
+                  "color": "yellow",
+                  "obfuscated": true
+                },
+                {
+                  "text": "ハニカム",
+                  "italic": false,
+                  "bold": true,
+                  "color": "gold"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "D",
+                  "italic": false,
+                  "bold": true,
+                  "color": "aqua"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "デイリー",
+                  "italic": false,
+                  "bold": true,
+                  "color": "gold"
+                },
+                {
+                  "text": "◦",
+                  "italic": false,
+                  "color": "yellow",
+                  "obfuscated": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "少し泡立つ黄金色の液体に",
+                  "italic": false,
+                  "color": "gold"
+                },
+                {
+                  "text": "ほのかな暖かさを感じる",
+                  "italic": false,
+                  "color": "gold"
+                },
+                [
+                  "",
+                  {
+                    "text": "小さな",
+                    "italic": false,
+                    "color": "gold"
+                  },
+                  {
+                    "text": "六角結晶",
+                    "italic": false,
+                    "color": "aqua",
+                    "bold": true
+                  },
+                  {
+                    "text": "が浮かんでいる。",
+                    "italic": false,
+                    "color": "gold"
+                  }
+                ],
+                [
+                  "",
+                  {
+                    "text": "5分間、基本的な強化効果を与える。",
+                    "italic": false,
+                    "color": "gold"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 3,
+          "comment": "ハニカム-N-ナイト",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,CustomPotionColor:4718592,CustomPotionEffects:[{Id:2,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:6000,Amplifier:0},{Id:4,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:6000,Amplifier:0},{Id:20,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:6000,Amplifier:0}],Potion:\"minecraft:empty\",HideFlags:32}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "●",
+                  "italic": false,
+                  "color": "dark_gray",
+                  "obfuscated": true
+                },
+                {
+                  "text": "ハニカム",
+                  "italic": false,
+                  "bold": true,
+                  "color": "gray"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "N",
+                  "italic": false,
+                  "bold": true,
+                  "color": "dark_blue"
+                },
+                {
+                  "text": "-",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ナイト",
+                  "italic": false,
+                  "bold": true,
+                  "color": "gray"
+                },
+                {
+                  "text": "●",
+                  "italic": false,
+                  "color": "dark_gray",
+                  "obfuscated": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "少し濁った灰色の液体から",
+                  "italic": false,
+                  "color": "gray"
+                },
+                {
+                  "text": "わずかな不安が漂う",
+                  "italic": false,
+                  "color": "gray"
+                },
+                [
+                  "",
+                  {
+                    "text": "小さな",
+                    "italic": false,
+                    "color": "gray"
+                  },
+                  {
+                    "text": "六角結晶",
+                    "italic": false,
+                    "color": "dark_blue",
+                    "bold": true
+                  },
+                  {
+                    "text": "が沈んでいる。",
+                    "italic": false,
+                    "color": "gray"
+                  }
+                ],
+                [
+                  "",
+                  {
+                    "text": "5分間、軽微な弱体効果を与える。",
+                    "italic": false,
+                    "color": "gray"
+                  }
+                ]
+              ]
             }
           ]
         }

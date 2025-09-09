@@ -4,6 +4,392 @@
     {
       "rolls": 1,
       "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 50,
+                "minecraft:fire_protection": 50,
+                "minecraft:respiration": 10,
+                "minecraft:aqua_affinity": 5,
+                "minecraft:thorns": 25,
+                "minecraft:unbreaking": 75,
+                "minecraft:mending": 5
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 20,
+                  "operation": "addition",
+                  "name": "eternal_pajama_health_head",
+                  "slot": "head",
+                  "uuid": [19, 0, 0, 10]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 50,
+                "minecraft:fire_protection": 50,
+                "minecraft:thorns": 25,
+                "minecraft:unbreaking": 75,
+                "minecraft:mending": 5
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 20,
+                  "operation": "addition",
+                  "name": "eternal_pajama_health_chest",
+                  "slot": "chest",
+                  "uuid": [19, 0, 0, 11]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 50,
+                "minecraft:fire_protection": 50,
+                "minecraft:thorns": 25,
+                "minecraft:unbreaking": 75,
+                "minecraft:mending": 5
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 20,
+                  "operation": "addition",
+                  "name": "eternal_pajama_health_legs",
+                  "slot": "legs",
+                  "uuid": [19, 0, 0, 12]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'}}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 50,
+                "minecraft:fire_protection": 50,
+                "minecraft:feather_falling": 20,
+                "minecraft:depth_strider": 10,
+                "minecraft:soul_speed": 10,
+                "minecraft:swift_sneak": 10,
+                "minecraft:thorns": 25,
+                "minecraft:unbreaking": 75,
+                "minecraft:mending": 5
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 20,
+                  "operation": "addition",
+                  "name": "eternal_pajama_health_feet",
+                  "slot": "feet",
+                  "uuid": [19, 0, 0, 13]
+                },
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "amount": 0.3,
+                  "operation": "multiply_base",
+                  "name": "eternal_pajama_speed",
+                  "slot": "feet",
+                  "uuid": [19, 0, 0, 14]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 30,
+                "max": 60
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◊",
+                  "color": "light_purple",
+                  "obfuscated": true,
+                  "bold": true
+                },
+                {
+                  "text": "◊",
+                  "color": "dark_purple",
+                  "obfuscated": true,
+                  "bold": true
+                },
+                {
+                  "text": "永劫星界釣竿",
+                  "color": "light_purple",
+                  "bold": true,
+                  "underlined": true,
+                  "italic": false
+                },
+                {
+                  "text": "◊",
+                  "color": "dark_purple",
+                  "obfuscated": true,
+                  "bold": true
+                },
+                {
+                  "text": "◊",
+                  "color": "light_purple",
+                  "obfuscated": true,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Unbreakable:1b}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": 50,
+                "minecraft:lure": 6,
+                "minecraft:unbreaking": 100,
+                "minecraft:mending": 5,
+                "minecraft:sharpness": 15,
+                "minecraft:fire_aspect": 3,
+                "minecraft:knockback": 2
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 8,
+                  "operation": "addition",
+                  "name": "eternal_fishing_luck",
+                  "slot": "mainhand",
+                  "uuid": [22, 0, 0, 10]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "amount": 20,
+                  "operation": "addition",
+                  "name": "eternal_weapon_damage",
+                  "slot": "mainhand",
+                  "uuid": [22, 0, 0, 20]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "amount": 1.5,
+                  "operation": "addition",
+                  "name": "eternal_weapon_speed",
+                  "slot": "mainhand",
+                  "uuid": [22, 0, 0, 21]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:silence,material:diamond}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 35,
+                "max": 55
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 8,
+                  "operation": "addition",
+                  "name": "eternal_fishing_luck_helmet",
+                  "slot": "head",
+                  "uuid": [30, 0, 0, 30]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:silence,material:diamond}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 35,
+                "max": 55
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 8,
+                  "operation": "addition",
+                  "name": "eternal_fishing_luck_chest",
+                  "slot": "chest",
+                  "uuid": [30, 0, 0, 31]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:silence,material:diamond}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 35,
+                "max": 55
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 8,
+                  "operation": "addition",
+                  "name": "eternal_fishing_luck_legs",
+                  "slot": "legs",
+                  "uuid": [30, 0, 0, 32]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:silence,material:diamond}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 35,
+                "max": 55
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 8,
+                  "operation": "addition",
+                  "name": "eternal_fishing_luck_feet",
+                  "slot": "feet",
+                  "uuid": [30, 0, 0, 33]
+                }
+              ]
+            }
+          ]
+        }
       ]
     }
   ],

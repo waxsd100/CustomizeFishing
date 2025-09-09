@@ -8,7 +8,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:redstone",
-          "weight": 40,
+          "weight": 35,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -22,7 +22,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:lapis_lazuli",
-          "weight": 35,
+          "weight": 31,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -36,27 +36,252 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:coal_block",
-          "weight": 25
+          "weight": 22
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:iron_block",
-          "weight": 20
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:copper_block",
           "weight": 18
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:copper_block",
+          "weight": 16
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:redstone_block",
-          "weight": 15
+          "weight": 14
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:lapis_block",
+          "weight": 11
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "weight": 9,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 7
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 14,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "普通の釣り竿",
+                "color": "white",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 5,
+                "max": 15
+              },
+              "treasure": false
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.5
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 2,
+                  "operation": "addition",
+                  "name": "uncommon_fishing_luck",
+                  "slot": "mainhand",
+                  "uuid": [27, 0, 0, 10]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:coast,material:emerald}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 20
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 2,
+                  "operation": "addition",
+                  "name": "uncommon_fishing_luck_helmet",
+                  "slot": "head",
+                  "uuid": [37, 0, 0, 30]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:coast,material:emerald}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 20
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 2,
+                  "operation": "addition",
+                  "name": "uncommon_fishing_luck_chest",
+                  "slot": "chest",
+                  "uuid": [37, 0, 0, 31]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:coast,material:emerald}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 20
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 2,
+                  "operation": "addition",
+                  "name": "uncommon_fishing_luck_legs",
+                  "slot": "legs",
+                  "uuid": [37, 0, 0, 32]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:coast,material:emerald}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 1,
+                "max": 20
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 2,
+                  "operation": "addition",
+                  "name": "uncommon_fishing_luck_feet",
+                  "slot": "feet",
+                  "uuid": [37, 0, 0, 33]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "simple_weapons:stone_dagger",
           "weight": 12
+        },
+        {
+          "type": "minecraft:item",
+          "name": "simple_weapons:stone_scimitar",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "simple_weapons:stone_greatsword",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "simple_weapons:stone_fist",
+          "weight": 9
+        },
+        {
+          "type": "minecraft:item",
+          "name": "simple_weapons:stone_crowbill",
+          "weight": 7
+        },
+        {
+          "type": "minecraft:item",
+          "name": "simple_weapons:stone_scythe",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "name": "simple_weapons:stone_spear",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "simple_weapons:stone_katana",
+          "weight": 5
         }
       ]
     }
