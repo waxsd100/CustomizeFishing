@@ -7,21 +7,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:iron_ingot",
-          "weight": 50
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:copper_ingot",
-          "weight": 45
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:gold_ingot",
-          "weight": 30
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:redstone",
           "weight": 40,
           "functions": [
