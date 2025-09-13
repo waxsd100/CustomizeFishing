@@ -11,7 +11,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'}}"
+              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:set_enchantments",
@@ -48,7 +48,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'}}"
+              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:set_enchantments",
@@ -83,7 +83,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'}}"
+              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:set_enchantments",
@@ -118,7 +118,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'}}"
+              "tag": "{Trim:{pattern:silence,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"light_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:set_enchantments",
@@ -216,20 +216,54 @@
             },
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Unbreakable:1b}"
+              "tag": "{Unbreakable:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:set_enchantments",
               "enchantments": {
-                "minecraft:luck_of_the_sea": 50,
+                "minecraft:luck_of_the_sea": 127,
                 "minecraft:lure": 6,
                 "minecraft:unbreaking": 100,
                 "minecraft:mending": 5,
-                "minecraft:sharpness": 15,
-                "minecraft:fire_aspect": 3,
-                "minecraft:knockback": 2
+                "minecraft:sharpness": 18,
+                "minecraft:fire_aspect": 4,
+                "minecraft:knockback": 3,
+                "minecraft:looting": 5,
+                "minecraft:sweeping": 5
               },
               "add": true
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:smite",
+                "minecraft:bane_of_arthropods",
+                "minecraft:impaling",
+                "minecraft:thorns"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:smite",
+                "minecraft:bane_of_arthropods",
+                "minecraft:impaling"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:smite",
+                "minecraft:bane_of_arthropods"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:knockback",
+                "minecraft:sweeping",
+                "minecraft:looting"
+              ]
             },
             {
               "function": "minecraft:set_attributes",
@@ -269,7 +303,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:silence,material:diamond}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:silence,material:diamond},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -301,7 +335,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:silence,material:diamond}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:silence,material:diamond},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -333,7 +367,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:silence,material:diamond}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:silence,material:diamond},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -365,7 +399,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:silence,material:diamond}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:silence,material:diamond},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -387,6 +421,66 @@
                   "uuid": [30, 0, 0, 33]
                 }
               ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "the_awakening_of_the_elder_souls:emerald_armor_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "エメラルドのブーツ",
+                "italic": false,
+                "color": "dark_green"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "the_awakening_of_the_elder_souls:emerald_armor_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "エメラルドのレギンス",
+                "italic": false,
+                "color": "dark_green"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "the_awakening_of_the_elder_souls:emerald_armor_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "エメラルドのチェストプレート",
+                "italic": false,
+                "color": "dark_green"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "the_awakening_of_the_elder_souls:emerald_armor_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "エメラルドのヘルメット",
+                "italic": false,
+                "color": "dark_green"
+              }
             }
           ]
         }

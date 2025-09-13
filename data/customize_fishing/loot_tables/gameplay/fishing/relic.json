@@ -117,7 +117,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -136,7 +136,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -155,7 +155,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -174,7 +174,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"dark_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -193,7 +193,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:set_enchantments",
@@ -230,7 +230,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:set_enchantments",
@@ -265,7 +265,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:set_enchantments",
@@ -300,7 +300,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'}}"
+              "tag": "{Trim:{pattern:spire,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"dark_purple\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:set_enchantments",
@@ -362,29 +362,72 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "伝説の釣り竿",
-                "color": "dark_purple",
+                "text": "達人の釣り竿",
+                "color": "dark_red",
                 "italic": false
               }
             },
             {
               "function": "minecraft:enchant_with_levels",
               "levels": {
-                "min": 25,
-                "max": 35
+                "min": 20,
+                "max": 30
               },
               "treasure": true
             },
             {
               "function": "minecraft:set_enchantments",
               "enchantments": {
-                "minecraft:luck_of_the_sea": 5,
-                "minecraft:lure": 6,
-                "minecraft:sharpness": 7,
-                "minecraft:fire_aspect": 1,
-                "minecraft:knockback": 1
+                "minecraft:luck_of_the_sea": 127,
+                "minecraft:lure": 6
               },
               "add": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:sharpness": 10
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:fire_aspect": 3
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:looting": 3
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:sweeping",
+                "minecraft:knockback",
+                "minecraft:smite",
+                "minecraft:bane_of_arthropods"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:sweeping",
+                "minecraft:knockback",
+                "minecraft:smite"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:looting",
+                "minecraft:sweeping",
+                "minecraft:knockback"
+              ]
             },
             {
               "function": "minecraft:set_attributes",
@@ -393,25 +436,9 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 5,
                   "operation": "addition",
-                  "name": "relic_fishing_luck",
+                  "name": "mythic_fishing_luck",
                   "slot": "mainhand",
-                  "uuid": [24, 0, 0, 10]
-                },
-                {
-                  "attribute": "minecraft:generic.attack_damage",
-                  "amount": 10,
-                  "operation": "addition",
-                  "name": "relic_weapon_damage",
-                  "slot": "mainhand",
-                  "uuid": [24, 0, 0, 20]
-                },
-                {
-                  "attribute": "minecraft:generic.attack_speed",
-                  "amount": 0.5,
-                  "operation": "addition",
-                  "name": "relic_weapon_speed",
-                  "slot": "mainhand",
-                  "uuid": [24, 0, 0, 21]
+                  "uuid": [25, 0, 0, 10]
                 }
               ]
             }
@@ -424,7 +451,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:spire,material:iron}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:spire,material:iron},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -456,7 +483,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:spire,material:iron}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:spire,material:iron},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -488,7 +515,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:spire,material:iron}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:spire,material:iron},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -520,7 +547,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:spire,material:iron}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:spire,material:iron},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",

@@ -11,7 +11,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'}}"
+              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -46,7 +46,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'}}"
+              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -81,7 +81,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'}}"
+              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -116,7 +116,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'}}"
+              "tag": "{Trim:{pattern:wayfinder,material:quartz},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -454,7 +454,7 @@
             },
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Unbreakable:1b,Trim:{pattern:ward,material:netherite}}"
+              "tag": "{Unbreakable:1b,Trim:{pattern:ward,material:netherite},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:set_enchantments",
@@ -502,7 +502,7 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "達人の釣り竿",
+                "text": "名人の釣り竿",
                 "color": "dark_red",
                 "italic": false
               }
@@ -518,12 +518,49 @@
             {
               "function": "minecraft:set_enchantments",
               "enchantments": {
-                "minecraft:luck_of_the_sea": 3,
-                "minecraft:lure": 6,
-                "minecraft:sharpness": 5,
-                "minecraft:fire_aspect": 1
+                "minecraft:luck_of_the_sea": 127,
+                "minecraft:lure": 6
               },
               "add": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:sharpness": 8
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:fire_aspect": 2
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:looting",
+                "minecraft:sweeping",
+                "minecraft:knockback",
+                "minecraft:smite"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:looting",
+                "minecraft:sweeping",
+                "minecraft:knockback"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:fire_aspect",
+                "minecraft:looting",
+                "minecraft:sweeping"
+              ]
             },
             {
               "function": "minecraft:set_attributes",
@@ -555,7 +592,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:ward,material:copper}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:ward,material:copper},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -587,7 +624,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:ward,material:copper}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:ward,material:copper},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -619,7 +656,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:ward,material:copper}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:ward,material:copper},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -651,7 +688,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:ward,material:copper}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:ward,material:copper},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -895,6 +932,20 @@
                   }
                 ]
               ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_ingot",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
             }
           ]
         }

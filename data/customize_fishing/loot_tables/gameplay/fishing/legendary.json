@@ -50,6 +50,10 @@
               "function": "minecraft:enchant_with_levels",
               "levels": 30,
               "treasure": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1024}"
             }
           ]
         },
@@ -305,7 +309,7 @@
             {
               "function": "minecraft:set_enchantments",
               "enchantments": {
-                "minecraft:luck_of_the_sea": 10
+                "minecraft:luck_of_the_sea": 127
               },
               "add": true
             },
@@ -357,7 +361,7 @@
             {
               "function": "minecraft:set_enchantments",
               "enchantments": {
-                "minecraft:luck_of_the_sea": 127,
+                "minecraft:luck_of_the_sea": 1277,
                 "minecraft:lure": 6
               },
               "add": true
@@ -420,7 +424,7 @@
             {
               "function": "minecraft:set_enchantments",
               "enchantments": {
-                "minecraft:luck_of_the_sea": 127,
+                "minecraft:luck_of_the_sea": 1277,
                 "minecraft:lure": 6
               },
               "add": true
@@ -520,6 +524,10 @@
                 "text": "伝説の神弓",
                 "italic": false
               }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1024}"
             }
           ],
           "name": "minecraft:bow",
@@ -1129,7 +1137,7 @@
             },
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Trim:{pattern:silence,material:netherite}}"
+              "tag": "{Trim:{pattern:silence,material:netherite},RepairCost:1024}"
             }
           ]
         },
@@ -1494,6 +1502,48 @@
                   }
                 ]
               ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_ingot",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:copper_ingot",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gold_ingot",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
             }
           ]
         }

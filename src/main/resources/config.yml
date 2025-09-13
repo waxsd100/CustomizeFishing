@@ -12,33 +12,33 @@ double_fishing:
 # 各天気時に追加される幸運値
 weather_luck:
   clear: 0.0
-  rain: 0.4
-  thunder: 0.8
+  rain: 0.35
+  thunder: 0.70
 
 # 幸運効果設定
 # 幸運ポーションと不幸ポーションの影響を定義
 luck_effects:
   # 幸運ポーション効果（正の値）
   luck_potion:
-    per_level: 0.07    # レベルごとの幸運ボーナス（%）
+    per_level: 0.35    # レベルごとの幸運ボーナス（%）
     max_level: 10      # 最大レベル
     min_level: -10     # 最小レベル（負の値も許可）
   
   # 不幸ポーション効果（負の値）
   unluck_potion:
-    per_level: -0.44   # レベルごとの幸運ペナルティ（%）
+    per_level: -2.00   # レベルごとの幸運ペナルティ（%）
     max_level: 10      # 最大レベル
     min_level: 1       # 最小レベル
   
   # 装備幸運値
   equipment_luck:
     per_point: 0.1     # ポイントごとの幸運ボーナス（%）
-    max_value: 6       # 最大値
-    min_value: -6      # 最小値（負の値も許可）
+    max_value: 100     # 最大値
+    min_value: -50     # 最小値（負の値も許可）
   
   # 宝釣りエンチャント
   luck_of_the_sea:
-    per_level: 0.10    # レベルごとの幸運ボーナス（%）
+    per_level: 0.50    # レベルごとの幸運ボーナス（%）
     max_level: 10      # 最大レベル
     min_level: 0       # 最小レベル
     # 特殊ボーナス（宝釣りLv127以上）
@@ -49,7 +49,7 @@ luck_effects:
   
   # 経験値レベル
   experience_level:
-    per_level: 0.01    # レベルごとの幸運ボーナス（%）
+    per_level: 0.05    # レベルごとの幸運ボーナス（%）
     max_level: 100     # 最大レベル
     min_level: 0       # 最小レベル
 
@@ -79,8 +79,8 @@ timing_system:
 # 幸運効果と不幸効果は自動的に相殺されます
 # 例: 幸運Lv3 + 不幸Lv2 = 幸運Lv1相当
 luck_calculation:
-  min_total_luck: -10.0
-  max_total_luck: 10.0
+  min_total_luck: -25.0
+  max_total_luck: 25.0
 
 categories:
   dolphins_grace:
@@ -100,12 +100,12 @@ categories:
     quality: 1
     conditions:
       require_open_water: true
-      min_luck_of_the_sea: 8
-      min_luck_effect: 3
+      min_luck_of_the_sea: 10
+      min_luck_effect: 10
       weather:
         - "rain"
         - "thunder"
-    chance: 0.005
+    chance: 0.00000005
 
   skgkyr:
     enabled: true
@@ -114,7 +114,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 10
-      min_luck_effect: 2
+      min_luck_effect: 6
       weather:
         - "thunder"
     chance: 0.05
@@ -125,8 +125,8 @@ categories:
     quality: 1
     conditions:
       require_open_water: true
-      min_luck_of_the_sea: 6
-      min_luck_effect: 3
+      min_luck_of_the_sea: 10
+      min_luck_effect: 5
       weather:
         - "thunder"
     chance: 0.0001
@@ -137,8 +137,8 @@ categories:
     quality: 1
     conditions:
       require_open_water: true
-      min_luck_of_the_sea: 6
-      min_luck_effect: 2
+      min_luck_of_the_sea: 10
+      min_luck_effect: 4
       weather:
         - "rain"
         - "thunder"
@@ -151,7 +151,7 @@ categories:
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 6
-      min_luck_effect: 2
+      min_luck_effect: 3
       weather:
         - "rain"
         - "thunder"
@@ -163,8 +163,8 @@ categories:
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 6         # 宝釣りレベル6以上
-      min_luck_effect: 2             # 幸運エフェクトレベル2以上
+      min_luck_of_the_sea: 5         # 宝釣りレベル5以上
+      min_luck_effect: 3             # 幸運エフェクトレベル3以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -177,8 +177,8 @@ categories:
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 6         # 宝釣りレベル6以上
-      min_luck_effect: 2             # 幸運エフェクトレベル2以上
+      min_luck_of_the_sea: 5         # 宝釣りレベル5以上
+      min_luck_effect: 3             # 幸運エフェクトレベル3以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -191,7 +191,7 @@ categories:
     quality: 1
     conditions:
       require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 5         # 宝釣りレベル3以上
+      min_luck_of_the_sea: 4         # 宝釣りレベル4以上
       min_luck_effect: 2             # 幸運エフェクトレベル2以上
       weather:
         - "clear"                     # 全天候対応
@@ -219,7 +219,7 @@ categories:
     quality: 2
     conditions:
       require_open_water: true        # 開水域が必要
-      min_luck_of_the_sea: 4         # 宝釣りレベル3以上
+      min_luck_of_the_sea: 3         # 宝釣りレベル3以上
       min_luck_effect: 1             # 幸運エフェクトレベル1以上
       weather:
         - "clear"                     # 全天候対応
@@ -601,6 +601,12 @@ effects:
     treasure: "&6&l💰 宝物を釣り上げました！ &6&l💰"
     fish: "&f魚を釣り上げました"
     junk: "&fガラクタを釣り上げました"
+
+# 幸運値表示設定
+luck_display:
+  enabled: true                    # 幸運値表示機能の有効/無効
+  show_details: false              # 詳細な内訳表示（宝釣り、ポーション、装備、天気ボーナス）
+  update_interval: 20              # 更新間隔（tick、20 = 1秒）
 
 # メッセージ設定
 messages:

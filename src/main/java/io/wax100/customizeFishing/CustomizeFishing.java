@@ -3,6 +3,7 @@ package io.wax100.customizeFishing;
 import io.wax100.customizeFishing.commands.CustomizeFishingCommand;
 import io.wax100.customizeFishing.listeners.BindingCurseListener;
 import io.wax100.customizeFishing.listeners.FishingListener;
+import io.wax100.customizeFishing.listeners.LuckDisplayListener;
 import io.wax100.customizeFishing.unique.UniqueItemManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -11,6 +12,7 @@ import java.util.Objects;
 public final class CustomizeFishing extends JavaPlugin {
 
     private UniqueItemManager uniqueItemManager;
+    private LuckDisplayListener luckDisplayListener;
 
     @Override
     public void onEnable() {
@@ -18,10 +20,12 @@ public final class CustomizeFishing extends JavaPlugin {
 
         // Initialize managers
         this.uniqueItemManager = new UniqueItemManager(this);
+        this.luckDisplayListener = new LuckDisplayListener(this);
 
         // Register event listeners
         getServer().getPluginManager().registerEvents(new FishingListener(this), this);
         getServer().getPluginManager().registerEvents(new BindingCurseListener(this), this);
+        getServer().getPluginManager().registerEvents(luckDisplayListener, this);
 
         // Register commands
         CustomizeFishingCommand commandExecutor = new CustomizeFishingCommand(this);

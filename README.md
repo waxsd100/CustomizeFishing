@@ -6,9 +6,9 @@ Minecraft 1.20の釣りシステム拡張プラグイン
 
 ### 🎣 カスタムルートテーブル
 
-- 15種類のティアシステム（Junk、Fish、Treasure、Common、Rare、Epic、Legendary、Exotic、God など）
-- 各ティアごとに数百種類のカスタムアイテム
-- 条件に応じたドロップ確率
+- 16種類のティアシステム（Junk、Fish、Treasure、Common、Uncommon、Rare、Epic、Legendary、Mythic、Relic、Exotic、Eternal、God、Dolphins_Grace、SKGKYR、Unique）
+- 各ティアごとに数百種類のカスタムアイテム（祝福・呪印牌、ハニカムポーション、カスタム装備セットなど）
+- 条件に応じたドロップ確率（幸運値、天気、タイミングによる動的確率調整）
 
 ### 🍀 幸運システム
 
@@ -85,18 +85,34 @@ cd CustomizeFishing
 
 ## データパック
 
+### ルートテーブル
 `data/customize_fishing/loot_tables/gameplay/fishing/`に各ティアのルートテーブルが定義されています：
 
-- `junk.json` - ガラクタアイテム
-- `fish.json` - 魚類
-- `treasure.json` - 宝物
-- `common.json` - 一般アイテム
-- `rare.json` - レアアイテム
-- `epic.json` - エピックアイテム
-- `legendary.json` - レジェンダリーアイテム
-- `exotic.json` - エキゾチックアイテム
-- `god.json` - ゴッドティアアイテム
-- その他特殊ティア
+| カテゴリ | 基本確率 | 必要条件 | 特徴 |
+|---------|---------|----------|------|
+| `dolphins_grace.json` | 100.0% | 開水域＋イルカの好意＋晴天 | イルカの恵み特殊ドロップ |
+| `unique.json` | 0.005% | 開水域＋宝釣りLv8＋幸運Lv3＋雨/雷 | 開発用テストアイテム |
+| `skgkyr.json` | 0.05% | 開水域＋宝釣りLv10＋幸運Lv2＋雷 | 特殊限定アイテム |
+| `god.json` | 0.0001% | 開水域＋宝釣りLv6＋幸運Lv4＋雷 | ゴッドティア（最高レア） |
+| `eternal.json` | 0.001% | 開水域＋宝釣りLv6＋幸運Lv2＋雨/雷 | エターナルアイテム |
+| `exotic.json` | 0.01% | 開水域＋宝釣りLv6＋幸運Lv2＋雨/雷 | エキゾチック（祝福・呪印牌） |
+| `relic.json` | 0.1% | 開水域＋宝釣りLv6＋幸運Lv2＋全天候 | レリックアイテム |
+| `mythic.json` | 0.5% | 開水域＋宝釣りLv6＋幸運Lv3＋全天候 | ミシックアイテム |
+| `legendary.json` | 1.0% | 開水域＋宝釣りLv5＋幸運Lv2＋全天候 | レジェンダリーアイテム |
+| `epic.json` | 5.0% | 開水域＋宝釣りLv4＋幸運Lv1＋全天候 | エピックアイテム |
+| `rare.json` | 10.0% | 開水域＋宝釣りLv4＋幸運Lv1＋全天候 | レアアイテム |
+| `uncommon.json` | 15.0% | 開水域＋宝釣りLv3＋幸運Lv1＋全天候 | アンコモンアイテム |
+| `common.json` | 30.0% | 開水域＋全天候 | 一般アイテム |
+| `treasure.json` | 40.0% | 開水域＋全天候 | 宝物アイテム |
+| `fish.json` | 70.0% | 全条件＋宝釣りLv10以下＋幸運Lv3以下 | 魚類 |
+| `junk.json` | 100.0% | 全条件＋宝釣りLv10以下＋幸運Lv3以下 | ガラクタアイテム |
+
+### カスタムレシピ
+`data/customize_fishing/recipes/`に100種類以上のカスタム武器レシピが定義されています：
+
+- 8種類の素材系統（stone、iron、diamond、netherite、fiery、steeleaf、knightmetal、warden等）
+- 8種類の武器タイプ（sword、katana、dagger、scythe、spear、greatsword、crowbill、fist等）
+- 素材とタイプの組み合わせによる多様なカスタム武器システム
 
 ## 必要環境
 

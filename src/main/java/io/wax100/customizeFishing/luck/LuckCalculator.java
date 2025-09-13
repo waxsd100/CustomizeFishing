@@ -78,6 +78,53 @@ public class LuckCalculator {
     }
 
     /**
+     * 特定の釣り竿を指定して全ての幸運値を計算
+     *
+     * @param player       プレイヤー
+     * @param weather      天気
+     * @param timingResult タイミング結果
+     * @param fishingRod   使用する釣り竿
+     * @return 幸運計算結果
+     */
+    public LuckResult calculateTotalLuckWithSpecificRod(Player player, Weather weather, TimingResult timingResult, ItemStack fishingRod) {
+
+        // 特定の釣り竿の宝釣りエンチャント
+        int luckOfTheSeaLevel = calculateLuckOfTheSeaForItem(fishingRod);
+
+        // 幸運ポーション効果
+        int luckPotionLevel = calculateLuckPotion(player);
+
+        // 不幸ポーション効果
+        int unluckPotionLevel = calculateUnluckPotion(player);
+
+        // コンジットパワーボーナス
+        int conduitLevel = getConduitLevel(player);
+
+        // 装備の幸運属性
+        double equipmentLuck = calculateEquipmentLuck(player);
+
+        // 天気ボーナス
+        double weatherLuck = calculateWeatherLuck(weather);
+
+        // タイミングボーナス
+        double timingLuck = timingResult.luckBonus();
+
+        // プレイヤーの経験値レベル
+        int experienceLevel = player.getLevel();
+
+        return new LuckResult(
+                luckOfTheSeaLevel,
+                luckPotionLevel,
+                unluckPotionLevel,
+                conduitLevel,
+                equipmentLuck,
+                weatherLuck,
+                timingLuck,
+                experienceLevel
+        );
+    }
+
+    /**
      * 宝釣りエンチャントレベルを計算
      */
     private int calculateLuckOfTheSea(Player player) {
@@ -87,6 +134,16 @@ public class LuckCalculator {
         int mainHandLuckOfTheSeaLevel = mainHand.getEnchantmentLevel(Enchantment.LUCK);
         int offHandLuckOfTheSeaLevel = offHand.getEnchantmentLevel(Enchantment.LUCK);
         return Math.max(mainHandLuckOfTheSeaLevel, offHandLuckOfTheSeaLevel);
+    }
+
+    /**
+     * 特定のアイテムから宝釣りエンチャントレベルを取得
+     */
+    private int calculateLuckOfTheSeaForItem(ItemStack item) {
+        if (item == null || item.getType() != Material.FISHING_ROD) {
+            return 0;
+        }
+        return item.getEnchantmentLevel(Enchantment.LUCK);
     }
 
     /**

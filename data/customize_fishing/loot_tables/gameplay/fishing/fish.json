@@ -8,22 +8,192 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cod",
-          "weight": 100
+          "weight": 150,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "タラ",
+                "italic": false
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:salmon",
-          "weight": 80
+          "weight": 120,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "サケ",
+                "italic": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cooked_cod",
+          "weight": 90,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "焼き魚",
+                "italic": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cooked_salmon",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "焼きサケ",
+                "italic": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cod",
+          "weight": 70,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "生のタラ",
+                "italic": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:salmon",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "生のサケ",
+                "italic": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:ink_sac",
+          "weight": 50,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:kelp",
+          "weight": 45,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "海草",
+                "italic": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:dried_kelp",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:tropical_fish",
-          "weight": 20
+          "weight": 35
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:pufferfish",
-          "weight": 10
+          "weight": 30
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cod",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "生魚",
+                "italic": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:glow_ink_sac",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bone",
+          "weight": 15,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "魚の骨",
+                "italic": false
+              }
+            }
+          ]
         }
       ]
     }

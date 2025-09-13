@@ -242,46 +242,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "simple_weapons:stone_dagger",
-          "weight": 12
-        },
-        {
-          "type": "minecraft:item",
-          "name": "simple_weapons:stone_scimitar",
-          "weight": 10
-        },
-        {
-          "type": "minecraft:item",
-          "name": "simple_weapons:stone_greatsword",
-          "weight": 8
-        },
-        {
-          "type": "minecraft:item",
-          "name": "simple_weapons:stone_fist",
-          "weight": 9
-        },
-        {
-          "type": "minecraft:item",
-          "name": "simple_weapons:stone_crowbill",
-          "weight": 7
-        },
-        {
-          "type": "minecraft:item",
-          "name": "simple_weapons:stone_scythe",
-          "weight": 6
-        },
-        {
-          "type": "minecraft:item",
-          "name": "simple_weapons:stone_spear",
-          "weight": 8
-        },
-        {
-          "type": "minecraft:item",
-          "name": "simple_weapons:stone_katana",
-          "weight": 5
         }
       ]
     }

@@ -45,12 +45,34 @@
             {
               "function": "minecraft:set_enchantments",
               "enchantments": {
-                "minecraft:luck_of_the_sea": {
-                  "min": 5,
-                  "max": 6
-                }
+                "minecraft:luck_of_the_sea": 127,
+                "minecraft:lure": 6
               },
               "add": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:sharpness": 5
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:fire_aspect",
+                "minecraft:looting",
+                "minecraft:sweeping",
+                "minecraft:knockback"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:fire_aspect",
+                "minecraft:looting",
+                "minecraft:sweeping"
+              ]
             },
             {
               "function": "minecraft:set_name",
@@ -112,7 +134,7 @@
             {
               "function": "minecraft:set_enchantments",
               "enchantments": {
-                "minecraft:luck_of_the_sea": 6
+                "minecraft:luck_of_the_sea": 127
               },
               "add": true
             },
@@ -402,20 +424,6 @@
               "count": {
                 "min": 1,
                 "max": 32
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:netherite_ingot",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 2
               }
             }
           ]

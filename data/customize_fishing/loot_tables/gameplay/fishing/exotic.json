@@ -1845,6 +1845,10 @@
           "weight": 1,
           "functions": [
             {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
               "function": "minecraft:set_name",
               "name": {
                 "text": "神秘の釣り竿",
@@ -1863,13 +1867,71 @@
             {
               "function": "minecraft:set_enchantments",
               "enchantments": {
-                "minecraft:luck_of_the_sea": 10,
-                "minecraft:lure": 6,
-                "minecraft:sharpness": 10,
-                "minecraft:fire_aspect": 2,
-                "minecraft:knockback": 1
+                "minecraft:luck_of_the_sea": 127,
+                "minecraft:lure": 6
               },
               "add": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:sharpness": 12
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:fire_aspect": 3
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:looting": 4
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:sweeping": 4
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:knockback",
+                "minecraft:smite",
+                "minecraft:bane_of_arthropods",
+                "minecraft:impaling"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:knockback",
+                "minecraft:smite",
+                "minecraft:bane_of_arthropods"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:sweeping",
+                "minecraft:knockback",
+                "minecraft:smite"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:looting",
+                "minecraft:sweeping",
+                "minecraft:fire_aspect"
+              ]
             },
             {
               "function": "minecraft:set_attributes",
@@ -1909,7 +1971,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:wayfinder,material:gold}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:wayfinder,material:gold},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -1941,7 +2003,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:wayfinder,material:gold}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:wayfinder,material:gold},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -1973,7 +2035,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:wayfinder,material:gold}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:wayfinder,material:gold},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -2005,7 +2067,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1000,Trim:{pattern:wayfinder,material:gold}}"
+              "tag": "{display:{color:16777215,Name:'[\"\",{\"text\":\"すきがき釣りセット\",\"italic\":false,\"color\":\"white\"}]'},RepairCost:1024,Trim:{pattern:wayfinder,material:gold},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             },
             {
               "function": "minecraft:enchant_with_levels",
@@ -2027,6 +2089,81 @@
                   "uuid": [31, 0, 0, 33]
                 }
               ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "the_awakening_of_the_elder_souls:emerald_sword",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "エメラルドの剣",
+                "italic": false,
+                "color": "green"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "the_awakening_of_the_elder_souls:emerald_pickaxe",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "エメラルドのピッケル",
+                "italic": false,
+                "color": "green"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "the_awakening_of_the_elder_souls:emerald_axe",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "エメラルドのオノ",
+                "italic": false,
+                "color": "green"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "the_awakening_of_the_elder_souls:emerald_shovel",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "エメラルドのシャベル",
+                "italic": false,
+                "color": "green"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "the_awakening_of_the_elder_souls:emerald_hoe",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "エメラルドのクワ",
+                "italic": false,
+                "color": "green"
+              }
             }
           ]
         }
