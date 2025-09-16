@@ -224,98 +224,14 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:guardian_spawn_egg",
-          "weight": 1,
+          "name": "minecraft:end_stone",
+          "weight": 2,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:drowned_spawn_egg",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:squid_spawn_egg",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:glow_squid_spawn_egg",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:axolotl_spawn_egg",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:turtle_spawn_egg",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:slime_spawn_egg",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 1
+                "min": 3,
+                "max": 8
               }
             }
           ]
@@ -333,86 +249,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:diamond_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:emerald_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:gold_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:iron_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:copper_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:coal_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:redstone_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:lapis_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:deepslate_diamond_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:deepslate_emerald_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:deepslate_gold_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:deepslate_iron_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:deepslate_copper_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:deepslate_coal_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:deepslate_redstone_ore",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:deepslate_lapis_ore",
-          "weight": 1
         },
         {
           "type": "minecraft:item",
@@ -482,14 +318,14 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:emerald",
-          "weight": 1,
+          "name": "minecraft:emerald_block",
+          "weight": 20,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 10,
-                "max": 25
+                "min": 35,
+                "max": 60
               }
             }
           ]
@@ -932,20 +768,6 @@
                   }
                 ]
               ]
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:netherite_ingot",
-          "weight": 2,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 3
-              }
             }
           ]
         }

@@ -160,14 +160,14 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:emerald",
-          "weight": 40,
+          "name": "minecraft:emerald_block",
+          "weight": 20,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 30,
-                "max": 60
+                "min": 45,
+                "max": 90
               }
             }
           ]
@@ -432,7 +432,7 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "エメラルドのブーツ",
+                "text": "すきがきヘソクリセット",
                 "italic": false,
                 "color": "dark_green"
               }
@@ -447,7 +447,7 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "エメラルドのレギンス",
+                "text": "すきがきヘソクリセット",
                 "italic": false,
                 "color": "dark_green"
               }
@@ -462,7 +462,7 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "エメラルドのチェストプレート",
+                "text": "すきがきヘソクリセット",
                 "italic": false,
                 "color": "dark_green"
               }
@@ -477,9 +477,23 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "エメラルドのヘルメット",
+                "text": "すきがきヘソクリセット",
                 "italic": false,
                 "color": "dark_green"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:end_portal_frame",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
               }
             }
           ]

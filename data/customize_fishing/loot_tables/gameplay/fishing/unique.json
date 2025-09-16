@@ -38,6 +38,20 @@
               "tag": "{customizefishing:{unique:1b,unique_id:\"test\"}}"
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald_block",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 9,
+                "max": 22
+              }
+            }
+          ]
         }
       ]
     }

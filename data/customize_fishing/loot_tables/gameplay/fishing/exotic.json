@@ -1827,8 +1827,8 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:emerald",
-          "weight": 4,
+          "name": "minecraft:emerald_block",
+          "weight": 15,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -2100,7 +2100,7 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "エメラルドの剣",
+                "text": "すきがきヘソクリセット",
                 "italic": false,
                 "color": "green"
               }
@@ -2115,7 +2115,7 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "エメラルドのピッケル",
+                "text": "すきがきヘソクリセット",
                 "italic": false,
                 "color": "green"
               }
@@ -2130,7 +2130,7 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "エメラルドのオノ",
+                "text": "すきがきヘソクリセット",
                 "italic": false,
                 "color": "green"
               }
@@ -2145,7 +2145,7 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "エメラルドのシャベル",
+                "text": "すきがきヘソクリセット",
                 "italic": false,
                 "color": "green"
               }
@@ -2160,9 +2160,23 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "エメラルドのクワ",
+                "text": "すきがきヘソクリセット",
                 "italic": false,
                 "color": "green"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:end_portal_frame",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
               }
             }
           ]

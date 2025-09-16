@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "minecraft:blaze_rod"
+    },
+    "result": "minecraft:blaze_powder",
+    "experience": 12,
+    "cookingtime": 2400
+}

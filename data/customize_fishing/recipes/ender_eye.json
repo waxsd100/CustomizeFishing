@@ -1,0 +1,41 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ABC",
+        "D#E",
+        "FGH"
+    ],
+    "key": {
+        "A": {
+            "item": "minecraft:conduit"
+        },
+        "B": {
+            "item": "create:blaze_cake"
+        },
+        "C": {
+            "item": "quark:blaze_lantern"
+        },
+        "D": {
+            "item": "minecraft:sculk_shrieker"
+        },
+        "#": {
+            "item": "minecraft:ender_pearl"
+        },
+        "E": {
+            "item": "quark:soul_bead"
+        },
+        "F": {
+            "item": "minecraft:nether_star"
+        },
+        "G": {
+            "item": "quark:tiny_potato"
+        },
+        "H": {
+            "item": "minecraft:sponge"
+        }
+    },
+    "result": {
+        "item": "minecraft:ender_eye",
+        "count": 1
+    }
+}
