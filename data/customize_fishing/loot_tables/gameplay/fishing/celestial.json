@@ -1940,25 +1940,40 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 6,
                   "operation": "addition",
-                  "name": "exotic_fishing_luck",
+                  "name": "celestial_fishing_luck",
                   "slot": "mainhand",
-                  "uuid": [23, 0, 0, 10]
+                  "uuid": [
+                    23,
+                    0,
+                    0,
+                    10
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.attack_damage",
                   "amount": 15,
                   "operation": "addition",
-                  "name": "exotic_weapon_damage",
+                  "name": "celestial_weapon_damage",
                   "slot": "mainhand",
-                  "uuid": [23, 0, 0, 20]
+                  "uuid": [
+                    23,
+                    0,
+                    0,
+                    20
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.attack_speed",
                   "amount": 1,
                   "operation": "addition",
-                  "name": "exotic_weapon_speed",
+                  "name": "celestial_weapon_speed",
                   "slot": "mainhand",
-                  "uuid": [23, 0, 0, 21]
+                  "uuid": [
+                    23,
+                    0,
+                    0,
+                    21
+                  ]
                 }
               ]
             }
@@ -1988,9 +2003,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 6,
                   "operation": "addition",
-                  "name": "exotic_fishing_luck_helmet",
+                  "name": "celestial_fishing_luck_helmet",
                   "slot": "head",
-                  "uuid": [31, 0, 0, 30]
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    30
+                  ]
                 }
               ]
             }
@@ -2020,9 +2040,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 6,
                   "operation": "addition",
-                  "name": "exotic_fishing_luck_chest",
+                  "name": "celestial_fishing_luck_chest",
                   "slot": "chest",
-                  "uuid": [31, 0, 0, 31]
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    31
+                  ]
                 }
               ]
             }
@@ -2052,9 +2077,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 6,
                   "operation": "addition",
-                  "name": "exotic_fishing_luck_legs",
+                  "name": "celestial_fishing_luck_legs",
                   "slot": "legs",
-                  "uuid": [31, 0, 0, 32]
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    32
+                  ]
                 }
               ]
             }
@@ -2084,86 +2114,16 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 6,
                   "operation": "addition",
-                  "name": "exotic_fishing_luck_feet",
+                  "name": "celestial_fishing_luck_feet",
                   "slot": "feet",
-                  "uuid": [31, 0, 0, 33]
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    33
+                  ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "the_awakening_of_the_elder_souls:emerald_sword",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "すきがきヘソクリセット",
-                "italic": false,
-                "color": "green"
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "the_awakening_of_the_elder_souls:emerald_pickaxe",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "すきがきヘソクリセット",
-                "italic": false,
-                "color": "green"
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "the_awakening_of_the_elder_souls:emerald_axe",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "すきがきヘソクリセット",
-                "italic": false,
-                "color": "green"
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "the_awakening_of_the_elder_souls:emerald_shovel",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "すきがきヘソクリセット",
-                "italic": false,
-                "color": "green"
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "the_awakening_of_the_elder_souls:emerald_hoe",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "すきがきヘソクリセット",
-                "italic": false,
-                "color": "green"
-              }
             }
           ]
         },
@@ -2184,5 +2144,5 @@
       ]
     }
   ],
-  "random_sequence": "minecraft:gameplay/fishing/exotic"
+  "random_sequence": "minecraft:gameplay/fishing/celestial"
 }

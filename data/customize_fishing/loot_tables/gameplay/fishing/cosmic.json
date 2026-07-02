@@ -1,0 +1,1783 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,triple_drop:1b,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の",
+                  "italic": false,
+                  "bold": true,
+                  "color": "aqua"
+                },
+                {
+                  "text": "双称の祝福",
+                  "italic": false,
+                  "color": "yellow"
+                },
+                {
+                  "text": "牌",
+                  "italic": false,
+                  "color": "dark_green"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "このアイテムを持った状態で敵を倒すと",
+                  "italic": false,
+                  "color": "white"
+                },
+                [
+                  "",
+                  {
+                    "text": "いつもの",
+                    "italic": false,
+                    "color": "white"
+                  },
+                  {
+                    "text": "3倍",
+                    "italic": false,
+                    "color": "red"
+                  },
+                  {
+                    "text": "アイテムを落とすようになる",
+                    "italic": false,
+                    "color": "white"
+                  }
+                ],
+                "",
+                [
+                  "",
+                  {
+                    "text": "両手で持っていると",
+                    "italic": false,
+                    "color": "white"
+                  },
+                  {
+                    "text": "9倍",
+                    "italic": false,
+                    "underlined": true,
+                    "color": "red"
+                  },
+                  {
+                    "text": "アイテムを落とす",
+                    "italic": false,
+                    "color": "white"
+                  }
+                ]
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "cosmic_blessing_armor",
+                  "amount": 10,
+                  "operation": "multiply_base",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "cosmic_blessing_health",
+                  "amount": 20,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_knockback",
+                  "name": "cosmic_blessing_knockback",
+                  "amount": 15,
+                  "operation": "multiply_total",
+                  "slot": "mainhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "cosmic_blessing_damage",
+                  "amount": 10,
+                  "operation": "multiply_total",
+                  "slot": "mainhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の闘気の祝福牌",
+                  "italic": false,
+                  "color": "red"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永遠の闘気を纏い、圧倒的な攻撃力を得る。",
+                  "italic": false,
+                  "color": "white"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "cosmic_fighting_spirit_damage",
+                  "amount": 25,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_knockback",
+                  "name": "cosmic_fighting_spirit_knockback",
+                  "amount": 20,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の重撃の祝福牌",
+                  "italic": false,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永遠の重量を得て、絶対的なノックバック耐性を持つ。",
+                  "italic": false,
+                  "color": "white"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.knockback_resistance",
+                  "name": "cosmic_heavy_strike_resistance",
+                  "amount": 20,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "cosmic_heavy_strike_toughness",
+                  "amount": 5,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の生命の祝福牌",
+                  "italic": false,
+                  "color": "dark_green"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永遠の生命力が宿り、膨大な最大体力を得る。",
+                  "italic": false,
+                  "color": "white"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "cosmic_life_blessing_health",
+                  "amount": 50,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の幸福の祝福牌",
+                  "italic": false,
+                  "color": "gold"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永遠の幸運を呼び寄せ、究極の運を得る。",
+                  "italic": false,
+                  "color": "white"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "cosmic_luck_blessing",
+                  "amount": 5,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の鋼鉄の祝福牌",
+                  "italic": false,
+                  "color": "gray"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永遠の鋼鉄で覆われ、絶対的な防御力を得る。",
+                  "italic": false,
+                  "color": "white"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "cosmic_steel_blessing_armor",
+                  "amount": 25,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "cosmic_steel_blessing_toughness",
+                  "amount": 50,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,RepairCost:1024,Enchantments:[{}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "永遠の迅速の祝福牌",
+                  "italic": false,
+                  "color": "blue"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "light_purple"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永遠の速度を得て、時空を超える移動速度を手に入れる。",
+                  "italic": false,
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "name": "cosmic_swiftness_blessing_speed",
+                  "amount": 5,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "name": "cosmic_swiftness_blessing_attack_speed",
+                  "amount": 2048,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1},{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の",
+                  "italic": false,
+                  "bold": true,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "破滅の呪印",
+                  "italic": false,
+                  "color": "black"
+                },
+                {
+                  "text": "牌",
+                  "italic": false,
+                  "color": "dark_gray"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "このアイテムを持った状態で敵を倒すと",
+                  "italic": false,
+                  "color": "gray"
+                },
+                [
+                  "",
+                  {
+                    "text": "いつもの",
+                    "italic": false,
+                    "color": "gray"
+                  },
+                  {
+                    "text": "1/10",
+                    "italic": false,
+                    "color": "dark_red"
+                  },
+                  {
+                    "text": "のアイテムしか落とさなくなる",
+                    "italic": false,
+                    "color": "gray"
+                  }
+                ],
+                "",
+                [
+                  "",
+                  {
+                    "text": "両手で持っていると",
+                    "italic": false,
+                    "color": "gray"
+                  },
+                  {
+                    "text": "1/100",
+                    "italic": false,
+                    "underlined": true,
+                    "color": "dark_red"
+                  },
+                  {
+                    "text": "しかアイテムを落とさない",
+                    "italic": false,
+                    "color": "gray"
+                  }
+                ],
+                "",
+                {
+                  "text": "≪ 神級呪い ≫",
+                  "italic": false,
+                  "bold": true,
+                  "color": "black"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "cosmic_curse_armor",
+                  "amount": -15,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "cosmic_curse_health",
+                  "amount": -15,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "cosmic_curse_damage",
+                  "amount": -0.8,
+                  "operation": "multiply_total",
+                  "slot": "mainhand"
+                },
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "name": "cosmic_curse_slowness",
+                  "amount": -0.08,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の弱気の呪印牌",
+                  "italic": false,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永劫の弱気に包まれ、圧倒的な攻撃力低下を受ける。",
+                  "italic": false,
+                  "color": "gray"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "cosmic_weakness_curse_damage",
+                  "amount": -25,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "name": "cosmic_weakness_curse_speed",
+                  "amount": -5,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の軽撃の呪印牌",
+                  "italic": false,
+                  "color": "red"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永劫の軽さに包まれ、極度に吹き飛ばされやすくなる。",
+                  "italic": false,
+                  "color": "gray"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.knockback_resistance",
+                  "name": "cosmic_light_curse_resistance",
+                  "amount": -2,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "cosmic_light_curse_toughness",
+                  "amount": -10,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の死の呪印牌",
+                  "italic": false,
+                  "color": "black"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永劫の死に触れ、膨大な最大体力減少を受ける。",
+                  "italic": false,
+                  "color": "gray"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "cosmic_death_curse_health",
+                  "amount": -30,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の不運の呪印牌",
+                  "italic": false,
+                  "color": "dark_gray"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永劫の不運に取り憑かれ、極度の不運になる。",
+                  "italic": false,
+                  "color": "gray"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "cosmic_bad_luck_curse",
+                  "amount": -2048,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の脆弱の呪印牌",
+                  "italic": false,
+                  "color": "red"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永劫の脆弱さに包まれ、極度の防御力減少を受ける。",
+                  "italic": false,
+                  "color": "gray"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "cosmic_fragile_curse_armor",
+                  "amount": -25,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.armor_toughness",
+                  "name": "cosmic_fragile_curse_toughness",
+                  "amount": -50,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,cursed:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:vanishing_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                },
+                {
+                  "text": "永劫の鈍重の呪印牌",
+                  "italic": false,
+                  "color": "dark_gray"
+                },
+                {
+                  "text": "◆◇◆",
+                  "italic": false,
+                  "obfuscated": true,
+                  "color": "black"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "身につけると永劫の重さに束縛され、極度の移動速度減少を受ける。",
+                  "italic": false,
+                  "color": "gray"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "name": "cosmic_slowness_curse_speed",
+                  "amount": -0.15,
+                  "operation": "addition",
+                  "slot": "offhand"
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "name": "cosmic_slowness_curse_attack_speed",
+                  "amount": -8,
+                  "operation": "addition",
+                  "slot": "offhand"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 1,
+          "comment": "Conduit-Infinity-Atlantis",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{revision:1,CustomPotionColor:65535,CustomPotionEffects:[{Id:29,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:2},{Id:13,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:0},{Id:26,Ambient:0b,ShowIcon:1b,ShowParticles:1b,Duration:12000,Amplifier:1}],Potion:\"minecraft:empty\",Enchantments:[{}],HideFlags:32}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "~",
+                  "italic": false,
+                  "color": "aqua",
+                  "obfuscated": true
+                },
+                {
+                  "text": "コンジット",
+                  "italic": false,
+                  "bold": true,
+                  "color": "aqua"
+                },
+                {
+                  "text": "✰",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "∞",
+                  "italic": false,
+                  "bold": true,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "✰",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "アトランティス",
+                  "italic": false,
+                  "bold": true,
+                  "color": "aqua"
+                },
+                {
+                  "text": "~",
+                  "italic": false,
+                  "color": "aqua",
+                  "obfuscated": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {
+                  "text": "失われた海底都市の秘宝",
+                  "italic": false,
+                  "color": "light_purple"
+                },
+                {
+                  "text": "伝説の力を秘めた神秘の液体",
+                  "italic": false,
+                  "color": "light_purple"
+                },
+                [
+                  "",
+                  {
+                    "text": "海の",
+                    "italic": false,
+                    "color": "light_purple"
+                  },
+                  {
+                    "text": "支配者",
+                    "italic": false,
+                    "color": "aqua",
+                    "bold": true
+                  },
+                  {
+                    "text": "となる力を与える",
+                    "italic": false,
+                    "color": "light_purple"
+                  }
+                ],
+                [
+                  "",
+                  {
+                    "text": "10分間、コンジットパワー Lv",
+                    "italic": false,
+                    "color": "light_purple"
+                  },
+                  {
+                    "text": "3",
+                    "italic": false,
+                    "color": "gold",
+                    "bold": true
+                  },
+                  {
+                    "text": "と水中呼吸、",
+                    "italic": false,
+                    "color": "light_purple"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:eye,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"gold\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 50,
+                "minecraft:fire_protection": 50,
+                "minecraft:blast_protection": 50,
+                "minecraft:projectile_protection": 50,
+                "minecraft:respiration": 10,
+                "minecraft:aqua_affinity": 5,
+                "minecraft:thorns": 20,
+                "minecraft:unbreaking": 127,
+                "minecraft:mending": 5
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:eye,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"gold\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 50,
+                "minecraft:fire_protection": 50,
+                "minecraft:blast_protection": 50,
+                "minecraft:projectile_protection": 50,
+                "minecraft:thorns": 20,
+                "minecraft:unbreaking": 127,
+                "minecraft:mending": 5
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:eye,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"gold\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 50,
+                "minecraft:fire_protection": 50,
+                "minecraft:blast_protection": 50,
+                "minecraft:projectile_protection": 50,
+                "minecraft:thorns": 20,
+                "minecraft:unbreaking": 127,
+                "minecraft:mending": 5
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:eye,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがき戦闘服セット\",\"italic\":false,\"color\":\"gold\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 50,
+                "minecraft:fire_protection": 50,
+                "minecraft:blast_protection": 50,
+                "minecraft:projectile_protection": 50,
+                "minecraft:feather_falling": 20,
+                "minecraft:depth_strider": 10,
+                "minecraft:soul_speed": 10,
+                "minecraft:swift_sneak": 10,
+                "minecraft:thorns": 20,
+                "minecraft:unbreaking": 127,
+                "minecraft:mending": 5
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:eye,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"gold\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 100,
+                "minecraft:fire_protection": 100,
+                "minecraft:blast_protection": 100,
+                "minecraft:projectile_protection": 100,
+                "minecraft:respiration": 20,
+                "minecraft:aqua_affinity": 10,
+                "minecraft:thorns": 50,
+                "minecraft:unbreaking": 127,
+                "minecraft:mending": 10
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 30,
+                  "operation": "addition",
+                  "name": "god_pajama_health_head",
+                  "slot": "head",
+                  "uuid": [
+                    18,
+                    0,
+                    0,
+                    10
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:eye,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"gold\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 100,
+                "minecraft:fire_protection": 100,
+                "minecraft:blast_protection": 100,
+                "minecraft:projectile_protection": 100,
+                "minecraft:thorns": 50,
+                "minecraft:unbreaking": 127,
+                "minecraft:mending": 10
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 30,
+                  "operation": "addition",
+                  "name": "god_pajama_health_chest",
+                  "slot": "chest",
+                  "uuid": [
+                    18,
+                    0,
+                    0,
+                    11
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:eye,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"gold\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 100,
+                "minecraft:fire_protection": 100,
+                "minecraft:blast_protection": 100,
+                "minecraft:projectile_protection": 100,
+                "minecraft:thorns": 50,
+                "minecraft:unbreaking": 127,
+                "minecraft:mending": 10
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 30,
+                  "operation": "addition",
+                  "name": "god_pajama_health_legs",
+                  "slot": "legs",
+                  "uuid": [
+                    18,
+                    0,
+                    0,
+                    12
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:eye,material:netherite},display:{Name:'[\"\",{\"text\":\"すきがきパジャマセット\",\"italic\":false,\"color\":\"gold\"}]'},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": 100,
+                "minecraft:fire_protection": 100,
+                "minecraft:blast_protection": 100,
+                "minecraft:projectile_protection": 100,
+                "minecraft:feather_falling": 30,
+                "minecraft:depth_strider": 20,
+                "minecraft:soul_speed": 20,
+                "minecraft:swift_sneak": 20,
+                "minecraft:thorns": 50,
+                "minecraft:unbreaking": 127,
+                "minecraft:mending": 10
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 30,
+                  "operation": "addition",
+                  "name": "god_pajama_health_feet",
+                  "slot": "feet",
+                  "uuid": [
+                    18,
+                    0,
+                    0,
+                    13
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "amount": 1.0,
+                  "operation": "multiply_base",
+                  "name": "god_pajama_speed",
+                  "slot": "feet",
+                  "uuid": [
+                    18,
+                    0,
+                    0,
+                    14
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald_block",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 90,
+                "max": 167
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "◈",
+                  "color": "gold",
+                  "obfuscated": true,
+                  "bold": true
+                },
+                {
+                  "text": "◈",
+                  "color": "yellow",
+                  "obfuscated": true,
+                  "bold": true
+                },
+                {
+                  "text": "天界神釣竿",
+                  "color": "yellow",
+                  "bold": true,
+                  "underlined": true,
+                  "italic": false
+                },
+                {
+                  "text": "◈",
+                  "color": "yellow",
+                  "obfuscated": true,
+                  "bold": true
+                },
+                {
+                  "text": "◈",
+                  "color": "gold",
+                  "obfuscated": true,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Unbreakable:1b,RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": 127,
+                "minecraft:lure": 6,
+                "minecraft:unbreaking": 127,
+                "minecraft:mending": 10,
+                "minecraft:sharpness": 25,
+                "minecraft:fire_aspect": 5,
+                "minecraft:knockback": 4,
+                "minecraft:looting": 6,
+                "minecraft:sweeping": 6,
+                "minecraft:smite": 12,
+                "minecraft:bane_of_arthropods": 10
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:impaling",
+                "minecraft:thorns",
+                "minecraft:channeling",
+                "minecraft:riptide"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:impaling",
+                "minecraft:thorns",
+                "minecraft:channeling"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:impaling",
+                "minecraft:thorns"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:smite",
+                "minecraft:bane_of_arthropods",
+                "minecraft:impaling"
+              ]
+            },
+            {
+              "function": "minecraft:enchant_randomly",
+              "enchantments": [
+                "minecraft:knockback",
+                "minecraft:sweeping",
+                "minecraft:looting"
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 10,
+                  "operation": "addition",
+                  "name": "god_fishing_luck",
+                  "slot": "mainhand",
+                  "uuid": [
+                    21,
+                    0,
+                    0,
+                    10
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "amount": 25,
+                  "operation": "addition",
+                  "name": "god_weapon_damage",
+                  "slot": "mainhand",
+                  "uuid": [
+                    21,
+                    0,
+                    0,
+                    20
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "amount": 2,
+                  "operation": "addition",
+                  "name": "god_weapon_speed",
+                  "slot": "mainhand",
+                  "uuid": [
+                    21,
+                    0,
+                    0,
+                    21
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "すきがき釣りセット",
+                "color": "gold",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215},Trim:{pattern:eye,material:netherite},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 40,
+                "max": 60
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 10,
+                  "operation": "addition",
+                  "name": "god_fishing_set_luck_head",
+                  "slot": "head",
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    10
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "すきがき釣りセット",
+                "color": "gold",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215},Trim:{pattern:eye,material:netherite},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 40,
+                "max": 60
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 10,
+                  "operation": "addition",
+                  "name": "god_fishing_set_luck_chest",
+                  "slot": "chest",
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    11
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "すきがき釣りセット",
+                "color": "gold",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215},Trim:{pattern:eye,material:netherite},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 40,
+                "max": 60
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 10,
+                  "operation": "addition",
+                  "name": "god_fishing_set_luck_legs",
+                  "slot": "legs",
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    12
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "すきがき釣りセット",
+                "color": "gold",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16777215},Trim:{pattern:eye,material:netherite},RepairCost:1024,Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 40,
+                "max": 60
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 10,
+                  "operation": "addition",
+                  "name": "god_fishing_set_luck_feet",
+                  "slot": "feet",
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    13
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:end_portal_frame",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:ender_dragon_spawn_egg",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:wither_spawn_egg",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:gameplay/fishing/cosmic"
+}

@@ -88,9 +88,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 2,
                   "operation": "addition",
-                  "name": "epic_fishing_luck",
+                  "name": "immortal_fishing_luck",
                   "slot": "mainhand",
-                  "uuid": [29, 0, 0, 10]
+                  "uuid": [
+                    29,
+                    0,
+                    0,
+                    10
+                  ]
                 }
               ]
             }
@@ -152,9 +157,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 2,
                   "operation": "addition",
-                  "name": "epic_fishing_luck_2",
+                  "name": "immortal_fishing_luck_2",
                   "slot": "mainhand",
-                  "uuid": [29, 0, 0, 11]
+                  "uuid": [
+                    29,
+                    0,
+                    0,
+                    11
+                  ]
                 }
               ]
             }
@@ -192,7 +202,7 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "エピックボウ",
+                "text": "イモータルボウ",
                 "italic": false
               }
             }
@@ -230,7 +240,7 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "エピック魔法書",
+                "text": "イモータル魔法書",
                 "italic": false
               }
             }
@@ -492,9 +502,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 2,
                   "operation": "addition",
-                  "name": "epic_fishing_luck_helmet",
+                  "name": "immortal_fishing_luck_helmet",
                   "slot": "head",
-                  "uuid": [35, 0, 0, 30]
+                  "uuid": [
+                    35,
+                    0,
+                    0,
+                    30
+                  ]
                 }
               ]
             }
@@ -524,9 +539,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 2,
                   "operation": "addition",
-                  "name": "epic_fishing_luck_chest",
+                  "name": "immortal_fishing_luck_chest",
                   "slot": "chest",
-                  "uuid": [35, 0, 0, 31]
+                  "uuid": [
+                    35,
+                    0,
+                    0,
+                    31
+                  ]
                 }
               ]
             }
@@ -556,9 +576,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 2,
                   "operation": "addition",
-                  "name": "epic_fishing_luck_legs",
+                  "name": "immortal_fishing_luck_legs",
                   "slot": "legs",
-                  "uuid": [35, 0, 0, 32]
+                  "uuid": [
+                    35,
+                    0,
+                    0,
+                    32
+                  ]
                 }
               ]
             }
@@ -588,9 +613,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 2,
                   "operation": "addition",
-                  "name": "epic_fishing_luck_feet",
+                  "name": "immortal_fishing_luck_feet",
                   "slot": "feet",
-                  "uuid": [35, 0, 0, 33]
+                  "uuid": [
+                    35,
+                    0,
+                    0,
+                    33
+                  ]
                 }
               ]
             }
@@ -1003,5 +1033,5 @@
       ]
     }
   ],
-  "random_sequence": "minecraft:gameplay/fishing/epic"
+  "random_sequence": "minecraft:gameplay/fishing/immortal"
 }

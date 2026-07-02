@@ -137,9 +137,14 @@
                   "attribute": "minecraft:generic.max_health",
                   "amount": 10,
                   "operation": "addition",
-                  "name": "relic_pajama_health_head",
+                  "name": "beyond_pajama_health_head",
                   "slot": "head",
-                  "uuid": [20, 0, 0, 10]
+                  "uuid": [
+                    20,
+                    0,
+                    0,
+                    10
+                  ]
                 }
               ]
             }
@@ -172,9 +177,14 @@
                   "attribute": "minecraft:generic.max_health",
                   "amount": 10,
                   "operation": "addition",
-                  "name": "relic_pajama_health_chest",
+                  "name": "beyond_pajama_health_chest",
                   "slot": "chest",
-                  "uuid": [20, 0, 0, 11]
+                  "uuid": [
+                    20,
+                    0,
+                    0,
+                    11
+                  ]
                 }
               ]
             }
@@ -207,9 +217,14 @@
                   "attribute": "minecraft:generic.max_health",
                   "amount": 10,
                   "operation": "addition",
-                  "name": "relic_pajama_health_legs",
+                  "name": "beyond_pajama_health_legs",
                   "slot": "legs",
-                  "uuid": [20, 0, 0, 12]
+                  "uuid": [
+                    20,
+                    0,
+                    0,
+                    12
+                  ]
                 }
               ]
             }
@@ -246,17 +261,27 @@
                   "attribute": "minecraft:generic.max_health",
                   "amount": 10,
                   "operation": "addition",
-                  "name": "relic_pajama_health_feet",
+                  "name": "beyond_pajama_health_feet",
                   "slot": "feet",
-                  "uuid": [20, 0, 0, 13]
+                  "uuid": [
+                    20,
+                    0,
+                    0,
+                    13
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.movement_speed",
                   "amount": 0.1,
                   "operation": "multiply_base",
-                  "name": "relic_pajama_speed",
+                  "name": "beyond_pajama_speed",
                   "slot": "feet",
-                  "uuid": [20, 0, 0, 14]
+                  "uuid": [
+                    20,
+                    0,
+                    0,
+                    14
+                  ]
                 }
               ]
             }
@@ -358,9 +383,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 5,
                   "operation": "addition",
-                  "name": "mythic_fishing_luck",
+                  "name": "arcana_fishing_luck",
                   "slot": "mainhand",
-                  "uuid": [25, 0, 0, 10]
+                  "uuid": [
+                    25,
+                    0,
+                    0,
+                    10
+                  ]
                 }
               ]
             }
@@ -390,9 +420,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 5,
                   "operation": "addition",
-                  "name": "relic_fishing_luck_helmet",
+                  "name": "beyond_fishing_luck_helmet",
                   "slot": "head",
-                  "uuid": [32, 0, 0, 30]
+                  "uuid": [
+                    32,
+                    0,
+                    0,
+                    30
+                  ]
                 }
               ]
             }
@@ -422,9 +457,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 5,
                   "operation": "addition",
-                  "name": "relic_fishing_luck_chest",
+                  "name": "beyond_fishing_luck_chest",
                   "slot": "chest",
-                  "uuid": [32, 0, 0, 31]
+                  "uuid": [
+                    32,
+                    0,
+                    0,
+                    31
+                  ]
                 }
               ]
             }
@@ -454,9 +494,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 5,
                   "operation": "addition",
-                  "name": "relic_fishing_luck_legs",
+                  "name": "beyond_fishing_luck_legs",
                   "slot": "legs",
-                  "uuid": [32, 0, 0, 32]
+                  "uuid": [
+                    32,
+                    0,
+                    0,
+                    32
+                  ]
                 }
               ]
             }
@@ -486,9 +531,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 5,
                   "operation": "addition",
-                  "name": "relic_fishing_luck_feet",
+                  "name": "beyond_fishing_luck_feet",
                   "slot": "feet",
-                  "uuid": [32, 0, 0, 33]
+                  "uuid": [
+                    32,
+                    0,
+                    0,
+                    33
+                  ]
                 }
               ]
             }
@@ -755,5 +805,5 @@
       ]
     }
   ],
-  "random_sequence": "minecraft:gameplay/fishing/relic"
+  "random_sequence": "minecraft:gameplay/fishing/beyond"
 }

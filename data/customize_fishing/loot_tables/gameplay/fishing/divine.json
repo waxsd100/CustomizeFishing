@@ -33,9 +33,14 @@
                   "attribute": "minecraft:generic.max_health",
                   "amount": 20,
                   "operation": "addition",
-                  "name": "eternal_pajama_health_head",
+                  "name": "divine_pajama_health_head",
                   "slot": "head",
-                  "uuid": [19, 0, 0, 10]
+                  "uuid": [
+                    19,
+                    0,
+                    0,
+                    10
+                  ]
                 }
               ]
             }
@@ -68,9 +73,14 @@
                   "attribute": "minecraft:generic.max_health",
                   "amount": 20,
                   "operation": "addition",
-                  "name": "eternal_pajama_health_chest",
+                  "name": "divine_pajama_health_chest",
                   "slot": "chest",
-                  "uuid": [19, 0, 0, 11]
+                  "uuid": [
+                    19,
+                    0,
+                    0,
+                    11
+                  ]
                 }
               ]
             }
@@ -103,9 +113,14 @@
                   "attribute": "minecraft:generic.max_health",
                   "amount": 20,
                   "operation": "addition",
-                  "name": "eternal_pajama_health_legs",
+                  "name": "divine_pajama_health_legs",
                   "slot": "legs",
-                  "uuid": [19, 0, 0, 12]
+                  "uuid": [
+                    19,
+                    0,
+                    0,
+                    12
+                  ]
                 }
               ]
             }
@@ -142,17 +157,27 @@
                   "attribute": "minecraft:generic.max_health",
                   "amount": 20,
                   "operation": "addition",
-                  "name": "eternal_pajama_health_feet",
+                  "name": "divine_pajama_health_feet",
                   "slot": "feet",
-                  "uuid": [19, 0, 0, 13]
+                  "uuid": [
+                    19,
+                    0,
+                    0,
+                    13
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.movement_speed",
                   "amount": 0.3,
                   "operation": "multiply_base",
-                  "name": "eternal_pajama_speed",
+                  "name": "divine_pajama_speed",
                   "slot": "feet",
-                  "uuid": [19, 0, 0, 14]
+                  "uuid": [
+                    19,
+                    0,
+                    0,
+                    14
+                  ]
                 }
               ]
             }
@@ -272,25 +297,40 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 8,
                   "operation": "addition",
-                  "name": "eternal_fishing_luck",
+                  "name": "divine_fishing_luck",
                   "slot": "mainhand",
-                  "uuid": [22, 0, 0, 10]
+                  "uuid": [
+                    22,
+                    0,
+                    0,
+                    10
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.attack_damage",
                   "amount": 20,
                   "operation": "addition",
-                  "name": "eternal_weapon_damage",
+                  "name": "divine_weapon_damage",
                   "slot": "mainhand",
-                  "uuid": [22, 0, 0, 20]
+                  "uuid": [
+                    22,
+                    0,
+                    0,
+                    20
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.attack_speed",
                   "amount": 1.5,
                   "operation": "addition",
-                  "name": "eternal_weapon_speed",
+                  "name": "divine_weapon_speed",
                   "slot": "mainhand",
-                  "uuid": [22, 0, 0, 21]
+                  "uuid": [
+                    22,
+                    0,
+                    0,
+                    21
+                  ]
                 }
               ]
             }
@@ -320,9 +360,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 8,
                   "operation": "addition",
-                  "name": "eternal_fishing_luck_helmet",
+                  "name": "divine_fishing_luck_helmet",
                   "slot": "head",
-                  "uuid": [30, 0, 0, 30]
+                  "uuid": [
+                    30,
+                    0,
+                    0,
+                    30
+                  ]
                 }
               ]
             }
@@ -352,9 +397,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 8,
                   "operation": "addition",
-                  "name": "eternal_fishing_luck_chest",
+                  "name": "divine_fishing_luck_chest",
                   "slot": "chest",
-                  "uuid": [30, 0, 0, 31]
+                  "uuid": [
+                    30,
+                    0,
+                    0,
+                    31
+                  ]
                 }
               ]
             }
@@ -384,9 +434,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 8,
                   "operation": "addition",
-                  "name": "eternal_fishing_luck_legs",
+                  "name": "divine_fishing_luck_legs",
                   "slot": "legs",
-                  "uuid": [30, 0, 0, 32]
+                  "uuid": [
+                    30,
+                    0,
+                    0,
+                    32
+                  ]
                 }
               ]
             }
@@ -416,71 +471,16 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 8,
                   "operation": "addition",
-                  "name": "eternal_fishing_luck_feet",
+                  "name": "divine_fishing_luck_feet",
                   "slot": "feet",
-                  "uuid": [30, 0, 0, 33]
+                  "uuid": [
+                    30,
+                    0,
+                    0,
+                    33
+                  ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "the_awakening_of_the_elder_souls:emerald_armor_boots",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "すきがきヘソクリセット",
-                "italic": false,
-                "color": "dark_green"
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "the_awakening_of_the_elder_souls:emerald_armor_leggings",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "すきがきヘソクリセット",
-                "italic": false,
-                "color": "dark_green"
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "the_awakening_of_the_elder_souls:emerald_armor_chestplate",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "すきがきヘソクリセット",
-                "italic": false,
-                "color": "dark_green"
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "the_awakening_of_the_elder_souls:emerald_armor_helmet",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "すきがきヘソクリセット",
-                "italic": false,
-                "color": "dark_green"
-              }
             }
           ]
         },
@@ -501,5 +501,5 @@
       ]
     }
   ],
-  "random_sequence": "minecraft:gameplay/fishing/eternal"
+  "random_sequence": "minecraft:gameplay/fishing/divine"
 }

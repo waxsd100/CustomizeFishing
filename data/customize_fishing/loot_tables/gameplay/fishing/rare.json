@@ -21,20 +21,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "quark:ravager_hide",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:kelp",
           "weight": 1,
           "functions": [
@@ -64,20 +50,6 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:spawner",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:trident",
           "weight": 1,
           "functions": [
             {
@@ -238,7 +210,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{SkullOwner:\"SKGKYR\",Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
+              "tag": "{SkullOwner:\"God\",Enchantments:[{id:\"minecraft:binding_curse\",lvl:1}]}"
             }
           ]
         },
@@ -470,7 +442,12 @@
                   "operation": "addition",
                   "name": "rare_fishing_luck",
                   "slot": "mainhand",
-                  "uuid": [30, 0, 0, 10]
+                  "uuid": [
+                    30,
+                    0,
+                    0,
+                    10
+                  ]
                 }
               ]
             }
@@ -521,7 +498,12 @@
                   "operation": "addition",
                   "name": "rare_fishing_luck_2",
                   "slot": "mainhand",
-                  "uuid": [30, 0, 0, 11]
+                  "uuid": [
+                    30,
+                    0,
+                    0,
+                    11
+                  ]
                 }
               ]
             }
@@ -662,12 +644,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "quark:flamerang",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "quark:pickarang",
+          "name": "minecraft:trident",
           "weight": 9
         },
         {
@@ -736,7 +713,12 @@
                   "operation": "addition",
                   "name": "rare_fishing_luck_helmet",
                   "slot": "head",
-                  "uuid": [36, 0, 0, 30]
+                  "uuid": [
+                    36,
+                    0,
+                    0,
+                    30
+                  ]
                 }
               ]
             }
@@ -768,7 +750,12 @@
                   "operation": "addition",
                   "name": "rare_fishing_luck_chest",
                   "slot": "chest",
-                  "uuid": [36, 0, 0, 31]
+                  "uuid": [
+                    36,
+                    0,
+                    0,
+                    31
+                  ]
                 }
               ]
             }
@@ -800,7 +787,12 @@
                   "operation": "addition",
                   "name": "rare_fishing_luck_legs",
                   "slot": "legs",
-                  "uuid": [36, 0, 0, 32]
+                  "uuid": [
+                    36,
+                    0,
+                    0,
+                    32
+                  ]
                 }
               ]
             }
@@ -832,7 +824,12 @@
                   "operation": "addition",
                   "name": "rare_fishing_luck_feet",
                   "slot": "feet",
-                  "uuid": [36, 0, 0, 33]
+                  "uuid": [
+                    36,
+                    0,
+                    0,
+                    33
+                  ]
                 }
               ]
             }

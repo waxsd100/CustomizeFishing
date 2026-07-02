@@ -209,20 +209,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "quark:abacus",
-          "weight": 3,
-          "functions": [
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "そろばん",
-                "italic": false
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:leather",
           "weight": 20,
           "functions": [

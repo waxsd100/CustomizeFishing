@@ -42,7 +42,12 @@
                   "operation": "addition",
                   "name": "uncommon_fishing_luck",
                   "slot": "mainhand",
-                  "uuid": [27, 0, 0, 10]
+                  "uuid": [
+                    27,
+                    0,
+                    0,
+                    10
+                  ]
                 }
               ]
             }
@@ -74,7 +79,12 @@
                   "operation": "addition",
                   "name": "uncommon_fishing_luck_helmet",
                   "slot": "head",
-                  "uuid": [37, 0, 0, 30]
+                  "uuid": [
+                    37,
+                    0,
+                    0,
+                    30
+                  ]
                 }
               ]
             }
@@ -106,7 +116,12 @@
                   "operation": "addition",
                   "name": "uncommon_fishing_luck_chest",
                   "slot": "chest",
-                  "uuid": [37, 0, 0, 31]
+                  "uuid": [
+                    37,
+                    0,
+                    0,
+                    31
+                  ]
                 }
               ]
             }
@@ -138,7 +153,12 @@
                   "operation": "addition",
                   "name": "uncommon_fishing_luck_legs",
                   "slot": "legs",
-                  "uuid": [37, 0, 0, 32]
+                  "uuid": [
+                    37,
+                    0,
+                    0,
+                    32
+                  ]
                 }
               ]
             }
@@ -170,7 +190,12 @@
                   "operation": "addition",
                   "name": "uncommon_fishing_luck_feet",
                   "slot": "feet",
-                  "uuid": [37, 0, 0, 33]
+                  "uuid": [
+                    37,
+                    0,
+                    0,
+                    33
+                  ]
                 }
               ]
             }

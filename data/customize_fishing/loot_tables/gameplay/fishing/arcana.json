@@ -308,9 +308,14 @@
                   "attribute": "minecraft:generic.attack_damage",
                   "amount": 12,
                   "operation": "addition",
-                  "name": "mythic_axe_boost",
+                  "name": "arcana_axe_boost",
                   "slot": "mainhand",
-                  "uuid": [14, 0, 0, 52]
+                  "uuid": [
+                    14,
+                    0,
+                    0,
+                    52
+                  ]
                 }
               ]
             }
@@ -405,17 +410,27 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 4,
                   "operation": "addition",
-                  "name": "mythic_fishing_luck",
+                  "name": "arcana_fishing_luck",
                   "slot": "mainhand",
-                  "uuid": [25, 0, 0, 10]
+                  "uuid": [
+                    25,
+                    0,
+                    0,
+                    10
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.attack_damage",
                   "amount": 7,
                   "operation": "addition",
-                  "name": "mythic_weapon_damage",
+                  "name": "arcana_weapon_damage",
                   "slot": "mainhand",
-                  "uuid": [25, 0, 0, 20]
+                  "uuid": [
+                    25,
+                    0,
+                    0,
+                    20
+                  ]
                 }
               ]
             }
@@ -445,9 +460,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 4,
                   "operation": "addition",
-                  "name": "mythic_fishing_luck_helmet",
+                  "name": "arcana_fishing_luck_helmet",
                   "slot": "head",
-                  "uuid": [33, 0, 0, 30]
+                  "uuid": [
+                    33,
+                    0,
+                    0,
+                    30
+                  ]
                 }
               ]
             }
@@ -477,9 +497,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 4,
                   "operation": "addition",
-                  "name": "mythic_fishing_luck_chest",
+                  "name": "arcana_fishing_luck_chest",
                   "slot": "chest",
-                  "uuid": [33, 0, 0, 31]
+                  "uuid": [
+                    33,
+                    0,
+                    0,
+                    31
+                  ]
                 }
               ]
             }
@@ -509,9 +534,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 4,
                   "operation": "addition",
-                  "name": "mythic_fishing_luck_legs",
+                  "name": "arcana_fishing_luck_legs",
                   "slot": "legs",
-                  "uuid": [33, 0, 0, 32]
+                  "uuid": [
+                    33,
+                    0,
+                    0,
+                    32
+                  ]
                 }
               ]
             }
@@ -541,9 +571,14 @@
                   "attribute": "minecraft:generic.luck",
                   "amount": 4,
                   "operation": "addition",
-                  "name": "mythic_fishing_luck_feet",
+                  "name": "arcana_fishing_luck_feet",
                   "slot": "feet",
-                  "uuid": [33, 0, 0, 33]
+                  "uuid": [
+                    33,
+                    0,
+                    0,
+                    33
+                  ]
                 }
               ]
             }
@@ -774,5 +809,5 @@
       ]
     }
   ],
-  "random_sequence": "minecraft:gameplay/fishing/mythic"
+  "random_sequence": "minecraft:gameplay/fishing/arcana"
 }
