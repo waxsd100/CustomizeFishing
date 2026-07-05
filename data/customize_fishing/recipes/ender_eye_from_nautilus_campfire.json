@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:campfire_cooking",
-    "ingredient": {
-        "item": "minecraft:blaze_rod"
-    },
-    "result": "minecraft:blaze_powder",
-    "experience": 24,
-    "cookingtime": 4200
-}

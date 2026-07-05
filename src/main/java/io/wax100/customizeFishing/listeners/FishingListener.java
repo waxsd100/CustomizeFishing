@@ -81,6 +81,21 @@ public class FishingListener implements Listener {
             return;
         }
 
+        // バイパスパーミッションを持つプレイヤーはバニラの釣り結果を使用
+        if (player.hasPermission("customizefishing.bypass")) {
+            debugLogger.logInfo(player, "[BYPASS] Player has customizefishing.bypass permission, using vanilla result");
+            debugLogger.logFishingEnd(player);
+            return;
+        }
+
+        // Modアイテムの場合はカスタム処理をスキップ（minecraft以外の名前空間を持つアイテム）
+        String itemNamespace = itemEntity.getItemStack().getType().getKey().getNamespace();
+        if (!"minecraft".equals(itemNamespace)) {
+            debugLogger.logInfo(player, "[MOD] Mod item detected (" + itemEntity.getItemStack().getType().getKey() + "), keeping original item");
+            debugLogger.logFishingEnd(player);
+            return;
+        }
+
         TimingResult timingResult = timingHandler.calculateTimingResult(player);
 
         // 幸運値を事前に計算（ダブルフィッシングでも1回だけ計算）
@@ -106,7 +121,9 @@ public class FishingListener implements Listener {
             doubleFishingHandler.handleDoubleFishing(player, itemEntity, hookLocation, timingResult, luckResult, isOpenWater, weather);
         } else {
             FishingProcessor.FishingResult result = fishingProcessor.processFishing(player, itemEntity, hookLocation, false, timingResult, luckResult, isOpenWater, weather);
-            catchEffects.playCatchEffects(player, result.category(), result.probabilityInfo());
+            if (result.category() != null) {
+                catchEffects.playCatchEffects(player, result.category(), result.probabilityInfo());
+            }
         }
 
         timingHandler.displayTimingAtHook(hookLocation, timingResult);

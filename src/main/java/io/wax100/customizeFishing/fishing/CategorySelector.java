@@ -38,7 +38,7 @@ public class CategorySelector {
     public String determineCategoryFromConfig(Player player, LuckResult luckResult, boolean openWater, Weather weather, boolean dolphinsGrace) {
         ConfigurationSection categoriesSection = plugin.getConfig().getConfigurationSection("categories");
         if (categoriesSection == null) {
-            return "common";
+            return null;
         }
 
         List<CategoryData> categories = new ArrayList<>();
@@ -65,7 +65,7 @@ public class CategorySelector {
         }
 
         if (categories.isEmpty()) {
-            return "common";
+            return null;
         }
 
         double totalLuck = luckResult.getTotalLuck(plugin);
@@ -92,7 +92,7 @@ public class CategorySelector {
         }
 
         if (adjustedCategories.isEmpty() || adjustedCategories.stream().allMatch(cat -> cat.chance() <= 0)) {
-            return "common";
+            return null;
         }
 
         adjustedCategories.sort(Comparator.comparingInt(CategoryData::priority).reversed());
@@ -124,7 +124,7 @@ public class CategorySelector {
             }
         }
 
-        return selectedCategory != null ? selectedCategory : "common";
+        return selectedCategory;
     }
 
     /**

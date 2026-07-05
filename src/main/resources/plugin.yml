@@ -22,6 +22,9 @@ permissions:
   customizefishing.debugrod:
     description: Allows creating debug fishing rods
     default: op
+  customizefishing.bypass:
+    description: Bypasses custom fishing and uses vanilla fishing results
+    default: false
   customizefishing.*:
     description: Gives access to all CustomizeFishing permissions
     default: op
@@ -29,3 +32,4 @@ permissions:
       customizefishing.use: true
       customizefishing.reload: true
       customizefishing.debugrod: true
+      customizefishing.bypass: true

@@ -191,8 +191,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 45,
-                "max": 90
+                "min": 90,
+                "max": 180
               }
             }
           ]
@@ -219,7 +219,7 @@
                   "bold": true
                 },
                 {
-                  "text": "永劫星界釣竿",
+                  "text": "至高の釣り竿",
                   "color": "light_purple",
                   "bold": true,
                   "underlined": true,

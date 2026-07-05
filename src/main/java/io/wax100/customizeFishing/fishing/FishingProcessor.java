@@ -101,8 +101,14 @@ public class FishingProcessor {
             debugLogger.logFishingStart(player, isOpenWater, weather, hasDolphinsGrace, null);
         }
 
-        String category = Objects.requireNonNullElseGet(forcedCategory, () -> categorySelector.determineCategoryFromConfig(player, luckResult, isOpenWater, weather, hasDolphinsGrace));
+        String category = forcedCategory != null ? forcedCategory : categorySelector.determineCategoryFromConfig(player, luckResult, isOpenWater, weather, hasDolphinsGrace);
         int eligibleCount = categorySelector.getEligibleCategoryCount(luckResult, isOpenWater, weather, hasDolphinsGrace);
+
+        // 適格なカテゴリが無い場合はバニラの結果を使用
+        if (category == null) {
+            debugLogger.logInfo(player, "[VANILLA] No eligible category found, keeping vanilla item");
+            return new FishingResult(null, null, itemEntity.getItemStack().clone());
+        }
 
         debugLogger.logTimingResult(player, timingResult.reactionTimeMs(), timingResult);
         debugLogger.logLuckBreakdown(player, luckResult);
@@ -159,7 +165,8 @@ public class FishingProcessor {
                 debugLogger.logInfo(player, "Using original item instead");
             }
         } else {
-            debugLogger.logInfo(player, "[ERROR] Loot table not found: " + lootTableKey);
+            debugLogger.logInfo(player, "[VANILLA] Loot table not found: " + lootTableKey + ", keeping vanilla item");
+            selectedItem = originalItem;
         }
 
         String probabilityInfo = probabilityCalculator.calculateProbabilityInfo(category, luckResult, weather, timingResult);

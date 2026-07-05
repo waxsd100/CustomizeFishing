@@ -83,30 +83,7 @@ luck_calculation:
   max_total_luck: 25.0
 
 categories:
-  dolphins_grace:
-    enabled: true
-    priority: 0
-    quality: 0
-    conditions:
-      require_open_water: true        # 開水域が必要
-      require_dolphins_grace: true    # イルカの好意エフェクトが必要
-      weather:
-        - "clear"                     # 晴れ天候限定
-    chance: 100.0
-
-  unique:
-    enabled: true
-    priority: 1
-    quality: 1
-    conditions:
-      require_open_water: true
-      min_luck_of_the_sea: 10
-      min_luck_effect: 10
-      weather:
-        - "rain"
-        - "thunder"
-    chance: 0.00000005
-
+  # ===== 超高レア度 =====
   god:
     enabled: true
     priority: 2
@@ -144,6 +121,7 @@ categories:
         - "thunder"
     chance: 0.001
 
+  # ===== 高レア度 =====
   celestial:
     enabled: true
     priority: 5
@@ -199,6 +177,7 @@ categories:
         - "thunder"
     chance: 1
 
+  # ===== 中レア度 =====
   legendary:
     enabled: true
     priority: 9
@@ -241,6 +220,7 @@ categories:
         - "thunder"
     chance: 15
 
+  # ===== 低レア度 =====
   common:
     enabled: true
     priority: 12
@@ -254,7 +234,7 @@ categories:
     chance: 30
 
   treasure:
-    enabled: true
+    enabled: false                    # 無効：抽選外れ時にバニラの結果を使用
     priority: 13
     quality: 3
     conditions:
@@ -266,7 +246,7 @@ categories:
     chance: 40
 
   fish:
-    enabled: true
+    enabled: false                    # 無効：抽選外れ時にバニラの結果を使用
     priority: 14
     quality: 50
     conditions:
@@ -280,7 +260,7 @@ categories:
     chance: 70
 
   junk:
-    enabled: true
+    enabled: false                    # 無効：抽選外れ時にバニラの結果を使用
     priority: 15
     quality: 0
     conditions:
@@ -292,6 +272,32 @@ categories:
         - "rain"
         - "thunder"
     chance: 100
+
+  # ===== 特殊カテゴリ =====
+  unique:
+    enabled: true
+    priority: 1
+    quality: 1
+    conditions:
+      require_open_water: true
+      min_luck_of_the_sea: 10
+      min_luck_effect: 10
+      weather:
+        - "rain"
+        - "thunder"
+    chance: 0.00000005
+
+  dolphins_grace:
+    enabled: true
+    priority: 0
+    quality: 0
+    conditions:
+      require_open_water: true        # 開水域が必要
+      require_dolphins_grace: true    # イルカの好意エフェクトが必要
+      weather:
+        - "clear"                     # 晴れ天候限定
+    chance: 100.0
+
 
 
 # ルートテーブル設定

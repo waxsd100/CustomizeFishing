@@ -472,8 +472,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 12,
-                "max": 30
+                "min": 18,
+                "max": 45
               }
             }
           ]
@@ -912,8 +912,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1,
-                "max": 3
+                "min": 2,
+                "max": 5
               }
             }
           ]

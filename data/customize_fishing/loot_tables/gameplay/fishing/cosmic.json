@@ -1399,8 +1399,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 90,
-                "max": 167
+                "min": 180,
+                "max": 334
               }
             }
           ]
@@ -1427,7 +1427,7 @@
                   "bold": true
                 },
                 {
-                  "text": "天界神釣竿",
+                  "text": "究極の釣り竿",
                   "color": "yellow",
                   "bold": true,
                   "underlined": true,
@@ -1562,8 +1562,8 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "すきがき釣りセット",
-                "color": "gold",
+                "text": "すきがき安眠セット",
+                "color": "light_purple",
                 "italic": false
               }
             },
@@ -1574,8 +1574,8 @@
             {
               "function": "minecraft:enchant_with_levels",
               "levels": {
-                "min": 40,
-                "max": 60
+                "min": 80,
+                "max": 127
               },
               "treasure": true
             },
@@ -1584,16 +1584,35 @@
               "modifiers": [
                 {
                   "attribute": "minecraft:generic.luck",
-                  "amount": 10,
+                  "amount": 50,
                   "operation": "addition",
-                  "name": "god_fishing_set_luck_head",
+                  "name": "cosmic_sleep_set_luck_head",
                   "slot": "head",
-                  "uuid": [
-                    31,
-                    0,
-                    0,
-                    10
-                  ]
+                  "uuid": [31, 0, 0, 10]
+                },
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "amount": 30,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_armor_head",
+                  "slot": "head",
+                  "uuid": [31, 1, 0, 10]
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 20,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_health_head",
+                  "slot": "head",
+                  "uuid": [31, 2, 0, 10]
+                },
+                {
+                  "attribute": "minecraft:generic.knockback_resistance",
+                  "amount": 1,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_kb_head",
+                  "slot": "head",
+                  "uuid": [31, 3, 0, 10]
                 }
               ]
             }
@@ -1607,8 +1626,8 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "すきがき釣りセット",
-                "color": "gold",
+                "text": "すきがき安眠セット",
+                "color": "light_purple",
                 "italic": false
               }
             },
@@ -1619,8 +1638,8 @@
             {
               "function": "minecraft:enchant_with_levels",
               "levels": {
-                "min": 40,
-                "max": 60
+                "min": 80,
+                "max": 127
               },
               "treasure": true
             },
@@ -1629,16 +1648,35 @@
               "modifiers": [
                 {
                   "attribute": "minecraft:generic.luck",
-                  "amount": 10,
+                  "amount": 50,
                   "operation": "addition",
-                  "name": "god_fishing_set_luck_chest",
+                  "name": "cosmic_sleep_set_luck_chest",
                   "slot": "chest",
-                  "uuid": [
-                    31,
-                    0,
-                    0,
-                    11
-                  ]
+                  "uuid": [31, 0, 0, 11]
+                },
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "amount": 30,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_armor_chest",
+                  "slot": "chest",
+                  "uuid": [31, 1, 0, 11]
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 20,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_health_chest",
+                  "slot": "chest",
+                  "uuid": [31, 2, 0, 11]
+                },
+                {
+                  "attribute": "minecraft:generic.knockback_resistance",
+                  "amount": 1,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_kb_chest",
+                  "slot": "chest",
+                  "uuid": [31, 3, 0, 11]
                 }
               ]
             }
@@ -1652,8 +1690,8 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "すきがき釣りセット",
-                "color": "gold",
+                "text": "すきがき安眠セット",
+                "color": "light_purple",
                 "italic": false
               }
             },
@@ -1664,8 +1702,8 @@
             {
               "function": "minecraft:enchant_with_levels",
               "levels": {
-                "min": 40,
-                "max": 60
+                "min": 80,
+                "max": 127
               },
               "treasure": true
             },
@@ -1674,16 +1712,35 @@
               "modifiers": [
                 {
                   "attribute": "minecraft:generic.luck",
-                  "amount": 10,
+                  "amount": 50,
                   "operation": "addition",
-                  "name": "god_fishing_set_luck_legs",
+                  "name": "cosmic_sleep_set_luck_legs",
                   "slot": "legs",
-                  "uuid": [
-                    31,
-                    0,
-                    0,
-                    12
-                  ]
+                  "uuid": [31, 0, 0, 12]
+                },
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "amount": 30,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_armor_legs",
+                  "slot": "legs",
+                  "uuid": [31, 1, 0, 12]
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 20,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_health_legs",
+                  "slot": "legs",
+                  "uuid": [31, 2, 0, 12]
+                },
+                {
+                  "attribute": "minecraft:generic.knockback_resistance",
+                  "amount": 1,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_kb_legs",
+                  "slot": "legs",
+                  "uuid": [31, 3, 0, 12]
                 }
               ]
             }
@@ -1697,8 +1754,8 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "すきがき釣りセット",
-                "color": "gold",
+                "text": "すきがき安眠セット",
+                "color": "light_purple",
                 "italic": false
               }
             },
@@ -1709,8 +1766,8 @@
             {
               "function": "minecraft:enchant_with_levels",
               "levels": {
-                "min": 40,
-                "max": 60
+                "min": 80,
+                "max": 127
               },
               "treasure": true
             },
@@ -1719,16 +1776,35 @@
               "modifiers": [
                 {
                   "attribute": "minecraft:generic.luck",
-                  "amount": 10,
+                  "amount": 50,
                   "operation": "addition",
-                  "name": "god_fishing_set_luck_feet",
+                  "name": "cosmic_sleep_set_luck_feet",
                   "slot": "feet",
-                  "uuid": [
-                    31,
-                    0,
-                    0,
-                    13
-                  ]
+                  "uuid": [31, 0, 0, 13]
+                },
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "amount": 30,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_armor_feet",
+                  "slot": "feet",
+                  "uuid": [31, 1, 0, 13]
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "amount": 20,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_health_feet",
+                  "slot": "feet",
+                  "uuid": [31, 2, 0, 13]
+                },
+                {
+                  "attribute": "minecraft:generic.knockback_resistance",
+                  "amount": 1,
+                  "operation": "addition",
+                  "name": "cosmic_sleep_set_kb_feet",
+                  "slot": "feet",
+                  "uuid": [31, 3, 0, 13]
                 }
               ]
             }

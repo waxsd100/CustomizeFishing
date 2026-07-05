@@ -1833,8 +1833,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 20,
-                "max": 40
+                "min": 30,
+                "max": 60
               }
             }
           ]
@@ -1851,7 +1851,7 @@
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "神秘の釣り竿",
+                "text": "極上の釣り竿",
                 "color": "aqua",
                 "italic": false
               }

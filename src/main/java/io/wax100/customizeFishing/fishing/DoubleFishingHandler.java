@@ -80,6 +80,19 @@ public class DoubleFishingHandler {
      * @param second 2回目の釣り結果
      */
     private void displayDoubleFishingResults(Player player, FishingProcessor.FishingResult first, FishingProcessor.FishingResult second) {
+        // 両方バニラ結果の場合はエフェクトをスキップ
+        if (first.category() == null && second.category() == null) {
+            return;
+        }
+        // 片方がバニラ結果の場合はもう片方のカテゴリでエフェクト再生
+        if (first.category() == null) {
+            catchEffects.playCatchEffects(player, second.category(), second.probabilityInfo());
+            return;
+        }
+        if (second.category() == null) {
+            catchEffects.playCatchEffects(player, first.category(), first.probabilityInfo());
+            return;
+        }
         String primaryCategory = categorySelector.getHigherPriorityCategory(first.category(), second.category());
         catchEffects.playDoubleFishingEffects(player, primaryCategory, first, second);
     }
