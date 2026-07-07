@@ -425,27 +425,6 @@
           "type": "minecraft:item",
           "name": "minecraft:glow_ink_sac",
           "weight": 20
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:bone",
-          "weight": 15,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 3
-              }
-            },
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "魚の骨",
-                "italic": false
-              }
-            }
-          ]
         }
       ]
     }

@@ -22,97 +22,55 @@
 
 ## COMMON（コモン）ティア
 
-**合計ウェイト: 1126**
+**合計ウェイト: 231**
 
-| アイテム | ウェイト | 確率 | 数量 |
-|---|---|---|---|
-| minecraft:wooden_sword | 41 | 3.64% | 1 |
-| minecraft:wooden_pickaxe | 37 | 3.29% | 1 |
-| minecraft:wooden_axe | 33 | 2.93% | 1 |
-| minecraft:wooden_shovel | 29 | 2.58% | 1 |
-| minecraft:stone_sword | 26 | 2.31% | 1 |
-| minecraft:stone_pickaxe | 22 | 1.95% | 1 |
-| minecraft:stone_axe | 18 | 1.60% | 1 |
-| minecraft:stone_shovel | 16 | 1.42% | 1 |
-| minecraft:leather_boots | 26 | 2.31% | 1 |
-| minecraft:leather_helmet | 24 | 2.13% | 1 |
-| minecraft:leather_chestplate | 22 | 1.95% | 1 |
-| minecraft:leather_leggings | 19 | 1.69% | 1 |
-| minecraft:stick | 49 | 4.35% | 1 |
-| minecraft:coal | 45 | 4.00% | 1 |
-| minecraft:leather | 29 | 2.58% | 1 |
-| minecraft:string | 26 | 2.31% | 1 |
-| minecraft:feather | 22 | 1.95% | 1 |
-| minecraft:bone | 18 | 1.60% | 1 |
-| minecraft:rotten_flesh | 16 | 1.42% | 1 |
-| minecraft:paper | 22 | 1.95% | 1 |
-| minecraft:bowl | 18 | 1.60% | 1 |
-| minecraft:ink_sac | 14 | 1.24% | 1 |
-| minecraft:slime_ball | 12 | 1.07% | 1 |
-| minecraft:kelp | 26 | 2.31% | 1 |
-| minecraft:lily_pad | 18 | 1.60% | 1 |
-| minecraft:bamboo | 14 | 1.24% | 1 |
-| 古い釣り竿 | 18 | 1.60% | 1 |
-| すきがき釣りセット | 1 | 0.09% | 1 |
-| すきがき釣りセット | 1 | 0.09% | 1 |
-| すきがき釣りセット | 1 | 0.09% | 1 |
-| すきがき釣りセット | 1 | 0.09% | 1 |
-| minecraft:emerald_block | 10 | 0.89% | 2-5 |
-| minecraft:coal_ore | 35 | 3.11% | 1-5 |
-| minecraft:copper_ore | 30 | 2.66% | 1-4 |
-| minecraft:iron_ore | 15 | 1.33% | 1-3 |
-| minecraft:lily_pad | 30 | 2.66% | 1 |
-| minecraft:leather_boots | 25 | 2.22% | 1 |
-| minecraft:leather | 25 | 2.22% | 1 |
-| minecraft:bone | 25 | 2.22% | 1 |
-| 水入りビン | 25 | 2.22% | 1 |
-| minecraft:bowl | 25 | 2.22% | 1 |
-| 釣り針 | 25 | 2.22% | 1 |
-| minecraft:rotten_flesh | 25 | 2.22% | 1 |
-| minecraft:bamboo | 25 | 2.22% | 1 |
-| ボロい釣り竿 | 15 | 1.33% | 1 |
-| すごくボロい釣り竿 | 12 | 1.07% | 1 |
-| minecraft:string | 12 | 1.07% | 1 |
-| minecraft:stick | 12 | 1.07% | 1 |
-| 壊れかけの弓 | 5 | 0.44% | 1 |
-| 古びた魔法書 | 3 | 0.27% | 1 |
-| 古い革 | 20 | 1.78% | 1-2 |
-| 壊れた道具 | 15 | 1.33% | 1 |
-| 泥 | 18 | 1.60% | 2-4 |
-| 水入りポーション | 12 | 1.07% | 1 |
-| 空のポーション | 8 | 0.71% | 1 |
-| 失敗ポーション | 5 | 0.44% | 1 |
-| minecraft:emerald_block | 5 | 0.44% | 2-3 |
+| アイテム                    | ウェイト | 確率     | 数量  |
+|-------------------------|------|--------|-----|
+| 古い釣り竿                   | 18   | 7.79%  | 1   |
+| minecraft:emerald_block | 10   | 4.33%  | 2-5 |
+| minecraft:coal_ore      | 35   | 15.15% | 1-5 |
+| minecraft:copper_ore    | 30   | 12.99% | 1-4 |
+| minecraft:iron_ore      | 15   | 6.49%  | 1-3 |
+| ボロい釣り竿                  | 15   | 6.49%  | 1   |
+| すごくボロい釣り竿               | 12   | 5.19%  | 1   |
+| 壊れかけの弓                  | 5    | 2.16%  | 1   |
+| 古びた魔法書                  | 3    | 1.30%  | 1   |
+| 古い革                     | 20   | 8.66%  | 1-2 |
+| 壊れた道具                   | 15   | 6.49%  | 1   |
+| 泥                       | 18   | 7.79%  | 2-4 |
+| 水入りポーション                | 12   | 5.19%  | 1   |
+| 空のポーション                 | 8    | 3.46%  | 1   |
+| 失敗ポーション                 | 5    | 2.16%  | 1   |
+| minecraft:emerald_block | 5    | 2.16%  | 2-3 |
 
 ## UNCOMMON（アンコモン）ティア
 
-**合計ウェイト: 886**
+**合計ウェイト: 871**
 
-| アイテム | ウェイト | 確率 | 数量 |
-|---|---|---|---|
-| 普通の釣り竿 | 14 | 1.58% | 1 |
-| すきがき釣りセット | 1 | 0.11% | 1 |
-| すきがき釣りセット | 1 | 0.11% | 1 |
-| すきがき釣りセット | 1 | 0.11% | 1 |
-| すきがき釣りセット | 1 | 0.11% | 1 |
-| minecraft:emerald_block | 8 | 0.90% | 5-12 |
-| minecraft:iron_ore | 12 | 1.35% | 1-2 |
-| minecraft:copper_ore | 10 | 1.13% | 1-3 |
-| minecraft:coal_ore | 8 | 0.90% | 2-4 |
-| タラ | 150 | 16.93% | 1 |
-| サケ | 120 | 13.54% | 1 |
-| 焼き魚 | 90 | 10.16% | 1 |
-| 焼きサケ | 80 | 9.03% | 1 |
-| 生のタラ | 70 | 7.90% | 1 |
-| 生のサケ | 60 | 6.77% | 1 |
-| minecraft:ink_sac | 50 | 5.64% | 1-3 |
-| 海草 | 45 | 5.08% | 1-2 |
-| minecraft:dried_kelp | 40 | 4.51% | 1-2 |
-| minecraft:tropical_fish | 35 | 3.95% | 1 |
-| minecraft:pufferfish | 30 | 3.39% | 1 |
-| 生魚 | 25 | 2.82% | 1-2 |
-| minecraft:glow_ink_sac | 20 | 2.26% | 1 |
-| 魚の骨 | 15 | 1.69% | 1-3 |
+| アイテム                    | ウェイト | 確率     | 数量   |
+|-------------------------|------|--------|------|
+| 普通の釣り竿                  | 14   | 1.61%  | 1    |
+| すきがき釣りセット               | 1    | 0.11%  | 1    |
+| すきがき釣りセット               | 1    | 0.11%  | 1    |
+| すきがき釣りセット               | 1    | 0.11%  | 1    |
+| すきがき釣りセット               | 1    | 0.11%  | 1    |
+| minecraft:emerald_block | 8    | 0.92%  | 5-12 |
+| minecraft:iron_ore      | 12   | 1.38%  | 1-2  |
+| minecraft:copper_ore    | 10   | 1.15%  | 1-3  |
+| minecraft:coal_ore      | 8    | 0.92%  | 2-4  |
+| タラ                      | 150  | 17.22% | 1    |
+| サケ                      | 120  | 13.78% | 1    |
+| 焼き魚                     | 90   | 10.33% | 1    |
+| 焼きサケ                    | 80   | 9.18%  | 1    |
+| 生のタラ                    | 70   | 8.04%  | 1    |
+| 生のサケ                    | 60   | 6.89%  | 1    |
+| minecraft:ink_sac       | 50   | 5.74%  | 1-3  |
+| 海草                      | 45   | 5.17%  | 1-2  |
+| minecraft:dried_kelp    | 40   | 4.59%  | 1-2  |
+| minecraft:tropical_fish | 35   | 4.02%  | 1    |
+| minecraft:pufferfish    | 30   | 3.44%  | 1    |
+| 生魚                      | 25   | 2.87%  | 1-2  |
+| minecraft:glow_ink_sac  | 20   | 2.30%  | 1    |
 
 ## RARE（レア）ティア
 
