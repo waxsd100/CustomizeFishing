@@ -259,118 +259,248 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:cod",
-          "weight": 150,
+          "name": "minecraft:iron_sword",
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "タラ",
+                "text": "普通の剣",
+                "color": "white",
                 "italic": false
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 5,
+                "max": 15
+              },
+              "treasure": false
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.5,
+                "max": 0.9
               }
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:salmon",
-          "weight": 120,
+          "name": "minecraft:bow",
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "サケ",
+                "text": "普通の弓",
+                "color": "white",
                 "italic": false
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 5,
+                "max": 15
+              },
+              "treasure": false
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.5,
+                "max": 0.9
               }
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:cooked_cod",
-          "weight": 90,
+          "name": "minecraft:crossbow",
+          "weight": 8,
           "functions": [
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "焼き魚",
+                "text": "普通のクロスボウ",
+                "color": "white",
                 "italic": false
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 5,
+                "max": 15
+              },
+              "treasure": false
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.5,
+                "max": 0.9
               }
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:cooked_salmon",
-          "weight": 80,
+          "name": "minecraft:trident",
+          "weight": 3,
           "functions": [
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "焼きサケ",
+                "text": "錆びたトライデント",
+                "color": "white",
                 "italic": false
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 5,
+                "max": 10
+              },
+              "treasure": false
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.3,
+                "max": 0.7
               }
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:cod",
-          "weight": 70,
+          "name": "minecraft:fishing_rod",
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "生のタラ",
+                "text": "まあまあの釣り竿",
+                "color": "white",
                 "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": {
+                  "min": 2,
+                  "max": 4
+                },
+                "minecraft:lure": {
+                  "min": 1,
+                  "max": 3
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.5,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 2,
+                  "operation": "addition",
+                  "name": "uncommon_fishing_luck_rod2",
+                  "slot": "mainhand",
+                  "uuid": [
+                    27,
+                    0,
+                    0,
+                    11
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "ちょっといい魔法書",
+                "color": "white",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 5,
+                "max": 20
+              },
+              "treasure": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:shield",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "普通の盾",
+                "color": "white",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 5,
+                "max": 10
+              },
+              "treasure": false
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.5,
+                "max": 0.9
               }
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:salmon",
-          "weight": 60,
-          "functions": [
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "生のサケ",
-                "italic": false
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:ink_sac",
-          "weight": 50,
+          "name": "minecraft:experience_bottle",
+          "weight": 10,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1,
-                "max": 3
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:kelp",
-          "weight": 45,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 2
+                "min": 3,
+                "max": 8
               }
             },
             {
               "function": "minecraft:set_name",
               "name": {
-                "text": "海草",
+                "text": "経験値のビン",
+                "color": "white",
                 "italic": false
               }
             }
@@ -378,8 +508,8 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:dried_kelp",
-          "weight": 40,
+          "name": "minecraft:golden_apple",
+          "weight": 5,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -389,42 +519,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:tropical_fish",
-          "weight": 35
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:pufferfish",
-          "weight": 30
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:cod",
-          "weight": 25,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 2
-              }
-            },
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "text": "生魚",
-                "italic": false
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:glow_ink_sac",
-          "weight": 20
         }
       ]
     }

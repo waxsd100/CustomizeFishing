@@ -1588,7 +1588,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_luck_head",
                   "slot": "head",
-                  "uuid": [31, 0, 0, 10]
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    10
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.armor",
@@ -1596,7 +1601,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_armor_head",
                   "slot": "head",
-                  "uuid": [31, 1, 0, 10]
+                  "uuid": [
+                    31,
+                    1,
+                    0,
+                    10
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.max_health",
@@ -1604,7 +1614,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_health_head",
                   "slot": "head",
-                  "uuid": [31, 2, 0, 10]
+                  "uuid": [
+                    31,
+                    2,
+                    0,
+                    10
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.knockback_resistance",
@@ -1612,7 +1627,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_kb_head",
                   "slot": "head",
-                  "uuid": [31, 3, 0, 10]
+                  "uuid": [
+                    31,
+                    3,
+                    0,
+                    10
+                  ]
                 }
               ]
             }
@@ -1652,7 +1672,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_luck_chest",
                   "slot": "chest",
-                  "uuid": [31, 0, 0, 11]
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    11
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.armor",
@@ -1660,7 +1685,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_armor_chest",
                   "slot": "chest",
-                  "uuid": [31, 1, 0, 11]
+                  "uuid": [
+                    31,
+                    1,
+                    0,
+                    11
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.max_health",
@@ -1668,7 +1698,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_health_chest",
                   "slot": "chest",
-                  "uuid": [31, 2, 0, 11]
+                  "uuid": [
+                    31,
+                    2,
+                    0,
+                    11
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.knockback_resistance",
@@ -1676,7 +1711,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_kb_chest",
                   "slot": "chest",
-                  "uuid": [31, 3, 0, 11]
+                  "uuid": [
+                    31,
+                    3,
+                    0,
+                    11
+                  ]
                 }
               ]
             }
@@ -1716,7 +1756,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_luck_legs",
                   "slot": "legs",
-                  "uuid": [31, 0, 0, 12]
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    12
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.armor",
@@ -1724,7 +1769,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_armor_legs",
                   "slot": "legs",
-                  "uuid": [31, 1, 0, 12]
+                  "uuid": [
+                    31,
+                    1,
+                    0,
+                    12
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.max_health",
@@ -1732,7 +1782,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_health_legs",
                   "slot": "legs",
-                  "uuid": [31, 2, 0, 12]
+                  "uuid": [
+                    31,
+                    2,
+                    0,
+                    12
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.knockback_resistance",
@@ -1740,7 +1795,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_kb_legs",
                   "slot": "legs",
-                  "uuid": [31, 3, 0, 12]
+                  "uuid": [
+                    31,
+                    3,
+                    0,
+                    12
+                  ]
                 }
               ]
             }
@@ -1780,7 +1840,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_luck_feet",
                   "slot": "feet",
-                  "uuid": [31, 0, 0, 13]
+                  "uuid": [
+                    31,
+                    0,
+                    0,
+                    13
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.armor",
@@ -1788,7 +1853,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_armor_feet",
                   "slot": "feet",
-                  "uuid": [31, 1, 0, 13]
+                  "uuid": [
+                    31,
+                    1,
+                    0,
+                    13
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.max_health",
@@ -1796,7 +1866,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_health_feet",
                   "slot": "feet",
-                  "uuid": [31, 2, 0, 13]
+                  "uuid": [
+                    31,
+                    2,
+                    0,
+                    13
+                  ]
                 },
                 {
                   "attribute": "minecraft:generic.knockback_resistance",
@@ -1804,7 +1879,12 @@
                   "operation": "addition",
                   "name": "cosmic_sleep_set_kb_feet",
                   "slot": "feet",
-                  "uuid": [31, 3, 0, 13]
+                  "uuid": [
+                    31,
+                    3,
+                    0,
+                    13
+                  ]
                 }
               ]
             }

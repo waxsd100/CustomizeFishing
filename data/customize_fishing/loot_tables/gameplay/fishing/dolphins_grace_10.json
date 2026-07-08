@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "rolls": 10,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/fishing/dolphins_grace"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:gameplay/fishing/dolphins_grace_10"
+}
