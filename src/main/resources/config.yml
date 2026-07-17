@@ -233,45 +233,8 @@ categories:
         - "thunder"
     chance: 30
 
-  treasure:
-    enabled: false                    # 無効：抽選外れ時にバニラの結果を使用
-    priority: 13
-    quality: 3
-    conditions:
-      require_open_water: true       # 開水域不要
-      weather:
-        - "clear"
-        - "rain"
-        - "thunder"
-    chance: 40
-
-  fish:
-    enabled: false                    # 無効：抽選外れ時にバニラの結果を使用
-    priority: 14
-    quality: 50
-    conditions:
-      require_open_water: false       # 開水域不要
-      max_luck_of_the_sea: 10
-      max_luck_effect: 3
-      weather:
-        - "clear"                     # 全天候対応
-        - "rain"
-        - "thunder"
-    chance: 70
-
-  junk:
-    enabled: false                    # 無効：抽選外れ時にバニラの結果を使用
-    priority: 15
-    quality: 0
-    conditions:
-      require_open_water: false
-      max_luck_of_the_sea: 10
-      max_luck_effect: 3
-      weather:
-        - "clear"
-        - "rain"
-        - "thunder"
-    chance: 100
+  # ※ treasure / fish / junk ティアは廃止（ルートテーブル削除済み）。
+  #   抽選外れ時はバニラの釣り結果がそのまま使用されます。
 
   # ===== 特殊カテゴリ =====
   unique:
@@ -546,10 +509,6 @@ effects:
       sound: "ENTITY_DOLPHIN_PLAY"
       volume: 0.3
       pitch: 1.3
-    treasure:
-      sound: "BLOCK_CHEST_OPEN"
-      volume: 0.5
-      pitch: 1.2
 
   # 全体通知設定 - どのカテゴリを全プレイヤーに通知するか
   broadcast_categories:
@@ -566,9 +525,6 @@ effects:
     uncommon: false                       # アンコモン → 個人のみ
     dolphins_grace: false                  # イルカの好意 → 個人のみ
     common: false                         # コモン → 個人のみ
-    treasure: false                       # 宝物 → 個人のみ
-    fish: false                           # 魚 → 個人のみ
-    junk: false                           # ガラクタ → 個人のみ
   
   # 全体通知メッセージ設定（他のプレイヤーに表示）
   announcements:
@@ -585,9 +541,6 @@ effects:
     uncommon: "&e&l○ &f%player% &e&lがアンコモンアイテムを釣り上げました！ &e&l○"
     dolphins_grace: "&b&l🐬 &f%player% &b&lがイルカの恵みを受けました！ &b&l🐬"
     common: "&7%player%がコモンアイテムを釣り上げました"
-    treasure: "&6&l💰 &f%player% &6&lが宝物を釣り上げました！ &6&l💰"
-    fish: "&7%player%が魚を釣り上げました"
-    junk: "&7%player%がガラクタを釣り上げました"
   
   # アクションバーメッセージ設定（釣った本人に表示）
   action_bar_messages:
@@ -604,9 +557,6 @@ effects:
     uncommon: "&e&l○ アンコモンアイテムを釣り上げました！ &e&l○"
     dolphins_grace: "&b&l🐬 イルカが恵んでくれました！ &b&l🐬"
     common: "&fコモンアイテムを釣り上げました"
-    treasure: "&6&l💰 宝物を釣り上げました！ &6&l💰"
-    fish: "&f魚を釣り上げました"
-    junk: "&fガラクタを釣り上げました"
 
 # 幸運値表示設定
 luck_display:

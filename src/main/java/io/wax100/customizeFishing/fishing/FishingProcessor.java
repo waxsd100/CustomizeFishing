@@ -165,8 +165,11 @@ public class FishingProcessor {
                 debugLogger.logInfo(player, "Using original item instead");
             }
         } else {
+            // カテゴリに対応するルートテーブルが存在しない = config.yml とデータパックの不整合。
+            // カテゴリ名のまま返すと偽の告知・演出が発生するため、バニラ結果として扱う。
+            plugin.getLogger().warning("Loot table not found for category '" + category + "' (" + lootTableKey + "). config.yml categories and datapack loot tables are out of sync. Falling back to vanilla result.");
             debugLogger.logInfo(player, "[VANILLA] Loot table not found: " + lootTableKey + ", keeping vanilla item");
-            selectedItem = originalItem;
+            return new FishingResult(null, null, originalItem);
         }
 
         String probabilityInfo = probabilityCalculator.calculateProbabilityInfo(category, luckResult, weather, timingResult);

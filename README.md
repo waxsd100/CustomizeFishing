@@ -6,7 +6,7 @@ Minecraft 1.20の釣りシステム拡張プラグイン
 
 ### 🎣 カスタムルートテーブル
 
-- 16種類のティアシステム（Junk、Fish、Treasure、Common、Uncommon、Rare、Epic、Legendary、Mythic、Relic、Exotic、Eternal、God、Dolphins_Grace、SKGKYR、Unique）
+- 13種類のティアシステム（Common、Uncommon、Rare、Legendary、Immortal、Arcana、Beyond、Celestial、Divine、Cosmic、God、Dolphins_Grace、Unique）
 - 各ティアごとに数百種類のカスタムアイテム（祝福・呪印牌、ハニカムポーション、カスタム装備セットなど）
 - 条件に応じたドロップ確率（幸運値、天気、タイミングによる動的確率調整）
 
@@ -91,7 +91,7 @@ cd CustomizeFishing
 | カテゴリ | レア度名 | 基本確率 | 必要条件 | 特徴 |
 |---------|---------|---------|----------|------|
 | `dolphins_grace.json` | - | 100.0% | 開水域＋イルカの好意＋晴天 | イルカの恵み特殊ドロップ |
-| `unique.json` | - | 0.005% | 開水域＋宝釣りLv10＋幸運Lv10＋雨/雷 | 開発用テストアイテム |
+| `unique.json` | - | 0.00000005% | 開水域＋宝釣りLv10＋幸運Lv10＋雨/雷 | 世界に一つのユニークアイテム |
 | `god.json` | God | 0.05% | 開水域＋宝釣りLv10＋幸運Lv6＋雷 | 最高レアティア |
 | `cosmic.json` | コズミック / Cosmic | 0.0001% | 開水域＋宝釣りLv10＋幸運Lv5＋雷 | コズミックティア |
 | `divine.json` | ディバイン / Divine | 0.001% | 開水域＋宝釣りLv10＋幸運Lv4＋雨/雷 | ディバインアイテム |
@@ -103,9 +103,9 @@ cd CustomizeFishing
 | `rare.json` | レア / Rare | 10.0% | 開水域＋宝釣りLv3＋幸運Lv1＋全天候 | レアアイテム |
 | `uncommon.json` | アンコモン / Uncommon | 15.0% | 開水域＋宝釣りLv3＋幸運Lv1＋全天候 | アンコモンアイテム |
 | `common.json` | コモン / Common | 30.0% | 開水域＋全天候 | コモンアイテム |
-| `treasure.json` | - | 40.0% | 開水域＋全天候 | 宝物アイテム |
-| `fish.json` | - | 70.0% | 全条件＋宝釣りLv10以下＋幸運Lv3以下 | 魚類 |
-| `junk.json` | - | 100.0% | 全条件＋宝釣りLv10以下＋幸運Lv3以下 | ガラクタアイテム |
+
+※ 上記のいずれにも当選しなかった場合はバニラの釣り結果（魚・宝物・ガラクタ）がそのまま使用されます。
+※ 一部ティアには10連ガチャボックス用の `<ティア名>_10.json` が別途存在します。
 
 ### カスタムレシピ
 `data/customize_fishing/recipes/`に100種類以上のカスタム武器レシピが定義されています：
