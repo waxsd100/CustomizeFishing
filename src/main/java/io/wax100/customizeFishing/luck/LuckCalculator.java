@@ -126,14 +126,19 @@ public class LuckCalculator {
 
     /**
      * 宝釣りエンチャントレベルを計算
+     * 使用中の釣り竿（メインハンド優先）から読むため、マイナス宝釣りの呪い竿も正しく反映される
      */
     private int calculateLuckOfTheSea(Player player) {
         ItemStack mainHand = player.getInventory().getItemInMainHand();
         ItemStack offHand = player.getInventory().getItemInOffHand();
 
-        int mainHandLuckOfTheSeaLevel = mainHand.getEnchantmentLevel(Enchantment.LUCK);
-        int offHandLuckOfTheSeaLevel = offHand.getEnchantmentLevel(Enchantment.LUCK);
-        return Math.max(mainHandLuckOfTheSeaLevel, offHandLuckOfTheSeaLevel);
+        if (mainHand.getType() == Material.FISHING_ROD) {
+            return mainHand.getEnchantmentLevel(Enchantment.LUCK);
+        }
+        if (offHand.getType() == Material.FISHING_ROD) {
+            return offHand.getEnchantmentLevel(Enchantment.LUCK);
+        }
+        return Math.max(mainHand.getEnchantmentLevel(Enchantment.LUCK), offHand.getEnchantmentLevel(Enchantment.LUCK));
     }
 
     /**

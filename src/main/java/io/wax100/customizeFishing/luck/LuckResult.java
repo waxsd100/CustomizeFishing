@@ -44,10 +44,14 @@ public record LuckResult(
         }
 
         // 基本ボーナス計算: base_levels までは線形、超過分は対数カーブで max_level まで緩やかに伸びる
-        int effectiveLevel = Math.min(maxLevel, luckOfTheSeaLevel);
+        // マイナス宝釣り（呪い竿）はプラス側と対称のカーブでペナルティになる
+        int effectiveLevel = Math.min(maxLevel, Math.abs(luckOfTheSeaLevel));
         double bonus = Math.min(baseLevels, effectiveLevel) * perLevel;
         if (effectiveLevel > baseLevels && extendedLogScale > 0) {
             bonus += extendedLogScale * Math.log1p(effectiveLevel - baseLevels);
+        }
+        if (luckOfTheSeaLevel < 0) {
+            bonus = -bonus;
         }
 
         // 特殊ボーナス（高レベル時）
