@@ -119,10 +119,8 @@ public class FishingProcessor {
         debugLogger.logLuckBreakdown(player, luckResult);
         debugLogger.logCategorySelection(player, category, eligibleCount);
 
-        String namespace = plugin.getConfig().getString("loot_tables.namespace", "customize_fishing");
-        String path = plugin.getConfig().getString("loot_tables.path", "gameplay/fishing");
-        NamespacedKey lootTableKey = NamespacedKey.fromString(namespace + ":" + path + "/" + category);
-        LootTable lootTable = plugin.getServer().getLootTable(Objects.requireNonNull(lootTableKey));
+        NamespacedKey lootTableKey = buildLootTableKey(category);
+        LootTable lootTable = plugin.getServer().getLootTable(lootTableKey);
 
         ItemStack originalItem = itemEntity.getItemStack().clone();
         ItemStack selectedItem = originalItem;
@@ -403,6 +401,18 @@ public class FishingProcessor {
 
 
     /**
+     * カテゴリに対応するルートテーブルのキーを構築する
+     *
+     * @param category カテゴリ名
+     * @return ルートテーブルキー
+     */
+    private NamespacedKey buildLootTableKey(String category) {
+        String namespace = plugin.getConfig().getString("loot_tables.namespace", "customize_fishing");
+        String path = plugin.getConfig().getString("loot_tables.path", "gameplay/fishing");
+        return Objects.requireNonNull(NamespacedKey.fromString(namespace + ":" + path + "/" + category));
+    }
+
+    /**
      * 指定されたカテゴリからアイテムを取得
      *
      * @param category    カテゴリ名
@@ -412,7 +422,7 @@ public class FishingProcessor {
      */
     private ItemStack getItemFromCategory(String category, Player player, LootContext lootContext) {
         try {
-            NamespacedKey lootTableKey = new NamespacedKey(plugin, "customize_fishing/gameplay/fishing/" + category);
+            NamespacedKey lootTableKey = buildLootTableKey(category);
             LootTable lootTable = plugin.getServer().getLootTable(lootTableKey);
 
             if (lootTable != null) {
