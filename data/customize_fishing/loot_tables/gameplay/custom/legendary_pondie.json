@@ -33,7 +33,8 @@
                   "type": "minecraft:uniform",
                   "min": 5,
                   "max": 10
-                }
+                },
+                "minecraft:binding_curse": 1
               },
               "add": true
             },
