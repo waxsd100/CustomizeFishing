@@ -122,7 +122,7 @@ public class ProbabilityCalculator {
      * @return 幸運ポーションボーナステキスト
      */
     private String getLuckPotionBonusText(LuckResult luckResult) {
-        double bonus = luckResult.getLuckPotionBonus() + luckResult.getUnluckPotionPenalty(plugin);
+        double bonus = luckResult.getLuckPotionBonus(plugin) + luckResult.getUnluckPotionPenalty(plugin);
         if (bonus == 0) {
             return "";
         }
@@ -161,7 +161,7 @@ public class ProbabilityCalculator {
         if (luckResult.experienceLevel() <= 0) {
             return "";
         }
-        double bonus = luckResult.getExperienceBonus();
+        double bonus = luckResult.getExperienceBonus(plugin);
         return " " + ChatColor.YELLOW + "経験値+" + String.format("%.2f%%", bonus);
     }
 

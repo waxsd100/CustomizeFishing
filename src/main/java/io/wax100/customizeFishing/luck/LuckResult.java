@@ -58,10 +58,19 @@ public record LuckResult(
     /**
      * 幸運ポーションボーナスを計算
      *
+     * @param plugin プラグインインスタンス
      * @return 幸運ポーションボーナス（パーセンテージ）
      */
-    public double getLuckPotionBonus() {
-        return Math.min(10, luckPotionLevel) * 0.07;
+    public double getLuckPotionBonus(CustomizeFishing plugin) {
+        double perLevel = 0.07; // デフォルト値
+        int maxLevel = 10;
+
+        if (plugin != null) {
+            perLevel = plugin.getConfig().getDouble("luck_effects.luck_potion.per_level", 0.07);
+            maxLevel = plugin.getConfig().getInt("luck_effects.luck_potion.max_level", 10);
+        }
+
+        return Math.min(maxLevel, luckPotionLevel) * perLevel;
     }
 
     /**
@@ -100,10 +109,19 @@ public record LuckResult(
     /**
      * 経験値ボーナスを計算
      *
+     * @param plugin プラグインインスタンス
      * @return 経験値ボーナス（パーセンテージ）
      */
-    public double getExperienceBonus() {
-        return Math.min(100, experienceLevel) * 0.01;
+    public double getExperienceBonus(CustomizeFishing plugin) {
+        double perLevel = 0.01; // デフォルト値
+        int maxLevel = 100;
+
+        if (plugin != null) {
+            perLevel = plugin.getConfig().getDouble("luck_effects.experience_level.per_level", 0.01);
+            maxLevel = plugin.getConfig().getInt("luck_effects.experience_level.max_level", 100);
+        }
+
+        return Math.min(maxLevel, experienceLevel) * perLevel;
     }
 
     /**
@@ -114,10 +132,10 @@ public record LuckResult(
      */
     public double getTotalLuck(CustomizeFishing plugin) {
         // 基本的な幸運値計算
-        double baseLuck = getLuckOfTheSeaBonus(plugin) + getEquipmentBonus(plugin) + weatherLuck + timingLuck + getExperienceBonus();
+        double baseLuck = getLuckOfTheSeaBonus(plugin) + getEquipmentBonus(plugin) + weatherLuck + timingLuck + getExperienceBonus(plugin);
 
         // 幸運と不幸の相殺計算
-        double potionLuck = getLuckPotionBonus() + getUnluckPotionPenalty(plugin);
+        double potionLuck = getLuckPotionBonus(plugin) + getUnluckPotionPenalty(plugin);
 
         double totalLuck = baseLuck + potionLuck;
 
