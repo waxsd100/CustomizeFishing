@@ -108,6 +108,9 @@ luck_calculation:
   min_total_luck: -25.0
   max_total_luck: 25.0
 
+# 各カテゴリの conditions.min_total_luck は解禁に必要な総幸運値（未満は抽選対象外）
+# 1以上の場合は luck_adjustment.threshold_ramp により解禁直後は重みが抑制され、超過量に応じて満額に近づく
+# 0 は制限なし（常に抽選対象・ランプ補正なし）
 categories:
   # ===== 超高レア度 =====
   god:
@@ -253,6 +256,7 @@ categories:
     quality: 5
     conditions:
       require_open_water: true       # 開水域不要
+      min_total_luck: 0              # 制限なし（0 = しきい値ランプも適用されない）
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -283,6 +287,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       require_dolphins_grace: true    # イルカの好意エフェクトが必要
+      min_total_luck: 0               # 制限なし（0 = しきい値ランプも適用されない）
       weather:
         - "clear"                     # 晴れ天候限定
     chance: 100.0
