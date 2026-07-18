@@ -95,12 +95,13 @@ public class EnchantLimiter {
             return;
         }
 
-        // lure:127（GODの釣り竿）は全待ち時間を0にして着水即ヒット
+        // lure:127（GODの釣り竿）は全待ち時間を最小にして着水即ヒット
+        // 0tickだとバニラの釣りフック処理がフェーズ遷移できないため1tick(50ms)を使用
         if (lureLevel == 127) {
-            hook.setMinWaitTime(0);
-            hook.setMaxWaitTime(0);
-            hook.setMinLureTime(0);
-            hook.setMaxLureTime(0);
+            hook.setMinWaitTime(1);
+            hook.setMaxWaitTime(1);
+            hook.setMinLureTime(1);
+            hook.setMaxLureTime(1);
             return;
         }
 
