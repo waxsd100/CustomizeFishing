@@ -26,6 +26,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Random;
+import java.util.logging.Level;
 
 /**
  * 釣り条件のキャッシュ
@@ -127,14 +128,7 @@ public class FishingProcessor {
 
         if (lootTable != null) {
             try {
-                float contextLuck = Math.max(-1024f, Math.min(1024f, (float) luckResult.getTotalLuck(plugin) * 10));
-
-                LootContext.Builder contextBuilder = new LootContext.Builder(hookLocation)
-                        .killer(player)
-                        .lootedEntity(itemEntity)
-                        .luck(contextLuck);
-
-                LootContext lootContext = contextBuilder.build();
+                LootContext lootContext = createLootContext(player, hookLocation, luckResult, itemEntity);
                 Collection<ItemStack> loot = lootTable.populateLoot(random, lootContext);
 
                 if (!loot.isEmpty()) {
@@ -307,7 +301,7 @@ public class FishingProcessor {
             }
         } catch (Exception e) {
             debugLogger.logInfo(null, "[NBT-API] Error during NBT conversion: " + e.getMessage());
-            e.printStackTrace();
+            plugin.getLogger().log(Level.WARNING, "NBTタグの変換に失敗しました", e);
         }
 
         return item;
@@ -390,13 +384,28 @@ public class FishingProcessor {
      * @return LootContext
      */
     private LootContext createLootContext(Player player, FishingConditionsCache conditionsCache) {
-        // 元の幸運値を再計算
-        float contextLuck = Math.max(-1024f, Math.min(1024f, (float) conditionsCache.luckResult().getTotalLuck(plugin) * 10));
+        return createLootContext(player, conditionsCache.hookLocation(), conditionsCache.luckResult(), null);
+    }
 
-        return new LootContext.Builder(conditionsCache.hookLocation())
+    /**
+     * LootContextを作成
+     *
+     * @param player       プレイヤー
+     * @param hookLocation 釣り針の位置
+     * @param luckResult   幸運計算結果
+     * @param lootedEntity 釣り上げたアイテムエンティティ（無い場合はnull）
+     * @return LootContext
+     */
+    private LootContext createLootContext(Player player, Location hookLocation, LuckResult luckResult, Item lootedEntity) {
+        float contextLuck = Math.max(-1024f, Math.min(1024f, (float) luckResult.getTotalLuck(plugin) * 10));
+
+        LootContext.Builder builder = new LootContext.Builder(hookLocation)
                 .killer(player)
-                .luck(contextLuck)
-                .build();
+                .luck(contextLuck);
+        if (lootedEntity != null) {
+            builder.lootedEntity(lootedEntity);
+        }
+        return builder.build();
     }
 
 

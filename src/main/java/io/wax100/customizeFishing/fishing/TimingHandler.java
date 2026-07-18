@@ -10,17 +10,19 @@ import org.bukkit.entity.TextDisplay;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class TimingHandler {
 
     private final CustomizeFishing plugin;
-    private final DebugLogger debugLogger;
-    private final Map<Player, Long> biteTimestamps = new ConcurrentHashMap<>();
+    private final LuckCalculator luckCalculator;
+    // Playerエンティティを直接キーにすると退出後も参照を保持してしまうためUUIDで管理する
+    private final Map<UUID, Long> biteTimestamps = new ConcurrentHashMap<>();
 
     public TimingHandler(CustomizeFishing plugin, DebugLogger debugLogger) {
         this.plugin = plugin;
-        this.debugLogger = debugLogger;
+        this.luckCalculator = new LuckCalculator(plugin, debugLogger);
     }
 
     /**
@@ -29,7 +31,7 @@ public class TimingHandler {
      * @param player プレイヤー
      */
     public void recordBiteTimestamp(Player player) {
-        biteTimestamps.put(player, System.currentTimeMillis());
+        biteTimestamps.put(player.getUniqueId(), System.currentTimeMillis());
     }
 
     /**
@@ -39,14 +41,13 @@ public class TimingHandler {
      * @return タイミング結果
      */
     public TimingResult calculateTimingResult(Player player) {
-        Long biteTime = biteTimestamps.remove(player);
+        Long biteTime = biteTimestamps.remove(player.getUniqueId());
         if (biteTime == null) {
             return TimingResult.miss();
         }
         long reactionTime = System.currentTimeMillis() - biteTime;
 
-        LuckCalculator luckCalc = new LuckCalculator(plugin, debugLogger);
-        return luckCalc.calculateTimingResult(reactionTime);
+        return luckCalculator.calculateTimingResult(reactionTime);
     }
 
     /**

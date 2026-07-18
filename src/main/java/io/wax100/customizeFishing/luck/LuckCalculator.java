@@ -40,41 +40,7 @@ public class LuckCalculator {
      * @return 幸運計算結果
      */
     public LuckResult calculateTotalLuck(Player player, Weather weather, TimingResult timingResult) {
-
-        // 宝釣りエンチャント
-        int luckOfTheSeaLevel = calculateLuckOfTheSea(player);
-
-        // 幸運ポーション効果
-        int luckPotionLevel = calculateLuckPotion(player);
-
-        // 不幸ポーション効果
-        int unluckPotionLevel = calculateUnluckPotion(player);
-
-        // コンジットパワーボーナス
-        int conduitLevel = getConduitLevel(player);
-
-        // 装備の幸運属性
-        double equipmentLuck = calculateEquipmentLuck(player);
-
-        // 天気ボーナス
-        double weatherLuck = calculateWeatherLuck(weather);
-
-        // タイミングボーナス
-        double timingLuck = timingResult.luckBonus();
-
-        // プレイヤーの経験値レベル
-        int experienceLevel = player.getLevel();
-
-        return new LuckResult(
-                luckOfTheSeaLevel,
-                luckPotionLevel,
-                unluckPotionLevel,
-                conduitLevel,
-                equipmentLuck,
-                weatherLuck,
-                timingLuck,
-                experienceLevel
-        );
+        return buildLuckResult(player, weather, timingResult, calculateLuckOfTheSea(player));
     }
 
     /**
@@ -87,40 +53,28 @@ public class LuckCalculator {
      * @return 幸運計算結果
      */
     public LuckResult calculateTotalLuckWithSpecificRod(Player player, Weather weather, TimingResult timingResult, ItemStack fishingRod) {
+        return buildLuckResult(player, weather, timingResult, calculateLuckOfTheSeaForItem(fishingRod));
+    }
 
-        // 特定の釣り竿の宝釣りエンチャント
-        int luckOfTheSeaLevel = calculateLuckOfTheSeaForItem(fishingRod);
-
-        // 幸運ポーション効果
-        int luckPotionLevel = calculateLuckPotion(player);
-
-        // 不幸ポーション効果
-        int unluckPotionLevel = calculateUnluckPotion(player);
-
-        // コンジットパワーボーナス
-        int conduitLevel = getConduitLevel(player);
-
-        // 装備の幸運属性
-        double equipmentLuck = calculateEquipmentLuck(player);
-
-        // 天気ボーナス
-        double weatherLuck = calculateWeatherLuck(weather);
-
-        // タイミングボーナス
-        double timingLuck = timingResult.luckBonus();
-
-        // プレイヤーの経験値レベル
-        int experienceLevel = player.getLevel();
-
+    /**
+     * 宝釣りレベル以外の共通要素を集計してLuckResultを構築する
+     *
+     * @param player            プレイヤー
+     * @param weather           天気
+     * @param timingResult      タイミング結果
+     * @param luckOfTheSeaLevel 宝釣りエンチャントレベル
+     * @return 幸運計算結果
+     */
+    private LuckResult buildLuckResult(Player player, Weather weather, TimingResult timingResult, int luckOfTheSeaLevel) {
         return new LuckResult(
                 luckOfTheSeaLevel,
-                luckPotionLevel,
-                unluckPotionLevel,
-                conduitLevel,
-                equipmentLuck,
-                weatherLuck,
-                timingLuck,
-                experienceLevel
+                calculateLuckPotion(player),
+                calculateUnluckPotion(player),
+                getConduitLevel(player),
+                calculateEquipmentLuck(player),
+                calculateWeatherLuck(weather),
+                timingResult.luckBonus(),
+                player.getLevel()
         );
     }
 

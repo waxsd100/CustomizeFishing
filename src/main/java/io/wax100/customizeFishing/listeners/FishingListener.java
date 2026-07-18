@@ -38,6 +38,7 @@ public class FishingListener implements Listener {
     private final DoubleFishingHandler doubleFishingHandler;
     private final TimingHandler timingHandler;
     private final EnchantLimiter enchantLimiter;
+    private final LuckCalculator luckCalculator;
 
     public FishingListener(CustomizeFishing plugin) {
         this.plugin = plugin;
@@ -52,6 +53,7 @@ public class FishingListener implements Listener {
         this.fishingProcessor = new FishingProcessor(plugin, debugLogger, bindingCurseManager, categorySelector, probabilityCalculator, enchantLimiter);
         this.doubleFishingHandler = new DoubleFishingHandler(plugin, fishingProcessor, categorySelector, catchEffects);
         this.timingHandler = new TimingHandler(plugin, debugLogger);
+        this.luckCalculator = new LuckCalculator(plugin, debugLogger);
     }
 
 
@@ -118,8 +120,7 @@ public class FishingListener implements Listener {
             weather = Weather.RAIN;
         }
 
-        LuckCalculator luckCalc = new LuckCalculator(plugin, debugLogger);
-        LuckResult luckResult = luckCalc.calculateTotalLuck(player, weather, timingResult);
+        LuckResult luckResult = luckCalculator.calculateTotalLuck(player, weather, timingResult);
 
         boolean canDoubleFish = doubleFishingHandler.canDoubleFish(player);
 

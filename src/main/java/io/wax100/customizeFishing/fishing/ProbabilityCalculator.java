@@ -69,7 +69,7 @@ public class ProbabilityCalculator {
         } else {
             String formattedChance = DebugLogger.formatProbabilityForDisplay(adjustedChance);
 
-            if (adjustedChance == baseChance) {
+            if (Math.abs(adjustedChance - baseChance) < 1e-9) {
                 probabilityText = ChatColor.GRAY + "確率: " + ChatColor.YELLOW + formattedChance;
             } else {
                 double difference = adjustedChance - baseChance;
