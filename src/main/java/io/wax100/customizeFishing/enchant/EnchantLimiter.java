@@ -105,11 +105,15 @@ public class EnchantLimiter {
 
         int baseMaxWait = Math.max(2, VANILLA_MAX_WAIT - vanillaSafeMax * TICKS_PER_LURE_LEVEL);
         int extraLevels = lureLevel - vanillaSafeMax;
-        int maxWait = Math.max(2, baseMaxWait - extraLevels);
+        int effectiveMaxWait = Math.max(2, baseMaxWait - extraLevels);
 
-        hook.setApplyLure(false);
-        hook.setMinWaitTime(1);
-        hook.setMaxWaitTime(maxWait);
+        // バニラは「待ち時間 − 入れ食いLv×100tick」で抽選するため、引かれる分を上乗せした
+        // 待ち時間を設定する（差し引き後の実効待ち時間: 1〜effectiveMaxWait tick）。
+        // applyLure等の抽選経路には一切触れないので、BITEイベント発火・タイミング判定・
+        // 確率表示などはLv5以下の竿と完全に同じ挙動になる。
+        int reduction = lureLevel * TICKS_PER_LURE_LEVEL;
+        hook.setMaxWaitTime(reduction + effectiveMaxWait);
+        hook.setMinWaitTime(reduction + 1);
     }
 
     /**
