@@ -75,11 +75,17 @@ public class EnchantLimiter {
         return item;
     }
 
+    // バニラの魚接近時間（Phase 2: timeUntilHooked）
+    private static final int VANILLA_MIN_LURE_TIME = 20;
+    private static final int VANILLA_MAX_LURE_TIME = 80;
+
     /**
      * 入れ食いLv6以上の竿の浮き待ち時間をプラグイン独自計算で補正する。
      * バニラではLv6以上は待ち時間が常に0以下になり浮きが一切沈まなくなるため、
      * Lv5相当（1〜100tick）を基準に、超過分は1レベルごとに最大待ち時間をさらに1tick短縮する。
-     * 例: Lv6 → 1〜99tick、Lv50 → 1〜55tick、Lv105以上 → 1〜2tick（着水ほぼ即ヒット）
+     *
+     * さらに、魚の接近時間（Phase 2: lureTime、バニラでは20〜80tick）も
+     * 超過レベルに比例して短縮し、Lv105以上では着水ほぼ即ヒットになる。
      *
      * @param hook 浮き
      * @param rod  使用中の釣り竿
@@ -103,8 +109,10 @@ public class EnchantLimiter {
             return;
         }
 
-        int baseMaxWait = Math.max(2, VANILLA_MAX_WAIT - vanillaSafeMax * TICKS_PER_LURE_LEVEL);
         int extraLevels = lureLevel - vanillaSafeMax;
+
+        // === Phase 1: 待機時間（timeUntilLured）の補正 ===
+        int baseMaxWait = Math.max(2, VANILLA_MAX_WAIT - vanillaSafeMax * TICKS_PER_LURE_LEVEL);
         int effectiveMaxWait = Math.max(2, baseMaxWait - extraLevels);
 
         // バニラは「待ち時間 − 入れ食いLv×100tick」で抽選するため、引かれる分を上乗せした
@@ -114,6 +122,15 @@ public class EnchantLimiter {
         int reduction = lureLevel * TICKS_PER_LURE_LEVEL;
         hook.setMaxWaitTime(reduction + effectiveMaxWait);
         hook.setMinWaitTime(reduction + 1);
+
+        // === Phase 2: 魚の接近時間（lureTime / timeUntilHooked）の短縮 ===
+        // バニラでは20〜80tickだが、超過レベルに応じて短縮する。
+        // extraLevels が増えるにつれ接近時間を減らし、Lv105以上(extraLevels>=100)でほぼ即座。
+        double lureTimeRatio = Math.max(0.0, 1.0 - extraLevels / 100.0);
+        int effectiveMinLure = Math.max(1, (int) (VANILLA_MIN_LURE_TIME * lureTimeRatio));
+        int effectiveMaxLure = Math.max(1, (int) (VANILLA_MAX_LURE_TIME * lureTimeRatio));
+        hook.setMinLureTime(effectiveMinLure);
+        hook.setMaxLureTime(effectiveMaxLure);
     }
 
     /**
