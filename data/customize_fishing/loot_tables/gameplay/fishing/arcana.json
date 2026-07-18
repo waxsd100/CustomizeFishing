@@ -332,7 +332,7 @@
               "function": "minecraft:set_enchantments",
               "enchantments": {
                 "minecraft:luck_of_the_sea": 127,
-                "minecraft:lure": 6
+                "minecraft:lure": 35
               },
               "add": true
             },
