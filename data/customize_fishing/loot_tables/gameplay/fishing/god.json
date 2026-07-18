@@ -45,6 +45,153 @@
               "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/god_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#55ffff\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#61ffff\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#6dffff\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#79ffff\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#85ffff\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#91ffff\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#9dffff\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#aaffff\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#b6ffff\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#c2ffff\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#ceffff\"},{\"text\":\"G\",\"bold\":true,\"italic\":false,\"color\":\"#daffff\"},{\"text\":\"o\",\"bold\":true,\"italic\":false,\"color\":\"#e6ffff\"},{\"text\":\"d\",\"bold\":true,\"italic\":false,\"color\":\"#f2ffff\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#ffffff\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "神の釣り竿",
+                "color": "aqua",
+                "italic": false,
+                "bold": true,
+                "underlined": true
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Unbreakable:1b,RepairCost:1024}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": 127,
+                "minecraft:lure": 110,
+                "minecraft:mending": 5,
+                "minecraft:sharpness": 20,
+                "minecraft:looting": 5,
+                "minecraft:fire_aspect": 4
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 12,
+                  "operation": "addition",
+                  "name": "god_rod_luck",
+                  "slot": "mainhand",
+                  "uuid": [
+                    51,
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "amount": 22,
+                  "operation": "addition",
+                  "name": "god_rod_damage",
+                  "slot": "mainhand",
+                  "uuid": [
+                    51,
+                    0,
+                    0,
+                    2
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "amount": 1.6,
+                  "operation": "addition",
+                  "name": "god_rod_speed",
+                  "slot": "mainhand",
+                  "uuid": [
+                    51,
+                    0,
+                    0,
+                    3
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:the_incinerator",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:infernal_forge",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:gauntlet_of_guard",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:bulwark_of_the_flame",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:wither_assault_shoulder_weapon",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:meat_shredder",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:laser_gatling",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:soul_render",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:ceraunus",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:ancient_spear",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:flame_eye",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:abyss_eye",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:storm_eye",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:ignitium_upgrade_smithing_template",
+          "weight": 2
         }
       ]
     }

@@ -833,6 +833,56 @@
           "type": "minecraft:loot_table",
           "name": "customize_fishing:gameplay/artifacts/steadfast_spikes",
           "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "魔導の釣り竿",
+                "color": "dark_green",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": 12,
+                "minecraft:lure": 5,
+                "minecraft:mending": 1
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 30,
+                "max": 40
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 4,
+                  "operation": "addition",
+                  "name": "arcana_magus_rod_luck",
+                  "slot": "mainhand",
+                  "uuid": [
+                    50,
+                    0,
+                    0,
+                    6
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

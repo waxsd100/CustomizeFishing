@@ -1972,6 +1972,100 @@
           "type": "minecraft:loot_table",
           "name": "customize_fishing:gameplay/artifacts/crystal_heart",
           "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "流星の釣り竿",
+                "color": "dark_purple",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Unbreakable:1b,RepairCost:1024}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": 127,
+                "minecraft:lure": 105,
+                "minecraft:mending": 5
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 10,
+                  "operation": "addition",
+                  "name": "cosmic_meteor_rod_luck",
+                  "slot": "mainhand",
+                  "uuid": [
+                    50,
+                    0,
+                    0,
+                    10
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:enderite_ingot",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:void_crystal",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:void_core",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:void_forge",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:void_assault_shoulder_weapon",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:void_jaw",
+          "weight": 1
         }
       ]
     }

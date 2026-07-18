@@ -639,6 +639,53 @@
           "type": "minecraft:loot_table",
           "name": "customize_fishing:gameplay/artifacts/charm_of_sinking",
           "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "愛用の釣り竿",
+                "color": "yellow",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": {
+                  "min": 2,
+                  "max": 4
+                },
+                "minecraft:lure": {
+                  "min": 1,
+                  "max": 2
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 2,
+                  "operation": "addition",
+                  "name": "uncommon_favorite_rod_luck",
+                  "slot": "mainhand",
+                  "uuid": [
+                    50,
+                    0,
+                    0,
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

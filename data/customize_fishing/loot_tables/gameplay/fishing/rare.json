@@ -1531,6 +1531,54 @@
           "type": "minecraft:loot_table",
           "name": "customize_fishing:gameplay/artifacts/pickaxe_heater",
           "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "腕利きの釣り竿",
+                "color": "green",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": {
+                  "min": 4,
+                  "max": 6
+                },
+                "minecraft:lure": {
+                  "min": 2,
+                  "max": 3
+                },
+                "minecraft:unbreaking": 3
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 3,
+                  "operation": "addition",
+                  "name": "rare_expert_rod_luck",
+                  "slot": "mainhand",
+                  "uuid": [
+                    50,
+                    0,
+                    0,
+                    3
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

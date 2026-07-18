@@ -63,6 +63,143 @@
               "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/unique_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#ffffff\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#fafafa\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#f5f5f5\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#f0f0f0\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#ebebeb\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#e6e6e6\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#e1e1e1\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#dcdcdc\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#d7d7d7\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#d2d2d2\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#cdcdcd\"},{\"text\":\"U\",\"bold\":true,\"italic\":false,\"color\":\"#c8c8c8\"},{\"text\":\"n\",\"bold\":true,\"italic\":false,\"color\":\"#c3c3c3\"},{\"text\":\"i\",\"bold\":true,\"italic\":false,\"color\":\"#bebebe\"},{\"text\":\"q\",\"bold\":true,\"italic\":false,\"color\":\"#b9b9b9\"},{\"text\":\"u\",\"bold\":true,\"italic\":false,\"color\":\"#b4b4b4\"},{\"text\":\"e\",\"bold\":true,\"italic\":false,\"color\":\"#afafaf\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#aaaaaa\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "ポセイドンの釣り竿",
+                "color": "white",
+                "italic": false,
+                "bold": true,
+                "underlined": true
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Unbreakable:1b,RepairCost:1024,customizefishing:{unique:1b,unique_id:\"poseidon_rod\"}}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": 127,
+                "minecraft:lure": 120,
+                "minecraft:mending": 5,
+                "minecraft:impaling": 10,
+                "minecraft:channeling": 1,
+                "minecraft:looting": 5
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 15,
+                  "operation": "addition",
+                  "name": "unique_poseidon_rod_luck",
+                  "slot": "mainhand",
+                  "uuid": [
+                    52,
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "amount": 25,
+                  "operation": "addition",
+                  "name": "unique_poseidon_rod_damage",
+                  "slot": "mainhand",
+                  "uuid": [
+                    52,
+                    0,
+                    0,
+                    2
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "amount": 2.0,
+                  "operation": "addition",
+                  "name": "unique_poseidon_rod_speed",
+                  "slot": "mainhand",
+                  "uuid": [
+                    52,
+                    0,
+                    0,
+                    3
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:the_baby_leviathan_bucket",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "深淵より来たりし幼子",
+                "color": "dark_aqua",
+                "italic": false,
+                "bold": true
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{customizefishing:{unique:1b,unique_id:\"baby_leviathan\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:netherite_ministrosity_bucket",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "小さき怪物のバケツ",
+                "color": "dark_red",
+                "italic": false,
+                "bold": true
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{customizefishing:{unique:1b,unique_id:\"netherite_ministrosity\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:gauntlet_of_maelstrom",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "大渦の篭手",
+                "color": "blue",
+                "italic": false,
+                "bold": true
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{customizefishing:{unique:1b,unique_id:\"gauntlet_of_maelstrom\"}}"
+            }
+          ]
         }
       ]
     }

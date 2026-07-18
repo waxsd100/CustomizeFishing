@@ -538,6 +538,105 @@
           "type": "minecraft:loot_table",
           "name": "customize_fishing:gameplay/artifacts/cross_necklace",
           "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "神託の釣り竿",
+                "color": "light_purple",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1024}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": 40,
+                "minecraft:lure": 20,
+                "minecraft:unbreaking": 75,
+                "minecraft:mending": 5
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 9,
+                  "operation": "addition",
+                  "name": "divine_oracle_rod_luck",
+                  "slot": "mainhand",
+                  "uuid": [
+                    50,
+                    0,
+                    0,
+                    9
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:witherite_ingot",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:ignitium_ingot",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:lionfish",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:azure_sea_shield",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cataclysm:tidal_claws",
+          "weight": 1
         }
       ]
     }

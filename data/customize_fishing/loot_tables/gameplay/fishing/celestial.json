@@ -2181,6 +2181,49 @@
           "type": "minecraft:loot_table",
           "name": "customize_fishing:gameplay/artifacts/chorus_totem",
           "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "星海の釣り竿",
+                "color": "red",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": 20,
+                "minecraft:lure": 8,
+                "minecraft:unbreaking": 50,
+                "minecraft:mending": 3
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 7,
+                  "operation": "addition",
+                  "name": "celestial_starsea_rod_luck",
+                  "slot": "mainhand",
+                  "uuid": [
+                    50,
+                    0,
+                    0,
+                    8
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }
