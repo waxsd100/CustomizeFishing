@@ -69,7 +69,7 @@
               "function": "minecraft:set_enchantments",
               "enchantments": {
                 "minecraft:luck_of_the_sea": 127,
-                "minecraft:lure": 110,
+                "minecraft:lure": 127,
                 "minecraft:mending": 5,
                 "minecraft:sharpness": 20,
                 "minecraft:looting": 5,

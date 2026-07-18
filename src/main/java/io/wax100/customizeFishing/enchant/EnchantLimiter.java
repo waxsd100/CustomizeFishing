@@ -10,7 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,9 +22,7 @@ public class EnchantLimiter {
     private static final int VANILLA_MAX_WAIT = 600;
     private static final int TICKS_PER_LURE_LEVEL = 100;
 
-    // config に lure_exception_levels が無い場合のデフォルト例外
-    // （旧configのまま新JARを配置しても伝説釣り竿?のLv127例外が機能するように）
-    private static final List<Integer> DEFAULT_LURE_EXCEPTION_LEVELS = List.of(127);
+
     // バニラの魚接近時間（Phase 2: timeUntilHooked）
     private static final int VANILLA_MIN_LURE_TIME = 20;
     private static final int VANILLA_MAX_LURE_TIME = 80;
@@ -98,11 +95,12 @@ public class EnchantLimiter {
             return;
         }
 
-        // 例外レベル（伝説釣り竿?などのジョーク竿）は補正せず、バニラの挙動のまま＝浮きが沈まない
-        List<Integer> exceptionLevels = plugin.getConfig().isSet("enchant_limits.lure_exception_levels")
-                ? plugin.getConfig().getIntegerList("enchant_limits.lure_exception_levels")
-                : DEFAULT_LURE_EXCEPTION_LEVELS;
-        if (exceptionLevels.contains(lureLevel)) {
+        // lure:127（GODの釣り竿）は全待ち時間を0にして着水即ヒット
+        if (lureLevel == 127) {
+            hook.setMinWaitTime(0);
+            hook.setMaxWaitTime(0);
+            hook.setMinLureTime(0);
+            hook.setMaxLureTime(0);
             return;
         }
 

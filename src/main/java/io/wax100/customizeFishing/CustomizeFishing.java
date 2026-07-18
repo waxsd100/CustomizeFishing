@@ -4,6 +4,7 @@ import io.wax100.customizeFishing.commands.CustomizeFishingCommand;
 import io.wax100.customizeFishing.listeners.BindingCurseListener;
 import io.wax100.customizeFishing.listeners.FishingListener;
 import io.wax100.customizeFishing.listeners.LuckDisplayListener;
+import io.wax100.customizeFishing.migration.ItemMigrationListener;
 import io.wax100.customizeFishing.unique.UniqueItemManager;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
@@ -28,6 +29,7 @@ public final class CustomizeFishing extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FishingListener(this), this);
         getServer().getPluginManager().registerEvents(new BindingCurseListener(this), this);
         getServer().getPluginManager().registerEvents(luckDisplayListener, this);
+        getServer().getPluginManager().registerEvents(new ItemMigrationListener(this), this);
 
         // Register commands
         CustomizeFishingCommand commandExecutor = new CustomizeFishingCommand(this);

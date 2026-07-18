@@ -71,7 +71,12 @@ public class FishingListener implements Listener {
             // 釣りを開始した時点でログ開始
             debugLogger.logFishingStart(player);
             // 入れ食いLv6以上の竿でも浮きが沈むように待ち時間を補正
-            enchantLimiter.applyLureBehaviorCap(event.getHook(), getFishingRod(player));
+            ItemStack rod = getFishingRod(player);
+            enchantLimiter.applyLureBehaviorCap(event.getHook(), rod);
+            // 高レベル入れ食いではBITEイベントが発火しないことがあるため、
+            // FISHING時点でBITEタイムスタンプを先行記録する。
+            // BITEが正常に発火すれば正しい時刻で上書きされるので安全。
+            timingHandler.recordBiteTimestamp(player);
             return;
         }
 
