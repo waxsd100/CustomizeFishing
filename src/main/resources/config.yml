@@ -121,7 +121,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 10
-      min_luck_effect: 16
+      min_total_luck: 16              # 総幸運値16以上
       weather:
         - "thunder"
     chance: 0.05
@@ -133,7 +133,7 @@ categories:
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 10
-      min_luck_effect: 22
+      min_total_luck: 22              # 総幸運値22以上
       weather:
         - "thunder"
     chance: 0.0001
@@ -145,7 +145,7 @@ categories:
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 10
-      min_luck_effect: 20
+      min_total_luck: 20              # 総幸運値20以上
       weather:
         - "rain"
         - "thunder"
@@ -159,7 +159,7 @@ categories:
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 6
-      min_luck_effect: 18
+      min_total_luck: 18              # 総幸運値18以上
       weather:
         - "rain"
         - "thunder"
@@ -172,7 +172,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 5         # 宝釣りレベル5以上
-      min_luck_effect: 14            # 幸運エフェクト14以上
+      min_total_luck: 14             # 総幸運値14以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -186,7 +186,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 5         # 宝釣りレベル5以上
-      min_luck_effect: 12            # 幸運エフェクト12以上
+      min_total_luck: 12             # 総幸運値12以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -200,7 +200,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 4         # 宝釣りレベル4以上
-      min_luck_effect: 10            # 幸運エフェクト10以上
+      min_total_luck: 10             # 総幸運値10以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -215,7 +215,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 4         # 宝釣りレベル4以上
-      min_luck_effect: 7             # 幸運エフェクト7以上
+      min_total_luck: 7              # 総幸運値7以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -229,7 +229,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 3         # 宝釣りレベル3以上
-      min_luck_effect: 4             # 幸運エフェクト4以上
+      min_total_luck: 4              # 総幸運値4以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -243,7 +243,7 @@ categories:
     conditions:
       require_open_water: true       # 開水域不要
       min_luck_of_the_sea: 3         # 宝釣りレベル3以上
-      min_luck_effect: 2             # 幸運エフェクト2以上
+      min_total_luck: 2              # 総幸運値2以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -274,7 +274,7 @@ categories:
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 10
-      min_luck_effect: 24
+      min_total_luck: 24              # 総幸運値24以上
       weather:
         - "rain"
         - "thunder"

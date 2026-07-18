@@ -169,13 +169,13 @@ public class CategorySelector {
             }
         }
 
-        double minTotalLuck = conditionsSection.getDouble("min_luck_effect", 0);
+        double minTotalLuck = conditionsSection.getDouble("min_total_luck", 0);
         if (luckResult.getTotalLuck(plugin) < minTotalLuck) {
             return false;
         }
 
-        if (conditionsSection.contains("max_luck_effect")) {
-            double maxTotalLuck = conditionsSection.getDouble("max_luck_effect");
+        if (conditionsSection.contains("max_total_luck")) {
+            double maxTotalLuck = conditionsSection.getDouble("max_total_luck");
             if (luckResult.getTotalLuck(plugin) > maxTotalLuck) {
                 return false;
             }
