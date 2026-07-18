@@ -1,0 +1,107 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_helmet",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 90,
+                "max": 180
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "成",
+                  "color": "#c0c0c0",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "金",
+                  "color": "#a8a8b9",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ダ",
+                  "color": "#9090b2",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "イ",
+                  "color": "#7878ac",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "バ",
+                  "color": "#6060a5",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ー",
+                  "color": "#48489e",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "メ",
+                  "color": "#303098",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ッ",
+                  "color": "#181891",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ト",
+                  "color": "#00008b",
+                  "italic": false,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": {
+                  "type": "minecraft:uniform",
+                  "min": 16,
+                  "max": 25
+                },
+                "minecraft:unbreaking": {
+                  "type": "minecraft:uniform",
+                  "min": 15,
+                  "max": 24
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:\"minecraft:eye\",material:\"minecraft:emerald\",RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

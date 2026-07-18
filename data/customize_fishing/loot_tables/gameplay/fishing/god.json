@@ -34,6 +34,17 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:white_shulker_box",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/god_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#55ffff\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#61ffff\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#6dffff\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#79ffff\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#85ffff\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#91ffff\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#9dffff\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#aaffff\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#b6ffff\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#c2ffff\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#ceffff\"},{\"text\":\"G\",\"bold\":true,\"italic\":false,\"color\":\"#daffff\"},{\"text\":\"o\",\"bold\":true,\"italic\":false,\"color\":\"#e6ffff\"},{\"text\":\"d\",\"bold\":true,\"italic\":false,\"color\":\"#f2ffff\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#ffffff\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
+            }
+          ]
         }
       ]
     }

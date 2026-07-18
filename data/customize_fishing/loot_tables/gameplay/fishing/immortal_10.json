@@ -2,11 +2,51 @@
   "type": "minecraft:fishing",
   "pools": [
     {
-      "rolls": 10,
+      "rolls": 9,
       "entries": [
         {
           "type": "minecraft:loot_table",
           "name": "customize_fishing:gameplay/fishing/immortal"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/running_shoes",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/bunny_hoppers",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/flippers",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/flame_pendant",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/shock_pendant",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/thorn_pendant",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/superstitious_hat",
+          "weight": 1
         }
       ]
     }

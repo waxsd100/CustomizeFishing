@@ -5,7 +5,6 @@
       "bonus_rolls": 0,
       "rolls": 1,
       "entries": [
-
         {
           "type": "minecraft:item",
           "name": "minecraft:fishing_rod",
@@ -102,7 +101,6 @@
             }
           ]
         },
-
         {
           "type": "minecraft:item",
           "name": "minecraft:fishing_rod",
@@ -164,7 +162,6 @@
             }
           ]
         },
-
         {
           "type": "minecraft:item",
           "name": "minecraft:bow",
@@ -336,6 +333,135 @@
                 "min": 2,
                 "max": 3
               }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:coal_block",
+          "weight": 15,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_block",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:copper_block",
+          "weight": 12,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:redstone_block",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:lapis_block",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:nether_bricks",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:magma_block",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/tattered_sukigaki_helmet",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/tattered_sukigaki_chestplate",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/tattered_sukigaki_leggings",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/tattered_sukigaki_boots",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:light_gray_shulker_box",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/common_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#aaaaaa\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#afafaf\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#b4b4b4\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#b9b9b9\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#bebebe\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#c3c3c3\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#c8c8c8\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#cdcdcd\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#d2d2d2\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#d7d7d7\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#dcdcdc\"},{\"text\":\"C\",\"bold\":true,\"italic\":false,\"color\":\"#e1e1e1\"},{\"text\":\"o\",\"bold\":true,\"italic\":false,\"color\":\"#e6e6e6\"},{\"text\":\"m\",\"bold\":true,\"italic\":false,\"color\":\"#ebebeb\"},{\"text\":\"m\",\"bold\":true,\"italic\":false,\"color\":\"#f0f0f0\"},{\"text\":\"o\",\"bold\":true,\"italic\":false,\"color\":\"#f5f5f5\"},{\"text\":\"n\",\"bold\":true,\"italic\":false,\"color\":\"#fafafa\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#ffffff\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
             }
           ]
         }

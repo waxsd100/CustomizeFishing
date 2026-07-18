@@ -1,0 +1,72 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:shield",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 105,
+                "max": 210
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "伝",
+                  "color": "#ffff00",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "説",
+                  "color": "#ffff55",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "の",
+                  "color": "#ffffaa",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "盾",
+                  "color": "#ffffff",
+                  "italic": false,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:unbreaking": {
+                  "type": "minecraft:uniform",
+                  "min": 18,
+                  "max": 28
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{BlockEntityTag:{Base:0,Patterns:[{Pattern:\"mr\",Color:4},{Pattern:\"cs\",Color:14},{Pattern:\"ts\",Color:14},{Pattern:\"bs\",Color:14}],RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

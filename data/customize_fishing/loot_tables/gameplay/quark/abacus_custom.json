@@ -1,0 +1,23 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "quark:abacus",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "そろばん",
+                "italic": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

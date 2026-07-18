@@ -2,11 +2,46 @@
   "type": "minecraft:fishing",
   "pools": [
     {
-      "rolls": 10,
+      "rolls": 9,
       "entries": [
         {
           "type": "minecraft:loot_table",
           "name": "customize_fishing:gameplay/fishing/legendary"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/panic_necklace",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/umbrella",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/everlasting_beef",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/golden_hook",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/kitty_slippers",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/villager_hat",
+          "weight": 1
         }
       ]
     }

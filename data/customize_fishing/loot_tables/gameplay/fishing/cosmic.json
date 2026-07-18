@@ -1931,6 +1931,47 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/cosmic_greatsword",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/cosmic_galactic_robe",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/cosmic_supernova_elixir",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:purple_shulker_box",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/cosmic_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#aa00aa\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#a505af\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#a00ab4\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#9b0fb9\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#9614be\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#9119c3\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#8c1ec8\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#8723cd\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#8228d2\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#7d2dd7\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#7832dc\"},{\"text\":\"C\",\"bold\":true,\"italic\":false,\"color\":\"#7337e1\"},{\"text\":\"o\",\"bold\":true,\"italic\":false,\"color\":\"#6e3ce6\"},{\"text\":\"s\",\"bold\":true,\"italic\":false,\"color\":\"#6941eb\"},{\"text\":\"m\",\"bold\":true,\"italic\":false,\"color\":\"#6446f0\"},{\"text\":\"i\",\"bold\":true,\"italic\":false,\"color\":\"#5f4bf5\"},{\"text\":\"c\",\"bold\":true,\"italic\":false,\"color\":\"#5a50fa\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#5555ff\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/eternal_steak",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/cloud_in_a_bottle",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/crystal_heart",
+          "weight": 1
         }
       ]
     }

@@ -1,0 +1,117 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:trident",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 105,
+                "max": 210
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "伝",
+                  "color": "#ffff00",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "説",
+                  "color": "#ffff1f",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "の",
+                  "color": "#ffff3f",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ト",
+                  "color": "#ffff5f",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ラ",
+                  "color": "#ffff7f",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "イ",
+                  "color": "#ffff9f",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "デ",
+                  "color": "#ffffbf",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ン",
+                  "color": "#ffffdf",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ト",
+                  "color": "#ffffff",
+                  "italic": false,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:channeling": {
+                  "type": "minecraft:uniform",
+                  "min": 16,
+                  "max": 26
+                },
+                "minecraft:loyalty": {
+                  "type": "minecraft:uniform",
+                  "min": 18,
+                  "max": 28
+                },
+                "minecraft:impaling": {
+                  "type": "minecraft:uniform",
+                  "min": 20,
+                  "max": 30
+                },
+                "minecraft:unbreaking": {
+                  "type": "minecraft:uniform",
+                  "min": 18,
+                  "max": 28
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

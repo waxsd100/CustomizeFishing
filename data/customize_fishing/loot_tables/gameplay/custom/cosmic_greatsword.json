@@ -1,0 +1,106 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_sword",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 130,
+                "max": 260
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "す",
+                  "color": "#4b0082",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "き",
+                  "color": "#640284",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "が",
+                  "color": "#7e0586",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "き",
+                  "color": "#980889",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "の",
+                  "color": "#b10b8b",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "裏",
+                  "color": "#cb0e8e",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "大",
+                  "color": "#e51190",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "剣",
+                  "color": "#ff1493",
+                  "italic": false,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:sharpness": {
+                  "type": "minecraft:uniform",
+                  "min": 26,
+                  "max": 39
+                },
+                "minecraft:sweeping": {
+                  "type": "minecraft:uniform",
+                  "min": 23,
+                  "max": 36
+                },
+                "minecraft:unbreaking": {
+                  "type": "minecraft:uniform",
+                  "min": 24,
+                  "max": 37
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

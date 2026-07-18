@@ -1,0 +1,76 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "発",
+                  "color": "#8a2be2",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "光",
+                  "color": "#9a24e6",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "す",
+                  "color": "#ab1eea",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "る",
+                  "color": "#bc18ee",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ヤ",
+                  "color": "#cc12f2",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "バ",
+                  "color": "#dd0cf6",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "い",
+                  "color": "#ee06fa",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "水",
+                  "color": "#ff00ff",
+                  "italic": false,
+                  "bold": false
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomPotionColor:16777215, CustomPotionEffects:[{Id:16,Duration:3600,Amplifier:0}, {Id:1,Duration:3600,Amplifier:1}, {Id:8,Duration:3600,Amplifier:1}, {Id:28,Duration:3600,Amplifier:0}],RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

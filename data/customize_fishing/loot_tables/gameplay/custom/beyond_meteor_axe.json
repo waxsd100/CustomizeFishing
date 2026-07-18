@@ -1,0 +1,118 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_axe",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 90,
+                "max": 180
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "隕",
+                  "color": "#c0c0c0",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "石",
+                  "color": "#aaaaba",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "で",
+                  "color": "#9595b4",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "で",
+                  "color": "#8080ae",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "き",
+                  "color": "#6a6aa8",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "た",
+                  "color": "#5555a2",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "薪",
+                  "color": "#40409c",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "割",
+                  "color": "#2a2a96",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "り",
+                  "color": "#151590",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "斧",
+                  "color": "#00008b",
+                  "italic": false,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:sharpness": {
+                  "type": "minecraft:uniform",
+                  "min": 17,
+                  "max": 26
+                },
+                "minecraft:efficiency": {
+                  "type": "minecraft:uniform",
+                  "min": 17,
+                  "max": 26
+                },
+                "minecraft:unbreaking": {
+                  "type": "minecraft:uniform",
+                  "min": 16,
+                  "max": 25
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -801,6 +801,57 @@
               ]
             }
           ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/beyond_magic_flute",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/beyond_meteor_axe",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/beyond_transcendental_gaze",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cyan_shulker_box",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/beyond_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#00aaaa\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#05afaf\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#0ab4b4\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#0fb9b9\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#14bebe\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#19c3c3\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#1ec8c8\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#23cdcd\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#28d2d2\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#2dd7d7\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#32dcdc\"},{\"text\":\"B\",\"bold\":true,\"italic\":false,\"color\":\"#37e1e1\"},{\"text\":\"e\",\"bold\":true,\"italic\":false,\"color\":\"#3ce6e6\"},{\"text\":\"y\",\"bold\":true,\"italic\":false,\"color\":\"#41ebeb\"},{\"text\":\"o\",\"bold\":true,\"italic\":false,\"color\":\"#46f0f0\"},{\"text\":\"n\",\"bold\":true,\"italic\":false,\"color\":\"#4bf5f5\"},{\"text\":\"d\",\"bold\":true,\"italic\":false,\"color\":\"#50fafa\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#55ffff\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/fire_gauntlet",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/snorkel",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/aqua_dashers",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/helium_flamingo",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/mimic_spawn_egg",
+          "weight": 1
         }
       ]
     }

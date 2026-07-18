@@ -339,35 +339,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:nether_bricks",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 4,
-                "max": 10
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:soul_soil",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 4,
-                "max": 8
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:magma_block",
           "weight": 1,
           "functions": [
             {
@@ -1024,76 +996,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:diamond_ore",
-          "weight": 5,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 3
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:emerald_ore",
-          "weight": 6,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 2,
-                "max": 5
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:gold_ore",
-          "weight": 7,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 4
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:iron_ore",
-          "weight": 8,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 2,
-                "max": 5
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:copper_ore",
-          "weight": 10,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 2,
-                "max": 6
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:netherrack",
           "weight": 4,
           "functions": [
@@ -1323,6 +1225,82 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/flamerang",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/pickarang",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/legendary_flamerang",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/legendary_pickarang",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/legendary_pirate_cutlass",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/legendary_water_robe",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/legendary_bountiful_elixir",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:light_blue_shulker_box",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/legendary_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#55ffff\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#55f6ff\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#55eeff\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#55e5ff\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#55ddff\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#55d4ff\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#55ccff\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#55c3ff\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#55bbff\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#55b2ff\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#55aaff\"},{\"text\":\"L\",\"bold\":true,\"italic\":false,\"color\":\"#55a1ff\"},{\"text\":\"e\",\"bold\":true,\"italic\":false,\"color\":\"#5599ff\"},{\"text\":\"g\",\"bold\":true,\"italic\":false,\"color\":\"#5590ff\"},{\"text\":\"e\",\"bold\":true,\"italic\":false,\"color\":\"#5588ff\"},{\"text\":\"n\",\"bold\":true,\"italic\":false,\"color\":\"#557fff\"},{\"text\":\"d\",\"bold\":true,\"italic\":false,\"color\":\"#5577ff\"},{\"text\":\"a\",\"bold\":true,\"italic\":false,\"color\":\"#556eff\"},{\"text\":\"r\",\"bold\":true,\"italic\":false,\"color\":\"#5566ff\"},{\"text\":\"y\",\"bold\":true,\"italic\":false,\"color\":\"#555dff\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#5555ff\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/panic_necklace",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/umbrella",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/everlasting_beef",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/golden_hook",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/kitty_slippers",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/villager_hat",
+          "weight": 1
         }
       ]
     }

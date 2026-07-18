@@ -1,0 +1,211 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:strong_healing"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:strong_regeneration"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:fire_resistance"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:strength"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_apple",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:totem_of_undying",
+          "weight": 1
+        },
+
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/rare_regeneration_potion",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/legendary_bountiful_elixir",
+          "weight": 12
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/immortal_elixir",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/celestial_stardust_elixir",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/divine_tears",
+          "weight": 1
+        },
+
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/everlasting_beef",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/panic_necklace",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/umbrella",
+          "weight": 12
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/running_shoes",
+          "weight": 12
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/bunny_hoppers",
+          "weight": 12
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/flame_pendant",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/shock_pendant",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/thorn_pendant",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/eternal_steak",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/feral_claws",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/power_glove",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/pocket_piston",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/steadfast_spikes",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/antidote_vessel",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/fire_gauntlet",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/obsidian_skull",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/cloud_in_a_bottle",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/chorus_totem",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/mimic_spawn_egg",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/crystal_heart",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/vampiric_glove",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/cross_necklace",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

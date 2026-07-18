@@ -2,11 +2,31 @@
   "type": "minecraft:fishing",
   "pools": [
     {
-      "rolls": 10,
+      "rolls": 9,
       "entries": [
         {
           "type": "minecraft:loot_table",
           "name": "customize_fishing:gameplay/fishing/divine"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/vampiric_glove",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/lucky_scarf",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/cross_necklace",
+          "weight": 1
         }
       ]
     }

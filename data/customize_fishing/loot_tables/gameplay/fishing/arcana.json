@@ -146,20 +146,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:purpur_block",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 4,
-                "max": 8
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:shulker_shell",
           "weight": 1,
           "functions": [
@@ -219,20 +205,6 @@
             {
               "function": "minecraft:set_count",
               "count": 1
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:end_stone",
-          "weight": 2,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 3,
-                "max": 8
-              }
             }
           ]
         },
@@ -805,6 +777,62 @@
               ]
             }
           ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/arcana_guidance",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/arcana_magician_tome",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/arcana_green_mantle",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:green_shulker_box",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/arcana_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#00aa00\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#05af05\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#0ab40a\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#0fb90f\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#14be14\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#19c319\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#1ec81e\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#23cd23\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#28d228\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#2dd72d\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#32dc32\"},{\"text\":\"A\",\"bold\":true,\"italic\":false,\"color\":\"#37e137\"},{\"text\":\"r\",\"bold\":true,\"italic\":false,\"color\":\"#3ce63c\"},{\"text\":\"c\",\"bold\":true,\"italic\":false,\"color\":\"#41eb41\"},{\"text\":\"a\",\"bold\":true,\"italic\":false,\"color\":\"#46f046\"},{\"text\":\"n\",\"bold\":true,\"italic\":false,\"color\":\"#4bf54b\"},{\"text\":\"a\",\"bold\":true,\"italic\":false,\"color\":\"#50fa50\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#55ff55\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/digging_claws",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/feral_claws",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/power_glove",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/pocket_piston",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/antidote_vessel",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/steadfast_spikes",
+          "weight": 1
         }
       ]
     }

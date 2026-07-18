@@ -1,0 +1,58 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "伝",
+                  "color": "#ffff00",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "説",
+                  "color": "#ffff3f",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "の",
+                  "color": "#ffff7f",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "秘",
+                  "color": "#ffffbf",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "薬",
+                  "color": "#ffffff",
+                  "italic": false,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomPotionColor:16755200, CustomPotionEffects:[{Id:6,Duration:1,Amplifier:2}, {Id:11,Duration:3600,Amplifier:1}],RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

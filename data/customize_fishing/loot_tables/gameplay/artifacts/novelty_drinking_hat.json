@@ -1,0 +1,13 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:novelty_drinking_hat"
+        }
+      ]
+    }
+  ]
+}

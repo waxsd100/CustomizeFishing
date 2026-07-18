@@ -1,0 +1,106 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_sword",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 45,
+                "max": 90
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "黄",
+                  "color": "#ffd700",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "金",
+                  "color": "#ffcc00",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "の",
+                  "color": "#ffc100",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "マ",
+                  "color": "#ffb600",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "グ",
+                  "color": "#ffac00",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ロ",
+                  "color": "#ffa100",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "包",
+                  "color": "#ff9600",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "丁",
+                  "color": "#ff8c00",
+                  "italic": false,
+                  "bold": false
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:sharpness": {
+                  "type": "minecraft:uniform",
+                  "min": 8,
+                  "max": 12
+                },
+                "minecraft:unbreaking": {
+                  "type": "minecraft:uniform",
+                  "min": 6,
+                  "max": 10
+                },
+                "minecraft:looting": {
+                  "type": "minecraft:uniform",
+                  "min": 5,
+                  "max": 9
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

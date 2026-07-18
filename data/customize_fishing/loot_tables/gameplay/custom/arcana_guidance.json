@@ -1,0 +1,97 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:recovery_compass",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 75,
+                "max": 150
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "す",
+                  "color": "#00ffff",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "き",
+                  "color": "#0ee2f0",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "が",
+                  "color": "#1cc6e2",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "き",
+                  "color": "#2aaad4",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "の",
+                  "color": "#388dc6",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "魚",
+                  "color": "#4771b8",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "群",
+                  "color": "#5555aa",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "探",
+                  "color": "#63389c",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "知",
+                  "color": "#711c8e",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "機",
+                  "color": "#800080",
+                  "italic": false,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Enchantments:[{id:\"minecraft:unbreaking\",lvl:1s}],RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

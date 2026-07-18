@@ -1,0 +1,93 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_boots",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 35,
+                "max": 70
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "水",
+                  "color": "#00bfff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "浸",
+                  "color": "#2ccbff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "し",
+                  "color": "#59d8ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "の",
+                  "color": "#86e5ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "長",
+                  "color": "#b3f2ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "靴",
+                  "color": "#e0ffff",
+                  "italic": false,
+                  "bold": false
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:depth_strider": {
+                  "type": "minecraft:uniform",
+                  "min": 3,
+                  "max": 6
+                },
+                "minecraft:unbreaking": {
+                  "type": "minecraft:uniform",
+                  "min": 2,
+                  "max": 5
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:\"minecraft:tide\",material:\"minecraft:copper\"}}"
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

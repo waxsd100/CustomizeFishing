@@ -1,0 +1,100 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "よ",
+                  "color": "#ffd700",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "く",
+                  "color": "#ffd000",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "効",
+                  "color": "#ffc900",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "く",
+                  "color": "#ffc200",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "エ",
+                  "color": "#ffbb00",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ナ",
+                  "color": "#ffb400",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ジ",
+                  "color": "#ffae00",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ー",
+                  "color": "#ffa700",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ド",
+                  "color": "#ffa000",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "リ",
+                  "color": "#ff9900",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ン",
+                  "color": "#ff9200",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ク",
+                  "color": "#ff8c00",
+                  "italic": false,
+                  "bold": false
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomPotionColor:16776960, CustomPotionEffects:[{Id:26,Duration:3600,Amplifier:1}, {Id:13,Duration:3600,Amplifier:0}],RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

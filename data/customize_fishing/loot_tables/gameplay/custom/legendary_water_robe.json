@@ -1,0 +1,113 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 45,
+                "max": 90
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "す",
+                  "color": "#ffd700",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "き",
+                  "color": "#ffce00",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "が",
+                  "color": "#ffc600",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "き",
+                  "color": "#ffbe00",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "の",
+                  "color": "#ffb500",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "特",
+                  "color": "#ffad00",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "製",
+                  "color": "#ffa500",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "カ",
+                  "color": "#ff9c00",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ッ",
+                  "color": "#ff9400",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "パ",
+                  "color": "#ff8c00",
+                  "italic": false,
+                  "bold": false
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": {
+                  "type": "minecraft:uniform",
+                  "min": 6,
+                  "max": 10
+                },
+                "minecraft:depth_strider": {
+                  "type": "minecraft:uniform",
+                  "min": 6,
+                  "max": 10
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:3433983,RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

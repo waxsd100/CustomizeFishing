@@ -1,0 +1,136 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_chestplate",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 130,
+                "max": 260
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "宇",
+                  "color": "#4b0082",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "宙",
+                  "color": "#5a0183",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "素",
+                  "color": "#690384",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "材",
+                  "color": "#780586",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "の",
+                  "color": "#870687",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ダ",
+                  "color": "#960889",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "イ",
+                  "color": "#a50a8a",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ビ",
+                  "color": "#b40b8b",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ン",
+                  "color": "#c30d8d",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "グ",
+                  "color": "#d20f8e",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ス",
+                  "color": "#e11090",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ー",
+                  "color": "#f01291",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ツ",
+                  "color": "#ff1493",
+                  "italic": false,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": {
+                  "type": "minecraft:uniform",
+                  "min": 25,
+                  "max": 38
+                },
+                "minecraft:thorns": {
+                  "type": "minecraft:uniform",
+                  "min": 24,
+                  "max": 37
+                },
+                "minecraft:unbreaking": {
+                  "type": "minecraft:uniform",
+                  "min": 24,
+                  "max": 37
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Trim:{pattern:\"minecraft:silence\",material:\"minecraft:amethyst\",RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

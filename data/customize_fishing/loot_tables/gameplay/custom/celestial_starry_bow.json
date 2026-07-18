@@ -1,0 +1,129 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bow",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 65,
+                "max": 130
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "星",
+                  "color": "#8a2be2",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "空",
+                  "color": "#9526e4",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "の",
+                  "color": "#a122e7",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "コ",
+                  "color": "#ad1eea",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ン",
+                  "color": "#b819ed",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "パ",
+                  "color": "#c415f0",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ウ",
+                  "color": "#d011f3",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ン",
+                  "color": "#db0cf6",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ド",
+                  "color": "#e708f9",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ボ",
+                  "color": "#f304fc",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ウ",
+                  "color": "#ff00ff",
+                  "italic": false,
+                  "bold": false
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:power": {
+                  "type": "minecraft:uniform",
+                  "min": 12,
+                  "max": 18
+                },
+                "minecraft:infinity": {
+                  "type": "minecraft:uniform",
+                  "min": 8,
+                  "max": 14
+                },
+                "minecraft:punch": {
+                  "type": "minecraft:uniform",
+                  "min": 9,
+                  "max": 15
+                },
+                "minecraft:unbreaking": {
+                  "type": "minecraft:uniform",
+                  "min": 10,
+                  "max": 16
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

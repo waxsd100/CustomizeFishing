@@ -1,0 +1,54 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:12632256,Name:'[\"\",{\"text\":\"ボロすきがき釣りセット\",\"italic\":false,\"color\":\"gray\"}]'},RepairCost:1000}"
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "min": 0.7,
+                "max": 0.95
+              },
+              "add": false
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 1,
+                "max": 5
+              },
+              "treasure": false
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 0.5,
+                  "operation": "addition",
+                  "name": "tattered_fishing_luck",
+                  "slot": "chest",
+                  "uuid": [
+                    34,
+                    0,
+                    0,
+                    41
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

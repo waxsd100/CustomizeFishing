@@ -1,0 +1,89 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:trident",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 35,
+                "max": 70
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "す",
+                  "color": "#00bfff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "き",
+                  "color": "#2ccbff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "が",
+                  "color": "#59d8ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "き",
+                  "color": "#86e5ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "の",
+                  "color": "#b3f2ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "銛",
+                  "color": "#e0ffff",
+                  "italic": false,
+                  "bold": false
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:impaling": {
+                  "type": "minecraft:uniform",
+                  "min": 4,
+                  "max": 7
+                },
+                "minecraft:loyalty": {
+                  "type": "minecraft:uniform",
+                  "min": 2,
+                  "max": 5
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "quark:flamerang",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                "",
+                {
+                  "text": "|=|",
+                  "italic": false,
+                  "color": "dark_red"
+                },
+                {
+                  "text": "伝説のフラメラン",
+                  "italic": false,
+                  "color": "dark_red",
+                  "underlined": true
+                },
+                {
+                  "text": "|=|",
+                  "italic": false,
+                  "color": "dark_red"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:fire_aspect": 10,
+                "minecraft:fortune": 1,
+                "minecraft:knockback": 10,
+                "minecraft:looting": 10,
+                "minecraft:loyalty": 10,
+                "minecraft:smite": 10
+              }
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "flameran_luck",
+                  "amount": 2,
+                  "operation": "addition",
+                  "slot": "offhand",
+                  "uuid": [
+                    12,
+                    0,
+                    0,
+                    80
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "flameran_armor",
+                  "amount": 5,
+                  "operation": "addition",
+                  "slot": "offhand",
+                  "uuid": [
+                    12,
+                    0,
+                    0,
+                    60
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_speed",
+                  "name": "flameran_attack_speed",
+                  "amount": 1024,
+                  "operation": "addition",
+                  "slot": "offhand",
+                  "uuid": [
+                    12,
+                    0,
+                    0,
+                    50
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "flameran_max_health",
+                  "amount": 15,
+                  "operation": "addition",
+                  "slot": "offhand",
+                  "uuid": [
+                    12,
+                    0,
+                    0,
+                    10
+                  ]
+                },
+                {
+                  "attribute": "forge:step_height_addition",
+                  "name": "flameran_step_height",
+                  "amount": 2,
+                  "operation": "addition",
+                  "slot": "offhand",
+                  "uuid": [
+                    12,
+                    0,
+                    0,
+                    93
+                  ]
+                },
+                {
+                  "attribute": "forge:swim_speed",
+                  "name": "flameran_swim_speed",
+                  "amount": 4,
+                  "operation": "addition",
+                  "slot": "offhand",
+                  "uuid": [
+                    12,
+                    0,
+                    0,
+                    94
+                  ]
+                },
+                {
+                  "attribute": "forge:block_reach",
+                  "name": "flameran_block_reach",
+                  "amount": 6,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [
+                    11,
+                    0,
+                    0,
+                    95
+                  ]
+                },
+                {
+                  "attribute": "forge:block_reach",
+                  "name": "flameran_block_reach_offhand",
+                  "amount": 6,
+                  "operation": "addition",
+                  "slot": "offhand",
+                  "uuid": [
+                    12,
+                    0,
+                    0,
+                    95
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

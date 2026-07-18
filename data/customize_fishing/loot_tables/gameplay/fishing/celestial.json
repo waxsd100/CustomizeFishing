@@ -2140,6 +2140,47 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/celestial_starry_bow",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/celestial_stardust_elixir",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:red_shulker_box",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/celestial_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#ff5555\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#ff5950\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#ff5d4c\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#ff6148\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#ff6644\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#ff6a3f\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#ff6e3b\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#ff7237\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#ff7733\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#ff7b2e\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#ff7f2a\"},{\"text\":\"C\",\"bold\":true,\"italic\":false,\"color\":\"#ff8326\"},{\"text\":\"e\",\"bold\":true,\"italic\":false,\"color\":\"#ff8822\"},{\"text\":\"l\",\"bold\":true,\"italic\":false,\"color\":\"#ff8c1d\"},{\"text\":\"e\",\"bold\":true,\"italic\":false,\"color\":\"#ff9019\"},{\"text\":\"s\",\"bold\":true,\"italic\":false,\"color\":\"#ff9415\"},{\"text\":\"t\",\"bold\":true,\"italic\":false,\"color\":\"#ff9911\"},{\"text\":\"i\",\"bold\":true,\"italic\":false,\"color\":\"#ff9d0c\"},{\"text\":\"a\",\"bold\":true,\"italic\":false,\"color\":\"#ffa108\"},{\"text\":\"l\",\"bold\":true,\"italic\":false,\"color\":\"#ffa504\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#ffaa00\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/universal_attractor",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/night_vision_goggles",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/obsidian_skull",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/chorus_totem",
+          "weight": 1
         }
       ]
     }

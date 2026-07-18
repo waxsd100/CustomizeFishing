@@ -2,11 +2,41 @@
   "type": "minecraft:fishing",
   "pools": [
     {
-      "rolls": 10,
+      "rolls": 9,
       "entries": [
         {
           "type": "minecraft:loot_table",
           "name": "customize_fishing:gameplay/fishing/beyond"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/fire_gauntlet",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/snorkel",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/aqua_dashers",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/helium_flamingo",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/mimic_spawn_egg",
+          "weight": 1
         }
       ]
     }

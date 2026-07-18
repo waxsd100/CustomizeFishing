@@ -1,0 +1,114 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_chestplate",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 35,
+                "max": 70
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "フ",
+                  "color": "#00bfff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ジ",
+                  "color": "#16c5ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ツ",
+                  "color": "#2ccbff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ボ",
+                  "color": "#43d2ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "だ",
+                  "color": "#59d8ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "ら",
+                  "color": "#70dfff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "け",
+                  "color": "#86e5ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "の",
+                  "color": "#9cebff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "胸",
+                  "color": "#b3f2ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "当",
+                  "color": "#c9f8ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "て",
+                  "color": "#e0ffff",
+                  "italic": false,
+                  "bold": false
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:protection": {
+                  "type": "minecraft:uniform",
+                  "min": 2,
+                  "max": 5
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:cloud_in_a_bottle"
+        }
+      ]
+    }
+  ]
+}

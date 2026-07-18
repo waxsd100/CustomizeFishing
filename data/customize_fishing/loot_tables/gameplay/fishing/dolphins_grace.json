@@ -41,6 +41,17 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:blue_shulker_box",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/dolphins_grace_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#55ffff\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#55f8ff\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#55f1ff\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#55eaff\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#55e3ff\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#55ddff\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#55d6ff\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#55cfff\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#55c8ff\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#55c1ff\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#55bbff\"},{\"text\":\"D\",\"bold\":true,\"italic\":false,\"color\":\"#55b4ff\"},{\"text\":\"o\",\"bold\":true,\"italic\":false,\"color\":\"#55adff\"},{\"text\":\"l\",\"bold\":true,\"italic\":false,\"color\":\"#55a6ff\"},{\"text\":\"p\",\"bold\":true,\"italic\":false,\"color\":\"#559fff\"},{\"text\":\"h\",\"bold\":true,\"italic\":false,\"color\":\"#5599ff\"},{\"text\":\"i\",\"bold\":true,\"italic\":false,\"color\":\"#5592ff\"},{\"text\":\"n\",\"bold\":true,\"italic\":false,\"color\":\"#558bff\"},{\"text\":\"s\",\"bold\":true,\"italic\":false,\"color\":\"#5584ff\"},{\"text\":\" \",\"bold\":true,\"italic\":false,\"color\":\"#557dff\"},{\"text\":\"G\",\"bold\":true,\"italic\":false,\"color\":\"#5577ff\"},{\"text\":\"r\",\"bold\":true,\"italic\":false,\"color\":\"#5570ff\"},{\"text\":\"a\",\"bold\":true,\"italic\":false,\"color\":\"#5569ff\"},{\"text\":\"c\",\"bold\":true,\"italic\":false,\"color\":\"#5562ff\"},{\"text\":\"e\",\"bold\":true,\"italic\":false,\"color\":\"#555bff\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#5555ff\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
+            }
+          ]
         }
       ]
     }

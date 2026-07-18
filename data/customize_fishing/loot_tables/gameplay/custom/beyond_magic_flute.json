@@ -1,0 +1,67 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:goat_horn",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 90,
+                "max": 180
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "伝",
+                  "color": "#c0c0c0",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "説",
+                  "color": "#9090b2",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "の",
+                  "color": "#6060a5",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "角",
+                  "color": "#303098",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "笛",
+                  "color": "#00008b",
+                  "italic": false,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{instrument:\"minecraft:ponder_goat_horn\", Enchantments:[{id:\"minecraft:unbreaking\",lvl:3s}],RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

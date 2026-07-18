@@ -1,0 +1,94 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:shield",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 35,
+                "max": 70
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "流",
+                  "color": "#00bfff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "木",
+                  "color": "#25c9ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "で",
+                  "color": "#4ad4ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "作",
+                  "color": "#70dfff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "っ",
+                  "color": "#95e9ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "た",
+                  "color": "#baf4ff",
+                  "italic": false,
+                  "bold": false
+                },
+                {
+                  "text": "盾",
+                  "color": "#e0ffff",
+                  "italic": false,
+                  "bold": false
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:unbreaking": {
+                  "type": "minecraft:uniform",
+                  "min": 4,
+                  "max": 7
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{BlockEntityTag:{Base:11,Patterns:[{Pattern:\"cre\",Color:0},{Pattern:\"gra\",Color:8},{Pattern:\"bo\",Color:7}]}"
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "golden_foods:enchanted_golden_cooked_mutton"
+        }
+      ]
+    }
+  ]
+}

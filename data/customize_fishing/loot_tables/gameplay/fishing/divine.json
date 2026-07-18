@@ -497,6 +497,47 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/divine_thunder_spear",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/divine_aegis_shield",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/divine_tears",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:magenta_shulker_box",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/divine_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#aa00aa\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#af05af\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#b40ab4\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#b90fb9\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#be14be\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#c319c3\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#c81ec8\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#cd23cd\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#d228d2\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#d72dd7\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#dc32dc\"},{\"text\":\"D\",\"bold\":true,\"italic\":false,\"color\":\"#e137e1\"},{\"text\":\"i\",\"bold\":true,\"italic\":false,\"color\":\"#e63ce6\"},{\"text\":\"v\",\"bold\":true,\"italic\":false,\"color\":\"#eb41eb\"},{\"text\":\"i\",\"bold\":true,\"italic\":false,\"color\":\"#f046f0\"},{\"text\":\"n\",\"bold\":true,\"italic\":false,\"color\":\"#f54bf5\"},{\"text\":\"e\",\"bold\":true,\"italic\":false,\"color\":\"#fa50fa\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#ff55ff\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/vampiric_glove",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/lucky_scarf",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/cross_necklace",
+          "weight": 1
         }
       ]
     }

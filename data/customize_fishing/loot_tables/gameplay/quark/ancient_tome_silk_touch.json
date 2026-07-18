@@ -1,0 +1,20 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "quark:ancient_tome",
+          "weight": 15,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{StoredEnchantments:[{id:\"minecraft:silk_touch\",lvl:2s}]}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,496 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:wooden_sword",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 20,
+                "max": 30
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:stone_sword",
+          "weight": 70,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 18,
+                "max": 28
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.45
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_sword",
+          "weight": 50,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 15,
+                "max": 25
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_sword",
+          "weight": 35,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 10,
+                "max": 20
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_sword",
+          "weight": 12,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 5,
+                "max": 15
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:wooden_axe",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 20,
+                "max": 30
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:stone_axe",
+          "weight": 35,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 18,
+                "max": 28
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.45
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_axe",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 15,
+                "max": 25
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_axe",
+          "weight": 15,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 10,
+                "max": 20
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_axe",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 5,
+                "max": 15
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bow",
+          "weight": 50,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 10,
+                "max": 20
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:crossbow",
+          "weight": 45,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.4,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 10,
+                "max": 20
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "farmersdelight:skillet",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.3,
+                "max": 0.8
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 5,
+                "max": 15
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:trident",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.3,
+                "max": 0.8
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 5,
+                "max": 15
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.2
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_sword",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.3,
+                "max": 0.7
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 5,
+                "max": 10
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_axe",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.3,
+                "max": 0.7
+              }
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": false,
+              "levels": {
+                "min": 5,
+                "max": 10
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.15
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/rare_knight_sword",
+          "weight": 18
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/rare_deep_sea_trident",
+          "weight": 18
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/legendary_pirate_cutlass",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/immortal_phoenix_sword",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/beyond_meteor_axe",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/celestial_starry_bow",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/divine_thunder_spear",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

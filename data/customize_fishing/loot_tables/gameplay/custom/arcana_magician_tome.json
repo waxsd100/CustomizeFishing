@@ -1,0 +1,109 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 75,
+                "max": 150
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "門",
+                  "color": "#00ffff",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "外",
+                  "color": "#0be7f3",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "不",
+                  "color": "#17d0e7",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "出",
+                  "color": "#22b9dc",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "の",
+                  "color": "#2ea2d0",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "釣",
+                  "color": "#3a8bc5",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "り",
+                  "color": "#4573b9",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "マ",
+                  "color": "#515cae",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ニ",
+                  "color": "#5d45a2",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ュ",
+                  "color": "#682e97",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ア",
+                  "color": "#74178b",
+                  "italic": false,
+                  "bold": true
+                },
+                {
+                  "text": "ル",
+                  "color": "#800080",
+                  "italic": false,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{StoredEnchantments:[{id:\"minecraft:mending\",lvl:1s},{id:\"minecraft:unbreaking\",lvl:3s},{id:\"minecraft:efficiency\",lvl:5s}],RepairCost:1000}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

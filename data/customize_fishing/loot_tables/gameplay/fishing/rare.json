@@ -374,8 +374,17 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:gold_block",
-          "weight": 1
+          "name": "minecraft:diamond_ore",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
@@ -390,11 +399,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:amethyst_block",
-          "weight": 1
         },
         {
           "type": "minecraft:item",
@@ -1079,62 +1083,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:iron_ore",
-          "weight": 12,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 2,
-                "max": 8
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:copper_ore",
-          "weight": 15,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 3,
-                "max": 10
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:coal_ore",
-          "weight": 18,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 3,
-                "max": 12
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:gold_ore",
-          "weight": 8,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 5
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:name_tag",
           "weight": 1
         },
@@ -1416,31 +1364,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:coal_block",
-          "weight": 22
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:iron_block",
-          "weight": 18
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:copper_block",
-          "weight": 16
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:redstone_block",
-          "weight": 14
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:lapis_block",
-          "weight": 11
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:emerald_block",
           "weight": 20,
           "functions": [
@@ -1452,6 +1375,152 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/bottled_cloud",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/crab_bucket",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/gold_bars",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/rope",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/seed_pouch",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/trowel",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/abacus_custom",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/bottled_cloud",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/crab_bucket",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/gold_bars",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/ravager_hide",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/rope",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/seed_pouch",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/quark/trowel",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/rare_knight_sword",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/rare_coral_boots",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/rare_benthic_helmet",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/rare_guardian_shield",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/rare_deep_sea_trident",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/rare_regeneration_potion",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/rare_old_iron_chestplate",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:lime_shulker_box",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:32,BlockEntityTag:{LootTable:\"customize_fishing:gameplay/fishing/rare_10\"},display:{Name:'[\"\",{\"text\":\"1\",\"bold\":true,\"italic\":false,\"color\":\"#55ff55\"},{\"text\":\"0\",\"bold\":true,\"italic\":false,\"color\":\"#4ff94f\"},{\"text\":\"連\",\"bold\":true,\"italic\":false,\"color\":\"#49f349\"},{\"text\":\"ガ\",\"bold\":true,\"italic\":false,\"color\":\"#44ee44\"},{\"text\":\"チ\",\"bold\":true,\"italic\":false,\"color\":\"#3ee83e\"},{\"text\":\"ャ\",\"bold\":true,\"italic\":false,\"color\":\"#38e238\"},{\"text\":\"ボ\",\"bold\":true,\"italic\":false,\"color\":\"#33dd33\"},{\"text\":\"ッ\",\"bold\":true,\"italic\":false,\"color\":\"#2dd72d\"},{\"text\":\"ク\",\"bold\":true,\"italic\":false,\"color\":\"#27d127\"},{\"text\":\"ス\",\"bold\":true,\"italic\":false,\"color\":\"#22cc22\"},{\"text\":\"(\",\"bold\":true,\"italic\":false,\"color\":\"#1cc61c\"},{\"text\":\"R\",\"bold\":true,\"italic\":false,\"color\":\"#16c016\"},{\"text\":\"a\",\"bold\":true,\"italic\":false,\"color\":\"#11bb11\"},{\"text\":\"r\",\"bold\":true,\"italic\":false,\"color\":\"#0bb50b\"},{\"text\":\"e\",\"bold\":true,\"italic\":false,\"color\":\"#05af05\"},{\"text\":\")\",\"bold\":true,\"italic\":false,\"color\":\"#00aa00\"}]',Lore:['[{\"text\":\"置くだけで使えるワクワクガチャガチャ\",\"italic\":false,\"color\":\"yellow\"}]']}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/anglers_hat",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/cowboy_hat",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/onion_ring",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/novelty_drinking_hat",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/plastic_drinking_hat",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/artifacts/pickaxe_heater",
+          "weight": 1
         }
       ]
     }
