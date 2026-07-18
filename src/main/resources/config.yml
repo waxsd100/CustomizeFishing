@@ -119,7 +119,7 @@ categories:
       min_total_luck: 16              # 総幸運値16以上
       weather:
         - "thunder"
-    chance: 0.01
+    chance: 0.000005
 
   cosmic:
     enabled: true
