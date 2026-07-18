@@ -6,6 +6,7 @@ import io.wax100.customizeFishing.CustomizeFishing;
 import io.wax100.customizeFishing.binding.BindingCurseManager;
 import io.wax100.customizeFishing.debug.DebugFishingRod;
 import io.wax100.customizeFishing.debug.DebugLogger;
+import io.wax100.customizeFishing.enchant.EnchantLimiter;
 import io.wax100.customizeFishing.enums.Weather;
 import io.wax100.customizeFishing.luck.LuckResult;
 import io.wax100.customizeFishing.timing.TimingResult;
@@ -52,14 +53,16 @@ public class FishingProcessor {
     private final BindingCurseManager bindingCurseManager;
     private final CategorySelector categorySelector;
     private final ProbabilityCalculator probabilityCalculator;
+    private final EnchantLimiter enchantLimiter;
     private final Random random;
 
-    public FishingProcessor(CustomizeFishing plugin, DebugLogger debugLogger, BindingCurseManager bindingCurseManager, CategorySelector categorySelector, ProbabilityCalculator probabilityCalculator) {
+    public FishingProcessor(CustomizeFishing plugin, DebugLogger debugLogger, BindingCurseManager bindingCurseManager, CategorySelector categorySelector, ProbabilityCalculator probabilityCalculator, EnchantLimiter enchantLimiter) {
         this.plugin = plugin;
         this.debugLogger = debugLogger;
         this.bindingCurseManager = bindingCurseManager;
         this.categorySelector = categorySelector;
         this.probabilityCalculator = probabilityCalculator;
+        this.enchantLimiter = enchantLimiter;
         this.random = new Random();
     }
 
@@ -143,6 +146,8 @@ public class FishingProcessor {
                         UniqueProcessingResult result = handleUniqueItemProcessing(selectedItem, player, category, conditionsCache);
                         selectedItem = result.item();
                         category = result.category();
+
+                        selectedItem = enchantLimiter.clampItemEnchants(selectedItem);
 
                         bindingCurseManager.setItemOwner(selectedItem, player);
                         itemEntity.setItemStack(selectedItem);

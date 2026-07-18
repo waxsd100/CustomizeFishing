@@ -4,6 +4,7 @@ import io.wax100.customizeFishing.CustomizeFishing;
 import io.wax100.customizeFishing.binding.BindingCurseManager;
 import io.wax100.customizeFishing.debug.DebugLogger;
 import io.wax100.customizeFishing.effects.CatchEffects;
+import io.wax100.customizeFishing.enchant.EnchantLimiter;
 import io.wax100.customizeFishing.enums.Weather;
 import io.wax100.customizeFishing.fishing.CategorySelector;
 import io.wax100.customizeFishing.fishing.DoubleFishingHandler;
@@ -24,6 +25,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Objects;
 
@@ -35,6 +37,7 @@ public class FishingListener implements Listener {
     private final FishingProcessor fishingProcessor;
     private final DoubleFishingHandler doubleFishingHandler;
     private final TimingHandler timingHandler;
+    private final EnchantLimiter enchantLimiter;
 
     public FishingListener(CustomizeFishing plugin) {
         this.plugin = plugin;
@@ -45,7 +48,8 @@ public class FishingListener implements Listener {
 
         CategorySelector categorySelector = new CategorySelector(plugin, debugLogger);
         ProbabilityCalculator probabilityCalculator = new ProbabilityCalculator(plugin);
-        this.fishingProcessor = new FishingProcessor(plugin, debugLogger, bindingCurseManager, categorySelector, probabilityCalculator);
+        this.enchantLimiter = new EnchantLimiter(plugin);
+        this.fishingProcessor = new FishingProcessor(plugin, debugLogger, bindingCurseManager, categorySelector, probabilityCalculator, enchantLimiter);
         this.doubleFishingHandler = new DoubleFishingHandler(plugin, fishingProcessor, categorySelector, catchEffects);
         this.timingHandler = new TimingHandler(plugin, debugLogger);
     }
@@ -64,6 +68,8 @@ public class FishingListener implements Listener {
         if (state == PlayerFishEvent.State.FISHING) {
             // 釣りを開始した時点でログ開始
             debugLogger.logFishingStart(player);
+            // 入れ食いLv6以上の竿でも浮きが沈むように待ち時間を補正
+            enchantLimiter.applyLureBehaviorCap(event.getHook(), getFishingRod(player));
             return;
         }
 
@@ -128,6 +134,25 @@ public class FishingListener implements Listener {
 
         timingHandler.displayTimingAtHook(hookLocation, timingResult);
         debugLogger.logFishingEnd(player);
+    }
+
+
+    /**
+     * プレイヤーが使用中の釣り竿を取得する（メインハンド優先、なければオフハンド）
+     *
+     * @param player プレイヤー
+     * @return 釣り竿のItemStack。どちらの手にも無い場合はメインハンドのアイテム
+     */
+    private ItemStack getFishingRod(Player player) {
+        ItemStack mainHand = player.getInventory().getItemInMainHand();
+        if (mainHand.getType() == Material.FISHING_ROD) {
+            return mainHand;
+        }
+        ItemStack offHand = player.getInventory().getItemInOffHand();
+        if (offHand.getType() == Material.FISHING_ROD) {
+            return offHand;
+        }
+        return mainHand;
     }
 
 
