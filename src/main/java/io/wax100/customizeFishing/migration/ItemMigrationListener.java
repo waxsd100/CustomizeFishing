@@ -25,6 +25,7 @@ import org.bukkit.inventory.PlayerInventory;
 public class ItemMigrationListener implements Listener {
 
 
+    private static final String LEGENDARY_ROD_NAME = "伝説釣り竿?";
     private static final int OLD_LURE_LEVEL = 127;
     private static final int NEW_LURE_LEVEL = -128;
 
@@ -100,15 +101,15 @@ public class ItemMigrationListener implements Listener {
     }
 
     /**
-     * 旧仕様の伝説釣り竿?（lure:127）であれば lure:-128 に変換する。
+     * 旧仕様の「伝説釣り竿?」（lure:127）であれば lure:-128 に変換する。
      * <p>
-     * 判定基準: 入れ食いLv127 かつ 修繕エンチャントなし。
-     * GODの釣り竿（lure:127）は修繕Lv5を持つため誤変換されない。
-     * アイテム名ではなくエンチャント構成で判定するので、金床リネーム済みの竿もすり抜けない。
+     * 判定基準: アイテム名に「伝説釣り竿?」を含み、かつ入れ食いLv127。
+     * 伝説釣り竿?を狙い撃ちすることで、GODの釣り竿など他のlure:127アイテムを誤変換しない。
      *
      * @param item 検査対象アイテム
      * @return マイグレーションを実行した場合 true
      */
+    @SuppressWarnings("deprecation")
     private boolean migrateIfLegendaryRod(ItemStack item) {
         if (item == null || item.getType() != Material.FISHING_ROD) {
             return false;
@@ -120,8 +121,15 @@ public class ItemMigrationListener implements Listener {
             return false;
         }
 
-        // GODの釣り竿は修繕(mending)を持つので除外
-        if (item.getEnchantmentLevel(Enchantment.MENDING) > 0) {
+        // アイテム名に「伝説釣り竿?」を含むかチェック
+        if (!item.hasItemMeta()) {
+            return false;
+        }
+        var meta = item.getItemMeta();
+        if (meta == null || !meta.hasDisplayName()) {
+            return false;
+        }
+        if (!meta.getDisplayName().contains(LEGENDARY_ROD_NAME)) {
             return false;
         }
 
