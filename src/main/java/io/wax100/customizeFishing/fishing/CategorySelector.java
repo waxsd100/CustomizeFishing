@@ -60,8 +60,9 @@ public class CategorySelector {
             int priority = categorySection.getInt("priority", 999);
             double quality = categorySection.getDouble("quality", 0);
             double chance = categorySection.getDouble("chance", 0);
+            double minTotalLuck = categorySection.getDouble("conditions.min_total_luck", 0);
 
-            categories.add(new CategoryData(categoryName, priority, quality, chance));
+            categories.add(new CategoryData(categoryName, priority, quality, chance, minTotalLuck));
         }
 
         if (categories.isEmpty()) {
@@ -69,11 +70,13 @@ public class CategorySelector {
         }
 
         double totalLuck = luckResult.getTotalLuck(plugin);
+        LuckAdjustment luckAdjustment = LuckAdjustment.fromConfig(plugin);
 
         List<CategoryData> adjustedCategories = new ArrayList<>();
 
         for (CategoryData category : categories) {
-            double adjustedChance = calculateAdjustedChance(category.chance(), category.quality(), totalLuck);
+            double adjustedChance = luckAdjustment.calculateAdjustedChance(
+                    category.chance(), category.quality(), totalLuck, category.minTotalLuck());
 
             if (adjustedChance <= 0) {
                 debugLogger.logCategoryDetails(
@@ -83,7 +86,7 @@ public class CategorySelector {
                 continue;
             }
 
-            adjustedCategories.add(new CategoryData(category.name(), category.priority(), category.quality(), adjustedChance));
+            adjustedCategories.add(new CategoryData(category.name(), category.priority(), category.quality(), adjustedChance, category.minTotalLuck()));
 
             debugLogger.logCategoryDetails(
                     player, category.name() + " ✓", category.priority(), category.quality(),
@@ -230,50 +233,14 @@ public class CategorySelector {
     }
 
     /**
-     * 確率補正を計算（改良版：乗算型 + 対数減衰で極端な増加を防止）
-     *
-     * @param baseChance 基本確率
-     * @param quality    品質値
-     * @param totalLuck  総幸運値
-     * @return 補正後の確率
-     */
-    private double calculateAdjustedChance(double baseChance, double quality, double totalLuck) {
-        if (totalLuck == 0 || quality == 0) {
-            return baseChance;
-        }
-
-        if (totalLuck > 0) {
-            if (quality > 0) {
-                double maxMultiplier = plugin.getConfig().getDouble("luck_adjustment.max_multiplier", 3.0);
-                double luckScale = plugin.getConfig().getDouble("luck_adjustment.luck_scale", 0.1);
-                double qualityImpact = plugin.getConfig().getDouble("luck_adjustment.quality_impact", 0.5);
-
-                double scaledLuck = Math.log1p(totalLuck * luckScale);
-                double qualityFactor = Math.log1p(quality * qualityImpact);
-
-                double multiplier = 1.0 + (scaledLuck * qualityFactor);
-                multiplier = Math.min(multiplier, maxMultiplier);
-
-                return baseChance * multiplier;
-            } else {
-                return baseChance;
-            }
-        } else {
-            double penaltyScale = plugin.getConfig().getDouble("luck_adjustment.penalty_scale", 0.05);
-            double penalty = Math.abs(totalLuck) * penaltyScale * quality;
-
-            return Math.max(baseChance - penalty, 0.0);
-        }
-    }
-
-    /**
      * カテゴリ情報を保持するレコード
      *
-     * @param name     カテゴリ名
-     * @param priority 優先度
-     * @param quality  品質値
-     * @param chance   確率
+     * @param name         カテゴリ名
+     * @param priority     優先度
+     * @param quality      品質値
+     * @param chance       確率
+     * @param minTotalLuck 解禁に必要な総幸運値（conditions.min_total_luck）
      */
-    public record CategoryData(String name, int priority, double quality, double chance) {
+    public record CategoryData(String name, int priority, double quality, double chance, double minTotalLuck) {
     }
 }

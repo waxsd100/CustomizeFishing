@@ -15,7 +15,7 @@ enchant_limits:
   # 釣り上げたアイテムに付与されるエンチャントの上限（生成時にこのレベルへ切り詰める）
   # キー: エンチャントID、値: 最大レベル
   item_caps:
-    # minecraft:lure: 5           # 例: 入れ食いを配布時にLv5へ切り詰める場合
+  # minecraft:lure: 5           # 例: 入れ食いを配布時にLv5へ切り詰める場合
   # バニラが正常動作する入れ食いの上限レベル
   # これを超える竿（Lv6以上）はバニラでは浮きが一切沈まなくなるため、プラグインが待ち時間を独自計算する:
   # Lv5相当(1〜100tick)を基準に超過1レベルごとに最大待ち時間を1tick短縮、Lv105以上でほぼ着水即ヒット
@@ -124,7 +124,7 @@ categories:
       min_total_luck: 16              # 総幸運値16以上
       weather:
         - "thunder"
-    chance: 0.05
+    chance: 0.01
 
   cosmic:
     enabled: true
@@ -177,7 +177,7 @@ categories:
         - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
-    chance: 0.1
+    chance: 0.05
 
   arcana:
     enabled: true
@@ -191,7 +191,7 @@ categories:
         - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
-    chance: 0.5
+    chance: 0.15
 
   immortal:
     enabled: true
@@ -205,7 +205,7 @@ categories:
         - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
-    chance: 1
+    chance: 0.2
 
   # ===== 中レア度 =====
   legendary:
@@ -220,7 +220,7 @@ categories:
         - "clear"                     # 全天候対応
         - "rain"
         - "thunder"
-    chance: 5
+    chance: 2
 
   rare:
     enabled: true
@@ -306,6 +306,14 @@ luck_adjustment:
   luck_scale: 0.1          # 運の影響度（小さいほど緩やか）
   quality_impact: 0.5      # 品質の影響度（小さいほど緩やか）
   penalty_scale: 0.05      # 負の運のペナルティ度
+  # しきい値ランプ: min_total_luck を持つカテゴリは解禁した瞬間に満額の重みで抽選されるのではなく、
+  # しきい値をどれだけ超えているかに応じて重みが徐々に増える（段差解禁の防止）
+  # 重み係数 = min_factor + (1 - min_factor) × min(1, (総幸運値 - min_total_luck) / range)
+  # 例（range 8, min_factor 0.05）: god（min_total_luck 16）は幸運16で重み5%、20で約53%、24以上で100%
+  threshold_ramp:
+    enabled: true
+    range: 8.0        # 満額の重みに達するまでに必要な超過幸運値
+    min_factor: 0.05  # 解禁直後（総幸運値 = min_total_luck）の重み係数
 
 # エフェクト設定
 effects:

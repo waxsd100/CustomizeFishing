@@ -38,7 +38,8 @@ public class ProbabilityCalculator {
 
         double baseChance = categorySection.getDouble("chance", 0.0);
         double quality = categorySection.getDouble("quality", 0.0);
-        String probabilityText = getProbabilityText(luckResult, baseChance, quality);
+        double minTotalLuck = categorySection.getDouble("conditions.min_total_luck", 0.0);
+        String probabilityText = getProbabilityText(luckResult, baseChance, quality, minTotalLuck);
 
         String bonusText = buildBonusText(luckResult, weather, timingResult);
 
@@ -48,15 +49,17 @@ public class ProbabilityCalculator {
     /**
      * 確率テキストを生成する
      *
-     * @param luckResult 幸運計算結果
-     * @param baseChance 基本確率
-     * @param quality    品質値
+     * @param luckResult   幸運計算結果
+     * @param baseChance   基本確率
+     * @param quality      品質値
+     * @param minTotalLuck カテゴリの解禁しきい値
      * @return 確率テキスト
      */
-    private String getProbabilityText(LuckResult luckResult, double baseChance, double quality) {
+    private String getProbabilityText(LuckResult luckResult, double baseChance, double quality, double minTotalLuck) {
         double totalLuck = luckResult.getTotalLuck(plugin);
 
-        double adjustedChance = calculateAdjustedChance(baseChance, quality, totalLuck);
+        double adjustedChance = LuckAdjustment.fromConfig(plugin)
+                .calculateAdjustedChance(baseChance, quality, totalLuck, minTotalLuck);
 
         String probabilityText;
         if (adjustedChance <= 0) {
@@ -197,42 +200,5 @@ public class ProbabilityCalculator {
         }
 
         return " " + ChatColor.GOLD + "タイミング+" + String.format("%.2f%%", luckResult.timingLuck());
-    }
-
-    /**
-     * 確率補正を計算
-     *
-     * @param baseChance 基本確率
-     * @param quality    品質値
-     * @param totalLuck  総幸運値
-     * @return 補正後の確率
-     */
-    private double calculateAdjustedChance(double baseChance, double quality, double totalLuck) {
-        if (totalLuck == 0 || quality == 0) {
-            return baseChance;
-        }
-
-        if (totalLuck > 0) {
-            if (quality > 0) {
-                double maxMultiplier = plugin.getConfig().getDouble("luck_adjustment.max_multiplier", 3.0);
-                double luckScale = plugin.getConfig().getDouble("luck_adjustment.luck_scale", 0.1);
-                double qualityImpact = plugin.getConfig().getDouble("luck_adjustment.quality_impact", 0.5);
-
-                double scaledLuck = Math.log1p(totalLuck * luckScale);
-                double qualityFactor = Math.log1p(quality * qualityImpact);
-
-                double multiplier = 1.0 + (scaledLuck * qualityFactor);
-                multiplier = Math.min(multiplier, maxMultiplier);
-
-                return baseChance * multiplier;
-            } else {
-                return baseChance;
-            }
-        } else {
-            double penaltyScale = plugin.getConfig().getDouble("luck_adjustment.penalty_scale", 0.05);
-            double penalty = Math.abs(totalLuck) * penaltyScale * quality;
-
-            return Math.max(baseChance - penalty, 0.0);
-        }
     }
 }
