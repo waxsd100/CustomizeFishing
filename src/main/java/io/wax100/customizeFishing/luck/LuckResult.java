@@ -27,7 +27,7 @@ public record LuckResult(
         double perLevel = 0.10;
         int maxLevel = 10;
         int baseLevels = 10;
-        double extendedPerLevel = 0.0;
+        double extendedLogScale = 0.0;
         int specialMinLevel = 127;
         boolean specialEnabled = true;
         boolean conduitMultiplierEnabled = true;
@@ -37,16 +37,18 @@ public record LuckResult(
             perLevel = plugin.getConfig().getDouble("luck_effects.luck_of_the_sea.per_level", 0.10);
             maxLevel = plugin.getConfig().getInt("luck_effects.luck_of_the_sea.max_level", 10);
             baseLevels = plugin.getConfig().getInt("luck_effects.luck_of_the_sea.base_levels", Math.min(10, maxLevel));
-            extendedPerLevel = plugin.getConfig().getDouble("luck_effects.luck_of_the_sea.extended_per_level", 0.0);
+            extendedLogScale = plugin.getConfig().getDouble("luck_effects.luck_of_the_sea.extended_log_scale", 0.0);
             specialEnabled = plugin.getConfig().getBoolean("luck_effects.luck_of_the_sea.special_bonus.enabled", true);
             specialMinLevel = plugin.getConfig().getInt("luck_effects.luck_of_the_sea.special_bonus.min_level", 127);
             conduitMultiplierEnabled = plugin.getConfig().getBoolean("luck_effects.luck_of_the_sea.special_bonus.conduit_multiplier", true);
         }
 
-        // 基本ボーナス計算: base_levels まではフルレート、超過分は逓減レートで max_level まで効果が伸びる
+        // 基本ボーナス計算: base_levels までは線形、超過分は対数カーブで max_level まで緩やかに伸びる
         int effectiveLevel = Math.min(maxLevel, luckOfTheSeaLevel);
-        double bonus = Math.min(baseLevels, effectiveLevel) * perLevel
-                + Math.max(0, effectiveLevel - baseLevels) * extendedPerLevel;
+        double bonus = Math.min(baseLevels, effectiveLevel) * perLevel;
+        if (effectiveLevel > baseLevels && extendedLogScale > 0) {
+            bonus += extendedLogScale * Math.log1p(effectiveLevel - baseLevels);
+        }
 
         // 特殊ボーナス（高レベル時）
         if (specialEnabled && luckOfTheSeaLevel >= specialMinLevel) {

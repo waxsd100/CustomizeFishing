@@ -54,14 +54,15 @@ luck_effects:
     min_value: -50     # 最小値（負の値も許可）
   
   # 宝釣りエンチャント
-  # Lv1〜base_levels は per_level、それ以降 max_level までは extended_per_level で逓減しつつ効果が伸びる
-  # 例: Lv10=+5.0 / Lv50=+9.0 / Lv127=+16.7
+  # Lv1〜base_levels は per_level の線形、それ以降 max_level までは対数カーブで緩やかに効果が伸びる
+  # 超過分ボーナス = extended_log_scale × ln(1 + 超過レベル)
+  # 例: Lv10=+5.0 / Lv20=+11.0 / Lv50=+14.3 / Lv127=+16.9
   luck_of_the_sea:
     per_level: 0.50           # レベルごとの幸運ボーナス（%）
     max_level: 127            # 効果が伸びる最大レベル
     min_level: 0              # 最小レベル
     base_levels: 10           # フルレート(per_level)が適用されるレベル範囲
-    extended_per_level: 0.10  # base_levels超過分のレベルごとのボーナス（%）
+    extended_log_scale: 2.5   # base_levels超過分の対数カーブ係数（0で無効）
     # 特殊ボーナス（宝釣りLv127以上）
     special_bonus:
       enabled: true
