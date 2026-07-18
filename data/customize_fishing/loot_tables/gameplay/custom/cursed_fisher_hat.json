@@ -1,0 +1,114 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1024,HideFlags:2,display:{color:2039583}}"
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1,
+                "minecraft:vanishing_curse": 1
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "呪われた漁師の帽子",
+                  "color": "dark_purple",
+                  "italic": false,
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                [
+                  "",
+                  {
+                    "text": "幸運 ",
+                    "italic": false,
+                    "color": "gray"
+                  },
+                  {
+                    "text": "-25",
+                    "italic": false,
+                    "underlined": true,
+                    "color": "dark_red"
+                  }
+                ],
+                [
+                  "",
+                  {
+                    "text": "移動速度 ",
+                    "italic": false,
+                    "color": "gray"
+                  },
+                  {
+                    "text": "-5%",
+                    "italic": false,
+                    "color": "dark_red"
+                  }
+                ],
+                "",
+                [
+                  "",
+                  {
+                    "text": "被った者に不幸が纏わりつく……",
+                    "italic": true,
+                    "color": "dark_gray"
+                  }
+                ]
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "cursed_hat_luck",
+                  "amount": -25,
+                  "operation": "addition",
+                  "slot": "head",
+                  "uuid": [
+                    90,
+                    0,
+                    0,
+                    20
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "name": "cursed_hat_slowness",
+                  "amount": -0.05,
+                  "operation": "multiply_total",
+                  "slot": "head",
+                  "uuid": [
+                    90,
+                    0,
+                    0,
+                    21
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

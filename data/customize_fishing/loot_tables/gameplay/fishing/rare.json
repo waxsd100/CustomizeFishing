@@ -1413,6 +1413,16 @@
         },
         {
           "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/cursed_fishing_rod",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "customize_fishing:gameplay/custom/cursed_fisher_hat",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
           "name": "customize_fishing:gameplay/quark/bottled_cloud",
           "weight": 1
         },

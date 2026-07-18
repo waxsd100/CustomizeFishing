@@ -1,0 +1,99 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Unbreakable:1b,RepairCost:1024,HideFlags:1,Enchantments:[{id:\"minecraft:luck_of_the_sea\",lvl:-127s},{id:\"minecraft:lure\",lvl:3s},{id:\"minecraft:vanishing_curse\",lvl:1s}]}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "|||",
+                  "italic": false,
+                  "obfuscated": true
+                },
+                {
+                  "text": "呪われた釣り竿",
+                  "color": "dark_red",
+                  "italic": false,
+                  "bold": true,
+                  "underlined": true
+                },
+                {
+                  "text": "|||",
+                  "italic": false,
+                  "obfuscated": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                [
+                  "",
+                  {
+                    "text": "宝釣り ",
+                    "italic": false,
+                    "color": "gray"
+                  },
+                  {
+                    "text": "-127",
+                    "italic": false,
+                    "underlined": true,
+                    "color": "dark_red"
+                  }
+                ],
+                [
+                  "",
+                  {
+                    "text": "入れ食い III",
+                    "italic": false,
+                    "color": "gray"
+                  }
+                ],
+                "",
+                [
+                  "",
+                  {
+                    "text": "……深淵から不幸を釣り上げる",
+                    "italic": true,
+                    "color": "dark_gray"
+                  }
+                ]
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "cursed_rod_luck",
+                  "amount": -5,
+                  "operation": "addition",
+                  "slot": "mainhand",
+                  "uuid": [
+                    90,
+                    0,
+                    0,
+                    10
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
