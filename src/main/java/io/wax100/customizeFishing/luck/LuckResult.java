@@ -72,13 +72,19 @@ public record LuckResult(
     public double getLuckPotionBonus(CustomizeFishing plugin) {
         double perLevel = 0.07; // デフォルト値
         int maxLevel = 10;
+        double extendedLogScale = 0.0;
 
         if (plugin != null) {
             perLevel = plugin.getConfig().getDouble("luck_effects.luck_potion.per_level", 0.07);
             maxLevel = plugin.getConfig().getInt("luck_effects.luck_potion.max_level", 10);
+            extendedLogScale = plugin.getConfig().getDouble("luck_effects.luck_potion.extended_log_scale", 0.0);
         }
 
-        return Math.min(maxLevel, luckPotionLevel) * perLevel;
+        double bonus = Math.min(maxLevel, luckPotionLevel) * perLevel;
+        if (luckPotionLevel > maxLevel && extendedLogScale > 0) {
+            bonus += extendedLogScale * Math.log1p(luckPotionLevel - maxLevel);
+        }
+        return bonus;
     }
 
     /**
@@ -89,13 +95,19 @@ public record LuckResult(
     public double getUnluckPotionPenalty(CustomizeFishing plugin) {
         double perLevel = -0.44; // デフォルト値
         int maxLevel = 10;
+        double extendedLogScale = 0.0;
 
         if (plugin != null) {
             perLevel = plugin.getConfig().getDouble("luck_effects.unluck_potion.per_level", -0.29);
             maxLevel = plugin.getConfig().getInt("luck_effects.unluck_potion.max_level", 10);
+            extendedLogScale = plugin.getConfig().getDouble("luck_effects.unluck_potion.extended_log_scale", 0.0);
         }
 
-        return Math.min(maxLevel, unluckPotionLevel) * perLevel;
+        double penalty = Math.min(maxLevel, unluckPotionLevel) * perLevel;
+        if (unluckPotionLevel > maxLevel && extendedLogScale > 0) {
+            penalty -= extendedLogScale * Math.log1p(unluckPotionLevel - maxLevel);
+        }
+        return penalty;
     }
 
     /**
@@ -123,13 +135,19 @@ public record LuckResult(
     public double getExperienceBonus(CustomizeFishing plugin) {
         double perLevel = 0.01; // デフォルト値
         int maxLevel = 100;
+        double extendedLogScale = 0.0;
 
         if (plugin != null) {
             perLevel = plugin.getConfig().getDouble("luck_effects.experience_level.per_level", 0.01);
             maxLevel = plugin.getConfig().getInt("luck_effects.experience_level.max_level", 100);
+            extendedLogScale = plugin.getConfig().getDouble("luck_effects.experience_level.extended_log_scale", 0.0);
         }
 
-        return Math.min(maxLevel, experienceLevel) * perLevel;
+        double bonus = Math.min(maxLevel, experienceLevel) * perLevel;
+        if (experienceLevel > maxLevel && extendedLogScale > 0) {
+            bonus += extendedLogScale * Math.log1p(experienceLevel - maxLevel);
+        }
+        return bonus;
     }
 
     /**

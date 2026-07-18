@@ -36,22 +36,28 @@ weather_luck:
 # 幸運ポーションと不幸ポーションの影響を定義
 luck_effects:
   # 幸運ポーション効果（正の値）
+  # max_level超過分は extended_log_scale × ln(1 + 超過レベル) で緩やかに伸びる
   luck_potion:
     per_level: 0.35    # レベルごとの幸運ボーナス（%）
-    max_level: 10      # 最大レベル
+    max_level: 10      # 線形で伸びる最大レベル
     min_level: -10     # 最小レベル（負の値も許可）
-  
+    extended_log_scale: 1.0   # max_level超過分の対数カーブ係数（0で無効）
+
   # 不幸ポーション効果（負の値）
+  # max_level超過分は対数カーブでペナルティが緩やかに増加
   unluck_potion:
     per_level: -2.00   # レベルごとの幸運ペナルティ（%）
-    max_level: 10      # 最大レベル
+    max_level: 10      # 線形で伸びる最大レベル
     min_level: 1       # 最小レベル
-  
+    extended_log_scale: 2.0   # max_level超過分の対数カーブ係数（0で無効）
+
   # 装備幸運値
+  # max_value/min_value を超えた分は対数カーブでポイント換算に緩やかに反映（ハードクランプしない）
   equipment_luck:
     per_point: 0.1     # ポイントごとの幸運ボーナス（%）
-    max_value: 100     # 最大値
-    min_value: -50     # 最小値（負の値も許可）
+    max_value: 100     # 線形で反映される最大値
+    min_value: -50     # 線形で反映される最小値（負の値も許可）
+    extended_log_scale: 5.0   # 上限/下限超過分の対数カーブ係数（ポイント換算、0で従来のクランプ）
   
   # 宝釣りエンチャント
   # Lv1〜base_levels は per_level の線形、それ以降 max_level までは対数カーブで緩やかに効果が伸びる
@@ -70,10 +76,12 @@ luck_effects:
       conduit_multiplier: true # コンジットパワーによる倍率適用
   
   # 経験値レベル
+  # max_level超過分は対数カーブで緩やかに伸びる
   experience_level:
     per_level: 0.05    # レベルごとの幸運ボーナス（%）
-    max_level: 100     # 最大レベル
+    max_level: 100     # 線形で伸びる最大レベル
     min_level: 0       # 最小レベル
+    extended_log_scale: 0.5   # max_level超過分の対数カーブ係数（0で無効）
 
 # タイミングシステム設定
 # 浮きが沈んでからの反応時間によるボーナス

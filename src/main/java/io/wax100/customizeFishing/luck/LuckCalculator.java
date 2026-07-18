@@ -217,7 +217,7 @@ public class LuckCalculator {
         // config.ymlの設定に基づいて制限を適用
         double minEquipmentLuck = plugin.getConfig().getDouble("luck_effects.equipment_luck.min_value", -6.0);
         double maxEquipmentLuck = plugin.getConfig().getDouble("luck_effects.equipment_luck.max_value", 6.0);
-
+        double extendedLogScale = plugin.getConfig().getDouble("luck_effects.equipment_luck.extended_log_scale", 0.0);
 
         double finalEquipmentLuck = helmetLuck + chestLuck + legsLuck + bootsLuck + mainHandLuck + offHandLuck;
         debugLogger.logEquipmentLuck(player,
@@ -225,19 +225,19 @@ public class LuckCalculator {
                 mainHandLuck, offHandLuck, finalEquipmentLuck
         );
 
-        // 各装備スロットの幸運値を制限内にクランプ
-        helmetLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, helmetLuck));
-        chestLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, chestLuck));
-        legsLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, legsLuck));
-        bootsLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, bootsLuck));
-        mainHandLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, mainHandLuck));
-        offHandLuck = Math.max(minEquipmentLuck, Math.min(maxEquipmentLuck, offHandLuck));
+        // 各装備スロットの幸運値をソフトクランプ（範囲内は線形、超過分は対数カーブで緩やかに反映）
+        helmetLuck = softClamp(helmetLuck, minEquipmentLuck, maxEquipmentLuck, extendedLogScale);
+        chestLuck = softClamp(chestLuck, minEquipmentLuck, maxEquipmentLuck, extendedLogScale);
+        legsLuck = softClamp(legsLuck, minEquipmentLuck, maxEquipmentLuck, extendedLogScale);
+        bootsLuck = softClamp(bootsLuck, minEquipmentLuck, maxEquipmentLuck, extendedLogScale);
+        mainHandLuck = softClamp(mainHandLuck, minEquipmentLuck, maxEquipmentLuck, extendedLogScale);
+        offHandLuck = softClamp(offHandLuck, minEquipmentLuck, maxEquipmentLuck, extendedLogScale);
         finalEquipmentLuck = helmetLuck + chestLuck + legsLuck + bootsLuck + mainHandLuck + offHandLuck;
 
-        // 合計値も制限内にクランプ
-        double totalMinLuck = minEquipmentLuck * 6; // 6スロット分
+        // 合計値もソフトクランプ（6スロット分）
+        double totalMinLuck = minEquipmentLuck * 6;
         double totalMaxLuck = maxEquipmentLuck * 6;
-        finalEquipmentLuck = Math.max(totalMinLuck, Math.min(totalMaxLuck, finalEquipmentLuck));
+        finalEquipmentLuck = softClamp(finalEquipmentLuck, totalMinLuck, totalMaxLuck, extendedLogScale);
 
         debugLogger.logInfo(player, " FINAL EQUIPMENT LUCK:");
         debugLogger.logEquipmentLuck(player,
@@ -245,6 +245,26 @@ public class LuckCalculator {
                 mainHandLuck, offHandLuck, finalEquipmentLuck
         );
         return finalEquipmentLuck;
+    }
+
+    /**
+     * ソフトクランプ: 範囲内は線形、範囲を超えた分は対数カーブで緩やかに反映する
+     * logScale が 0 以下の場合は従来どおりのハードクランプ
+     *
+     * @param value    入力値
+     * @param min      線形範囲の下限
+     * @param max      線形範囲の上限
+     * @param logScale 超過分の対数カーブ係数
+     * @return 補正後の値
+     */
+    private double softClamp(double value, double min, double max, double logScale) {
+        if (value > max) {
+            return logScale > 0 ? max + logScale * Math.log1p(value - max) : max;
+        }
+        if (value < min) {
+            return logScale > 0 ? min - logScale * Math.log1p(min - value) : min;
+        }
+        return value;
     }
 
     /**
