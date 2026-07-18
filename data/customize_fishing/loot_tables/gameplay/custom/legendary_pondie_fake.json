@@ -1,0 +1,258 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "fishofthieves:pondie_bucket",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 30,
+                "max": 50
+              },
+              "treasure": true
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1,
+                "minecraft:vanishing_curse": 1,
+                "minecraft:luck_of_the_sea": {
+                  "type": "minecraft:uniform",
+                  "min": 3,
+                  "max": 7
+                },
+                "minecraft:lure": {
+                  "type": "minecraft:uniform",
+                  "min": 3,
+                  "max": 6
+                }
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": [
+                {
+                  "text": "",
+                  "italic": false
+                },
+                {
+                  "text": "|||",
+                  "italic": false,
+                  "obfuscated": true
+                },
+                {
+                  "text": "伝",
+                  "color": "#55ffff",
+                  "italic": false,
+                  "bold": true,
+                  "underlined": true
+                },
+                {
+                  "text": "説",
+                  "color": "#66eaff",
+                  "italic": false,
+                  "bold": true,
+                  "underlined": true
+                },
+                {
+                  "text": "?",
+                  "color": "#77d5ff",
+                  "italic": false,
+                  "bold": true,
+                  "underlined": true
+                },
+                {
+                  "text": "の",
+                  "color": "#88c0ff",
+                  "italic": false,
+                  "bold": true,
+                  "underlined": true
+                },
+                {
+                  "text": "ポ",
+                  "color": "#99abff",
+                  "italic": false,
+                  "bold": true,
+                  "underlined": true
+                },
+                {
+                  "text": "ン",
+                  "color": "#aa96ff",
+                  "italic": false,
+                  "bold": true,
+                  "underlined": true
+                },
+                {
+                  "text": "デ",
+                  "color": "#bb81ff",
+                  "italic": false,
+                  "bold": true,
+                  "underlined": true
+                },
+                {
+                  "text": "ィ",
+                  "color": "#cc6cff",
+                  "italic": false,
+                  "bold": true,
+                  "underlined": true
+                },
+                {
+                  "text": "|||",
+                  "italic": false,
+                  "obfuscated": true
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                [
+                  "",
+                  {
+                    "text": "頭に装備すると",
+                    "italic": false,
+                    "color": "white"
+                  },
+                  {
+                    "text": "幸運 ????",
+                    "italic": false,
+                    "underlined": true,
+                    "color": "aqua"
+                  }
+                ],
+                [
+                  "",
+                  {
+                    "text": "左手に持つと",
+                    "italic": false,
+                    "color": "white"
+                  },
+                  {
+                    "text": "攻撃ダメージ ??%",
+                    "italic": false,
+                    "color": "red"
+                  }
+                ],
+                [
+                  "",
+                  {
+                    "text": "右手に持つと",
+                    "italic": false,
+                    "color": "white"
+                  },
+                  {
+                    "text": "幸運 ??%",
+                    "italic": false,
+                    "color": "green"
+                  }
+                ],
+                "",
+                [
+                  "",
+                  {
+                    "text": "……なにか嫌な予感がする",
+                    "italic": true,
+                    "color": "dark_gray"
+                  }
+                ]
+              ]
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "legendary_pondie_fake_head_luck",
+                  "amount": -9999,
+                  "operation": "addition",
+                  "slot": "head",
+                  "uuid": [
+                    89,
+                    0,
+                    0,
+                    1
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.attack_damage",
+                  "name": "legendary_pondie_fake_offhand_damage",
+                  "amount": -0.15,
+                  "operation": "multiply_total",
+                  "slot": "offhand",
+                  "uuid": [
+                    89,
+                    0,
+                    0,
+                    2
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "name": "legendary_pondie_fake_mainhand_luck",
+                  "amount": -0.15,
+                  "operation": "multiply_total",
+                  "slot": "mainhand",
+                  "uuid": [
+                    89,
+                    0,
+                    0,
+                    3
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.movement_speed",
+                  "name": "legendary_pondie_fake_head_slowness",
+                  "amount": -0.15,
+                  "operation": "multiply_total",
+                  "slot": "head",
+                  "uuid": [
+                    89,
+                    0,
+                    0,
+                    4
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.max_health",
+                  "name": "legendary_pondie_fake_head_health",
+                  "amount": -10,
+                  "operation": "addition",
+                  "slot": "head",
+                  "uuid": [
+                    89,
+                    0,
+                    0,
+                    5
+                  ]
+                },
+                {
+                  "attribute": "minecraft:generic.armor",
+                  "name": "legendary_pondie_fake_offhand_armor",
+                  "amount": -5,
+                  "operation": "addition",
+                  "slot": "offhand",
+                  "uuid": [
+                    89,
+                    0,
+                    0,
+                    6
+                  ]
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{RepairCost:1000,HideFlags:2}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
