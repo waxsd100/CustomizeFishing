@@ -117,7 +117,7 @@ categories:
   god:
     enabled: true
     priority: 2
-    quality: 1
+    quality: 0
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 10
@@ -129,7 +129,7 @@ categories:
   cosmic:
     enabled: true
     priority: 3
-    quality: 1
+    quality: 0
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 10
@@ -141,7 +141,7 @@ categories:
   divine:
     enabled: true
     priority: 4
-    quality: 1
+    quality: 0
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 10
@@ -155,7 +155,7 @@ categories:
   celestial:
     enabled: true
     priority: 5
-    quality: 1
+    quality: 0.5
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 6
@@ -168,7 +168,7 @@ categories:
   beyond:
     enabled: true
     priority: 6
-    quality: 1
+    quality: 0.5
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 5         # 宝釣りレベル5以上
@@ -225,7 +225,7 @@ categories:
   rare:
     enabled: true
     priority: 10
-    quality: 2
+    quality: 3
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 3         # 宝釣りレベル3以上
@@ -239,7 +239,7 @@ categories:
   uncommon:
     enabled: true
     priority: 11
-    quality: 2
+    quality: 4
     conditions:
       require_open_water: true       # 開水域不要
       min_luck_of_the_sea: 3         # 宝釣りレベル3以上
@@ -254,7 +254,7 @@ categories:
   common:
     enabled: true
     priority: 12
-    quality: 2
+    quality: 5
     conditions:
       require_open_water: true       # 開水域不要
       weather:
@@ -270,7 +270,7 @@ categories:
   unique:
     enabled: true
     priority: 1
-    quality: 1
+    quality: 0
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 10
