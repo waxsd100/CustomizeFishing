@@ -26,9 +26,10 @@ public class EnchantLimiter {
     // config に lure_exception_levels が無い場合のデフォルト例外
     // （旧configのまま新JARを配置しても伝説釣り竿?のLv127例外が機能するように）
     private static final List<Integer> DEFAULT_LURE_EXCEPTION_LEVELS = List.of(127);
-
+    // バニラの魚接近時間（Phase 2: timeUntilHooked）
+    private static final int VANILLA_MIN_LURE_TIME = 20;
+    private static final int VANILLA_MAX_LURE_TIME = 80;
     private final CustomizeFishing plugin;
-
     // item_caps のキャッシュ（config オブジェクトが変わったとき＝リロード時に再読込）
     private Map<Enchantment, Integer> cachedItemCaps;
     private Configuration cachedItemCapsSource;
@@ -75,15 +76,11 @@ public class EnchantLimiter {
         return item;
     }
 
-    // バニラの魚接近時間（Phase 2: timeUntilHooked）
-    private static final int VANILLA_MIN_LURE_TIME = 20;
-    private static final int VANILLA_MAX_LURE_TIME = 80;
-
     /**
      * 入れ食いLv6以上の竿の浮き待ち時間をプラグイン独自計算で補正する。
      * バニラではLv6以上は待ち時間が常に0以下になり浮きが一切沈まなくなるため、
      * Lv5相当（1〜100tick）を基準に、超過分は1レベルごとに最大待ち時間をさらに1tick短縮する。
-     *
+     * <p>
      * さらに、魚の接近時間（Phase 2: lureTime、バニラでは20〜80tick）も
      * 超過レベルに比例して短縮し、Lv105以上では着水ほぼ即ヒットになる。
      *

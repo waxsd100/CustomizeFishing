@@ -14,20 +14,10 @@ public enum Weather {
         this.configKey = configKey;
     }
 
-
-    /**
-     * コンフィグファイルで使用されるキー名を取得
-     *
-     * @return コンフィグキー
-     */
-    public String getConfigKey() {
-        return configKey;
-    }
-
     /**
      * Bukkitの天気情報から対応するWeatherを取得
      *
-     * @param hasStorm 嵐が発生しているか
+     * @param hasStorm     嵐が発生しているか
      * @param isThundering 雷が鳴っているか
      * @return 対応するWeather
      */
@@ -39,5 +29,14 @@ public enum Weather {
         } else {
             return CLEAR;
         }
+    }
+
+    /**
+     * コンフィグファイルで使用されるキー名を取得
+     *
+     * @return コンフィグキー
+     */
+    public String getConfigKey() {
+        return configKey;
     }
 }

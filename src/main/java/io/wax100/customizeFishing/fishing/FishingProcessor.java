@@ -36,7 +36,8 @@ record FishingConditionsCache(
         Weather weather,
         boolean hasDolphinsGrace,
         Location hookLocation
-) {}
+) {
+}
 
 /**
  * ユニークアイテム処理の結果
@@ -44,7 +45,8 @@ record FishingConditionsCache(
 record UniqueProcessingResult(
         ItemStack item,
         String category
-) {}
+) {
+}
 
 public class FishingProcessor {
 
@@ -199,10 +201,10 @@ public class FishingProcessor {
     /**
      * ユニークアイテムの処理を行う
      *
-     * @param selectedItem    選択されたアイテム
-     * @param player          プレイヤー
+     * @param selectedItem     選択されたアイテム
+     * @param player           プレイヤー
      * @param originalCategory 元のカテゴリ
-     * @param conditionsCache キャッシュされた釣り条件
+     * @param conditionsCache  キャッシュされた釣り条件
      * @return 処理後のアイテムとカテゴリ
      */
     private UniqueProcessingResult handleUniqueItemProcessing(ItemStack selectedItem, Player player, String originalCategory, FishingConditionsCache conditionsCache) {
