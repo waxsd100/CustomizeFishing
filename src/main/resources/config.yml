@@ -21,6 +21,17 @@ enchant_limits:
   # Lv5相当(1〜100tick)を基準に超過1レベルごとに最大待ち時間を1tick短縮、Lv105以上でほぼ着水即ヒット
   lure_behavior_cap: 5
 
+# Jobs (Jobs Reborn) 連携設定
+# 指定した職業に就いているプレイヤーは、釣り抽選時に職業レベルに応じた幸運ポーションLv相当として扱われる
+# 幸運Lv = 職業レベル ÷ levels_per_luck（切り捨て。例: 職業Lv30 → 幸運Lv3、Lv100 → 幸運Lv10）
+# エフェクトは付与しない。実際の幸運ポーションと重複した場合は加算せず高い方を採用
+# 複数の対象職業に就いている場合は最も高い職業レベルを使用
+jobs_luck:
+  enabled: true
+  levels_per_luck: 10    # 幸運Lv+1に必要な職業レベル
+  jobs:                  # 対象の職業名（Jobs側のジョブ名、大文字小文字は無視）
+    - "Fisherman"
+
 # 天気による幸運ボーナス
 # 各天気時に追加される幸運値
 weather_luck:
@@ -34,8 +45,8 @@ luck_effects:
   # 幸運ポーション効果（正の値）
   # max_level超過分は extended_log_scale × ln(1 + 超過レベル) で緩やかに伸びる
   luck_potion:
-    per_level: 0.35    # レベルごとの幸運ボーナス（%）
-    max_level: 10      # 線形で伸びる最大レベル
+    per_level: 1.0    # レベルごとの幸運ボーナス（%）
+    max_level: 5      # 線形で伸びる最大レベル
     extended_log_scale: 1.0   # max_level超過分の対数カーブ係数（0で無効）
 
   # 不幸ポーション効果（負の値）
@@ -48,7 +59,7 @@ luck_effects:
   # 装備幸運値
   # max_value/min_value を超えた分は対数カーブでポイント換算に緩やかに反映（ハードクランプしない）
   equipment_luck:
-    per_point: 0.1     # ポイントごとの幸運ボーナス（%）
+    per_point: 0.15    # ポイントごとの幸運ボーナス（%）
     max_value: 100     # 線形で反映される最大値
     min_value: -50     # 線形で反映される最小値（負の値も許可）
     extended_log_scale: 5.0   # 上限/下限超過分の対数カーブ係数（ポイント換算、0で従来のクランプ）
@@ -71,9 +82,9 @@ luck_effects:
   # 経験値レベル
   # max_level超過分は対数カーブで緩やかに伸びる
   experience_level:
-    per_level: 0.05    # レベルごとの幸運ボーナス（%）
+    per_level: 0.02    # レベルごとの幸運ボーナス（%）
     max_level: 100     # 線形で伸びる最大レベル
-    extended_log_scale: 0.5   # max_level超過分の対数カーブ係数（0で無効）
+    extended_log_scale: 0.25  # max_level超過分の対数カーブ係数（0で無効）
 
 # タイミングシステム設定
 # 浮きが沈んでからの反応時間によるボーナス
@@ -116,7 +127,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 10
-      min_total_luck: 16              # 総幸運値16以上
+      min_total_luck: 14              # 総幸運値14以上
       weather:
         - "thunder"
     chance: 0.000005
@@ -128,7 +139,7 @@ categories:
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 10
-      min_total_luck: 22              # 総幸運値22以上
+      min_total_luck: 20              # 総幸運値20以上
       weather:
         - "thunder"
     chance: 0.0001
@@ -140,7 +151,7 @@ categories:
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 10
-      min_total_luck: 20              # 総幸運値20以上
+      min_total_luck: 18              # 総幸運値18以上
       weather:
         - "rain"
         - "thunder"
@@ -154,7 +165,7 @@ categories:
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 6
-      min_total_luck: 18              # 総幸運値18以上
+      min_total_luck: 16              # 総幸運値16以上
       weather:
         - "rain"
         - "thunder"
@@ -167,7 +178,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 5         # 宝釣りレベル5以上
-      min_total_luck: 14             # 総幸運値14以上
+      min_total_luck: 12             # 総幸運値12以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -181,7 +192,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 5         # 宝釣りレベル5以上
-      min_total_luck: 12             # 総幸運値12以上
+      min_total_luck: 10             # 総幸運値10以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -195,7 +206,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 4         # 宝釣りレベル4以上
-      min_total_luck: 10             # 総幸運値10以上
+      min_total_luck: 8              # 総幸運値8以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -210,7 +221,7 @@ categories:
     conditions:
       require_open_water: true        # 開水域が必要
       min_luck_of_the_sea: 4         # 宝釣りレベル4以上
-      min_total_luck: 7              # 総幸運値7以上
+      min_total_luck: 5              # 総幸運値5以上
       weather:
         - "clear"                     # 全天候対応
         - "rain"
@@ -270,7 +281,7 @@ categories:
     conditions:
       require_open_water: true
       min_luck_of_the_sea: 10
-      min_total_luck: 24              # 総幸運値24以上
+      min_total_luck: 22              # 総幸運値22以上
       weather:
         - "rain"
         - "thunder"
@@ -306,7 +317,7 @@ luck_adjustment:
   # しきい値ランプ: min_total_luck を持つカテゴリは解禁した瞬間に満額の重みで抽選されるのではなく、
   # しきい値をどれだけ超えているかに応じて重みが徐々に増える（段差解禁の防止）
   # 重み係数 = min_factor + (1 - min_factor) × min(1, (総幸運値 - min_total_luck) / range)
-  # 例（range 8, min_factor 0.05）: god（min_total_luck 16）は幸運16で重み5%、20で約53%、24以上で100%
+  # 例（range 8, min_factor 0.05）: god（min_total_luck 14）は幸運14で重み5%、18で約53%、22以上で100%
   threshold_ramp:
     enabled: true
     range: 8.0        # 満額の重みに達するまでに必要な超過幸運値
@@ -596,7 +607,7 @@ effects:
 # 幸運値表示設定
 luck_display:
   enabled: true                    # 幸運値表示機能の有効/無効
-  show_details: false              # 詳細な内訳表示（宝釣り、ポーション、装備、天気ボーナス）
+  show_details: true              # 詳細な内訳表示（宝釣り、ポーション、装備、天気ボーナス）
   update_interval: 20              # 更新間隔（tick、20 = 1秒）
 
 # メッセージ設定

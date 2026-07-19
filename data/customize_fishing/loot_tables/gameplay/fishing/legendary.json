@@ -1360,6 +1360,250 @@
               ]
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomPotionEffects:[{Id:26,Amplifier:2,Duration:6000}],CustomPotionColor:3381504,display:{Name:'[\"\",{\"text\":\"すきがき秘蔵の幸運酒\",\"italic\":false,\"color\":\"green\"}]'}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:splash_potion",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomPotionEffects:[{Id:26,Amplifier:2,Duration:6000}],CustomPotionColor:3381504,display:{Name:'[\"\",{\"text\":\"すきがき祝いの樽酒\",\"italic\":false,\"color\":\"green\"}]'}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "すきがき自慢の釣り竿",
+                "color": "aqua",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:luck_of_the_sea": 4,
+                "minecraft:lure": 2,
+                "minecraft:unbreaking": 2
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 4,
+                  "operation": "addition",
+                  "name": "sukigaki_rod_luck_4",
+                  "slot": "mainhand",
+                  "uuid": [
+                    52,
+                    0,
+                    0,
+                    4
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:1908001,Name:'[\"\",{\"text\":\"呪われたすきがき釣りセット\",\"italic\":false,\"color\":\"dark_red\"}]'},RepairCost:1000,Trim:{pattern:thorn,material:netherite}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 15,
+                "max": 35
+              }
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1,
+                "minecraft:vanishing_curse": 1
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 6,
+                  "operation": "addition",
+                  "name": "cursed_sukigaki_set_luck_13",
+                  "slot": "head",
+                  "uuid": [
+                    54,
+                    0,
+                    0,
+                    13
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:1908001,Name:'[\"\",{\"text\":\"呪われたすきがき釣りセット\",\"italic\":false,\"color\":\"dark_red\"}]'},RepairCost:1000,Trim:{pattern:thorn,material:netherite}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 15,
+                "max": 35
+              }
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1,
+                "minecraft:vanishing_curse": 1
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 6,
+                  "operation": "addition",
+                  "name": "cursed_sukigaki_set_luck_14",
+                  "slot": "chest",
+                  "uuid": [
+                    54,
+                    0,
+                    0,
+                    14
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:1908001,Name:'[\"\",{\"text\":\"呪われたすきがき釣りセット\",\"italic\":false,\"color\":\"dark_red\"}]'},RepairCost:1000,Trim:{pattern:thorn,material:netherite}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 15,
+                "max": 35
+              }
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1,
+                "minecraft:vanishing_curse": 1
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 6,
+                  "operation": "addition",
+                  "name": "cursed_sukigaki_set_luck_15",
+                  "slot": "legs",
+                  "uuid": [
+                    54,
+                    0,
+                    0,
+                    15
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:1908001,Name:'[\"\",{\"text\":\"呪われたすきがき釣りセット\",\"italic\":false,\"color\":\"dark_red\"}]'},RepairCost:1000,Trim:{pattern:thorn,material:netherite}}"
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "treasure": true,
+              "levels": {
+                "min": 15,
+                "max": 35
+              }
+            },
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1,
+                "minecraft:vanishing_curse": 1
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 6,
+                  "operation": "addition",
+                  "name": "cursed_sukigaki_set_luck_16",
+                  "slot": "feet",
+                  "uuid": [
+                    54,
+                    0,
+                    0,
+                    16
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

@@ -1,6 +1,7 @@
 package io.wax100.customizeFishing;
 
 import io.wax100.customizeFishing.commands.CustomizeFishingCommand;
+import io.wax100.customizeFishing.jobs.JobsLuckManager;
 import io.wax100.customizeFishing.listeners.BindingCurseListener;
 import io.wax100.customizeFishing.listeners.FishingListener;
 import io.wax100.customizeFishing.listeners.LuckDisplayListener;
@@ -16,6 +17,7 @@ public final class CustomizeFishing extends JavaPlugin {
 
     private UniqueItemManager uniqueItemManager;
     private LuckDisplayListener luckDisplayListener;
+    private JobsLuckManager jobsLuckManager;
 
     @Override
     public void onEnable() {
@@ -24,6 +26,7 @@ public final class CustomizeFishing extends JavaPlugin {
         // Initialize managers
         this.uniqueItemManager = new UniqueItemManager(this);
         this.luckDisplayListener = new LuckDisplayListener(this);
+        this.jobsLuckManager = new JobsLuckManager(this);
 
         // Register event listeners
         getServer().getPluginManager().registerEvents(new FishingListener(this), this);
@@ -80,5 +83,9 @@ public final class CustomizeFishing extends JavaPlugin {
 
     public UniqueItemManager getUniqueItemManager() {
         return uniqueItemManager;
+    }
+
+    public JobsLuckManager getJobsLuckManager() {
+        return jobsLuckManager;
     }
 }

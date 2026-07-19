@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'io.wax100'
-version = '1.4.3'
+version = '1.5.0'
 
 repositories {
     mavenCentral()
@@ -17,10 +17,17 @@ repositories {
         name = "codemc-repo"
         url = "https://repo.codemc.org/repository/maven-public/"
     }
+    maven {
+        name = "jitpack"
+        url = "https://jitpack.io"
+    }
 }
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT")
+    compileOnly("com.github.Zrips:Jobs:v5.2.2.3") {
+        transitive = false
+    }
     implementation("de.tr7zw:item-nbt-api:2.12.4")
 
     testImplementation("org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT")

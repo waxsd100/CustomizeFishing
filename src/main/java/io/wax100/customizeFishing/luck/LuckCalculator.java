@@ -107,13 +107,14 @@ public class LuckCalculator {
 
     /**
      * 幸運ポーション効果を計算
+     * Jobs連携の対象職業は幸運ポーションLv◯相当として扱う（加算ではなく高い方を採用）
      */
     private int calculateLuckPotion(Player player) {
+        int potionLevel = 0;
         if (player.hasPotionEffect(PotionEffectType.LUCK)) {
-            return Objects.requireNonNull(player.getPotionEffect(PotionEffectType.LUCK)).getAmplifier() + 1;
-        } else {
-            return 0;
+            potionLevel = Objects.requireNonNull(player.getPotionEffect(PotionEffectType.LUCK)).getAmplifier() + 1;
         }
+        return Math.max(potionLevel, plugin.getJobsLuckManager().getJobsLuckLevel(player));
     }
 
     /**
