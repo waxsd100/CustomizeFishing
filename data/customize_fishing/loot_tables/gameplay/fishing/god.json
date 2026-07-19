@@ -589,6 +589,43 @@
               ]
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:player_head",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "SKGKYRの頭",
+                "color": "yellow",
+                "italic": false
+              }
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{SkullOwner:\"SKGKYR\"}"
+            },
+            {
+              "function": "minecraft:set_attributes",
+              "modifiers": [
+                {
+                  "attribute": "minecraft:generic.luck",
+                  "amount": 12,
+                  "operation": "addition",
+                  "name": "skgkyr_head_luck_11",
+                  "slot": "head",
+                  "uuid": [
+                    55,
+                    0,
+                    0,
+                    11
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }
